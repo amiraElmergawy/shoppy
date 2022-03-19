@@ -1,1 +1,3 @@
-# online-shopping-app
+# Shoppy
+
+### An e-commerce application
