@@ -32,16 +32,6 @@
                                 <img src="./../../images/icons/add_product_icon.png">
                                 <h1 class="">Add Product</h1>
                             </div>
-                            <!-- <div class="btn-toolbar mb-2 mb-md-0">
-                                <div class="btn-group me-2">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-                                </div>
-                                <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                                    <span data-feather="calendar"></span>
-                                    This week
-                                </button>
-                            </div> -->
                         </div>
 
 
@@ -57,26 +47,52 @@
 
                             <form action="" method="" class="my-3">
 
-                                <div class="row">
-                                    <div class="form-group col-6">
-                                        <label for="productName" class="my-1">Name</label>
+                                <div class="row" >
+                                    <div class="form-group my-2 col-6">
+                                        <label for="productName" class="my-1">&nbsp;&nbsp;&nbsp;Name</label>
                                         <input type="text" class="form-control" id="productName" size="150"
-                                        placeholder="Product Name">
+                                            placeholder="Product Name" required>
                                     </div>
-                                    <div class="form-group col-6">
+                                    <div class="form-group my-2 col-6">
                                         <label for="category" class="my-1">Category</label>
-                                        <select class="form-control" id="category">
-                                            <option selected disabled>Select Category...</option>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                        </select>
+                                        <div class="row">
+                                            <div class="col-10 gx-0">
+
+                                                <select class="form-control" id="category" required>
+                                                    <option selected disabled>Select Category...</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-2 btn btn-success">
+                                                <img src="./../../images/icons/white_plus_icon-removebg-preview.png" style="width: 30px;">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                    <div class="form-group">
-                                        <label for="exampleFormControlTextarea1">Example textarea</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                <div class="row">
+                                    <div class="form-group my-2 col-6">
+                                        <label for="price" class="my-1">&nbsp;&nbsp;&nbsp;Price</label>
+                                        <input type="number" class="form-control" id="price" min="0"
+                                            placeholder="Product Price" required>
                                     </div>
+                                    <div class="form-group my-2  col-6 gx-0">
+                                        <label for="stock" class="my-1">&nbsp;&nbsp;&nbsp;Quantity</label>
+                                        <input type="number" class="form-control" id="stock" min="0"
+                                            placeholder="Product Quantity" required>
+                                    </div>
+                                </div>
+                                <div class="form-group my-2">
+                                    <div id="imagesArea" style="min-height: 200px; border: 1px dashed rgb(184, 182, 182);" class="p-2">
+                                        Choose Product Images
+                                        <input type="file" class="form-control w-50 m-auto my-1" id="images"   accept=".jpeg,.jpg,.png,.gif" required>
+                                    </div>
+                                </div>
+                                    <div class="form-group my-2">
+                                    <label for="desc" class="my-1">Description</label>
+                                    <textarea class="form-control" id="desc" rows="3" required></textarea>
+                                </div>
                                 <button type="submit" class="btn btn-success my-2">Save Product</button>
                             </form>
                         </div>
@@ -89,7 +105,7 @@
         <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
             integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE"
             crossorigin="anonymous"></script>
-        <!-- <script src="../../scripts/dashboard.js"></script> -->
+        <script src="../../scripts/add-product.js"></script>
 </body>
 
 </html>
