@@ -17,6 +17,7 @@
 
     <!-- Custom styles for this template -->
     <link href="../../styles/dashboard.css" rel="stylesheet">
+    <link href="../../styles/validation-style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -45,15 +46,16 @@
 	                            desc text not null,
                             -->
 
-                            <form action="" method="" class="my-3">
+                            <form action="" method="" id="form" class="my-3">
 
-                                <div class="row" >
-                                    <div class="form-group my-2 col-6">
+                                <div class="row">
+                                    <div class="form-group my-2 col-sm-6">
                                         <label for="productName" class="my-1">&nbsp;&nbsp;&nbsp;Name</label>
                                         <input type="text" class="form-control" id="productName" size="150"
                                             placeholder="Product Name" required>
+                                        <div class="error"></div>
                                     </div>
-                                    <div class="form-group my-2 col-6">
+                                    <div class="form-group my-2 col-sm-6">
                                         <label for="category" class="my-1">Category</label>
                                         <div class="row">
                                             <div class="col-10 gx-0">
@@ -66,32 +68,40 @@
                                                 </select>
                                             </div>
                                             <div class="col-2 btn btn-success">
-                                                <img src="./../../images/icons/white_plus_icon-removebg-preview.png" style="width: 30px;">
+                                                <img src="./../../images/icons/white_plus_icon-removebg-preview.png"
+                                                    style="width: 30px;">
                                             </div>
                                         </div>
+                                        <div class="error"></div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="form-group my-2 col-6">
+                                    <div class="form-group my-2 col-sm-6 ">
                                         <label for="price" class="my-1">&nbsp;&nbsp;&nbsp;Price</label>
                                         <input type="number" class="form-control" id="price" min="0"
                                             placeholder="Product Price" required>
+                                        <div class="error"></div>
                                     </div>
-                                    <div class="form-group my-2  col-6 gx-0">
+                                    <div class="form-group my-2  col-sm-6 gx-0">
                                         <label for="stock" class="my-1">&nbsp;&nbsp;&nbsp;Quantity</label>
                                         <input type="number" class="form-control" id="stock" min="0"
                                             placeholder="Product Quantity" required>
+                                        <div class="error"></div>
                                     </div>
                                 </div>
                                 <div class="form-group my-2">
-                                    <div id="imagesArea" style="min-height: 200px; border: 1px dashed rgb(184, 182, 182);" class="p-2">
+                                    <div id="imagesArea"
+                                        style="min-height: 200px; border: 1px dashed rgb(184, 182, 182);" class="p-2">
                                         Choose Product Images
-                                        <input type="file" class="form-control w-50 m-auto my-1" id="images"   accept=".jpeg,.jpg,.png,.gif" required>
+                                        <input type="file" class="form-control w-50 m-auto my-1" id="images"
+                                            accept=".jpeg,.jpg,.png,.gif" required>
                                     </div>
+                                    <div class="error"></div>
                                 </div>
-                                    <div class="form-group my-2">
+                                <div class="form-group my-2">
                                     <label for="desc" class="my-1">Description</label>
                                     <textarea class="form-control" id="desc" rows="3" required></textarea>
+                                    <div class="error"></div>
                                 </div>
                                 <button type="submit" class="btn btn-success my-2">Save Product</button>
                             </form>
@@ -106,6 +116,7 @@
             integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE"
             crossorigin="anonymous"></script>
         <script src="../../scripts/add-product.js"></script>
+        <script src="../../scripts/forms-validator.js"></script>
 </body>
 
 </html>
