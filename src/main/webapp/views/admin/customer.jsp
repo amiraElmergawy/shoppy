@@ -17,7 +17,7 @@
 
 
     <!-- Custom styles for this template -->
-    <link href="../../styles/dashboard.css" rel="stylesheet">
+    <link href="../../assets/styles/dashboard.css" rel="stylesheet">
 </head>
 
 <body>
