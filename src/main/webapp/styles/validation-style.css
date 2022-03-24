@@ -1,0 +1,15 @@
+.form-group.success input,
+.form-group.success textarea {
+    border-color: #09c372;
+}
+
+.form-group.error input,
+.form-group.success textarea {
+    border-color: #ff3860;
+}
+
+.form-group .error {
+    color    : #ff3860;
+    font-size: 9px;
+    height   : 13px;
+}
