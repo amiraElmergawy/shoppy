@@ -106,6 +106,7 @@
             crossorigin="anonymous"></script>
         <script src="../../assets/scripts/add-product.js"></script>
         <script src="../../assets/scripts/forms-validator.js"></script>
+    <script src="../../assets/scripts/dashboard.js"></script>
 </body>
 
 </html>
