@@ -1,4 +1,4 @@
-package gov.iti.jets.shoppy;
+package gov.iti.jets.shoppy.presentation.controllers;
 
 import java.io.*;
 
@@ -6,7 +6,7 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 @WebServlet(name = "helloServlet", value = "/hello-servlet")
-public class HelloServlet extends HttpServlet {
+public class HelloServletController extends HttpServlet {
     private String message;
 
     public void init() {
