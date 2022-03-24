@@ -34,18 +34,7 @@
                                 <h1 class="">Add Product</h1>
                             </div>
                         </div>
-
-
                         <div>
-                            <!--
-                                pname varchar(150) not null,
-	                            category_id integer not null,
-	                            price double not null,
-	                            stock integer not null,
-	                            img_path text not null,
-	                            desc text not null,
-                            -->
-
                             <form action="" method="" id="form" class="my-3">
 
                                 <div class="row">
@@ -61,7 +50,7 @@
                                             <div class="col-10 gx-0">
 
                                                 <select class="form-control" id="category" required>
-                                                    <option selected disabled>Select Category...</option>
+                                                    <option selected disabled value="">Select Category...</option>
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>
@@ -95,12 +84,12 @@
                                         Choose Product Images
                                         <input type="file" class="form-control w-50 m-auto my-1" id="images"
                                             accept=".jpeg,.jpg,.png,.gif" required>
+                                            <div class="error"></div>
                                     </div>
-                                    <div class="error"></div>
                                 </div>
                                 <div class="form-group my-2">
                                     <label for="desc" class="my-1">Description</label>
-                                    <textarea class="form-control" id="desc" rows="3" required></textarea>
+                                    <textarea class="form-control input" id="desc" rows="3" required></textarea>
                                     <div class="error"></div>
                                 </div>
                                 <button type="submit" class="btn btn-success my-2">Save Product</button>
