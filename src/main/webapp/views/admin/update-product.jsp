@@ -88,7 +88,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group my-2">
-                                    <label for="desc" class="my-1">Description</label>
+                                    <label for="desc" class="my-1">&nbsp;&nbsp;&nbsp;Description</label>
                                     <textarea class="form-control input" id="desc" rows="3" required></textarea>
                                     <div class="error"></div>
                                 </div>
