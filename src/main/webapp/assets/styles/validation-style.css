@@ -1,0 +1,17 @@
+.form-group.success input,
+.form-group.success .input {
+    border-color: #09c372;
+}
+
+.form-group.error input,
+.form-group.error .input,
+.select-error {
+    border-color: #ff3860;
+}
+
+.form-group .error,
+.custom-error {
+    color    : #ff3860;
+    font-size: 9px;
+    height   : 13px;
+}
