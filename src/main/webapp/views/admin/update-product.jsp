@@ -30,8 +30,8 @@
                         <div
                             class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                             <div class="d-flex">
-                                <img src="./../../assets/images/icons/add_product_icon.png">
-                                <h1 class="">Add Product</h1>
+                                <img src="./../../assets/images/icons/update_product_icon.png">
+                                <h1 class="">Update Product</h1>
                             </div>
                         </div>
                         <div>
@@ -56,7 +56,7 @@
                                                     <option value="3">3</option>
                                                 </select>
                                             </div>
-                                            <div class="col-2 btn btn-success">
+                                            <div class="col-2 btn btn-primary">
                                                 <img src="./../../assets/images/icons/white_plus_icon-removebg-preview.png"
                                                     style="width: 30px;">
                                             </div>
@@ -92,7 +92,7 @@
                                     <textarea class="form-control input" id="desc" rows="3" required></textarea>
                                     <div class="error"></div>
                                 </div>
-                                <button type="submit" class="btn btn-success my-2">Save Product</button>
+                                <button type="submit" class="btn btn-primary my-2">Update Product</button>
                             </form>
                         </div>
                     </main>
@@ -104,7 +104,7 @@
         <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
             integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE"
             crossorigin="anonymous"></script>
-        <script src="../../assets/scripts/add-product.js"></script>
+        <script src="../../assets/scripts/update-product.js"></script>
         <script src="../../assets/scripts/forms-validator.js"></script>
 </body>
 
