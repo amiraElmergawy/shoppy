@@ -15,7 +15,7 @@ input:focus {
   margin-top: 3rem;
 }
 input:focus {
-  outline: 1;
+  outline: 1.0px;
 }
 [class~="form-control"]:hover,
 [class~="block-cart"]
@@ -55,7 +55,7 @@ select:focus {
   border-left-color: #dfdfdf;
 }
 select:focus {
-  outline: 1;
+  outline: 1px;
 }
 [class~="block-cart"]
   [class~="dropdown-content"]
@@ -44248,3 +44248,4 @@ footer [class~="title-block"],
 .user-wishlist #wrapper-site #block-history thead th {
   border-color: rgba(255, 255, 255, 0.1);
 }
+

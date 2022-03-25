@@ -1,0 +1,10 @@
+.edit-pen {
+    position: absolute;
+    top: 245px;
+    right: 400px;
+    font-size: 30px;
+}
+input{
+    border: 0;
+    border-bottom: 1px solid #ced4da;
+}

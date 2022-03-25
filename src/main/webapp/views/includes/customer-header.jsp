@@ -47,7 +47,7 @@
                                 <tr>
                                     <td class="product-image">
                                         <a href="product-detail.jsp">
-                                            <img src="images/product/5.jpg" alt="Product">
+                                            <img src="../../assets/images/product/5.jpg" alt="Product">
                                         </a>
                                     </td>
                                     <td>
