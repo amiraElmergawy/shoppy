@@ -28,7 +28,8 @@
     <!-- libs CSS -->
     <link rel="stylesheet" type="text/css" href="../../assets/styles/user-forms.css">
     <link rel="stylesheet" type="text/css" href="../../assets/styles/validation-style.css">
-
+<!--scripts links-->
+    <link rel="stylesheet" href="../../assets/libs/bootstrap/css/bootstrap.min.css">
 
 
 </head>
@@ -56,7 +57,7 @@
                 <span class="m-in">Sign In</span>
             </div>
         </div>
-        <div class="form sign-up sign-u p-container">
+        <div class="form sign-up sign-up-container">
             <h2>Sign Up</h2>
             <form id="sign-up-form" method="post" action="#">
                 <div class="form-group">
@@ -81,6 +82,13 @@
                     <input type="password" id="sign-up-password" required>
                     <div class="error"></div>
                 </div>
+                <div class="form-group">
+                    <label>
+                        <span>Confirm Password</span>
+                    </label>
+                    <input type="password" id="confirm-password" required>
+                    <div class="error"></div>
+                </div>
                 <div class="form-group" required>
                     <label>
                         <span>Your Birth Date</span>
@@ -89,11 +97,14 @@
                     <div class="error"></div>
                 </div>
                 <div class="form-group">
+
+                </div>
+                <div class="form-group">
                     <label>
                         <span>Favourites </span>
                     </label>
                     <i class="fa fa-pencil"></i>
-                    <select name="interests" id="interests" required>
+                    <select name="interests" id="interests" class="list" required>
                         <option value="Chairs">Chairs</option>
                         <option value="Rooms">Rooms</option>
                         <option value="Kitchen">Kitchen</option>
@@ -101,18 +112,33 @@
                     </select>
                     <div class="error"></div>
                 </div>
-                <button type="submit" class="submit submit-btn">Sign Up Now</button>
+        <div class="form-group">
+            <label>
+                <span>Gender </span>
+            </label>
+            <select name="gender" id="gender" class="list" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+            <div class="error"></div>
+        </div>
+
+                <button type="submit " class="submit submit-btn">Sign Up Now</button>
             </form>
         </div>
         <!--Sign Up Form Ends-->
     </div>
 </div>
 
-
+<!-- Vendor JS -->
+<script src="../../assets/libs/jquery/jquery.min.js"></script>
+<script src="../../assets/libs/bootstrap/js/bootstrap.min.js"></script>
 
 <!-- Template JS -->
 <script type="text/javascript" src="../../assets/scripts/forms.js"></script>
 <script type="text/javascript" src="../../assets/scripts/forms-validator.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>
 
 
