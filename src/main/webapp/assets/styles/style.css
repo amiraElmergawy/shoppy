@@ -55,7 +55,7 @@ select:focus {
   border-left-color: #dfdfdf;
 }
 select:focus {
-  outline: 1px;
+  outline: 1.0px;
 }
 [class~="block-cart"]
   [class~="dropdown-content"]
@@ -127,7 +127,7 @@ option:focus {
   height: 16.5pt;
 }
 option:focus {
-  outline: 1;
+  outline: 1.0px;
 }
 [class~="quantity"] [class~="input-group-btn-vertical"] [class~="btn"] {
   line-height: 22px;
@@ -151,7 +151,7 @@ button:focus {
   border-top-width: medium;
 }
 button:focus {
-  outline: 1;
+  outline: 1.0px;
 }
 [class~="form-control"]:hover {
   border-top-width: 0.0625pc;
@@ -173,7 +173,7 @@ section:focus {
   border-bottom-style: none;
 }
 section:focus {
-  outline: 1;
+  outline: 1.0px;
 }
 [class~="form-control"]:hover {
   border-left-style: solid;
@@ -218,7 +218,7 @@ a:focus {
   border-left-width: medium;
 }
 a:focus {
-  outline: 1;
+  outline: 1.0px;
 }
 [class~="ratings"]:not(:checked) > label:hover {
   color: #f7bc3d;
