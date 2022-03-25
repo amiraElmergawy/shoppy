@@ -31,7 +31,7 @@
                             class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                             <div class="d-flex">
                                 <img src="./../../assets/images/icons/update_product_icon.png">
-                                <h1 class="">Update Product</h1>
+                                <h1 class="">Product Details</h1>
                             </div>
                         </div>
                         <div>
