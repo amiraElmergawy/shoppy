@@ -73,13 +73,13 @@ const checkPasswordInputsSimilarity = (passwordElement, confirmPasswordElement) 
 
     if (confirmPasswordElement.value === '') {
         setError(confirmPasswordElement, 'Please confirm your password');
-        return false;
+
     } else if (confirmPasswordElement.value !== passwordElement.value) {
         setError(confirmPasswordElement, "Passwords doesn't match");
-        return false;
+
     } else {
         setSuccess(confirmPasswordElement);
-        return true;
+
     }
 
 }

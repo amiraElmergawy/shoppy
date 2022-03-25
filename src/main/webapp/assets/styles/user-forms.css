@@ -30,7 +30,7 @@ button {
     overflow: hidden;
     position: relative;
     width: 900px;
-    height: 700px;
+    height: 800px;
     background: #fff;
     box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
@@ -44,7 +44,7 @@ button {
     transition: -webkit-transform 1.2s ease-in-out;
     transition: transform 1.2s ease-in-out;
     transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out;
-    margin-top: 50px;
+    margin-top: 100px !important;
 }
 
 h2 {
@@ -80,10 +80,10 @@ input {
 
 button {
     display: block;
-    margin: 0 auto;
+    margin: 20px auto !important;
     width: 260px;
     height: 36px;
-    border-radius: 30px;
+    border-radius: 30px !important;
     color: #2c4146;
     font-size: 15px;
     cursor: pointer;
@@ -166,7 +166,7 @@ button {
     top: 0;
     width: 260px;
     height: 100%;
-    padding-top: 470px;
+    padding-top: 540px;
 }
 .img:before {
     content: '';
@@ -291,6 +291,7 @@ button {
     transition: -webkit-transform 1.2s;
     transition: transform 1.2s;
     transition: transform 1.2s, -webkit-transform 1.2s;
+;
 }
 
 .img-btn span.m-in {
@@ -311,7 +312,6 @@ button {
 .sign-up {
     -webkit-transform: translate3d(-900px, 0, 0);
     transform: translate3d(-900px, 0, 0);
-
 }
 
 .cont.s-signup .sign-up {
@@ -347,7 +347,10 @@ select {
 }
 
 .sign-up-container {
-    padding: 5px 30px;
+    padding:50px 30px ;
+    line-height: 0.5 !important;
+    margin-top: 30px !important;
+    margin-bottom: 30px !important;
 }
 
 .submit-btn {
