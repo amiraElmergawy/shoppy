@@ -8,7 +8,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="customers" href="customer.jsp">
+                <a class="nav-link" id="customers" href="customers.jsp">
                     <span data-feather="users"></span>
                     Customers
                 </a>
@@ -26,7 +26,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="orders" href="order.jsp">
+                <a class="nav-link" id="orders" href="orders.jsp">
                     <span data-feather="file"></span>
                     Orders
                 </a>
