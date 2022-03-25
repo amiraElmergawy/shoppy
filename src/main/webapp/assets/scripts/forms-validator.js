@@ -1,3 +1,6 @@
+const emailPattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+const passwordPattern = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/;
+const namePattern = /^[a-zA-Z ]{2,30}$/;
 const setError = (element, message) => {
     const inputControl = element.parentElement;
     const errorDisplay = inputControl.querySelector('.error');
@@ -48,12 +51,21 @@ const validatePasswordInput = passwordElment => {
     if (passwordElment.value === '') {
         setError(passwordElment, 'Password is required');
         return false;
-    } else if (passwordElment.value.length < 8) {
+    } else if (passwordElment.value.length < 8 && !isValidPassword(passwordElment.value)) {
         setError(passwordElment, 'Password must be at least 8 character.')
         return false;
     } else {
         setSuccess(passwordElment);
         return true;
+    }
+}
+const validateNameInput = nameElement => {
+    if (nameElement.value === '') {
+        setError(nameElement, 'This field is required');
+    } else if (!isValidName(nameElement.value)) {
+        setError(nameElement, 'Wrong')
+    } else {
+        setSuccess(nameElement);
     }
 }
 
@@ -70,4 +82,24 @@ const checkPasswordInputsSimilarity = (passwordElement, confirmPasswordElement) 
         return true;
     }
 
+}
+const isValidEmail = emailElementValue => {
+    if (emailPattern.test(emailElementValue))
+        return true;
+    else
+        return false;
+
+
+}
+const isValidPassword = passwordElementValue => {
+    if (passwordPattern.test(passwordElementValue))
+        return true;
+    else
+        return false;
+}
+const isValidName = nameElementValue => {
+    if (namePattern.test(nameElementValue))
+        return true;
+    else
+        return false;
 }
