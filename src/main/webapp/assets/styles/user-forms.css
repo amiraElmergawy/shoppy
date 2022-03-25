@@ -30,7 +30,7 @@ button {
     overflow: hidden;
     position: relative;
     width: 900px;
-    height: 550px;
+    height: 700px;
     background: #fff;
     box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
@@ -44,6 +44,7 @@ button {
     transition: -webkit-transform 1.2s ease-in-out;
     transition: transform 1.2s ease-in-out;
     transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out;
+    margin-top: 50px;
 }
 
 h2 {
@@ -165,7 +166,7 @@ button {
     top: 0;
     width: 260px;
     height: 100%;
-    padding-top: 360px;
+    padding-top: 470px;
 }
 .img:before {
     content: '';
@@ -290,7 +291,6 @@ button {
     transition: -webkit-transform 1.2s;
     transition: transform 1.2s;
     transition: transform 1.2s, -webkit-transform 1.2s;
-;
 }
 
 .img-btn span.m-in {
@@ -311,6 +311,7 @@ button {
 .sign-up {
     -webkit-transform: translate3d(-900px, 0, 0);
     transform: translate3d(-900px, 0, 0);
+
 }
 
 .cont.s-signup .sign-up {
