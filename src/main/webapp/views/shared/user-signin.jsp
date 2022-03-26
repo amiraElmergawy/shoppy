@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="form sign-in">
   <h2>Sign In</h2>
-  <form id="sign-in-form" action="#" method="post">
+  <form id="sign-in-form" action="login" method="post">
     <div class="form-group">
       <label>
         <span>Email Address</span>
