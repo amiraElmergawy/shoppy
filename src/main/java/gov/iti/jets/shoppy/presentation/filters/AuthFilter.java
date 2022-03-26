@@ -1,7 +1,6 @@
 package gov.iti.jets.shoppy.presentation.filters;
 
 import jakarta.servlet.*;
-
 import java.io.IOException;
 
 public class AuthFilter implements Filter {
