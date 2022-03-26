@@ -31,8 +31,4 @@ public class SessionProvider {
         return configuration.buildSessionFactory(builder.build());
     }
 
-//    public static void main(String[] args) {
-//        getInstance().getSession();
-//
-//    }
 }

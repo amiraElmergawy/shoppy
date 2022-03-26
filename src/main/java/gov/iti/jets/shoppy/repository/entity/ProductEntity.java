@@ -6,17 +6,14 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Entity
-@Table
 @Data
 @NoArgsConstructor
 public class ProductEntity{
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private long id;
     private String name;
     private double price;
+    private String desc;
     private CategoryEntity category;
-    private int quantity;
+    private int stock;
     private String imagePath;
 }
