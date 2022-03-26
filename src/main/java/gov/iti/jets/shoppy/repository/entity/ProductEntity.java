@@ -10,12 +10,13 @@ import javax.persistence.*;
 @Table
 @Data
 @NoArgsConstructor
-public class AddressEntity {
+public class ProductEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String area;
-    private String street;
-    private int buildingNum;
-    private int floorNum;
+    private String name;
+    private double price;
+    private CategoryEntity category;
+    private int quantity;
+    private String imagePath;
 }
