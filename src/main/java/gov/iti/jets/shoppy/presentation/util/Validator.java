@@ -4,7 +4,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Validator {
-
     private static Validator validator = new Validator();
     private Matcher matcher ;
     private Pattern emailPattern = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
@@ -17,7 +16,7 @@ public class Validator {
         return validator;
     }
 
-    public boolean isEmail(String email){
+    public boolean validateEmail(String email){
         this.matcher = this.emailPattern.matcher(email);
         if (this.matcher.matches()){
             return true;
