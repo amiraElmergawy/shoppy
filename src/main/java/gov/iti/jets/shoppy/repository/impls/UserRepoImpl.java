@@ -22,8 +22,10 @@ public class UserRepoImpl implements UserRepo {
     }
 
     @Override
-    public Optional<UserEntity> findUserByEmail(String email) {
-        return userEntityList.stream().filter(userEntity -> userEntity.getEmail().equals(email)).findFirst();
+    public Optional<UserEntity> findUser(String email, String password) {
+        return userEntityList.stream().filter(userEntity ->
+                    userEntity.getEmail().equals(email) && userEntity.getPassword().equals(password)
+        ).findFirst();
     }
 
     @Override
