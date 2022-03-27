@@ -1,9 +1,11 @@
 package gov.iti.jets.shoppy.service.dtos;
 
 import gov.iti.jets.shoppy.repository.entity.AddressEntity;
+import lombok.Data;
 
 import java.util.Date;
 
+@Data
 public class UserDto {
     private long id;
     private String username;
@@ -16,7 +18,4 @@ public class UserDto {
     private double creditLimit;
     private AddressEntity address;
     private boolean isAdmin;
-
-
-
 }
