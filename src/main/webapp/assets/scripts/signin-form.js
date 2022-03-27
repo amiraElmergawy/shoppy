@@ -17,33 +17,46 @@ signInForm.addEventListener('submit', e => {
     //     });
     //
 
-    let post = JSON.stringify(
-        {
-                "email": emailElement.value,
-                "password": passwordElement.value,
-                "test":"test"
+    $.ajax({
+        type: 'post',
+        url: '/shoppy/signin',
+        data: {
+            email: emailElement.value,
+            password: passwordElement.value
+        },
+        contentType : 'application/x-www-form-urlencoded',
+        success: function (data) {
+            console.log(data);
         }
-    )
-    const url = "/shoppy/signin"
+    });
 
-    let xhr = new XMLHttpRequest()
-
-    xhr.open('POST', url, true)
-
-    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
-
-    xhr.send("email="+ emailElement.value+"&password="+passwordElement.value);
-
-
-
-    xhr.onload = function () {
-
-        if(xhr.status === 201) {
-
-            console.log("Post successfully created!")
-
-        }
-
-    }
+    // let post = JSON.stringify(
+    //     {
+    //             "email": emailElement.value,
+    //             "password": passwordElement.value,
+    //             "test":"test"
+    //     }
+    // )
+    // const url = "/shoppy/signin"
+    //
+    // let xhr = new XMLHttpRequest()
+    //
+    // xhr.open('POST', url, true)
+    //
+    // xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
+    //
+    // xhr.send("email="+ emailElement.value+"&password="+passwordElement.value);
+    //
+    //
+    //
+    // xhr.onload = function () {
+    //
+    //     if(xhr.status === 201) {
+    //
+    //         console.log("Post successfully created!")
+    //
+    //     }
+    //
+    // }
 
 })

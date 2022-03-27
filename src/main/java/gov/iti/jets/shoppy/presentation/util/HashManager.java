@@ -3,8 +3,8 @@ package gov.iti.jets.shoppy.presentation.util;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class HashManager {
-
+public enum HashManager {
+    INSTANCE;
         /* Driver Code */
         public String generateSecurePassword(String password) {
             /* Plain-text password initialization. */

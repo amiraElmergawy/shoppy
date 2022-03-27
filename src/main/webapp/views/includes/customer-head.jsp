@@ -1,5 +1,5 @@
-<meta name="keywords" content="Furniture, Decor, Interior">
-<meta name="description" content="Furnitica - Minimalist Furniture HTML Template">
+<meta name="keywords" content="Shoppy">
+<meta name="description" content="Shoppy">
 <meta name="author" content="tivatheme">
 
 <!-- Mobile Meta -->
@@ -7,7 +7,6 @@
 
 <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800&display=swap" rel="stylesheet">
-
 
 <!-- Vendor CSS -->
 <link rel="stylesheet" href="../../assets/libs/bootstrap/css/bootstrap.min.css">
