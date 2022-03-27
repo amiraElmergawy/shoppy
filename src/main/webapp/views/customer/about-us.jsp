@@ -834,7 +834,9 @@
 															</div>
 
 		<%@ include file="../includes/customer-footer.jsp" %>
-															</body>
+	<%@ include file="../includes/customer-script.jsp" %>
+
+	</body>
 															
 															
 <!-- about-us11:09-->

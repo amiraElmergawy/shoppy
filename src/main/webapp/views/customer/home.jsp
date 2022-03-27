@@ -1927,6 +1927,8 @@
 
     <%@ include file="../includes/customer-mobile-menu.jsp" %>
     <%@ include file="../includes/customer-footer.jsp" %>
+<%@ include file="../includes/customer-script.jsp" %>
+
 </body>
 
 
