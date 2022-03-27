@@ -19,6 +19,6 @@ public class UserEntity {
     private String jobTitle;
     private double creditLimit;
     private AddressEntity address;
-    private Role role;
+    private boolean isAdmin;
 
 }
