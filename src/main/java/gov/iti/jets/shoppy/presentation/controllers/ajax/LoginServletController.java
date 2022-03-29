@@ -1,7 +1,7 @@
 package gov.iti.jets.shoppy.presentation.controllers.ajax;
 
 import gov.iti.jets.shoppy.presentation.helpers.LoginViewHelper;
-import gov.iti.jets.shoppy.presentation.util.HashManager;
+import gov.iti.jets.shoppy.service.util.HashManager;
 import gov.iti.jets.shoppy.presentation.util.Validator;
 import gov.iti.jets.shoppy.service.DomainFacade;
 import jakarta.servlet.ServletException;
@@ -17,25 +17,14 @@ public class LoginServletController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         String email = req.getParameter("email");
         String password = req.getParameter("password");
-        String hashedPassword = HashManager.INSTANCE.generateSecurePassword(password);
         Validator validator = Validator.getInstance();
         DomainFacade domainFacade = DomainFacade.getInstance();
         LoginViewHelper loginViewHelper;
-        System.out.println(email);
-        System.out.println(password);
-
-        System.out.println(validator.validateEmail(email));
-        System.out.println(validator.validatePassword(password));
-
-        System.out.println(hashedPassword);
-        System.out.println("test password"+HashManager.INSTANCE.generateSecurePassword("12345678"));
-
-       loginViewHelper = domainFacade.signin(email , hashedPassword);
-       System.out.println(loginViewHelper.getUserDto());
-       System.out.println(loginViewHelper.getError());
+        loginViewHelper = domainFacade.signin(email , password);
+        System.out.println("viewHelper -> dto: "+ loginViewHelper.getUserDto());
+        System.out.println("error" +loginViewHelper.getError());
 
     }
 }

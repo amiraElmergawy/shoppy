@@ -1,6 +1,5 @@
 package gov.iti.jets.shoppy.repository.impls;
 
-import gov.iti.jets.shoppy.presentation.util.HashManager;
 import gov.iti.jets.shoppy.repository.entity.UserEntity;
 import gov.iti.jets.shoppy.repository.interfaces.UserRepo;
 import java.util.ArrayList;

@@ -20,5 +20,4 @@ public class UserEntity {
     private double creditLimit;
     private AddressEntity address;
     private boolean isAdmin;
-
 }

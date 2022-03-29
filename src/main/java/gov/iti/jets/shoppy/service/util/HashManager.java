@@ -1,4 +1,4 @@
-package gov.iti.jets.shoppy.presentation.util;
+package gov.iti.jets.shoppy.service.util;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -34,7 +34,6 @@ public enum HashManager {
                 e.printStackTrace();
             }
             return encryptedpassword;
-
         }
 
 }
