@@ -16,7 +16,7 @@ public class DomainFacade {
         return domainFacade;
     }
     public LoginViewHelper signin(String email, String password){
-        LoginViewHelper loginViewHelper = LoginViewHelper.getInstance();
+        LoginViewHelper loginViewHelper =new LoginViewHelper();
         Optional<UserDto> userDtoOptional = authService.signin(email, password);
         userDtoOptional.ifPresentOrElse(
                 (value) -> {
