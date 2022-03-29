@@ -1,12 +1,11 @@
 package gov.iti.jets.shoppy.service.impls;
 
-import gov.iti.jets.shoppy.presentation.helpers.LoginViewHelper;
 import gov.iti.jets.shoppy.repository.entity.UserEntity;
 import gov.iti.jets.shoppy.repository.util.RepoFactory;
 import gov.iti.jets.shoppy.service.dtos.UserDto;
 import gov.iti.jets.shoppy.service.interfaces.AuthService;
 import gov.iti.jets.shoppy.service.util.HashManager;
-import gov.iti.jets.shoppy.service.util.UserMapper;
+import gov.iti.jets.shoppy.service.mappers.UserMapper;
 
 import java.util.Optional;
 

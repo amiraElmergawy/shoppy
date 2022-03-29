@@ -1,4 +1,4 @@
-package gov.iti.jets.shoppy.service.util;
+package gov.iti.jets.shoppy.service.mappers;
 
 import gov.iti.jets.shoppy.repository.entity.UserEntity;
 import gov.iti.jets.shoppy.service.dtos.UserDto;
