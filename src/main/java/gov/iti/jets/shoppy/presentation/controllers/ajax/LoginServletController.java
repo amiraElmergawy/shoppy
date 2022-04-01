@@ -17,14 +17,14 @@ public class LoginServletController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String email = req.getParameter("email");
-        String password = req.getParameter("password");
-        Validator validator = Validator.getInstance();
-        DomainFacade domainFacade = DomainFacade.getInstance();
-        LoginViewHelper loginViewHelper;
-        loginViewHelper = domainFacade.signin(email , password);
-        System.out.println("viewHelper -> dto: "+ loginViewHelper.getUserDto());
-        System.out.println("error" +loginViewHelper.getError());
+//        String email = req.getParameter("email");
+//        String password = req.getParameter("password");
+//        Validator validator = Validator.getInstance();
+//        DomainFacade domainFacade = DomainFacade.getInstance();
+//        LoginViewHelper loginViewHelper;
+//        loginViewHelper = domainFacade.signin(email , password);
+//        System.out.println("viewHelper -> dto: "+ loginViewHelper.getUserDto());
+//        System.out.println("error" +loginViewHelper.getError());
 
     }
 }
