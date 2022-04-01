@@ -17,17 +17,7 @@
 <!-- user-acount11:10-->
 
 <head>
-    <!-- Basic Page Needs -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Furnitica - Minimalist Furniture HTML Template</title>
 
-    <meta name="keywords" content="Furniture, Decor, Interior">
-    <meta name="description" content="Furnitica - Minimalist Furniture HTML Template">
-    <meta name="author" content="tivatheme">
-
-    <!-- Mobile Meta -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <%@ include file="../includes/customer-head.jsp" %>
 
@@ -35,6 +25,7 @@
     <link rel="stylesheet" type="text/css" href="../../assets/styles/reponsive.css">
     <link rel="stylesheet" type="text/css" href="../../assets/styles/style.css">
     <link rel="stylesheet" type="text/css" href="../../assets/styles/user-profile.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/styles/validation-style.css">
 </head>
 
 <body class="user-acount">
@@ -70,61 +61,64 @@
                     <h1 class="title-page">My Account</h1>
 
                     <a href="#">
-                        <i class="fa fa-pencil edit-pen"></i>
+                        <button id="edit">
+                        <i class="fa fa-pencil edit-pen"></i> </button>
                     </a>
                     <div class="content" id="block-history">
-                        <form>
+                        <form id="edit-form">
                             <!-- 2 column grid layout with text inputs for the first and last names -->
 
                                     <div class="form-outline mb-4">
-                                        <label class="form-label" for="form6Example1">Name</label>
-                                        <input type="text" id="form6Example1" class="form-control" />
+                                        <label class="form-label" for="name">Name</label>
+                                        <input type="text" id="name" class="form-control" disabled="disabled"/>
+                                        <div id="error"></div>
 
                                     </div>
-
-
-
-
                             <!-- Text input -->
-                            <div class="form-outline mb-4">
-                                <label class="form-label" for="form6Example3">Jop</label>
-                                <input type="text" id="form6Example3" class="form-control" />
-
+                            <div class="form-outline mb-4 form-group">
+                                <label class="form-label" for="jop">Jop</label>
+                                <input type="text" id="jop" class="form-control" />
+                                <div class="error"></div>
                             </div>
 
                             <!-- Text input -->
-                            <div class="form-outline mb-4">
+                            <div class="form-outline mb-4 form-group">
 
                                 <label class="form-label" >Address</label>
-                                <input type="text" id="floor" class="form-control" />
+                                <input type="text" id="address" class="form-control" />
+                                <div class="error"></div>
                             </div>
 
                             <!-- Email input -->
-                            <div class="form-outline mb-4">
-                                <label class="form-label" for="form6Example5">Email</label>
-                                <input type="email" id="form6Example5" class="form-control" disabled/>
+                            <div class="form-outline mb-4 form-group">
+                                <label class="form-label" for="email">Email</label>
+                                <input type="email" id="email" class="form-control" disabled/>
+                                <div class="error"></div>
 
                             </div>
 
-                            <div class="form-outline mb-4">
+                            <div class="form-outline mb-4 form-group">
 
                                 <label class="form-label" for="date">Birth Date</label>
                                 <input type="date" id="date" class="form-control" />
+                                <div class="error"></div>
                             </div>
-                            <div class="form-outline mb-4">
+                            <div class="form-outline mb-4 form-group">
                                 <label class="form-label" for="gender">Gender</label>
                                 <input type="text" id="gender" class="form-control" />
+                                <div class="error"></div>
 
                             </div>
 
-                            <div class="form-outline mb-4">
-                                <label class="form-label" for="gender">Favourites</label>
+                            <div class="form-outline mb-4 form-group">
+                                <label class="form-label" for="interestes">Favourites</label>
                                 <input type="text" id="interestes" class="form-control" />
+                                <div class="error"></div>
 
                             </div>
 
                             <!-- Submit button -->
-                            <button type="submit" class="btn btn-primary btn-block mb-4" style="display: none">Place order</button>
+                            <button type="submit" id="submit" class="btn btn-primary btn-block mb-4 non_visible" >Place order</button>
                         </form>
 
                     </div>
@@ -153,8 +147,8 @@
 </div>
 
 <%@ include file="../includes/customer-footer.jsp" %>
-<script src="../../assets/scripts/forms-validator.js"></script>
 <script src="../../assets/scripts/user-profile-validator.js"></script>
+<script src="../../assets/scripts/forms-validator.js"></script>
 
 </body>
 

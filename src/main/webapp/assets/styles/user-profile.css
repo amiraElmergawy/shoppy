@@ -8,3 +8,29 @@ input{
     border: 0;
     border-bottom: 1px solid #ced4da;
 }
+.non_visible{
+display: none;
+}
+.visible{
+    display: block;
+}
+
+
+
+.form-outline.success input,
+.form-outline.success .input {
+    border-color: #09c372;
+}
+
+.form-outline.error input,
+.form-outline.error .input,
+.select-error {
+    border-color: #ff3860;
+}
+
+.form-outline .error,
+.custom-error {
+    color    : #ff3860;
+    font-size: 9px;
+    height   : 13px;
+}

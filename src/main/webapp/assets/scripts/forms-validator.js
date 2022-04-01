@@ -8,15 +8,15 @@ const setError = (element, message) => {
     errorDisplay.innerText = message;
     inputControl.classList.add('error');
     // inputControl.classList.remove('success')
+    console.log(errorDisplay);
 }
 
 const setSuccess = element => {
     const inputControl = element.parentElement;
     const errorDisplay = inputControl.querySelector('.error');
-
-    errorDisplay.innerText = '';
-    // inputControl.classList.add('success');
+     errorDisplay.innerText ='';
     inputControl.classList.remove('error');
+    inputControl.classList.add('success');
 };
 
 const validateEmptyInputs = element => {
@@ -62,13 +62,49 @@ const validatePasswordInput = passwordElment => {
 const validateNameInput = nameElement => {
     if (nameElement.value === '') {
         setError(nameElement, 'This field is required');
+        return false;
     } else if (!isValidName(nameElement.value)) {
         setError(nameElement, 'Wrong')
+        return false;
     } else {
         setSuccess(nameElement);
+        return true;
     }
 }
+const validateIntersts = interstsElement=>{
+    if (interstsElement.value === '') {
+        setError(interstsElement, 'This field is required');
+        return false;
+    }  else {
+        setSuccess(interstsElement);
+        return true;
+    }
 
+}
+const validateGenderInput = genderElement =>{
+    if (genderElement.value === '') {
+        setError(genderElement, 'You should enter your gender');
+        return false;
+    } else if (!isValidGender(genderElement.value)) {
+        setError(genderElement, 'Wrong')
+        return false;
+    } else {
+        setSuccess(genderElement);
+        return true;
+    }
+
+}
+const validateJopInput = jopElement => {
+    if (jopElement.value === '') {
+        setError(jopElement, 'You should enter your gender');
+        return false;
+    }
+    else {
+        setSuccess(jopElement);
+        return true;
+    }
+
+}
 const checkPasswordInputsSimilarity = (passwordElement, confirmPasswordElement) => {
 
     if (confirmPasswordElement.value === '') {
@@ -102,4 +138,14 @@ const isValidName = nameElementValue => {
         return true;
     else
         return false;
+}
+const isValidGender = genderElementValue => {
+
+    if(genderElementValue === "female" || genderElementValue === "male"){
+        return true;
+    }
+    else{
+        return false;
+    }
+
 }

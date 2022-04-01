@@ -1,15 +1,66 @@
+const form = document.getElementById("edit-form");
 const nameElement = document.getElementById("name");
-const genderElement = document.getElementById("gender");
-const iterstsElement=document.getElementById("intersts");
-signInForm.addEventListener('submit', e => {
-    e.preventDefault();
-    validateEmailInput(emailElement);
-    validatePasswordInput(passwordElement);
-})
-signUpForm.addEventListener('submit', e => {
+// const genderElement = document.getElementById("gender");
+// const interstsElement=document.getElementById("interestes");
+// const jopElement = document.getElementById("jop");
+const editButton= document.getElementById("edit");
+const submitButton = document.getElementById("submit");
+form.addEventListener('submit', e => {
     e.preventDefault();
     validateNameInput(nameElement);
-    validateEmailInput(signUpEmailEelement);
-    validatePasswordInput(signUpPasswordEelement);
+    // validateGenderInput(genderElement);
+    // validateJopInput(jopElement);
+    // validateIntersts(interstsElement);
+
 
 })
+editButton.addEventListener('click',e=>{
+    console.log(document.getElementById("name"));
+    nameElement.removeAttribute("disabled");
+    submitButton.classList.remove('non_visible');
+
+ })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
