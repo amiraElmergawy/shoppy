@@ -1,12 +1,12 @@
 package gov.iti.jets.shoppy.repository.impls;
 
-import gov.iti.jets.shoppy.repository.entity.UserEntity;
 import gov.iti.jets.shoppy.repository.interfaces.UserRepo;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 public class UserRepoImpl implements UserRepo {
+    /*
     List<UserEntity> userEntityList = new ArrayList<>();
     private final static UserRepoImpl userRepo = new UserRepoImpl();
     private UserRepoImpl() {
@@ -42,4 +42,5 @@ public class UserRepoImpl implements UserRepo {
     public boolean updateUser(UserEntity userEntity) {
         return false;
     }
+     */
 }
