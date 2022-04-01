@@ -6,29 +6,8 @@ drop table if exists orders;
 drop table if exists order_products;
 drop table if exists roles;
 
-
-create table categories (
+create table customers (
 	id integer primary key,
-	category_name varchar(50) not null
-);
-
-create table roles (
-	id integer primary key,
-    role_name varchar(10)
-);
-
-create table addresses (
-	id integer primary key,
-	area varchar(100),
-	street varchar(100),
-	building_num varchar(100),
-	floor_num varchar(100)
-);
-
-create table users (
-	id integer primary key,
-	address_id integer,
-    role_id integer not null,
     username varchar(50) not null,
 	email varchar(254) not null unique,
 	pass varchar(150) not null,	
@@ -36,9 +15,23 @@ create table users (
 	dob date,
 	is_male bit default(1), 
 	job varchar(50),
-	credit_limit double not null default(1000), 
-	foreign key (address_id) references addresses(id),
-	foreign key (role_id) references roles(id)
+	credit_limit double not null default(1000)
+);
+
+create table addresses (
+	customer_id integer not null,
+	area varchar(100) not null,
+	street varchar(100) not null,
+	building_num integer not null,
+	floor_num integer,
+    foreign key (customer_id) references customers(id)
+);
+
+create table admins (
+	id integer primary key,
+    username varchar(50) not null,
+	email varchar(254) not null unique,
+	pass varchar(150) not null
 );
 
 create table products(
@@ -48,24 +41,23 @@ create table products(
     price double not null,
 	category_id integer not null,
 	stock integer not null,
-	img_path text not null,
-	foreign key (category_id) references categories(id)
+	img_path text not null
 );
 
 create table orders (
 	id integer primary key,
-	date date not null default(SYSDATE()),
-	customer_id integer,
+	created_at date not null default(SYSDATE()),
+	customer_id  integer not null,
 	is_submitted bit default(0),
-	total double 
+	total_price double not null,
+    foreign key (customer_id) references customers(id)
 );
 
  create table order_products (
 	order_id integer not null,
 	product_id integer not null,
 	quantity integer not null,
-	primary key(order_id, product_id)
+	primary key(order_id, product_id),
+    foreign key (order_id) references orders(id),
+    foreign key (product_id) references products(id)
 );
-
-
-
