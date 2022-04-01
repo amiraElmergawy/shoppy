@@ -16,7 +16,11 @@ public class Validator {
         return validator;
     }
 
-    public boolean validateEmail(String email){
+    public boolean validateLoginFields(String email, String password){
+        return validateEmail(email) && validatePassword(password);
+    }
+
+    private boolean validateEmail(String email){
         this.matcher = this.emailPattern.matcher(email);
         if (this.matcher.matches()){
             return true;
@@ -24,7 +28,7 @@ public class Validator {
         return false;
     }
 
-    public boolean validatePassword(String password){
+    private boolean validatePassword(String password){
         this.matcher = this.passwordPattern.matcher(password);
         if (this.matcher.matches()){
             return true;
