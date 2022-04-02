@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public abstract class UserEntity implements Serializable {
+public class UserEntity implements Serializable {
 
     @Column(name = "username", nullable = false, length = 50)
     private String username;

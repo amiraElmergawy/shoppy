@@ -1,5 +1,6 @@
 package gov.iti.jets.shoppy.repository.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
@@ -18,6 +19,7 @@ import org.hibernate.annotations.Parameter;
 @Entity
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "addresses", catalog = "shoppy", uniqueConstraints = @UniqueConstraint(columnNames = "customer_id"))
 public class AddressEntity implements java.io.Serializable {
     @Id

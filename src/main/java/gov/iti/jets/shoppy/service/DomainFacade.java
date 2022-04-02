@@ -4,6 +4,7 @@ import gov.iti.jets.shoppy.presentation.helpers.LoginViewHelper;
 import gov.iti.jets.shoppy.service.dtos.UserDto;
 import gov.iti.jets.shoppy.service.interfaces.AuthService;
 import gov.iti.jets.shoppy.service.util.ServiceFactory;
+import jakarta.persistence.EntityManager;
 
 import java.util.Optional;
 
@@ -15,18 +16,7 @@ public class DomainFacade {
     public static DomainFacade getInstance(){
         return domainFacade;
     }
-    public LoginViewHelper signin(String email, String password){
-        LoginViewHelper loginViewHelper =new LoginViewHelper();
-        Optional<UserDto> userDtoOptional = authService.signin(email, password);
-        userDtoOptional.ifPresentOrElse(
-                (value) -> {
-                    System.out.println("Value is present, its: "+ value);
-                    loginViewHelper.setUserDto(value);
-                },
-                () -> {
-                    System.out.println("Value is empty");
-                    loginViewHelper.setError("Invalid email or password");
-                });
-        return loginViewHelper;
+    public LoginViewHelper signin(String email, String password, EntityManager entityManager){
+        return ServiceFactory.INSTANCE.getAuthService().signin(email, password, entityManager);
     }
 }

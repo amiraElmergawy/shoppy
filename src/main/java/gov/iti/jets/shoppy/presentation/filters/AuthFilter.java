@@ -18,9 +18,9 @@ public class AuthFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-       HttpServletRequest request = (HttpServletRequest) servletRequest;
-        System.out.println("url "+request.getRequestURL());
-        System.out.println("path "+request.getContextPath());
+//       HttpServletRequest request = (HttpServletRequest) servletRequest;
+//        System.out.println("url "+request.getRequestURL());
+//        System.out.println("path "+request.getContextPath());
         filterChain.doFilter(servletRequest,servletResponse);
     }
 

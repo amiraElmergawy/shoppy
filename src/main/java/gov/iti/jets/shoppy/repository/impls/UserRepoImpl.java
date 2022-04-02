@@ -1,57 +1,65 @@
 package gov.iti.jets.shoppy.repository.impls;
 
+import gov.iti.jets.shoppy.repository.entity.UserEntity;
 import gov.iti.jets.shoppy.repository.interfaces.UserRepo;
+import jakarta.persistence.EntityExistsException;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 public class UserRepoImpl implements UserRepo {
-    /*
-    List<UserEntity> userEntityList = new ArrayList<>();
 
     private final static UserRepoImpl userRepo = new UserRepoImpl();
-    private UserRepoImpl() {
-        UserEntity userEntity = new UserEntity();
-        userEntity.setId(1);
-        userEntity.setEmail("zizo@gmail.com");
-        userEntity.setAddress(null);
-        userEntity.setAdmin(false);
-        userEntity.setPassword("25d55ad283aa400af464c76d713c07ad");
-        userEntity.setUsername("abdelaziz");
-        userEntityList.add(userEntity);
-    }
+    private UserRepoImpl() {}
 
     public static UserRepoImpl getInstance() {
         return userRepo;
     }
 
     @Override
-    public Optional<UserEntity> findUserById(long id) {
-        return userEntityList.stream().filter(userEntity -> userEntity.getId() == id).findFirst();
+    public Optional<UserEntity> findUserById(long id, EntityManager entityManager) {
+        var userEntity =entityManager.find(UserEntity.class, id);
+        if(userEntity != null)
+            return Optional.of(userEntity);
+        return Optional.empty();
     }
 
     @Override
-    public Optional<UserEntity> findUser(String email, String password) {
-          return userEntityList.stream().filter(userEntity ->
-                    userEntity.getEmail().equals(email) && userEntity.getPassword().equals(password)
-        ).findFirst();
+    public Optional<UserEntity> findUser(String email, String password, EntityManager entityManager) {
+        String select = "SELECT * FROM User WHERE email=:email and pass=:pass";
+
+        Query query = entityManager.createQuery(select);
+        query.setParameter("email", email);
+        query.setParameter("pass", password);
+
+        return (Optional<UserEntity>) query.getSingleResult();
     }
 
     @Override
-    public boolean insertUser(UserEntity userEntity) {
-        for(UserEntity user: userEntityList) {
-            if(userEntity.getEmail().equals(user.getEmail()))
-                return false;
+    public boolean insertUser(UserEntity userEntity, EntityManager entityManager) {
+        entityManager.getTransaction().begin();
+        try {
+            entityManager.persist(userEntity);
+            entityManager.getTransaction().commit();
+            return true;
+        } catch (EntityExistsException exception){
+            return false;
         }
-        userEntityList.add(userEntity);
-        int size = userEntityList.size();
-        userEntity.setId(size++);
-        return true;
     }
 
     @Override
-    public boolean updateUser(UserEntity userEntity) {
-        return false;
+    public boolean updateUser(UserEntity userEntity, EntityManager entityManager) {
+        entityManager.getTransaction().begin();
+        try {
+            entityManager.merge(userEntity);
+            entityManager.getTransaction().commit();
+            return true;
+        } catch (IllegalArgumentException exception){
+            return false;
+        }
     }
-     */
+
 }

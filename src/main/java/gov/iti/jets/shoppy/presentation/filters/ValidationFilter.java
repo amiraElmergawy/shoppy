@@ -16,8 +16,8 @@ public class ValidationFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        HttpServletRequest req = (HttpServletRequest) request;
-        HttpServletRequest res =(HttpServletRequest) response;
+//        HttpServletRequest req = (HttpServletRequest) request;
+//        HttpServletRequest res =(HttpServletRequest) response;
         chain.doFilter(request,response);
     }
 
