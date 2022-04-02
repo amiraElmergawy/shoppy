@@ -1,6 +1,7 @@
 package gov.iti.jets.shoppy.repository.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +11,7 @@ import java.util.Date;
 
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
 @Data
 @Table(name = "customers", catalog = "shoppy", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class CustomerEntity extends UserEntity implements Serializable {
@@ -39,4 +41,5 @@ public class CustomerEntity extends UserEntity implements Serializable {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "customers", cascade = CascadeType.REMOVE)
     private Set<OrderEntity> orders;
+
 }

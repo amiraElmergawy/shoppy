@@ -1,6 +1,7 @@
 package gov.iti.jets.shoppy.repository.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.util.HashSet;
@@ -9,6 +10,7 @@ import java.util.Set;
 
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
 @Data
 @Table(name = "orders", catalog = "shoppy")
 public class OrderEntity implements java.io.Serializable {

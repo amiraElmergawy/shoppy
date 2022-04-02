@@ -3,11 +3,13 @@ package gov.iti.jets.shoppy.repository.entity;
 import java.io.Serializable;
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @MappedSuperclass
 @NoArgsConstructor
+@AllArgsConstructor
 @Data
 public abstract class UserEntity implements Serializable {
 
