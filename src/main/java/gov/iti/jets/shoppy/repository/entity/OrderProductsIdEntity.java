@@ -2,47 +2,27 @@ package gov.iti.jets.shoppy.repository.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Embeddable
-public class OrderProductsId implements java.io.Serializable {
-
-    private int orderId;
-    private int productId;
-
-    public OrderProductsId() {
-    }
-
-    public OrderProductsId(int orderId, int productId) {
-        this.orderId = orderId;
-        this.productId = productId;
-    }
-
+@Data
+@NoArgsConstructor
+public class OrderProductsIdEntity implements java.io.Serializable {
     @Column(name = "order_id", nullable = false)
-    public int getOrderId() {
-        return this.orderId;
-    }
-
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
-    }
+    private Integer orderId;
 
     @Column(name = "product_id", nullable = false)
-    public int getProductId() {
-        return this.productId;
-    }
-
-    public void setProductId(int productId) {
-        this.productId = productId;
-    }
+    private Integer productId;
 
     public boolean equals(Object other) {
         if ((this == other))
             return true;
         if ((other == null))
             return false;
-        if (!(other instanceof OrderProductsId))
+        if (!(other instanceof OrderProductsIdEntity))
             return false;
-        OrderProductsId castOther = (OrderProductsId) other;
+        OrderProductsIdEntity castOther = (OrderProductsIdEntity) other;
 
         return (this.getOrderId() == castOther.getOrderId())
                 && (this.getProductId() == castOther.getProductId());

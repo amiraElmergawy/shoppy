@@ -9,63 +9,28 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
+@NoArgsConstructor
+@Data
 @Table(name = "order_products", catalog = "shoppy")
-public class OrderProducts implements java.io.Serializable {
-
-    private OrderProductsId id;
-    private Order orders;
-    private Product products;
-    private int quantity;
-
-    public OrderProducts() {
-    }
-
+public class OrderProductsEntity implements java.io.Serializable {
     @EmbeddedId
     @AttributeOverrides({
             @AttributeOverride(name = "orderId", column = @Column(name = "order_id", nullable = false)),
             @AttributeOverride(name = "productId", column = @Column(name = "product_id", nullable = false)) })
-    public OrderProductsId getId() {
-        return this.id;
-    }
-
-    public void setId(OrderProductsId id) {
-        this.id = id;
-    }
+    private OrderProductsIdEntity id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id", nullable = false, insertable = false, updatable = false)
-    public Order getOrders() {
-        return this.orders;
-    }
-
-    public void setOrders(Order orders) {
-        this.orders = orders;
-    }
+    private OrderEntity orders;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id", nullable = false, insertable = false, updatable = false)
-    public Product getProducts() {
-        return this.products;
-    }
-
-    public void setProducts(Product products) {
-        this.products = products;
-    }
+    private ProductEntity products;
 
     @Column(name = "quantity", nullable = false)
-    public int getQuantity() {
-        return this.quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    @Override
-    public String toString() {
-        return "OrderProduct [id=" + id + ", orders=" + orders.toString() + ", products=" + products.toString() + ", quantity=" + quantity
-                + "]";
-    }
+    private Integer quantity;
 }
