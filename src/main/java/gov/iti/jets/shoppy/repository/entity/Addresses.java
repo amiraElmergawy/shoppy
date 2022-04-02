@@ -14,12 +14,6 @@ import jakarta.persistence.UniqueConstraint;
 @Table(name = "addresses", catalog = "shoppy", uniqueConstraints = @UniqueConstraint(columnNames = "customer_id"))
 public class Addresses implements java.io.Serializable {
 
-    private AddressesId id;
-    private Customers customers;
-
-    public Addresses() {
-    }
-
     @EmbeddedId
 
     @AttributeOverrides({
@@ -28,20 +22,26 @@ public class Addresses implements java.io.Serializable {
             @AttributeOverride(name = "customerId", column = @Column(name = "customer_id", unique = true, nullable = false)),
             @AttributeOverride(name = "floorNum", column = @Column(name = "floor_num")),
             @AttributeOverride(name = "street", column = @Column(name = "street", nullable = false, length = 100)) })
+    private AddressesId id;
+
+    @OneToOne
+    @PrimaryKeyJoinColumn
+    private Customers customers;
+
+    public Addresses() {
+    }
+
     public AddressesId getId() {
         return this.id;
     }
-
     public void setId(AddressesId id) {
         this.id = id;
     }
 
-    @OneToOne
-    @PrimaryKeyJoinColumn
+
     public Customers getCustomers() {
         return this.customers;
     }
-
     public void setCustomers(Customers customers) {
         this.customers = customers;
     }
