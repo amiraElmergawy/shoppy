@@ -5,58 +5,57 @@ import jakarta.persistence.Embeddable;
 
 @Embeddable
 public class AddressesId implements java.io.Serializable {
-
+    @Column(name = "area", nullable = false, length = 100)
     private String area;
+
+    @Column(name = "building_num", nullable = false)
     private int buildingNum;
+
+    @Column(name = "customer_id", unique = true, nullable = false)
     private int customerId;
+
+    @Column(name = "floor_num")
     private Integer floorNum;
+
+    @Column(name = "street", nullable = false, length = 100)
     private String street;
 
     public AddressesId() {
     }
 
 
-    @Column(name = "area", nullable = false, length = 100)
+
     public String getArea() {
         return this.area;
     }
-
     public void setArea(String area) {
         this.area = area;
     }
 
-    @Column(name = "building_num", nullable = false)
     public int getBuildingNum() {
         return this.buildingNum;
     }
-
     public void setBuildingNum(int buildingNum) {
         this.buildingNum = buildingNum;
     }
 
-    @Column(name = "customer_id", unique = true, nullable = false)
     public int getCustomerId() {
         return this.customerId;
     }
-
     public void setCustomerId(int customerId) {
         this.customerId = customerId;
     }
 
-    @Column(name = "floor_num")
     public Integer getFloorNum() {
         return this.floorNum;
     }
-
     public void setFloorNum(Integer floorNum) {
         this.floorNum = floorNum;
     }
 
-    @Column(name = "street", nullable = false, length = 100)
     public String getStreet() {
         return this.street;
     }
-
     public void setStreet(String street) {
         this.street = street;
     }
