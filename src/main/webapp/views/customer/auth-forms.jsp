@@ -6,34 +6,45 @@
     <!-- Basic Page Needs -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Furnitica - Minimalist Furniture HTML Template</title>
-
-    <meta name="keywords" content="Furniture, Decor, Interior">
-    <meta name="description" content="Furnitica - Minimalist Furniture HTML Template">
-    <meta name="author" content="tivatheme">
-
-    <!-- Mobile Meta -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800&display=swap" rel="stylesheet">
+    <title>Shoppy</title>
+    <%@ include file="../includes/customer-head.jsp" %>
     <!-- libs CSS -->
     <link rel="stylesheet" type="text/css" href="../../assets/styles/user-forms.css">
     <link rel="stylesheet" type="text/css" href="../../assets/styles/validation-style.css">
-    <!--scripts links-->
-    <link rel="stylesheet" href="../../assets/libs/bootstrap/css/bootstrap.min.css">
-
-
 </head>
 
 <body class="user-login blog">
 
 <div class="cont">
-    <!--Sign In Form Starts-->
-    <%@ include file="../shared/user-signin.jsp" %>
-    <!--Sign In Form Ends-->
-
+    <div class="form sign-in">
+        <h2>Sign In</h2>
+        <form id="sign-in-form" >
+            <div class="form-group">
+                <label>
+                    <span>Email Address</span>
+                </label>
+                <input type="email" name="email" id="email" required>
+                <div class="error"></div>
+            </div>
+            <div class="form-group">
+                <label>
+                    <span>Password</span>
+                </label>
+                <input type="password" name="password" id="password" required>
+                <div class="error"></div>
+            </div>
+            <button class="submit" type="submit">Sign In</button>
+        </form>
+        <p class="forgot-pass">Forgot Password ?</p>
+        <div class="social-media">
+            <ul>
+                <li><img src="../../assets/images/other/facebook.png"></li>
+                <li><img src="../../assets/images/other/twitter.png"></li>
+                <li><img src="../../assets/images/other/linkedin.png"></li>
+                <li><img src="../../assets/images/other/instagram.png"></li>
+            </ul>
+        </div>
+    </div>
     <!--Sign Up Form Starts-->
     <div class="sub-cont">
         <div class="img">
@@ -123,15 +134,13 @@
     </div>
 </div>
 
-<!-- Vendor JS -->
-<script src="../../assets/libs/jquery/jquery.min.js"></script>
-<script src="../../assets/libs/bootstrap/js/bootstrap.min.js"></script>
 
 <!-- Template JS -->
 <script type="text/javascript" src="../../assets/scripts/forms.js"></script>
+<script type="text/javascript" src="../../assets/scripts/signin-form.js"></script>
 <script type="text/javascript" src="../../assets/scripts/forms-validator.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<%@ include file="../includes/customer-script.jsp" %>
+
 </body>
 
 

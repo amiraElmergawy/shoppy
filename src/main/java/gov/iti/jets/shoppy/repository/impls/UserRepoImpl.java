@@ -8,8 +8,17 @@ import java.util.Optional;
 public class UserRepoImpl implements UserRepo {
     /*
     List<UserEntity> userEntityList = new ArrayList<>();
+
     private final static UserRepoImpl userRepo = new UserRepoImpl();
     private UserRepoImpl() {
+        UserEntity userEntity = new UserEntity();
+        userEntity.setId(1);
+        userEntity.setEmail("zizo@gmail.com");
+        userEntity.setAddress(null);
+        userEntity.setAdmin(false);
+        userEntity.setPassword("25d55ad283aa400af464c76d713c07ad");
+        userEntity.setUsername("abdelaziz");
+        userEntityList.add(userEntity);
     }
 
     public static UserRepoImpl getInstance() {
@@ -22,8 +31,10 @@ public class UserRepoImpl implements UserRepo {
     }
 
     @Override
-    public Optional<UserEntity> findUserByEmail(String email) {
-        return userEntityList.stream().filter(userEntity -> userEntity.getEmail().equals(email)).findFirst();
+    public Optional<UserEntity> findUser(String email, String password) {
+          return userEntityList.stream().filter(userEntity ->
+                    userEntity.getEmail().equals(email) && userEntity.getPassword().equals(password)
+        ).findFirst();
     }
 
     @Override
