@@ -5,10 +5,8 @@ import jakarta.persistence.Embeddable;
 
 @Embeddable
 public class OrderProductsId implements java.io.Serializable {
-    @Column(name = "order_id", nullable = false)
-    private int orderId;
 
-    @Column(name = "product_id", nullable = false)
+    private int orderId;
     private int productId;
 
     public OrderProductsId() {
@@ -19,17 +17,20 @@ public class OrderProductsId implements java.io.Serializable {
         this.productId = productId;
     }
 
-
+    @Column(name = "order_id", nullable = false)
     public int getOrderId() {
         return this.orderId;
     }
+
     public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
 
+    @Column(name = "product_id", nullable = false)
     public int getProductId() {
         return this.productId;
     }
+
     public void setProductId(int productId) {
         this.productId = productId;
     }
