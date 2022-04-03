@@ -94,3 +94,12 @@ body {
   border-color: transparent;
   box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
 }
+
+/*product*/
+.add-product-btn{
+  width: 43px !important;
+  text-align: center !important;
+}
+.add-product-icon{
+  margin-top: 13px !important;
+}
