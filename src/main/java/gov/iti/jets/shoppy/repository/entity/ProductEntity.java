@@ -11,7 +11,7 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "product", catalog = "shoppy")
+@Table(name = "products", catalog = "shoppy")
 public class ProductEntity implements java.io.Serializable {
     @Id
     @Column(name = "id", unique = true, nullable = false)
