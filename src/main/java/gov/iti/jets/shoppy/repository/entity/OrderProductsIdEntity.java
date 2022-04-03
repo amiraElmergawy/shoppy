@@ -2,20 +2,30 @@ package gov.iti.jets.shoppy.repository.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 @Embeddable
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class OrderProductsIdEntity implements java.io.Serializable {
     @Column(name = "order_id", nullable = false)
     private Integer orderId;
 
     @Column(name = "product_id", nullable = false)
     private Integer productId;
+
+    public OrderProductsIdEntity(){}
+    public Integer getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Integer orderId) {
+        this.orderId = orderId;
+    }
+
+    public Integer getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Integer productId) {
+        this.productId = productId;
+    }
 
     public boolean equals(Object other) {
         if ((this == other))
@@ -38,4 +48,11 @@ public class OrderProductsIdEntity implements java.io.Serializable {
         return result;
     }
 
+    @Override
+    public String toString() {
+        return "OrderProductsIdEntity{" +
+                "orderId=" + orderId +
+                ", productId=" + productId +
+                '}';
+    }
 }

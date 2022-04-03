@@ -1,16 +1,10 @@
 package gov.iti.jets.shoppy.repository.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "products", catalog = "shoppy")
 public class ProductEntity implements java.io.Serializable {
     @Id
@@ -37,6 +31,84 @@ public class ProductEntity implements java.io.Serializable {
     @Column(name = "img_path", nullable = false, length = 65535)
     private String imgPath;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "products")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
     private Set<OrderProductsEntity> orderProducts = new HashSet<OrderProductsEntity>();
+
+    public ProductEntity() {}
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public String getProductDesc() {
+        return productDesc;
+    }
+
+    public void setProductDesc(String productDesc) {
+        this.productDesc = productDesc;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public ProductCategory getCategory() {
+        return category;
+    }
+
+    public void setCategory(ProductCategory category) {
+        this.category = category;
+    }
+
+    public Integer getStock() {
+        return stock;
+    }
+
+    public void setStock(Integer stock) {
+        this.stock = stock;
+    }
+
+    public String getImgPath() {
+        return imgPath;
+    }
+
+    public void setImgPath(String imgPath) {
+        this.imgPath = imgPath;
+    }
+
+    public Set<OrderProductsEntity> getOrderProducts() {
+        return orderProducts;
+    }
+
+    public void setOrderProducts(Set<OrderProductsEntity> orderProducts) {
+        this.orderProducts = orderProducts;
+    }
+
+    @Override
+    public String toString() {
+        return "ProductEntity{" +
+                "id=" + id +
+                ", productName='" + productName + '\'' +
+                ", productDesc='" + productDesc + '\'' +
+                ", price=" + price +
+                ", category=" + category +
+                ", stock=" + stock +
+                ", imgPath='" + imgPath + '\'' +
+                '}';
+    }
 }
