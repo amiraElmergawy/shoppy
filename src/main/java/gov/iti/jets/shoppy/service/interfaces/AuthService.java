@@ -10,6 +10,6 @@ import java.util.Optional;
 
 public interface AuthService {
 
-    public LoginViewHelper signin(String email, String password, EntityManager entityManager);
+    public LoginViewHelper signIn(String email, String password, EntityManager entityManager);
 
 }

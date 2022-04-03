@@ -15,10 +15,10 @@ public class AuthServiceImpl implements AuthService {
     private final HashManager hashManager = HashManager.INSTANCE;
 
     @Override
-    public LoginViewHelper signin(String email, String password, EntityManager entityManager){
-        LoginViewHelper loginViewHelper =new LoginViewHelper();
-        String hashedPassword = HashManager.INSTANCE.generateSecurePassword(password);
-        Optional<UserEntity> userEntityOptional = RepoFactory.INSTANCE.getUserRepo().findUser(email, hashedPassword, entityManager);
+    public LoginViewHelper signIn(String email, String password, EntityManager entityManager){
+        LoginViewHelper loginViewHelper = new LoginViewHelper();
+        String hashedPassword = hashManager.generateSecurePassword(password);
+        Optional<UserEntity> userEntityOptional = RepoFactory.INSTANCE.getUserRepo(entityManager).findUser(email, hashedPassword);
         System.out.println(userEntityOptional);
         userEntityOptional.ifPresentOrElse(
                 (value) -> {
