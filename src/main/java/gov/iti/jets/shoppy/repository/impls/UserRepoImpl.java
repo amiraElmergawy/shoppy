@@ -12,15 +12,19 @@ import java.util.Optional;
 
 public class UserRepoImpl implements UserRepo {
 
-    private final static UserRepoImpl userRepo = new UserRepoImpl();
-    private UserRepoImpl() {}
+//    private final static UserRepoImpl userRepo = new UserRepoImpl();
+//    private UserRepoImpl() {}
 
-    public static UserRepoImpl getInstance() {
-        return userRepo;
+//    public static UserRepoImpl getInstance() {
+//        return userRepo;
+//    }
+    private EntityManager entityManager;
+    public UserRepoImpl(EntityManager entityManager){
+        this.entityManager = entityManager;
     }
 
     @Override
-    public Optional<UserEntity> findUserById(long id, EntityManager entityManager) {
+    public Optional<UserEntity> findUserById(long id) {
         var userEntity =entityManager.find(UserEntity.class, id);
         if(userEntity != null)
             return Optional.of(userEntity);
@@ -28,8 +32,8 @@ public class UserRepoImpl implements UserRepo {
     }
 
     @Override
-    public Optional<UserEntity> findUser(String email, String password, EntityManager entityManager) {
-        String select = "SELECT * FROM User WHERE email=:email and pass=:pass";
+    public Optional<UserEntity> findUser(String email, String password) {
+        String select = "SELECT u FROM UserEntity u WHERE u.email=:email and u.pass=:pass";
 
         Query query = entityManager.createQuery(select);
         query.setParameter("email", email);
@@ -39,7 +43,7 @@ public class UserRepoImpl implements UserRepo {
     }
 
     @Override
-    public boolean insertUser(UserEntity userEntity, EntityManager entityManager) {
+    public boolean insertUser(UserEntity userEntity) {
         entityManager.getTransaction().begin();
         try {
             entityManager.persist(userEntity);
@@ -51,7 +55,7 @@ public class UserRepoImpl implements UserRepo {
     }
 
     @Override
-    public boolean updateUser(UserEntity userEntity, EntityManager entityManager) {
+    public boolean updateUser(UserEntity userEntity) {
         entityManager.getTransaction().begin();
         try {
             entityManager.merge(userEntity);
