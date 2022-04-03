@@ -20,9 +20,8 @@ public class LoginServletController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
-        EntityManager entityManager = (EntityManager) req.getAttribute("entityManager");
 
-        LoginViewHelper loginViewHelper = DomainFacade.getInstance().signin(email, password, entityManager);
+        LoginViewHelper loginViewHelper = DomainFacade.getInstance().signIn(email, password);
 
     }
 }
