@@ -6,12 +6,12 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name = "customers", catalog = "shoppy", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
+@Table(name = "customers", catalog = "shoppy")
 public class CustomerEntity extends UserEntity implements Serializable {
-    @Id
-    @Column(name = "id", unique = true, nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+//    @Id
+//    @Column(name = "id", unique = true, nullable = false)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Integer id;
 
     @Column(name = "interests", length = 65535)
     private String interests;
@@ -37,13 +37,13 @@ public class CustomerEntity extends UserEntity implements Serializable {
 
     public CustomerEntity() {}
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
+//    public Integer getId() {
+//        return id;
+//    }
+//
+//    public void setId(Integer id) {
+//        this.id = id;
+//    }
 
     public String getInterests() {
         return interests;
@@ -104,7 +104,6 @@ public class CustomerEntity extends UserEntity implements Serializable {
     @Override
     public String toString() {
         return "CustomerEntity{" +
-                "id=" + id +
                 ", interests='" + interests + '\'' +
                 ", dob=" + dob +
                 ", isMale=" + isMale +

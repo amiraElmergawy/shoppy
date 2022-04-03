@@ -3,9 +3,10 @@ package gov.iti.jets.shoppy.repository.entity;
 import java.io.Serializable;
 
 import jakarta.persistence.*;
-@MappedSuperclass
-//@Entity
-//@Inheritance(strategy = InheritanceType.JOINED)
+//@MappedSuperclass
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "users", catalog = "shoppy", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class UserEntity implements Serializable {
 
 
@@ -15,8 +16,9 @@ public class UserEntity implements Serializable {
     private String email;
     @Column(name = "pass", nullable = false, length = 150)
     private String password;
-//    @Id
-//    private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
 
     public UserEntity() {
@@ -44,5 +46,13 @@ public class UserEntity implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getId() {
+        return id;
     }
 }

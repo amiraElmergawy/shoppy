@@ -33,7 +33,7 @@ public class UserRepoImpl implements UserRepo {
 
     @Override
     public Optional<UserEntity> findUser(String email, String password) {
-        String select = "SELECT u FROM UserEntity u WHERE u.email=:email and u.pass=:pass";
+        String select = "SELECT u FROM UserEntity u WHERE u.email=:email and u.password=:pass";
 
         Query query = entityManager.createQuery(select);
         query.setParameter("email", email);
