@@ -7,10 +7,10 @@ import java.util.Optional;
 
 public interface UserRepo {
 
-    Optional<UserEntity> findUserById(long id, EntityManager entityManager);
-    Optional<UserEntity> findUser(String email, String password, EntityManager entityManager);
-    boolean insertUser(UserEntity userEntity, EntityManager entityManager);
-    boolean updateUser(UserEntity userEntity, EntityManager entityManager);
+    Optional<UserEntity> findUserById(long id);
+    Optional<UserEntity> findUser(String email, String password);
+    boolean insertUser(UserEntity userEntity);
+    boolean updateUser(UserEntity userEntity);
 
 
 }
