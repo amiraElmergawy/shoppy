@@ -4,5 +4,5 @@ import gov.iti.jets.shoppy.presentation.helpers.HomeViewHelper;
 import jakarta.persistence.EntityManager;
 
 public interface ProductService {
-    public HomeViewHelper getProducts(EntityManager entityManager);
+    HomeViewHelper getProducts(EntityManager entityManager);
 }

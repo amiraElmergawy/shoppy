@@ -11,7 +11,6 @@ import jakarta.persistence.Persistence;
 
 public class DomainFacade {
     private static final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("shoppy");
-
     private final AuthService authService = ServiceFactory.INSTANCE.getAuthService();
     private final ProductService productService = ServiceFactory.INSTANCE.getProductService();
 
@@ -26,7 +25,7 @@ public class DomainFacade {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         return authService.signIn(email, password, entityManager);
     }
-    public  HomeViewHelper showProducts(){
+    public HomeViewHelper retrieveProducts(){
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         return productService.getProducts(entityManager);
     }
