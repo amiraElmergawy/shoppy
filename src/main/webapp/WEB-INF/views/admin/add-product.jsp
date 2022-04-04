@@ -21,7 +21,7 @@
                         <div
                             class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                             <div class="d-flex">
-                                <img src="./../../assets/images/icons/add_product_icon.png">
+                                <img src="assets/images/icons/add_product_icon.png">
                                 <h1 class="">Add Product</h1>
                             </div>
                         </div>
@@ -48,7 +48,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-2 btn btn-success">
-                                                <img src="./../../assets/images/icons/white_plus_icon-removebg-preview.png"
+                                                <img src="assets/images/icons/white_plus_icon-removebg-preview.png"
                                                     style="width: 30px;">
                                             </div>
                                         </div>
@@ -92,6 +92,9 @@
 
 
     <%@ include file="../includes/admin-script.jsp" %>
+    <script src="assets/scripts/forms-validator.js"></script>
+    <script src="assets/scripts/add-product.js"></script>
+
 </body>
 
 </html>

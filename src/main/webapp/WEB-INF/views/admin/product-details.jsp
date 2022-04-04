@@ -21,8 +21,8 @@
                         <div
                             class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                             <div class="d-flex">
-                                <img src="./../../assets/images/icons/update_product_icon.png">
-                                <h1 class="">Update Product</h1>
+                                <img src="assets/images/icons/update_product_icon.png">
+                                <h1 class="">Product Details</h1>
                             </div>
                         </div>
                         <div>
@@ -48,7 +48,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-2 btn btn-primary">
-                                                <img src="./../../assets/images/icons/white_plus_icon-removebg-preview.png"
+                                                <img src="assets/images/icons/white_plus_icon-removebg-preview.png"
                                                     style="width: 30px;">
                                             </div>
                                         </div>
