@@ -13,21 +13,19 @@ public class AuthFilter implements Filter {
     public void init(FilterConfig filterConfig) throws ServletException {
         urlList.add("");
         urlList.add("login");
-        urlList.add("signIn");
         urlList.add("home");
         urlList.add("register");
-        urlList.add("signUp");
         urlList.add("about-us");
-        urlList.add("product-detail");
-        urlList.add("product-cart");
-        urlList.add("admin/add-product");
-        urlList.add("admin/update-product");
-        urlList.add("admin/products");
-        urlList.add("admin/product-details");
-        urlList.add("admin/product");
-        urlList.add("admin/customers");
-        urlList.add("admin/orders");
-        urlList.add("admin/dashboard");
+        urlList.add("product-details");
+        urlList.add("shopping-cart");
+        urlList.add("add-product");
+        urlList.add("update-product");
+        urlList.add("show-all-products");
+        urlList.add("show-product");//admin
+//        urlList.add("admin/product");
+        urlList.add("show-all-customers");
+        urlList.add("show-all-orders");
+        urlList.add("dashboard");
         Filter.super.init(filterConfig);
     }
 
