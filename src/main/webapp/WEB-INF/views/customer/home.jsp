@@ -565,7 +565,7 @@
                                                                         </div>
                                                                         <div class="product-group-price">
                                                                             <div class="product-price-and-shipping">
-                                                                                <span class="price">£ "${product.getPrice()}"</span>
+                                                                                <span class="price">ï¿½ "${product.getPrice()}"</span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -602,28 +602,27 @@
                                                         <div class="page-list col col-xs-12">
                                                             <ul class="bg-transparent">
                                                                 <li>
-                                                                    <a rel="prev" href="#" class="previous disabled js-search-link">
+                                                                    <a rel="prev" href="${param.pageNum-1}" class="previous disabled js-search-link">
                                                                         Previous
                                                                     </a>
                                                                 </li>
                                                                 <li class="current active">
-                                                                    <a rel="nofollow" href="#" class="disabled js-search-link">
+                                                                    <a rel="nofollow" href="home?pageNum=1" class="disabled js-search-link">
                                                                         1
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <a rel="nofollow" href="#" class="disabled js-search-link">
+                                                                    <a rel="nofollow" href="home?pageNum=2" class="disabled js-search-link">
                                                                         2
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <a rel="nofollow" href="#" class="disabled js-search-link">
+                                                                    <a rel="nofollow" href="home?pageNum=3" class="disabled js-search-link">
                                                                         3
                                                                     </a>
                                                                 </li>
-
                                                                 <li>
-                                                                    <a rel="next" href="#" class="next disabled js-search-link">
+                                                                    <a rel="next" href="home?pageNum=${param.pageNum+1}" class="next disabled js-search-link">
                                                                         Next
                                                                     </a>
                                                                 </li>

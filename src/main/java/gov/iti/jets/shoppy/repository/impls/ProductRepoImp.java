@@ -29,6 +29,12 @@ public class ProductRepoImp implements ProductRepo {
     }
 
     @Override
+    public Long getProductsCount() {
+        return entityManager.createQuery("select count(*) from ProductEntity", Long.class)
+                        .getSingleResult();
+    }
+
+    @Override
     public Optional<ProductEntity> findProductById(Integer id) {
         return Optional.of(entityManager.find(ProductEntity.class, id));
     }

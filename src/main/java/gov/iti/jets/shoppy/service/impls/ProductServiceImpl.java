@@ -20,7 +20,7 @@ public class ProductServiceImpl implements ProductService {
         List<ProductDto> productDtoList = productRepo.getProducts(pageNumber).stream().map(
                 productMapper::productEntityToDto
         ).collect(Collectors.toList());
-
-        return HomeViewHelper.builder().productDtoList(productDtoList).build();
+        Long allProductCount = productRepo.getProductsCount();
+        return HomeViewHelper.builder().productDtoList(productDtoList).allProductCount(allProductCount).build();
     }
 }
