@@ -6,21 +6,95 @@
     <div class="header-mobile d-md-none">
         <div class="mobile hidden-md-up text-xs-center d-flex align-items-center justify-content-around">
 
+
             <!-- menu left -->
-            <div id="mobile_mainmenu" class="item-mobile-top">
+            <div class="mobile-menutop" data-target="#mobile-pagemenu">
                 <i class="fa fa-bars" aria-hidden="true"></i>
             </div>
 
             <!-- logo -->
             <div class="mobile-logo">
-                <a href="index-2.html">
+                <a href="home.jsp">
                     <img class="logo-mobile img-fluid" src="../../assets/images/home/logo-mobie.png" alt="Prestashop_Furnitica">
                 </a>
             </div>
-
-            <!-- menu right -->
-            <div class="mobile-menutop" data-target="#mobile-pagemenu">
-                <i class="zmdi zmdi-more"></i>
+            <div id="block_myaccount_infos header-cart" class="hidden-sm-down dropdown" style="
+    margin-top: auto;
+    margin-left: 0rem;
+">
+                <div class="myaccount-title" style="margin-left: 0.5rem;">
+                    <a href="#acount" data-toggle="collapse" class="acount d-flex collapsed" aria-expanded="false">
+                        <i class="fa fa-user-circle-o text-black" aria-hidden="true" style=" font-size: 25px;"></i>   <span></span>
+                    </a>
+                </div>
+                <div id="acount" class="collapse" style="">
+                    <div class="account-list-content">
+                        <div>
+                            <a class="login" href="user-acount.jsp" rel="nofollow" title="Log in to your customer account">
+                                <i class="fa fa-cog"></i>
+                                <span>My Account</span>
+                            </a>
+                        </div>
+                        <div>
+                            <a class="login" href="user-login.jsp" rel="nofollow" title="Log in to your customer account">
+                                <i class="fa fa-sign-in"></i>
+                                <span>Sign in</span>
+                            </a>
+                        </div>
+                        <div>
+                            <a class="register" href="user-register.jsp" rel="nofollow" title="Register Account">
+                                <i class="fa fa-user"></i>
+                                <span>Register Account</span>
+                            </a>
+                        </div>
+                        <div>
+                            <a class="check-out" href="product-checkout.jsp" rel="nofollow" title="Checkout">
+                                <i class="fa fa-check" aria-hidden="true"></i>
+                                <span>Checkout</span>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="user-wishlist.jsp" title="My Wishlists">
+                                <i class="fa fa-heart"></i>
+                                <span>My Wishlists</span>
+                            </a>
+                        </div>
+                        <div id="desktop_currency_selector" class="currency-selector groups-selector hidden-sm-down">
+                            <ul class="list-inline">
+                                <li>
+                                    <a title="Euro" rel="nofollow" href="#">EUR</a>
+                                </li>
+                                <li class="current list-inline-item">
+                                    <a title="British Pound Sterling" rel="nofollow" href="#">GBP</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="desktop_language_selector" class="language-selector groups-selector hidden-sm-down">
+                            <ul class="list-inline">
+                                <li class="list-inline-item current">
+                                    <a href="#">
+                                        <img class="img-fluid" src="../../assets/images/home/home1-flas.jpg" alt="English" width="16" height="11">
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">
+                                        <img class="img-fluid" src="../../assets/images/home/home1-flas2.jpg" alt="Italiano" width="16" height="11">
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">
+                                        <img class="img-fluid" src="../../assets/images/home/home1-flas3.jpg" alt="FranÃÂ§ais" width="16" height="11">
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">
+                                        <img class="img-fluid" src="../../assets/images/home/home1-flas4.jpg" alt="EspaÃÂ±ol" width="16" height="11">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -34,6 +108,7 @@
                     </button>
                 </form>
             </div>
+
             <div class="desktop_cart">
                 <div class="blockcart block-cart cart-preview tiva-toggle">
                     <div class="header-cart tiva-toggle-btn">
@@ -74,7 +149,7 @@
                                     <td colspan="3" class="d-flex justify-content-center">
                                         <div class="cart-button">
                                             <a href="product-cart.jsp" title="View Cart">View Cart</a>
-                                            <a href="product-checkout.html" title="Checkout">Checkout</a>
+                                            <a href="product-checkout.jsp" title="Checkout">Checkout</a>
                                         </div>
                                     </td>
                                 </tr>
@@ -94,7 +169,7 @@
                 <!-- logo -->
                 <div class="col-sm-2 col-md-2 d-flex align-items-center">
                     <div id="logo">
-                        <a href="index-2.html">
+                        <a href="home.jsp">
                             <img class="img-fluid" src="../../assets/images/home/logo.png" alt="logo">
                         </a>
                     </div>
@@ -105,17 +180,13 @@
                     <div class="menu navbar collapse navbar-collapse">
                         <ul class="menu-top navbar-nav">
                             <li class="nav-link">
-                                <a href="#" class="parent">Home</a>
+                                <a href="home.jsp" class="parent">Home</a>
                             </li>
                             <li>
                                 <a href="about-us.jsp" class="parent">About Us</a>
                             </li>
                             <li>
-                                <a href="product-grid-sidebar-left.html" class="parent">Product</a>
-
-                            </li>
-                            <li>
-                                <a href="contact.html" class="parent">Contact US</a>
+                                <a href="contact.jsp" class="parent">Contact US</a>
                             </li>
                         </ul>
                     </div>
@@ -142,31 +213,31 @@
                         <div id="acount" class="collapse">
                             <div class="account-list-content">
                                 <div>
-                                    <a class="login" href="user-acount.html" rel="nofollow" title="Log in to your customer account">
+                                    <a class="login" href="user-acount.jsp" rel="nofollow" title="Log in to your customer account">
                                         <i class="fa fa-cog"></i>
                                         <span>My Account</span>
                                     </a>
                                 </div>
                                 <div>
-                                    <a class="login" href="user-login.html" rel="nofollow" title="Log in to your customer account">
+                                    <a class="login" href="user-login.jsp" rel="nofollow" title="Log in to your customer account">
                                         <i class="fa fa-sign-in"></i>
                                         <span>Sign in</span>
                                     </a>
                                 </div>
                                 <div>
-                                    <a class="register" href="user-register.html" rel="nofollow" title="Register Account">
+                                    <a class="register" href="user-register.jsp" rel="nofollow" title="Register Account">
                                         <i class="fa fa-user"></i>
                                         <span>Register Account</span>
                                     </a>
                                 </div>
                                 <div>
-                                    <a class="check-out" href="product-checkout.html" rel="nofollow" title="Checkout">
+                                    <a class="check-out" href="product-checkout.jsp" rel="nofollow" title="Checkout">
                                         <i class="fa fa-check" aria-hidden="true"></i>
                                         <span>Checkout</span>
                                     </a>
                                 </div>
                                 <div>
-                                    <a href="user-wishlist.html" title="My Wishlists">
+                                    <a href="user-wishlist.jsp" title="My Wishlists">
                                         <i class="fa fa-heart"></i>
                                         <span>My Wishlists</span>
                                     </a>
@@ -248,7 +319,7 @@
                                             <td colspan="3" class="d-flex justify-content-center">
                                                 <div class="cart-button">
                                                     <a href="product-cart.jsp" title="View Cart">View Cart</a>
-                                                    <a href="product-checkout.html" title="Checkout">Checkout</a>
+                                                    <a href="product-checkout.jsp" title="Checkout">Checkout</a>
                                                 </div>
                                             </td>
                                         </tr>

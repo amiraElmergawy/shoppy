@@ -1,4 +1,16 @@
 package gov.iti.jets.shoppy.repository.interfaces;
 
-public class UserRepo {
+import gov.iti.jets.shoppy.repository.entity.UserEntity;
+import jakarta.persistence.EntityManager;
+
+import java.util.Optional;
+
+public interface UserRepo {
+
+    Optional<UserEntity> findUserById(long id);
+    Optional<UserEntity> findUser(String email, String password);
+    boolean insertUser(UserEntity userEntity);
+    boolean updateUser(UserEntity userEntity);
+
+
 }
