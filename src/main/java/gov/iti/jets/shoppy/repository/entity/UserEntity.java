@@ -10,15 +10,16 @@ import jakarta.persistence.*;
 public class UserEntity implements Serializable {
 
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
     @Column(name = "username", nullable = false, length = 50)
     private String username;
     @Column(name = "email", unique = true, nullable = false, length = 254)
     private String email;
     @Column(name = "pass", nullable = false, length = 150)
     private String password;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
 
 
     public UserEntity() {

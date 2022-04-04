@@ -18,7 +18,7 @@ import java.util.Objects;
 public class AddressEntity implements java.io.Serializable {
     @Id
     @Column(name = "customer_id", unique = true, nullable = false)
-    @GenericGenerator(name = "Generator", strategy = "foreign", parameters = @Parameter(name = "property", value = "customers"))
+    @GenericGenerator(name = "Generator", strategy = "foreign", parameters = @Parameter(name = "property", value = "customer"))
     @GeneratedValue(generator = "Generator")
     private Integer id;
 
