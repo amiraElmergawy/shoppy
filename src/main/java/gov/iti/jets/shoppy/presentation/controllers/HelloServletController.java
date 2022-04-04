@@ -2,6 +2,8 @@ package gov.iti.jets.shoppy.presentation.controllers;
 
 import java.io.*;
 
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
@@ -17,10 +19,12 @@ public class HelloServletController extends HttpServlet {
         response.setContentType("text/html");
 
         // Hello
-        PrintWriter out = response.getWriter();
-        out.println("<html><body>");
-        out.println("<h1>" + message + "</h1>");
-        out.println("</body></html>");
+        RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/admin/add-product.jsp");
+        try {
+            rd.include(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        }
     }
 
     public void destroy() {
