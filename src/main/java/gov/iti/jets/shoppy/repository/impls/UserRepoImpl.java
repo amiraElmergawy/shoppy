@@ -42,11 +42,10 @@ public class UserRepoImpl implements UserRepo {
         query.setParameter("password", password);
         try {
             String entityType = query.getSingleResult().getClass().getName().substring(query.getSingleResult().getClass().getName().lastIndexOf(".")+1);
-            System.out.println(entityType);
             if(entityType.equals("AdminEntity")){
-                return (Optional<AdminEntity>) query.getSingleResult();
+                return Optional.of((AdminEntity) query.getSingleResult());
             }else {
-                return (Optional<CustomerEntity>) query.getSingleResult();
+                return Optional.of((CustomerEntity) query.getSingleResult());
             }
         }catch (NoResultException e) {
             return Optional.empty();

@@ -31,7 +31,8 @@ public class LoginServletController extends HttpServlet {
 
         LoginViewHelper loginViewHelper = DomainFacade.getInstance().signIn(email, password);
 
-        System.out.println("DTO "+loginViewHelper.getUserDto());
+        System.out.println("Customer DTO "+loginViewHelper.getCustomerDto());
+        System.out.println("Admin Dto " + loginViewHelper.getAdminDto());
         System.out.println("Error "+ loginViewHelper.getError());
 
     }

@@ -5,6 +5,7 @@ import gov.iti.jets.shoppy.repository.entity.UserEntity;
 import gov.iti.jets.shoppy.repository.util.RepoFactory;
 import gov.iti.jets.shoppy.service.interfaces.AuthService;
 import gov.iti.jets.shoppy.service.mappers.AdminMapper;
+import gov.iti.jets.shoppy.service.mappers.UserMapper;
 import gov.iti.jets.shoppy.service.util.HashManager;
 import jakarta.persistence.EntityManager;
 
@@ -21,8 +22,13 @@ public class AuthServiceImpl implements AuthService {
         System.out.println(userEntityOptional);
         userEntityOptional.ifPresentOrElse(
                 (value) -> {
+                    String entityType = value.getClass().getName().substring(value.getClass().getName().lastIndexOf(".")+1);
                     System.out.println("Value is present, its: "+ value);
-                    loginViewHelper.setUserDto(AdminMapper.INSTANCE.adminEntityToDto(value));
+                    if(entityType.equals("AdminEntity")){
+                        loginViewHelper.setAdminDto(UserMapper.INSTANCE.entityToAdminDto(value));
+                    }else {
+                        loginViewHelper.setCustomerDto(UserMapper.INSTANCE.entityToCustomerDto(value));
+                    }
                 },
                 () -> {
                     System.out.println("Value is empty");
@@ -30,5 +36,4 @@ public class AuthServiceImpl implements AuthService {
                 });
         return loginViewHelper;
     }
-
 }
