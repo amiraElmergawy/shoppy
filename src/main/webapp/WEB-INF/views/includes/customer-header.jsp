@@ -14,8 +14,8 @@
 
             <!-- logo -->
             <div class="mobile-logo">
-                <a href="home.jsp">
-                    <img class="logo-mobile img-fluid" src="../../assets/images/home/logo-mobie.png" alt="Prestashop_Furnitica">
+                <a href="../customer/home.jsp">
+                    <img class="logo-mobile img-fluid" src="assets/images/home/logo-mobie.png" alt="Prestashop_Furnitica">
                 </a>
             </div>
             <div id="block_myaccount_infos header-cart" class="hidden-sm-down dropdown" style="
@@ -73,22 +73,22 @@
                             <ul class="list-inline">
                                 <li class="list-inline-item current">
                                     <a href="#">
-                                        <img class="img-fluid" src="../../assets/images/home/home1-flas.jpg" alt="English" width="16" height="11">
+                                        <img class="img-fluid" src="assets/images/home/home1-flas.jpg" alt="English" width="16" height="11">
                                     </a>
                                 </li>
                                 <li class="list-inline-item">
                                     <a href="#">
-                                        <img class="img-fluid" src="../../assets/images/home/home1-flas2.jpg" alt="Italiano" width="16" height="11">
+                                        <img class="img-fluid" src="assets/images/home/home1-flas2.jpg" alt="Italiano" width="16" height="11">
                                     </a>
                                 </li>
                                 <li class="list-inline-item">
                                     <a href="#">
-                                        <img class="img-fluid" src="../../assets/images/home/home1-flas3.jpg" alt="FranÃÂ§ais" width="16" height="11">
+                                        <img class="img-fluid" src="assets/images/home/home1-flas3.jpg" alt="FranÃÂ§ais" width="16" height="11">
                                     </a>
                                 </li>
                                 <li class="list-inline-item">
                                     <a href="#">
-                                        <img class="img-fluid" src="../../assets/images/home/home1-flas4.jpg" alt="EspaÃÂ±ol" width="16" height="11">
+                                        <img class="img-fluid" src="assets/images/home/home1-flas4.jpg" alt="EspaÃÂ±ol" width="16" height="11">
                                     </a>
                                 </li>
                             </ul>
@@ -121,13 +121,13 @@
                                 <tbody>
                                 <tr>
                                     <td class="product-image">
-                                        <a href="product-detail.jsp">
+                                        <a href="../customer/product-detail.jsp">
                                             <img src="images/product/5.jpg" alt="Product">
                                         </a>
                                     </td>
                                     <td>
                                         <div class="product-name">
-                                            <a href="product-detail.jsp">Organic Strawberry Fruits</a>
+                                            <a href="../customer/product-detail.jsp">Organic Strawberry Fruits</a>
                                         </div>
                                         <div>
                                             2 x
@@ -148,7 +148,7 @@
                                 <tr>
                                     <td colspan="3" class="d-flex justify-content-center">
                                         <div class="cart-button">
-                                            <a href="product-cart.jsp" title="View Cart">View Cart</a>
+                                            <a href="../customer/product-cart.jsp" title="View Cart">View Cart</a>
                                             <a href="product-checkout.jsp" title="Checkout">Checkout</a>
                                         </div>
                                     </td>
@@ -169,8 +169,8 @@
                 <!-- logo -->
                 <div class="col-sm-2 col-md-2 d-flex align-items-center">
                     <div id="logo">
-                        <a href="home.jsp">
-                            <img class="img-fluid" src="../../assets/images/home/logo.png" alt="logo">
+                        <a href="../customer/home.jsp">
+                            <img class="img-fluid" src="assets/images/home/logo.png" alt="logo">
                         </a>
                     </div>
                 </div>
@@ -180,10 +180,10 @@
                     <div class="menu navbar collapse navbar-collapse">
                         <ul class="menu-top navbar-nav">
                             <li class="nav-link">
-                                <a href="home.jsp" class="parent">Home</a>
+                                <a href="../customer/home.jsp" class="parent">Home</a>
                             </li>
                             <li>
-                                <a href="about-us.jsp" class="parent">About Us</a>
+                                <a href="../customer/about-us.jsp" class="parent">About Us</a>
                             </li>
                             <li>
                                 <a href="contact.jsp" class="parent">Contact US</a>
@@ -256,22 +256,22 @@
                                     <ul class="list-inline">
                                         <li class="list-inline-item current">
                                             <a href="#">
-                                                <img class="img-fluid" src="../../assets/images/home/home1-flas.jpg" alt="English" width="16" height="11">
+                                                <img class="img-fluid" src="assets/images/home/home1-flas.jpg" alt="English" width="16" height="11">
                                             </a>
                                         </li>
                                         <li class="list-inline-item">
                                             <a href="#">
-                                                <img class="img-fluid" src="../../assets/images/home/home1-flas2.jpg" alt="Italiano" width="16" height="11">
+                                                <img class="img-fluid" src="assets/images/home/home1-flas2.jpg" alt="Italiano" width="16" height="11">
                                             </a>
                                         </li>
                                         <li class="list-inline-item">
                                             <a href="#">
-                                                <img class="img-fluid" src="../../assets/images/home/home1-flas3.jpg" alt="Français" width="16" height="11">
+                                                <img class="img-fluid" src="assets/images/home/home1-flas3.jpg" alt="Français" width="16" height="11">
                                             </a>
                                         </li>
                                         <li class="list-inline-item">
                                             <a href="#">
-                                                <img class="img-fluid" src="../../assets/images/home/home1-flas4.jpg" alt="Español" width="16" height="11">
+                                                <img class="img-fluid" src="assets/images/home/home1-flas4.jpg" alt="Español" width="16" height="11">
                                             </a>
                                         </li>
                                     </ul>
@@ -291,13 +291,13 @@
                                         <tbody>
                                         <tr>
                                             <td class="product-image">
-                                                <a href="product-detail.jsp">
-                                                    <img src="../../assets/images/product/5.jpg" alt="Product">
+                                                <a href="../customer/product-detail.jsp">
+                                                    <img src="assets/images/product/5.jpg" alt="Product">
                                                 </a>
                                             </td>
                                             <td>
                                                 <div class="product-name">
-                                                    <a href="product-detail.jsp">Organic Strawberry Fruits</a>
+                                                    <a href="../customer/product-detail.jsp">Organic Strawberry Fruits</a>
                                                 </div>
                                                 <div>
                                                     2 x
@@ -318,7 +318,7 @@
                                         <tr>
                                             <td colspan="3" class="d-flex justify-content-center">
                                                 <div class="cart-button">
-                                                    <a href="product-cart.jsp" title="View Cart">View Cart</a>
+                                                    <a href="../customer/product-cart.jsp" title="View Cart">View Cart</a>
                                                     <a href="product-checkout.jsp" title="Checkout">Checkout</a>
                                                 </div>
                                             </td>

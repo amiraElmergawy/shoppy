@@ -40,7 +40,7 @@
                                                         <div class="product-line-grid-left col-md-2">
                                                             <span class="product-image media-middle">
                                                                 <a href="product-detail.jsp">
-                                                                    <img class="img-fluid" src="../../assets/images/product/3.jpg" alt="Organic Strawberry Fruits">
+                                                                    <img class="img-fluid" src="assets/images/product/3.jpg" alt="Organic Strawberry Fruits">
                                                                 </a>
                                                             </span>
                                                         </div>
@@ -108,7 +108,7 @@
                                                         <div class="product-line-grid-left col-md-2">
                                                             <span class="product-image media-middle">
                                                                 <a href="product-detail.jsp">
-                                                                    <img class="img-fluid" src="../../assets/images/product/3.jpg" alt="Organic Strawberry Fruits">
+                                                                    <img class="img-fluid" src="assets/images/product/3.jpg" alt="Organic Strawberry Fruits">
                                                                 </a>
                                                             </span>
                                                         </div>

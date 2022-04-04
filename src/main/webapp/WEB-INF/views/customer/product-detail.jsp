@@ -39,16 +39,16 @@
                                                         <div class="images-container">
                                                             <div class="js-qv-mask mask tab-content ">
                                                                 <div id="item1" class="tab-pane fade active in show border-0">
-                                                                    <img src="../../assets/images/product/1.jpg" alt="img">
+                                                                    <img src="assets/images/product/1.jpg" alt="img">
                                                                 </div>
                                                                 <div id="item2" class="tab-pane fade">
-                                                                    <img src="../../assets/images/product/2.jpg" alt="img">
+                                                                    <img src="assets/images/product/2.jpg" alt="img">
                                                                 </div>
                                                                 <div id="item3" class="tab-pane fade">
-                                                                    <img src="../../assets/images/product/3.jpg" alt="img">
+                                                                    <img src="assets/images/product/3.jpg" alt="img">
                                                                 </div>
                                                                 <div id="item4" class="tab-pane fade">
-                                                                    <img src="../../assets/images/product/5.jpg" alt="img">
+                                                                    <img src="assets/images/product/5.jpg" alt="img">
                                                                 </div>
                                                                 <div class="layer hidden-sm-down" data-toggle="modal" data-target="#product-modal">
                                                                     <i class="fa fa-expand"></i>
@@ -57,22 +57,22 @@
                                                             <ul class="product-tab nav nav-tabs d-flex">
                                                                 <li class="active col ">
                                                                     <a href="#item1" data-toggle="tab" aria-expanded="true" class="active show shadow rounded p-1 border-0">
-                                                                        <img src="../../assets/images/product/1.jpg" alt="img">
+                                                                        <img src="assets/images/product/1.jpg" alt="img">
                                                                     </a>
                                                                 </li>
                                                                 <li class="col">
                                                                     <a href="#item2" data-toggle="tab" class=" shadow rounded p-1 border-0">
-                                                                        <img src="../../assets/images/product/2.jpg" alt="img">
+                                                                        <img src="assets/images/product/2.jpg" alt="img">
                                                                     </a>
                                                                 </li>
                                                                 <li class="col">
                                                                     <a href="#item3" data-toggle="tab" class=" shadow rounded p-1 border-0">
-                                                                        <img src="../../assets/images/product/3.jpg" alt="img">
+                                                                        <img src="assets/images/product/3.jpg" alt="img">
                                                                     </a>
                                                                 </li>
                                                                 <li class="col">
                                                                     <a href="#item4" data-toggle="tab" class=" shadow rounded p-1 border-0">
-                                                                        <img src="../../assets/images/product/5.jpg" alt="img">
+                                                                        <img src="assets/images/product/5.jpg" alt="img">
                                                                     </a>
                                                                 </li>
                                                             </ul>
@@ -88,37 +88,37 @@
                                                                                         <div class="images-container col-10 m-0">
                                                                                             <div class="js-qv-mask mask tab-content">
                                                                                                 <div id="modal-item1" class="tab-pane fade active in show">
-                                                                                                    <img class="img-fluid" src="../../assets/images/product/2.jpg" alt="img">
+                                                                                                    <img class="img-fluid" src="assets/images/product/2.jpg" alt="img">
                                                                                                 </div>
                                                                                                 <div id="modal-item2" class="tab-pane fade">
-                                                                                                    <img src="../../assets/images/product/2.jpg" alt="img">
+                                                                                                    <img src="assets/images/product/2.jpg" alt="img">
                                                                                                 </div>
                                                                                                 <div id="modal-item3" class="tab-pane fade">
-                                                                                                    <img src="../../assets/images/product/3.jpg" alt="img">
+                                                                                                    <img src="assets/images/product/3.jpg" alt="img">
                                                                                                 </div>
                                                                                                 <div id="modal-item4" class="tab-pane fade">
-                                                                                                    <img src="../../assets/images/product/5.jpg" alt="img">
+                                                                                                    <img src="assets/images/product/5.jpg" alt="img">
                                                                                                 </div>
                                                                                             </div>
                                                                                             <ul class="product-tab nav nav-tabs">
                                                                                                 <li class="active">
                                                                                                     <a href="#modal-item1" data-toggle="tab" class=" active show">
-                                                                                                        <img src="../../assets/images/product/1.jpg" alt="img">
+                                                                                                        <img src="assets/images/product/1.jpg" alt="img">
                                                                                                     </a>
                                                                                                 </li>
                                                                                                 <li>
                                                                                                     <a href="#modal-item2" data-toggle="tab">
-                                                                                                        <img src="../../assets/images/product/2.jpg" alt="img">
+                                                                                                        <img src="assets/images/product/2.jpg" alt="img">
                                                                                                     </a>
                                                                                                 </li>
                                                                                                 <li>
                                                                                                     <a href="#modal-item3" data-toggle="tab">
-                                                                                                        <img src="../../assets/images/product/3.jpg" alt="img">
+                                                                                                        <img src="assets/images/product/3.jpg" alt="img">
                                                                                                     </a>
                                                                                                 </li>
                                                                                                 <li>
                                                                                                     <a href="#modal-item4" data-toggle="tab">
-                                                                                                        <img src="../../assets/images/product/5.jpg" alt="img">
+                                                                                                        <img src="assets/images/product/5.jpg" alt="img">
                                                                                                     </a>
                                                                                                 </li>
                                                                                             </ul>
@@ -353,8 +353,8 @@
                                                             <div class="product-miniature js-product-miniature item-one first-item">
                                                                 <div class="thumbnail-container border">
                                                                     <a href="product-detail.jsp">
-                                                                        <img class="img-fluid image-cover" src="../../assets/images/product/1.jpg" alt="img">
-                                                                        <img class="img-fluid image-secondary" src="../../assets/images/product/22.jpg" alt="img">
+                                                                        <img class="img-fluid image-cover" src="assets/images/product/1.jpg" alt="img">
+                                                                        <img class="img-fluid image-secondary" src="assets/images/product/22.jpg" alt="img">
                                                                     </a>
                                                                     <div class="highlighted-informations">
                                                                         <div class="variant-links">
@@ -404,8 +404,8 @@
                                                             <div class="product-miniature js-product-miniature item-one first-item">
                                                                 <div class="thumbnail-container border">
                                                                     <a href="product-detail.jsp">
-                                                                        <img class="img-fluid image-cover" src="../../assets/images/product/2.jpg" alt="img">
-                                                                        <img class="img-fluid image-secondary" src="../../assets/images/product/11.jpg" alt="img">
+                                                                        <img class="img-fluid image-cover" src="assets/images/product/2.jpg" alt="img">
+                                                                        <img class="img-fluid image-secondary" src="assets/images/product/11.jpg" alt="img">
                                                                     </a>
                                                                     <div class="highlighted-informations">
                                                                         <div class="variant-links">
@@ -455,8 +455,8 @@
                                                             <div class="product-miniature js-product-miniature item-one first-item">
                                                                 <div class="thumbnail-container border">
                                                                     <a href="product-detail.jsp">
-                                                                        <img class="img-fluid image-cover" src="../../assets/images/product/3.jpg" alt="img">
-                                                                        <img class="img-fluid image-secondary" src="../../assets/images/product/14.jpg" alt="img">
+                                                                        <img class="img-fluid image-cover" src="assets/images/product/3.jpg" alt="img">
+                                                                        <img class="img-fluid image-secondary" src="assets/images/product/14.jpg" alt="img">
                                                                     </a>
                                                                     <div class="highlighted-informations">
                                                                         <div class="variant-links">
@@ -507,8 +507,8 @@
                                                             <div class="product-miniature js-product-miniature item-one first-item">
                                                                 <div class="thumbnail-container border">
                                                                     <a href="product-detail.jsp">
-                                                                        <img class="img-fluid image-cover" src="../../assets/images/product/3.jpg" alt="img">
-                                                                        <img class="img-fluid image-secondary" src="../../assets/images/product/14.jpg" alt="img">
+                                                                        <img class="img-fluid image-cover" src="assets/images/product/3.jpg" alt="img">
+                                                                        <img class="img-fluid image-secondary" src="assets/images/product/14.jpg" alt="img">
                                                                     </a>
                                                                     <div class="highlighted-informations">
                                                                         <div class="variant-links">

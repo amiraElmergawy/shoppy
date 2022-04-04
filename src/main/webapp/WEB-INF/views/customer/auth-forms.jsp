@@ -9,8 +9,8 @@
     <title>Shoppy</title>
     <%@ include file="../includes/customer-head.jsp" %>
     <!-- libs CSS -->
-    <link rel="stylesheet" type="text/css" href="../../assets/styles/user-forms.css">
-    <link rel="stylesheet" type="text/css" href="../../assets/styles/validation-style.css">
+    <link rel="stylesheet" type="text/css" href="assets/styles/user-forms.css">
+    <link rel="stylesheet" type="text/css" href="assets/styles/validation-style.css">
 </head>
 
 <body class="user-login blog">
@@ -38,10 +38,10 @@
         <p class="forgot-pass">Forgot Password ?</p>
         <div class="social-media">
             <ul>
-                <li><img src="../../assets/images/other/facebook.png"></li>
-                <li><img src="../../assets/images/other/twitter.png"></li>
-                <li><img src="../../assets/images/other/linkedin.png"></li>
-                <li><img src="../../assets/images/other/instagram.png"></li>
+                <li><img src="assets/images/other/facebook.png"></li>
+                <li><img src="assets/images/other/twitter.png"></li>
+                <li><img src="assets/images/other/linkedin.png"></li>
+                <li><img src="assets/images/other/instagram.png"></li>
             </ul>
         </div>
     </div>
@@ -136,9 +136,9 @@
 
 
 <!-- Template JS -->
-<script type="text/javascript" src="../../assets/scripts/forms.js"></script>
-<script type="text/javascript" src="../../assets/scripts/signin-form.js"></script>
-<script type="text/javascript" src="../../assets/scripts/forms-validator.js"></script>
+<script type="text/javascript" src="assets/scripts/forms.js"></script>
+<script type="text/javascript" src="assets/scripts/signin-form.js"></script>
+<script type="text/javascript" src="assets/scripts/forms-validator.js"></script>
 <%@ include file="../includes/customer-script.jsp" %>
 
 </body>

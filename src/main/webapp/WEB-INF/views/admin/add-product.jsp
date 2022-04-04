@@ -21,8 +21,8 @@
                         <div
                             class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                             <div class="d-flex">
-                                <img src="./../../assets/images/icons/update_product_icon.png">
-                                <h1 class="">Product Details</h1>
+                                <img src="assets/images/icons/add_product_icon.png">
+                                <h1 class="">Add Product</h1>
                             </div>
                         </div>
                         <div>
@@ -47,8 +47,8 @@
                                                     <option value="3">3</option>
                                                 </select>
                                             </div>
-                                            <div class="col-2 btn btn-primary">
-                                                <img src="./../../assets/images/icons/white_plus_icon-removebg-preview.png"
+                                            <div class="col-2 btn btn-success">
+                                                <img src="assets/images/icons/white_plus_icon-removebg-preview.png"
                                                     style="width: 30px;">
                                             </div>
                                         </div>
@@ -83,14 +83,18 @@
                                     <textarea class="form-control input" id="desc" rows="3" required></textarea>
                                     <div class="error"></div>
                                 </div>
-                                <button type="submit" class="btn btn-primary my-2">Update Product</button>
+                                <button type="submit" class="btn btn-success my-2">Save Product</button>
                             </form>
                         </div>
                     </main>
             </div>
         </div>
 
+
     <%@ include file="../includes/admin-script.jsp" %>
+    <script src="assets/scripts/forms-validator.js"></script>
+    <script src="assets/scripts/add-product.js"></script>
+
 </body>
 
 </html>

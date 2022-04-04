@@ -27,13 +27,13 @@
         <div class="tiva-slideshow-wrapper" >
             <div id="tiva-slideshow" class="nivoSlider" style="max-height: 400px ;height: 400px">
                 <a href="#" >
-                    <img class="img-responsive full-image img-fluid d-block w-100 h-100"   src="../../assets/images/home/home1-banner1.jpg" title="#caption1" alt="Slideshow image">
+                    <img class="img-responsive full-image img-fluid d-block w-100 h-100" src="assets/images/home/home1-banner1.jpg" title="#caption1" alt="Slideshow image">
                 </a>
                 <a href="#">
-                    <img class="img-responsive full-image img-fluid d-block w-100 h-100"  src="../../assets/images/home/home1-banner2.jpg" title="#caption2" alt="Slideshow image">
+                    <img class="img-responsive full-image img-fluid d-block w-100 h-100" src="assets/images/home/home1-banner2.jpg" title="#caption2" alt="Slideshow image">
                 </a>
                 <a href="#">
-                    <img class="img-responsive full-image img-fluid d-block w-100 h-100" src="../../assets/images/home/home1-banner3.jpg" title="#caption3" alt="Slideshow image">
+                    <img class="img-responsive full-image img-fluid d-block w-100 h-100" src="assets/images/home/home1-banner3.jpg" title="#caption3" alt="Slideshow image">
                 </a>
             </div>
         </div>
@@ -537,8 +537,8 @@
                                                             <div class="product-miniature js-product-miniature item-one first-item shadow rounded p-1">
                                                                 <div class="thumbnail-container ">
                                                                     <a href="product-detail.jsp">
-                                                                        <img class="img-fluid image-cover" src="../../assets/images/product/1.jpg" alt="img">
-                                                                        <img class="img-fluid image-secondary" src="../../assets/images/product/22.jpg" alt="img">
+                                                                        <img class="img-fluid image-cover" src="assets/images/product/1.jpg" alt="img">
+                                                                        <img class="img-fluid image-secondary" src="assets/images/product/22.jpg" alt="img">
                                                                     </a>
                                                                     <div class="highlighted-informations">
                                                                         <div class="variant-links">
@@ -589,8 +589,8 @@
                                                             <div class="product-miniature js-product-miniature item-one first-item shadow rounded p-1">
                                                                 <div class="thumbnail-container border">
                                                                     <a href="product-detail.jsp">
-                                                                        <img class="img-fluid image-cover" src="../../assets/images/product/2.jpg" alt="img">
-                                                                        <img class="img-fluid image-secondary" src="../../assets/images/product/11.jpg" alt="img">
+                                                                        <img class="img-fluid image-cover" src="assets/images/product/2.jpg" alt="img">
+                                                                        <img class="img-fluid image-secondary" src="assets/images/product/11.jpg" alt="img">
                                                                     </a>
                                                                     <div class="highlighted-informations">
                                                                         <div class="variant-links">
@@ -641,8 +641,8 @@
                                                             <div class="product-miniature js-product-miniature item-one first-item">
                                                                 <div class="thumbnail-container border">
                                                                     <a href="product-detail.jsp">
-                                                                        <img class="img-fluid image-cover" src="../../assets/images/product/3.jpg" alt="img">
-                                                                        <img class="img-fluid image-secondary" src="../../assets/images/product/14.jpg" alt="img">
+                                                                        <img class="img-fluid image-cover" src="assets/images/product/3.jpg" alt="img">
+                                                                        <img class="img-fluid image-secondary" src="assets/images/product/14.jpg" alt="img">
                                                                     </a>
                                                                     <div class="highlighted-informations">
                                                                         <div class="variant-links">
@@ -693,8 +693,8 @@
                                                             <div class="product-miniature js-product-miniature item-one first-item">
                                                                 <div class="thumbnail-container border">
                                                                     <a href="product-detail.jsp">
-                                                                        <img class="img-fluid image-cover" src="../../assets/images/product/5.jpg" alt="img">
-                                                                        <img class="img-fluid image-secondary" src="../../assets/images/product/11.jpg" alt="img">
+                                                                        <img class="img-fluid image-cover" src="assets/images/product/5.jpg" alt="img">
+                                                                        <img class="img-fluid image-secondary" src="assets/images/product/11.jpg" alt="img">
                                                                     </a>
                                                                     <div class="highlighted-informations">
                                                                         <div class="variant-links">
@@ -745,8 +745,8 @@
                                                             <div class="product-miniature js-product-miniature item-one first-item">
                                                                 <div class="thumbnail-container border">
                                                                     <a href="product-detail.jsp">
-                                                                        <img class="img-fluid image-cover" src="../../assets/images/product/8.jpg" alt="img">
-                                                                        <img class="img-fluid image-secondary" src="../../assets/images/product/14.jpg" alt="img">
+                                                                        <img class="img-fluid image-cover" src="assets/images/product/8.jpg" alt="img">
+                                                                        <img class="img-fluid image-secondary" src="assets/images/product/14.jpg" alt="img">
                                                                     </a>
                                                                     <div class="highlighted-informations">
                                                                         <div class="variant-links">
@@ -797,8 +797,8 @@
                                                             <div class="product-miniature js-product-miniature item-one first-item">
                                                                 <div class="thumbnail-container border">
                                                                     <a href="product-detail.jsp">
-                                                                        <img class="img-fluid image-cover" src="../../assets/images/product/11.jpg" alt="img">
-                                                                        <img class="img-fluid image-secondary" src="../../assets/images/product/12.jpg" alt="img">
+                                                                        <img class="img-fluid image-cover" src="assets/images/product/11.jpg" alt="img">
+                                                                        <img class="img-fluid image-secondary" src="assets/images/product/12.jpg" alt="img">
                                                                     </a>
                                                                     <div class="highlighted-informations">
                                                                         <div class="variant-links">
@@ -849,8 +849,8 @@
                                                             <div class="product-miniature js-product-miniature item-one first-item">
                                                                 <div class="thumbnail-container border">
                                                                     <a href="product-detail.jsp">
-                                                                        <img class="img-fluid image-cover" src="../../assets/images/product/13.jpg" alt="img">
-                                                                        <img class="img-fluid image-secondary" src="../../assets/images/product/23.jpg" alt="img">
+                                                                        <img class="img-fluid image-cover" src="assets/images/product/13.jpg" alt="img">
+                                                                        <img class="img-fluid image-secondary" src="assets/images/product/23.jpg" alt="img">
                                                                     </a>
 
                                                                     <div class="highlighted-informations">
@@ -902,8 +902,8 @@
                                                             <div class="product-miniature js-product-miniature item-one first-item">
                                                                 <div class="thumbnail-container border">
                                                                     <a href="product-detail.jsp">
-                                                                        <img class="img-fluid image-cover" src="../../assets/images/product/26.jpg" alt="img">
-                                                                        <img class="img-fluid image-secondary" src="../../assets/images/product/11.jpg" alt="img">
+                                                                        <img class="img-fluid image-cover" src="assets/images/product/26.jpg" alt="img">
+                                                                        <img class="img-fluid image-secondary" src="assets/images/product/11.jpg" alt="img">
                                                                     </a>
 
                                                                     <div class="highlighted-informations">
@@ -955,8 +955,8 @@
                                                             <div class="product-miniature js-product-miniature item-one first-item">
                                                                 <div class="thumbnail-container border">
                                                                     <a href="product-detail.jsp">
-                                                                        <img class="img-fluid image-cover" src="../../assets/images/product/8.jpg" alt="img">
-                                                                        <img class="img-fluid image-secondary" src="../../assets/images/product/14.jpg" alt="img">
+                                                                        <img class="img-fluid image-cover" src="assets/images/product/8.jpg" alt="img">
+                                                                        <img class="img-fluid image-secondary" src="assets/images/product/14.jpg" alt="img">
                                                                     </a>
                                                                     <div class="highlighted-informations">
                                                                         <div class="variant-links">
@@ -1007,8 +1007,8 @@
                                                             <div class="product-miniature js-product-miniature item-one first-item">
                                                                 <div class="thumbnail-container border">
                                                                     <a href="product-detail.jsp">
-                                                                        <img class="img-fluid image-cover" src="../../assets/images/product/11.jpg" alt="img">
-                                                                        <img class="img-fluid image-secondary" src="../../assets/images/product/12.jpg" alt="img">
+                                                                        <img class="img-fluid image-cover" src="assets/images/product/11.jpg" alt="img">
+                                                                        <img class="img-fluid image-secondary" src="assets/images/product/12.jpg" alt="img">
                                                                     </a>
                                                                     <div class="highlighted-informations">
                                                                         <div class="variant-links">
@@ -1059,8 +1059,8 @@
                                                             <div class="product-miniature js-product-miniature item-one first-item">
                                                                 <div class="thumbnail-container border">
                                                                     <a href="product-detail.jsp">
-                                                                        <img class="img-fluid image-cover" src="../../assets/images/product/13.jpg" alt="img">
-                                                                        <img class="img-fluid image-secondary" src="../../assets/images/product/23.jpg" alt="img">
+                                                                        <img class="img-fluid image-cover" src="assets/images/product/13.jpg" alt="img">
+                                                                        <img class="img-fluid image-secondary" src="assets/images/product/23.jpg" alt="img">
                                                                     </a>
 
                                                                     <div class="highlighted-informations">
@@ -1112,8 +1112,8 @@
                                                             <div class="product-miniature js-product-miniature item-one first-item">
                                                                 <div class="thumbnail-container border">
                                                                     <a href="product-detail.jsp">
-                                                                        <img class="img-fluid image-cover" src="../../assets/images/product/26.jpg" alt="img">
-                                                                        <img class="img-fluid image-secondary" src="../../assets/images/product/11.jpg" alt="img">
+                                                                        <img class="img-fluid image-cover" src="assets/images/product/26.jpg" alt="img">
+                                                                        <img class="img-fluid image-secondary" src="assets/images/product/11.jpg" alt="img">
                                                                     </a>
 
                                                                     <div class="highlighted-informations">
@@ -1171,8 +1171,8 @@
                                                                     <div class="col-md-4">
                                                                         <div class="thumbnail-container border">
                                                                             <a href="product-detail.jsp">
-                                                                                <img class="img-fluid image-cover" src="../../assets/images/product/1.jpg" alt="img">
-                                                                                <img class="img-fluid image-secondary" src="../../assets/images/product/22.jpg" alt="img">
+                                                                                <img class="img-fluid image-cover" src="assets/images/product/1.jpg" alt="img">
+                                                                                <img class="img-fluid image-secondary" src="assets/images/product/22.jpg" alt="img">
                                                                             </a>
                                                                         </div>
                                                                     </div>
@@ -1229,8 +1229,8 @@
                                                                     <div class="col-md-4">
                                                                         <div class="thumbnail-container border">
                                                                             <a href="product-detail.jsp">
-                                                                                <img class="img-fluid image-cover" src="../../assets/images/product/2.jpg" alt="img">
-                                                                                <img class="img-fluid image-secondary" src="../../assets/images/product/11.jpg" alt="img">
+                                                                                <img class="img-fluid image-cover" src="assets/images/product/2.jpg" alt="img">
+                                                                                <img class="img-fluid image-secondary" src="assets/images/product/11.jpg" alt="img">
                                                                             </a>
                                                                         </div>
                                                                     </div>
@@ -1287,8 +1287,8 @@
                                                                     <div class="col-md-4">
                                                                         <div class="thumbnail-container border">
                                                                             <a href="product-detail.jsp">
-                                                                                <img class="img-fluid image-cover" src="../../assets/images/product/3.jpg" alt="img">
-                                                                                <img class="img-fluid image-secondary" src="../../assets/images/product/14.jpg" alt="img">
+                                                                                <img class="img-fluid image-cover" src="assets/images/product/3.jpg" alt="img">
+                                                                                <img class="img-fluid image-secondary" src="assets/images/product/14.jpg" alt="img">
                                                                             </a>
                                                                         </div>
                                                                     </div>
@@ -1345,8 +1345,8 @@
                                                                     <div class="col-md-4">
                                                                         <div class="thumbnail-container border">
                                                                             <a href="product-detail.jsp">
-                                                                                <img class="img-fluid image-cover" src="../../assets/images/product/5.jpg" alt="img">
-                                                                                <img class="img-fluid image-secondary" src="../../assets/images/product/11.jpg" alt="img">
+                                                                                <img class="img-fluid image-cover" src="assets/images/product/5.jpg" alt="img">
+                                                                                <img class="img-fluid image-secondary" src="assets/images/product/11.jpg" alt="img">
                                                                             </a>
                                                                         </div>
                                                                     </div>
@@ -1403,8 +1403,8 @@
                                                                     <div class="col-md-4">
                                                                         <div class="thumbnail-container border">
                                                                             <a href="product-detail.jsp">
-                                                                                <img class="img-fluid image-cover" src="../../assets/images/product/8.jpg" alt="img">
-                                                                                <img class="img-fluid image-secondary" src="../../assets/images/product/14.jpg" alt="img">
+                                                                                <img class="img-fluid image-cover" src="assets/images/product/8.jpg" alt="img">
+                                                                                <img class="img-fluid image-secondary" src="assets/images/product/14.jpg" alt="img">
                                                                             </a>
                                                                         </div>
                                                                     </div>
@@ -1461,8 +1461,8 @@
                                                                     <div class="col-md-4">
                                                                         <div class="thumbnail-container border">
                                                                             <a href="product-detail.jsp">
-                                                                                <img class="img-fluid image-cover" src="../../assets/images/product/11.jpg" alt="img">
-                                                                                <img class="img-fluid image-secondary" src="../../assets/images/product/12.jpg" alt="img">
+                                                                                <img class="img-fluid image-cover" src="assets/images/product/11.jpg" alt="img">
+                                                                                <img class="img-fluid image-secondary" src="assets/images/product/12.jpg" alt="img">
                                                                             </a>
                                                                         </div>
                                                                     </div>
@@ -1519,8 +1519,8 @@
                                                                     <div class="col-md-4">
                                                                         <div class="thumbnail-container border">
                                                                             <a href="product-detail.jsp">
-                                                                                <img class="img-fluid image-cover" src="../../assets/images/product/13.jpg" alt="img">
-                                                                                <img class="img-fluid image-secondary" src="../../assets/images/product/23.jpg" alt="img">
+                                                                                <img class="img-fluid image-cover" src="assets/images/product/13.jpg" alt="img">
+                                                                                <img class="img-fluid image-secondary" src="assets/images/product/23.jpg" alt="img">
                                                                             </a>
                                                                         </div>
 
@@ -1578,8 +1578,8 @@
                                                                     <div class="col-md-4">
                                                                         <div class="thumbnail-container border">
                                                                             <a href="product-detail.jsp">
-                                                                                <img class="img-fluid image-cover" src="../../assets/images/product/26.jpg" alt="img">
-                                                                                <img class="img-fluid image-secondary" src="../../assets/images/product/11.jpg" alt="img">
+                                                                                <img class="img-fluid image-cover" src="assets/images/product/26.jpg" alt="img">
+                                                                                <img class="img-fluid image-secondary" src="assets/images/product/11.jpg" alt="img">
                                                                             </a>
                                                                         </div>
 
@@ -1637,8 +1637,8 @@
                                                                     <div class="col-md-4">
                                                                         <div class="thumbnail-container border">
                                                                             <a href="product-detail.jsp">
-                                                                                <img class="img-fluid image-cover" src="../../assets/images/product/8.jpg" alt="img">
-                                                                                <img class="img-fluid image-secondary" src="../../assets/images/product/14.jpg" alt="img">
+                                                                                <img class="img-fluid image-cover" src="assets/images/product/8.jpg" alt="img">
+                                                                                <img class="img-fluid image-secondary" src="assets/images/product/14.jpg" alt="img">
                                                                             </a>
                                                                         </div>
                                                                     </div>
@@ -1695,8 +1695,8 @@
                                                                     <div class="col-md-4">
                                                                         <div class="thumbnail-container border">
                                                                             <a href="product-detail.jsp">
-                                                                                <img class="img-fluid image-cover" src="../../assets/images/product/11.jpg" alt="img">
-                                                                                <img class="img-fluid image-secondary" src="../../assets/images/product/12.jpg" alt="img">
+                                                                                <img class="img-fluid image-cover" src="assets/images/product/11.jpg" alt="img">
+                                                                                <img class="img-fluid image-secondary" src="assets/images/product/12.jpg" alt="img">
                                                                             </a>
                                                                         </div>
                                                                     </div>
@@ -1753,8 +1753,8 @@
                                                                     <div class="col-md-4">
                                                                         <div class="thumbnail-container border">
                                                                             <a href="product-detail.jsp">
-                                                                                <img class="img-fluid image-cover" src="../../assets/images/product/13.jpg" alt="img">
-                                                                                <img class="img-fluid image-secondary" src="../../assets/images/product/23.jpg" alt="img">
+                                                                                <img class="img-fluid image-cover" src="assets/images/product/13.jpg" alt="img">
+                                                                                <img class="img-fluid image-secondary" src="assets/images/product/23.jpg" alt="img">
                                                                             </a>
                                                                         </div>
 
@@ -1812,8 +1812,8 @@
                                                                     <div class="col-md-4">
                                                                         <div class="thumbnail-container border">
                                                                             <a href="product-detail.jsp">
-                                                                                <img class="img-fluid image-cover" src="../../assets/images/product/26.jpg" alt="img">
-                                                                                <img class="img-fluid image-secondary" src="../../assets/images/product/11.jpg" alt="img">
+                                                                                <img class="img-fluid image-cover" src="assets/images/product/26.jpg" alt="img">
+                                                                                <img class="img-fluid image-secondary" src="assets/images/product/11.jpg" alt="img">
                                                                             </a>
                                                                         </div>
                                                                     </div>

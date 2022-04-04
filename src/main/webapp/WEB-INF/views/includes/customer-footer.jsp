@@ -8,7 +8,7 @@
                         <div class="block">
                             <div class="block-content">
                                 <p class="logo-footer">
-                                    <img src="../../assets/images/home/logo.png" alt="img">
+                                    <img src="assets/images/home/logo.png" alt="img">
                                 </p>
                                 <p class="content-logo">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt
                                     ut labore et dolore magna aliqua. Ut enim ad minim
@@ -39,7 +39,7 @@
                         <div class="block">
                             <div class="block-content">
                                 <p class="img-payment ">
-                                    <img class="img-fluid" src="../../assets/images/home/payment-footer.png" alt="img">
+                                    <img class="img-fluid" src="assets/images/home/payment-footer.png" alt="img">
                                 </p>
                             </div>
                         </div>
@@ -154,7 +154,7 @@
                                         Payment accept
                                     </div>
                                     <div class="payment-image">
-                                        <img class="img-fluid" src="../../assets/images/home/payment.png" alt="img">
+                                        <img class="img-fluid" src="assets/images/home/payment.png" alt="img">
                                     </div>
                                 </div>
                                 <!-- Popup newsletter -->

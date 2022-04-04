@@ -52,7 +52,7 @@
 									<div class="row">
 										<div class="col-lg-6 col-md-6 col-sm-6 right">
 											<a href="#">
-												<img class="img-fluid" src="../../assets/images/other/1.jpg" alt="#" />
+												<img class="img-fluid" src="assets/images/other/1.jpg" alt="#" />
 											</a>
 										</div>
 										<div class="col-lg-6 col-md-6 col-sm-6 left">
@@ -66,7 +66,7 @@
 													sed odio sit amet nibh vultate cursus a sit amet mauris. Duis sed odio sit
 												amet nibh vultate cursus a sit amet mauris.</p>
 												<a>
-													<img class="img-fluid" src="../../assets/images/other/4.png" alt="#" />
+													<img class="img-fluid" src="assets/images/other/4.png" alt="#" />
 													<span>Mr. kwang shang - CEO</span>
 												</a>
 											</div>
@@ -85,12 +85,12 @@
 										</div>
 										<div class="col-lg-6 col-md-6 col-sm-6 left">
 											<a href="#">
-												<img class="img-fluid" src="../../assets/images/other/2.jpg" alt="#" />
+												<img class="img-fluid" src="assets/images/other/2.jpg" alt="#" />
 											</a>
 										</div>
 										<div class="col-lg-6 col-md-6 col-sm-6 right">
 											<a href="#">
-												<img class="img-fluid" src="../../assets/images/other/3.jpg" alt="#" />
+												<img class="img-fluid" src="assets/images/other/3.jpg" alt="#" />
 											</a>
 										</div>
 										<div class="col-lg-6 col-md-6 col-sm-6 left">
@@ -193,7 +193,7 @@
 						<ul class="menu level1">
 							<li class="item  parent">
 								<a href="#" class="hasicon" title="SIDE TABLE">
-									<img src="../../assets/images/home/table-lamp.png" alt="img">SIDE TABLE
+									<img src="assets/images/home/table-lamp.png" alt="img">SIDE TABLE
 								</a>
 								<span class="arrow collapsed" data-toggle="collapse" data-target="#SIDE-TABLE" aria-expanded="false" role="status">
 									<i class="zmdi zmdi-minus"></i>
@@ -244,7 +244,7 @@
 							</li>
 							<li class="item  parent group">
 								<a href="#" class="hasicon" title="FI">
-									<img src="../../assets/images/home/fireplace.png" alt="img">FIREPLACE
+									<img src="assets/images/home/fireplace.png" alt="img">FIREPLACE
 								</a>
 								<span class="arrow collapsed" data-toggle="collapse" data-target="#fi" aria-expanded="false" role="status">
 									<i class="zmdi zmdi-minus"></i>
@@ -496,7 +496,7 @@
 							</li>
 							<li class="item group-category-img parent group">
 								<a href="#" class="hasicon" title="TABLE LAMP">
-								<img src="../../assets/images/home/table-lamp.png" alt="img">TABLE LAMP</a>
+								<img src="assets/images/home/table-lamp.png" alt="img">TABLE LAMP</a>
 								<span class="arrow collapsed" data-toggle="collapse" data-target="#table-lamp" aria-expanded="false" role="status">
 									<i class="zmdi zmdi-minus"></i>
 									<i class="zmdi zmdi-plus"></i>
@@ -614,76 +614,76 @@
 							</li>
 							<li class="item">
 								<a href="#" class="hasicon" title="OTTOMAN">
-									<img src="../../assets/images/home/ottoman.png" alt="img">OTTOMAN
+									<img src="assets/images/home/ottoman.png" alt="img">OTTOMAN
 								</a>
 							</li>
 							<li class="item">
 								<a href="#" class="hasicon" title="ARMCHAIR">
-									<img src="../../assets/images/home/armchair.png" alt="img">ARMCHAIR
+									<img src="assets/images/home/armchair.png" alt="img">ARMCHAIR
 								</a>
 							</li>
 							<li class="item">
 								<a href="#" class="hasicon" title="CUSHION">
-									<img src="../../assets/images/home/cushion.png" alt="img">CUSHION
+									<img src="assets/images/home/cushion.png" alt="img">CUSHION
 								</a>
 							</li>
 							<li class="item">
 								<a href="#" class="hasicon" title="COFFEE TABLE">
-								<img src="../../assets/images/home/coffee_table.png" alt="img">COFFEE TABLE</a>
+								<img src="assets/images/home/coffee_table.png" alt="img">COFFEE TABLE</a>
 							</li>
 							<li class="item">
 								<a href="#" class="hasicon" title="SHELF">
-									<img src="../../assets/images/home/shelf.png" alt="img">SHELF
+									<img src="assets/images/home/shelf.png" alt="img">SHELF
 								</a>
 							</li>
 							<li class="item">
 								<a href="#" class="hasicon" title="SOFA">
-									<img src="../../assets/images/home/sofa.png" alt="img">SOFA
+									<img src="assets/images/home/sofa.png" alt="img">SOFA
 								</a>
 							</li>
 							<li class="item">
 								<a href="#" class="hasicon" title="DRESSING TABLE">
-								<img src="../../assets/images/home/dressing.png" alt="img">DRESSING TABLE</a>
+								<img src="assets/images/home/dressing.png" alt="img">DRESSING TABLE</a>
 							</li>
 							<li class="item">
 								<a href="#" class="hasicon" title="WINDOWN CURTAIN">
-								<img src="../../assets/images/home/windown.png" alt="img">WINDOWN CURTAIN</a>
+								<img src="assets/images/home/windown.png" alt="img">WINDOWN CURTAIN</a>
 							</li>
 							<li class="item">
 								<a href="#" class="hasicon" title="CHANDELIER">
-									<img src="../../assets/images/home/chandelier.png" alt="img">CHANDELIER
+									<img src="assets/images/home/chandelier.png" alt="img">CHANDELIER
 								</a>
 							</li>
 							<li class="item">
 								<a href="#" class="hasicon" title="CEILING FAN">
-								<img src="../../assets/images/home/ceiling_fan.png" alt="img">CEILING FAN</a>
+								<img src="assets/images/home/ceiling_fan.png" alt="img">CEILING FAN</a>
 							</li>
 							<li class="item">
 								<a href="#" class="hasicon" title="WARDROBE">
-									<img src="../../assets/images/home/wardrobe.png" alt="img">WARDROBE
+									<img src="assets/images/home/wardrobe.png" alt="img">WARDROBE
 								</a>
 							</li>
 							<li class="item">
 								<a href="#" class="hasicon" title="FLOOR LAMP">
-								<img src="../../assets/images/home/floor_lamp.png" alt="img">FLOOR LAMP</a>
+								<img src="assets/images/home/floor_lamp.png" alt="img">FLOOR LAMP</a>
 							</li>
 							<li class="item">
 								<a href="#" class="hasicon" title="VASE-FLOWER ">
-									<img src="../../assets/images/home/vase-flower.png" alt="img">VASE-FLOWER
+									<img src="assets/images/home/vase-flower.png" alt="img">VASE-FLOWER
 								</a>
 							</li>
 							<li class="item">
 								<a href="#" class="hasicon" title="BED">
-									<img src="../../assets/images/home/bed.png" alt="img">BED
+									<img src="assets/images/home/bed.png" alt="img">BED
 								</a>
 							</li>
 							<li class="item">
 								<a href="#" class="hasicon" title="BED GIRL">
-								<img src="../../assets/images/home/bed.png" alt="img">BED GIRL</a>
+								<img src="assets/images/home/bed.png" alt="img">BED GIRL</a>
 							</li>
 							<li class="item">
 								<a href="#" class="hasicon" title="BED BOY">
-								<img src="../../assets/images/home/bed.png" alt="img">BED BOY</a>
+								<img src="assets/images/home/bed.png" alt="img">BED BOY</a>
 							</li>
 						</ul>
 					</div>

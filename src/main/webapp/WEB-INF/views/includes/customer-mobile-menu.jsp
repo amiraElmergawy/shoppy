@@ -19,12 +19,12 @@
                                 <div id="megamenu" class="clearfix">
                                     <ul class="menu level1">
                                         <li class="item home-page has-sub">
-                                            <a href="home.jsp" title="Home">
+                                            <a href="../customer/home.jsp" title="Home">
                                                 <i class="fa fa-home" aria-hidden="true"></i>Home</a>
                                         </li>
 
                                         <li class="item group has-sub">
-                                            <a href="about-us.jsp" title="Page">
+                                            <a href="../customer/about-us.jsp" title="Page">
                                                 <i class="fa fa-file-text-o" aria-hidden="true"></i>About Us</a>
                                         </li>
                                         <li class="item has-sub">
