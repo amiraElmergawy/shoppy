@@ -21,5 +21,4 @@ public class UserDto {
     private String jobTitle;
     private double creditLimit;
     private AddressEntity address;
-    private boolean isAdmin;
 }

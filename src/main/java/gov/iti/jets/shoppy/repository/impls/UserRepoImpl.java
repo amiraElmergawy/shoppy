@@ -1,9 +1,12 @@
 package gov.iti.jets.shoppy.repository.impls;
 
+import gov.iti.jets.shoppy.repository.entity.AdminEntity;
+import gov.iti.jets.shoppy.repository.entity.CustomerEntity;
 import gov.iti.jets.shoppy.repository.entity.UserEntity;
 import gov.iti.jets.shoppy.repository.interfaces.UserRepo;
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.Query;
 
 import java.util.ArrayList;
@@ -32,14 +35,22 @@ public class UserRepoImpl implements UserRepo {
     }
 
     @Override
-    public Optional<UserEntity> findUser(String email, String password) {
-        String select = "SELECT u FROM UserEntity u WHERE u.email=:email and u.password=:pass";
-
+    public Optional<? extends UserEntity> findUser(String email, String password) {
+        String select = "select  u from UserEntity u where u.email=:email and u.pass=:password";
         Query query = entityManager.createQuery(select);
         query.setParameter("email", email);
-        query.setParameter("pass", password);
-
-        return (Optional<UserEntity>) query.getSingleResult();
+        query.setParameter("password", password);
+        try {
+            String entityType = query.getSingleResult().getClass().getName().substring(query.getSingleResult().getClass().getName().lastIndexOf(".")+1);
+            System.out.println(entityType);
+            if(entityType.equals("AdminEntity")){
+                return (Optional<AdminEntity>) query.getSingleResult();
+            }else {
+                return (Optional<CustomerEntity>) query.getSingleResult();
+            }
+        }catch (NoResultException e) {
+            return Optional.empty();
+        }
     }
 
     @Override

@@ -18,7 +18,7 @@ public class AuthServiceImpl implements AuthService {
     public LoginViewHelper signIn(String email, String password, EntityManager entityManager){
         LoginViewHelper loginViewHelper = new LoginViewHelper();
         String hashedPassword = hashManager.generateSecurePassword(password);
-        Optional<UserEntity> userEntityOptional = RepoFactory.INSTANCE.getUserRepo(entityManager).findUser(email, hashedPassword);
+        Optional<? extends UserEntity> userEntityOptional = RepoFactory.INSTANCE.getUserRepo(entityManager).findUser(email, password);
         System.out.println(userEntityOptional);
         userEntityOptional.ifPresentOrElse(
                 (value) -> {
