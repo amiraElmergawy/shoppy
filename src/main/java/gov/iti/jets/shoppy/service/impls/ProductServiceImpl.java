@@ -15,9 +15,9 @@ public class ProductServiceImpl implements ProductService {
     private final RepoFactory repoFactory = RepoFactory.INSTANCE;
     private final ProductMapper productMapper = ProductMapper.INSTANCE;
     @Override
-    public HomeViewHelper getProducts(EntityManager entityManager) {
+    public HomeViewHelper getProducts(int pageNumber, EntityManager entityManager) {
         ProductRepo productRepo = repoFactory.getProductRepo(entityManager);
-        List<ProductDto> productDtoList = productRepo.getAllProducts().stream().map(
+        List<ProductDto> productDtoList = productRepo.getProducts(pageNumber).stream().map(
                 productMapper::productEntityToDto
         ).collect(Collectors.toList());
 

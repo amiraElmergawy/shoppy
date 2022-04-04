@@ -25,8 +25,8 @@ public class DomainFacade {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         return authService.signIn(email, password, entityManager);
     }
-    public HomeViewHelper retrieveProducts(){
+    public HomeViewHelper retrieveProducts(int pageNumber){
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        return productService.getProducts(entityManager);
+        return productService.getProducts(pageNumber, entityManager);
     }
 }
