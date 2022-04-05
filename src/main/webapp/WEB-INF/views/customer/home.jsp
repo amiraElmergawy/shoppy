@@ -565,7 +565,7 @@
                                                                         </div>
                                                                         <div class="product-group-price">
                                                                             <div class="product-price-and-shipping">
-                                                                                <span class="price">� "${product.getPrice()}"</span>
+                                                                                <span class="price">$ ${product.getPrice()}</span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -606,21 +606,23 @@
                                                                         Previous
                                                                     </a>
                                                                 </li>
-                                                                <li class="current active">
-                                                                    <a rel="nofollow" href="home?pageNum=1" class="disabled js-search-link">
-                                                                        1
+                                                                <c:forEach var = "pageNumber" begin = "0" end = "${helper.getAllProductCount()/12}">
+                                                                <li class="current ">
+                                                                    <a rel="nofollow" href="home?pageNum=${pageNumber+1}" class="disabled js-search-link">
+                                                                        ${pageNumber+1}
                                                                     </a>
                                                                 </li>
-                                                                <li>
-                                                                    <a rel="nofollow" href="home?pageNum=2" class="disabled js-search-link">
-                                                                        2
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a rel="nofollow" href="home?pageNum=3" class="disabled js-search-link">
-                                                                        3
-                                                                    </a>
-                                                                </li>
+                                                                </c:forEach>
+<%--                                                                <li class="active">--%>
+<%--                                                                    <a rel="nofollow" href="home?pageNum=2" class="disabled js-search-link">--%>
+<%--                                                                        2--%>
+<%--                                                                    </a>--%>
+<%--                                                                </li>--%>
+<%--                                                                <li>--%>
+<%--                                                                    <a rel="nofollow" href="home?pageNum=3" class="disabled js-search-link">--%>
+<%--                                                                        3--%>
+<%--                                                                    </a>--%>
+<%--                                                                </li>--%>
                                                                 <li>
                                                                     <a rel="next" href="home?pageNum=${param.pageNum+1}" class="next disabled js-search-link">
                                                                         Next
