@@ -8,6 +8,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
@@ -28,12 +29,19 @@ public class LoginServletController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
-
+        HttpSession httpSession = req.getSession();
         LoginViewHelper loginViewHelper = DomainFacade.getInstance().signIn(email, password);
 
         System.out.println("Customer DTO "+loginViewHelper.getCustomerDto());
         System.out.println("Admin Dto " + loginViewHelper.getAdminDto());
         System.out.println("Error "+ loginViewHelper.getError());
+        if (loginViewHelper.getCustomerDto() != null){
+            httpSession.setAttribute("role", "customer");
+            httpSession.setAttribute("data", loginViewHelper.getCustomerDto());
+        } else if(loginViewHelper.getAdminDto() != null){
+            httpSession.setAttribute("role", "admin");
+            httpSession.setAttribute("data", loginViewHelper.getAdminDto());
+        }
 
     }
 }
