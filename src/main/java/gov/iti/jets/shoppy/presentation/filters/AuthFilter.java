@@ -47,9 +47,7 @@ public class AuthFilter implements Filter {
                     System.out.println("this is the admin");
             }
         }
-
         filterChain.doFilter(servletRequest,servletResponse);
-
     }
 
     @Override

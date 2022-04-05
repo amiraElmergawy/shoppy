@@ -30,6 +30,7 @@ signInForm.addEventListener('submit', e => {
             var er = document.getElementById("invaled");
             var errorMessage = document.createTextNode(data);
             er.append(errorMessage);
+            data.redirect;
         }
     });
 
