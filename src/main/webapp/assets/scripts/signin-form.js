@@ -4,18 +4,9 @@ const passwordElement = document.getElementById("password");
 
 signInForm.addEventListener('submit', e => {
     e.preventDefault();
-    validateEmailInput(emailElement);
-    validatePasswordInput(passwordElement);
-    console.log(emailElement.value);
-    // $.post("signin",
-    //     {
-    //         email: emailElement,
-    //         password: passwordElement
-    //     },
-    //     function(data, status){
-    //         console.table("Data: " + data + "\nStatus: " + status);
-    //     });
-    //
+    // validateEmailInput(emailElement);
+    // validatePasswordInput(passwordElement);
+    // console.log(emailElement.value);
 
     $.ajax({
         type: 'post',
@@ -27,39 +18,15 @@ signInForm.addEventListener('submit', e => {
         contentType : 'application/x-www-form-urlencoded',
         success: function (data) {
             console.log(data);
-            var errorDiv = document.getElementById("invaled");
-            errorDiv.innerText = data;
-            errorDiv.classList.remove("d-none");
+            if(data == "Invalid email or password"){
+                var errorDiv = document.getElementById("invaled");
+                errorDiv.innerText = data;
+                errorDiv.classList.remove("d-none");
+            } else {
+                data.redirect;
+            }
 
         }
     });
 
-    // let post = JSON.stringify(
-    //     {
-    //             "email": emailElement.value,
-    //             "password": passwordElement.value,
-    //             "test":"test"
-    //     }
-    // )
-    // const url = "/shoppy/signin"
-    //
-    // let xhr = new XMLHttpRequest()
-    //
-    // xhr.open('POST', url, true)
-    //
-    // xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
-    //
-    // xhr.send("email="+ emailElement.value+"&password="+passwordElement.value);
-    //
-    //
-    //
-    // xhr.onload = function () {
-    //
-    //     if(xhr.status === 201) {
-    //
-    //         console.log("Post successfully created!")
-    //
-    //     }
-    //
-    // }
 })
