@@ -4,6 +4,8 @@ import gov.iti.jets.shoppy.repository.entity.ProductCategory;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @Builder
 public class ProductDto {
@@ -13,5 +15,5 @@ public class ProductDto {
     private double price;
     private ProductCategory category;
     private Integer stock;
-    private String imgPath;
+    private List<String> imagesPaths;
 }

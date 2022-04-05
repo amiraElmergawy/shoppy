@@ -19,7 +19,7 @@
 <body id="home" >
 
 <%@ include file="../includes/customer-header.jsp" %>
-
+<c:url value="/" var="imagesUrl" context="/images"/>
 <div class="wrap-banner">
 
     <!-- slide show -->
@@ -533,13 +533,13 @@
                                             <div class="tab-content product-items">
                                                 <div id="grid" class="related tab-pane fade in active show">
                                                     <div class="row mb-5">
-                                                        <c:forEach var="product" items="${helper.getProductDtoList() }">
+                                                        <c:forEach var="product" items="${helper.getProductDtoList()}">
                                                         <div class="item text-center col-md-4 mb-4 p-1">
                                                             <div class="product-miniature js-product-miniature item-one first-item shadow rounded p-1">
                                                                 <div class="thumbnail-container border">
-                                                                    <a href="product-detail.jsp">
-                                                                        <img class="img-fluid image-cover" src="assets/images/product/2.jpg" alt="img">
-                                                                        <img class="img-fluid image-secondary" src="assets/images/product/11.jpg" alt="img">
+                                                                    <a href="product-details">
+                                                                        <img class="img-fluid image-cover" src="${imagesUrl}${product.getImagesPaths().get(0)}" alt="img">
+                                                                        <img class="img-fluid image-secondary" src="${imagesUrl}${product.getImagesPaths().get(1)}" alt="img">
                                                                     </a>
                                                                     <div class="highlighted-informations">
                                                                         <div class="variant-links">
@@ -651,8 +651,7 @@
 
     <%@ include file="../includes/customer-mobile-menu.jsp" %>
     <%@ include file="../includes/customer-footer.jsp" %>
-<%@ include file="../includes/customer-script.jsp" %>
-
+    <%@ include file="../includes/customer-script.jsp" %>
 </body>
 
 
