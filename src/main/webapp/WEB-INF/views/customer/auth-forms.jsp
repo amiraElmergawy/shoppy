@@ -17,21 +17,22 @@
 
 <div class="cont">
     <div class="form sign-in">
+        <div class="alert-danger text-center h6 py-2 d-none" id="invaled" style="height: 35px"></div>
         <h2>Sign In</h2>
         <form id="sign-in-form" >
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label>
                     <span>Email Address</span>
                 </label>
                 <input type="email" name="email" id="email" required>
-                <div class="error"></div>
+                <div class="error d-none"></div>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label>
                     <span>Password</span>
                 </label>
                 <input type="password" name="password" id="password" required>
-                <div class="error"></div>
+                <div class="error d-none"></div>
             </div>
 
             <div class="form-group">
@@ -39,7 +40,7 @@
                     <span>Remember Me</span>
                 </label>
                 <input type="checkbox" name="password" id="rememberMe" value="checked">
-                <div class="error" id="invaled"></div>
+
             </div>
             <button class="submit" type="submit">Sign In</button>
         </form>

@@ -27,10 +27,10 @@ signInForm.addEventListener('submit', e => {
         contentType : 'application/x-www-form-urlencoded',
         success: function (data) {
             console.log(data);
-            var er = document.getElementById("invaled");
-            var errorMessage = document.createTextNode(data);
-            er.append(errorMessage);
-            data.redirect;
+            var errorDiv = document.getElementById("invaled");
+            errorDiv.innerText = data;
+            errorDiv.classList.remove("d-none");
+
         }
     });
 
