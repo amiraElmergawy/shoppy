@@ -19,7 +19,7 @@ signInForm.addEventListener('submit', e => {
 
     $.ajax({
         type: 'post',
-        url: '/shoppy/signin',
+        url: '/shoppy/login',
         data: {
             email: emailElement.value,
             password: passwordElement.value
@@ -27,6 +27,9 @@ signInForm.addEventListener('submit', e => {
         contentType : 'application/x-www-form-urlencoded',
         success: function (data) {
             console.log(data);
+            var er = document.getElementById("invaled");
+            var errorMessage = document.createTextNode(data);
+            er.append(errorMessage);
         }
     });
 
@@ -58,5 +61,4 @@ signInForm.addEventListener('submit', e => {
     //     }
     //
     // }
-
 })

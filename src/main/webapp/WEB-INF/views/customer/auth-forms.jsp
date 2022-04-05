@@ -33,6 +33,14 @@
                 <input type="password" name="password" id="password" required>
                 <div class="error"></div>
             </div>
+
+            <div class="form-group">
+                <label>
+                    <span>Remember Me</span>
+                </label>
+                <input type="checkbox" name="password" id="rememberMe" value="checked">
+                <div class="error" id="invaled"></div>
+            </div>
             <button class="submit" type="submit">Sign In</button>
         </form>
         <p class="forgot-pass">Forgot Password ?</p>
