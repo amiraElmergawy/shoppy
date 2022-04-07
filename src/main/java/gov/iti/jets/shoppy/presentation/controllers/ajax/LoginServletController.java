@@ -17,6 +17,10 @@ public class LoginServletController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+//        if (req.getParameter("firstTime") != null){
+//        }
+
         RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/customer/auth-forms.jsp");
         try {
             rd.include(req,resp);
@@ -27,26 +31,27 @@ public class LoginServletController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         String email = req.getParameter("email");
         String password = req.getParameter("password");
         HttpSession httpSession = req.getSession();
         LoginViewHelper loginViewHelper = DomainFacade.getInstance().signIn(email, password);
         PrintWriter writer =resp.getWriter();
-        System.out.println("Customer DTO "+loginViewHelper.getCustomerDto());
-        System.out.println("Admin Dto " + loginViewHelper.getAdminDto());
-        System.out.println("Error "+ loginViewHelper.getError());
+//        System.out.println("Customer DTO "+loginViewHelper.getCustomerDto());
+//        System.out.println("Admin Dto " + loginViewHelper.getAdminDto());
+//        System.out.println("Error "+ loginViewHelper.getError());
         if (loginViewHelper.getCustomerDto() != null){
             httpSession.setAttribute("role", "customer");
             httpSession.setAttribute("data", loginViewHelper.getCustomerDto());
             resp.sendRedirect("home");
-
         } else if(loginViewHelper.getAdminDto() != null){
             httpSession.setAttribute("role", "admin");
             httpSession.setAttribute("data", loginViewHelper.getAdminDto());
             resp.sendRedirect("add-product");
         }
         if(loginViewHelper.getError() != null){
-            writer.write(loginViewHelper.getError());
+//            resp.sendRedirect("login");
+            resp.getWriter().write(loginViewHelper.getError());
         }
     }
 }

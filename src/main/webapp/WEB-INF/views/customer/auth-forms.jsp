@@ -19,7 +19,7 @@
     <div class="form sign-in">
         <div class="alert-danger text-center h6 py-2 d-none" id="invaled" style="height: 35px"></div>
         <h2>Sign In</h2>
-        <form id="sign-in-form" >
+        <form id="sign-in-form" action="login" method="post">
             <div class="form-group mb-3">
                 <label>
                     <span>Email Address</span>
@@ -151,8 +151,5 @@
 <%@ include file="../includes/customer-script.jsp" %>
 
 </body>
-
-
 <!-- user-login11:10-->
-
 </html>
