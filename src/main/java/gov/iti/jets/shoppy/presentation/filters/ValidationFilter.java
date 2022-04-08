@@ -38,8 +38,8 @@ public class ValidationFilter implements Filter {
                 if (validator.validateLoginFields(email , password)){
                     chain.doFilter(req,res);
                 }else {
-//                    res.sendRedirect("login?firstTime=false");
-                    res.getWriter().write("invalid format email or password");
+                    res.sendRedirect("login?notValid=false");
+//                    res.getWriter().write("invalid format email or password");
                 }
             }
         }

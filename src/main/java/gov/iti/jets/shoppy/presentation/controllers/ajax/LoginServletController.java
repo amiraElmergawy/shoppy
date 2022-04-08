@@ -17,15 +17,26 @@ public class LoginServletController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-//        if (req.getParameter("firstTime") != null){
-//        }
-
-        RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/customer/auth-forms.jsp");
-        try {
-            rd.include(req,resp);
-        } catch (ServletException e) {
-            e.printStackTrace();
+        resp.setContentType("text/html");
+        if(req.getSession(false) != null && req.getSession(false).getAttribute("role") != null){
+            if (req.getSession(false).getAttribute("role").equals("customer") ){
+                resp.sendRedirect("home");
+            }else{
+                resp.sendRedirect("dashboard");
+            }
+        }else {
+            if (req.getParameter("loginBoolean") != null) {
+                resp.getWriter().println("Login Failed , invalid email or password , Please Try Again");
+            }
+            if (req.getParameter("notValid") != null) {
+                resp.getWriter().println("invalid format email or password");
+            }
+            RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/customer/auth-forms.jsp");
+            try {
+                rd.include(req,resp);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -47,11 +58,11 @@ public class LoginServletController extends HttpServlet {
         } else if(loginViewHelper.getAdminDto() != null){
             httpSession.setAttribute("role", "admin");
             httpSession.setAttribute("data", loginViewHelper.getAdminDto());
-            resp.sendRedirect("add-product");
+            resp.sendRedirect("dashboard");
         }
         if(loginViewHelper.getError() != null){
-//            resp.sendRedirect("login");
-            resp.getWriter().write(loginViewHelper.getError());
+            resp.sendRedirect("login?loginBoolean=false");
+//            resp.getWriter().write(loginViewHelper.getError());
         }
     }
 }
