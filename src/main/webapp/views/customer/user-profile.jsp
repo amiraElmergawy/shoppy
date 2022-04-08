@@ -60,65 +60,82 @@
                 <div id="main">
                     <h1 class="title-page">My Account</h1>
 
-                    <a href="#">
-                        <button id="edit">
-                        <i class="fa fa-pencil edit-pen"></i> </button>
-                    </a>
+
+                        <i class="fa fa-pencil edit-pen" id="edit"></i>
+
                     <div class="content" id="block-history">
                         <form id="edit-form">
                             <!-- 2 column grid layout with text inputs for the first and last names -->
 
-                                    <div class="form-outline mb-4">
+                                    <div class="form-outline mb-1 form-group">
                                         <label class="form-label" for="name">Name</label>
-                                        <input type="text" id="name" class="form-control" disabled="disabled"/>
-                                        <div id="error"></div>
+                                        <input type="text" id="name" class="form-control" disabled="disabled" required/>
+                                        <div class="error"></div>
 
                                     </div>
                             <!-- Text input -->
-                            <div class="form-outline mb-4 form-group">
+                            <div class="form-outline mb-1 form-group">
                                 <label class="form-label" for="jop">Jop</label>
-                                <input type="text" id="jop" class="form-control" />
+                                <input type="text" id="jop" class="form-control" disabled="disabled" required/>
                                 <div class="error"></div>
                             </div>
 
                             <!-- Text input -->
-                            <div class="form-outline mb-4 form-group">
+                            <div class="form-outline mb-1 form-group">
 
-                                <label class="form-label" >Address</label>
-                                <input type="text" id="address" class="form-control" />
+                                <label class="form-label" >City</label>
+                                <input type="text" id="city" class="form-control" disabled="disabled" required/>
+                                <div class="error"></div>
+                            </div>
+                            <div class="form-outline mb-1 form-group">
+
+                                <label class="form-label" >street</label>
+                                <input type="text" id="street" class="form-control" disabled="disabled" required/>
+                                <div class="error"></div>
+                            </div>
+                            <div class="form-outline mb-1 form-group">
+
+                                <label class="form-label" >Building Number</label>
+                                <input type="text" id="building-number" class="form-control" disabled="disabled" required/>
+                                <div class="error"></div>
+                            </div>
+                            <div class="form-outline mb-1 form-group">
+
+                                <label class="form-label" >Floor Number</label>
+                                <input type="text" id="floor-number" class="form-control" disabled="disabled" required/>
                                 <div class="error"></div>
                             </div>
 
                             <!-- Email input -->
-                            <div class="form-outline mb-4 form-group">
+                            <div class="form-outline mb-1 form-group">
                                 <label class="form-label" for="email">Email</label>
-                                <input type="email" id="email" class="form-control" disabled/>
+                                <input type="email" id="email" class="form-control" disabled="disabled"/>
                                 <div class="error"></div>
 
                             </div>
 
-                            <div class="form-outline mb-4 form-group">
+                            <div class="form-outline mb-1 form-group">
 
                                 <label class="form-label" for="date">Birth Date</label>
-                                <input type="date" id="date" class="form-control" />
+                                <input type="date" id="date" class="form-control" disabled="disabled" required/>
                                 <div class="error"></div>
                             </div>
-                            <div class="form-outline mb-4 form-group">
+                            <div class="form-outline mb-1 form-group">
                                 <label class="form-label" for="gender">Gender</label>
-                                <input type="text" id="gender" class="form-control" />
+                                <input type="text" id="gender" class="form-control" disabled="disabled" required/>
                                 <div class="error"></div>
 
                             </div>
 
-                            <div class="form-outline mb-4 form-group">
-                                <label class="form-label" for="interestes">Favourites</label>
-                                <input type="text" id="interestes" class="form-control" />
+                            <div class="form-outline mb-1 form-group">
+                                <label class="form-label" for="interests">Favourites</label>
+                                <input type="text" id="interests" class="form-control" disabled="disabled" required/>
                                 <div class="error"></div>
 
                             </div>
 
                             <!-- Submit button -->
-                            <button type="submit" id="submit" class="btn btn-primary btn-block mb-4 non_visible" >Place order</button>
+                            <button type="submit" id="submit" class="btn btn-primary btn-block mb-4 non_visible" >Save</button>
                         </form>
 
                     </div>

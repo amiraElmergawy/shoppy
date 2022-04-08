@@ -4,7 +4,7 @@ const namePattern = /^[a-zA-Z ]{2,30}$/;
 const setError = (element, message) => {
     const inputControl = element.parentElement;
     const errorDisplay = inputControl.querySelector('.error');
-
+console.log(inputControl);
     errorDisplay.innerText = message;
     inputControl.classList.add('error');
     // inputControl.classList.remove('success')
@@ -13,8 +13,8 @@ const setError = (element, message) => {
 
 const setSuccess = element => {
     const inputControl = element.parentElement;
-    const errorDisplay = inputControl.querySelector('.error');
-     errorDisplay.innerText ='';
+    //const errorDisplay = inputControl.querySelector('.error');
+     //errorDisplay.innerText ='';
     inputControl.classList.remove('error');
     inputControl.classList.add('success');
 };
@@ -62,25 +62,13 @@ const validatePasswordInput = passwordElment => {
 const validateNameInput = nameElement => {
     if (nameElement.value === '') {
         setError(nameElement, 'This field is required');
-        return false;
     } else if (!isValidName(nameElement.value)) {
         setError(nameElement, 'Wrong')
-        return false;
     } else {
         setSuccess(nameElement);
-        return true;
     }
 }
-const validateIntersts = interstsElement=>{
-    if (interstsElement.value === '') {
-        setError(interstsElement, 'This field is required');
-        return false;
-    }  else {
-        setSuccess(interstsElement);
-        return true;
-    }
 
-}
 const validateGenderInput = genderElement =>{
     if (genderElement.value === '') {
         setError(genderElement, 'You should enter your gender');
@@ -90,17 +78,6 @@ const validateGenderInput = genderElement =>{
         return false;
     } else {
         setSuccess(genderElement);
-        return true;
-    }
-
-}
-const validateJopInput = jopElement => {
-    if (jopElement.value === '') {
-        setError(jopElement, 'You should enter your gender');
-        return false;
-    }
-    else {
-        setSuccess(jopElement);
         return true;
     }
 
