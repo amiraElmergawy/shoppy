@@ -25,12 +25,13 @@ public class LoginServletController extends HttpServlet {
                 resp.sendRedirect("dashboard");
             }
         }else {
-            if (req.getParameter("loginBoolean") != null) {
-                resp.getWriter().println("Login Failed , invalid email or password , Please Try Again");
-            }
-            if (req.getParameter("notValid") != null) {
-                resp.getWriter().println("invalid format email or password");
-            }
+//            if (req.getParameter("loginBoolean") != null) {
+//                resp.getWriter().println("Login Failed , invalid email or password , Please Try Again");
+//            }
+//            if (req.getParameter("notValid") != null) {
+//                req.setAttribute("error", "invalid format email or password");
+//                req.getRequestDispatcher("WEB-INF/views/customer/auth-forms.jsp").forward(req, resp);
+//            }
             RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/customer/auth-forms.jsp");
             try {
                 rd.include(req,resp);
@@ -61,8 +62,8 @@ public class LoginServletController extends HttpServlet {
             resp.sendRedirect("dashboard");
         }
         if(loginViewHelper.getError() != null){
-            resp.sendRedirect("login?loginBoolean=false");
-//            resp.getWriter().write(loginViewHelper.getError());
+            req.setAttribute("helper", loginViewHelper);
+            req.getRequestDispatcher("WEB-INF/views/customer/auth-forms.jsp").forward(req, resp);
         }
     }
 }

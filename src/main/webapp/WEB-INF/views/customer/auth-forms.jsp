@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +18,18 @@
 
 <div class="cont">
     <div class="form sign-in">
-        <div class="alert-danger text-center h6 py-2 d-none" id="invaled" style="height: 35px"></div>
+        <c:choose>
+            <c:when test="${empty helper.getError() || error }">
+                <div class="alert-danger text-center h6 py-2 d-none" id="invaled" style="height: 35px">
+                </div>
+            </c:when>
+            <c:otherwise>
+                <div class="alert-danger text-center h6 py-2 " id="invaled" style="height: 35px">
+                    <p>${helper.getError()}</p>  <P>${error}</P>
+                </div>
+            </c:otherwise>
+        </c:choose>
+
         <h2>Sign In</h2>
         <form id="sign-in-form" action="login" method="post">
             <div class="form-group mb-3">

@@ -26,9 +26,6 @@ public class ValidationFilter implements Filter {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
 
-        System.out.println(req.getMethod());
-        System.out.println(req.getRequestURI());
-
         if ((req.getMethod()).equals("GET")){
             chain.doFilter(req,res);
         }else {
