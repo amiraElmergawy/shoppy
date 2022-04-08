@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.lang.Math" %>
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if IE 9 ]><html class="ie ie9" lang="en"> <![endif]-->
@@ -601,33 +602,47 @@
                                                         </div>
                                                         <div class="page-list col col-xs-12">
                                                             <ul class="bg-transparent">
-                                                                <li>
-                                                                    <a rel="prev" href="${param.pageNum-1}" class="previous disabled js-search-link">
-                                                                        Previous
-                                                                    </a>
-                                                                </li>
-                                                                <c:forEach var = "pageNumber" begin = "0" end = "${helper.getAllProductCount()/12}">
+                                                                <c:choose>
+                                                                    <c:when test="${param.pageNum <= 1}">
+                                                                       <li>
+                                                                        <a rel="prev" href="${param.pageNum-1}" class="previous disabled js-search-link" style="pointer-events: none">
+                                                                            Previous
+                                                                        </a>
+                                                                       </li>
+                                                                    </c:when>
+                                                                    <c:otherwise>
+                                                                        <li style="background-color:#343434 ">
+                                                                            <a rel="prev" href="${param.pageNum-1}" class="previous disabled js-search-link">
+                                                                                Previous
+                                                                            </a>
+                                                                        </li>
+                                                                    </c:otherwise>
+                                                                </c:choose>
+
+                                                                <c:forEach var = "pageNumber" begin = "0" end = "${Math.round(helper.getAllProductCount()/12)}">
                                                                 <li class="current ">
-                                                                    <a rel="nofollow" href="home?pageNum=${pageNumber+1}" class="disabled js-search-link">
+                                                                    <a rel="nofollow" href="home?pageNum=${pageNumber+1}" class="disabled js-search-link" id="${pageNumber+1}">
                                                                         ${pageNumber+1}
                                                                     </a>
                                                                 </li>
                                                                 </c:forEach>
-<%--                                                                <li class="active">--%>
-<%--                                                                    <a rel="nofollow" href="home?pageNum=2" class="disabled js-search-link">--%>
-<%--                                                                        2--%>
-<%--                                                                    </a>--%>
-<%--                                                                </li>--%>
-<%--                                                                <li>--%>
-<%--                                                                    <a rel="nofollow" href="home?pageNum=3" class="disabled js-search-link">--%>
-<%--                                                                        3--%>
-<%--                                                                    </a>--%>
-<%--                                                                </li>--%>
-                                                                <li>
-                                                                    <a rel="next" href="home?pageNum=${param.pageNum+1}" class="next disabled js-search-link">
-                                                                        Next
-                                                                    </a>
-                                                                </li>
+                                                                <c:choose>
+                                                                    <c:when test="${param.pageNum > Math.round(helper.getAllProductCount()/12)}">
+                                                                        <li>
+                                                                            <a rel="next" href="home?pageNum=${param.pageNum+1}" class="next disabled js-search-link" style="pointer-events: none">
+                                                                                Next
+                                                                            </a>
+                                                                        </li>
+                                                                    </c:when>
+                                                                    <c:otherwise>
+
+                                                                        <li style="background-color: #FF5151">
+                                                                            <a rel="next" href="home?pageNum=${param.pageNum+1}" class="next disabled js-search-link">
+                                                                                Next
+                                                                            </a>
+                                                                        </li>
+                                                                    </c:otherwise>
+                                                                </c:choose>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -652,7 +667,14 @@
     <%@ include file="../includes/customer-mobile-menu.jsp" %>
     <%@ include file="../includes/customer-footer.jsp" %>
 <%@ include file="../includes/customer-script.jsp" %>
-
+<script>
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const currentPage = urlParams.get('pageNum');
+    if(currentPage != ''){
+        document.getElementById(currentPage).parentElement.classList.add("active");
+    }
+</script>
 </body>
 
 
