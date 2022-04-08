@@ -1,7 +1,5 @@
 package gov.iti.jets.shoppy.presentation.controllers.ajax;
 
-import gov.iti.jets.shoppy.presentation.helpers.LoginViewHelper;
-import gov.iti.jets.shoppy.service.DomainFacade;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -11,8 +9,8 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet (name = "LoginServletController" , value = "/login")
-public class LoginServletController extends HttpServlet {
+@WebServlet (name = "RegisterServletController" , value = "/register")
+public class RegisterServletController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -24,12 +22,4 @@ public class LoginServletController extends HttpServlet {
         }
     }
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String email = req.getParameter("email");
-        String password = req.getParameter("password");
-
-        LoginViewHelper loginViewHelper = DomainFacade.getInstance().signIn(email, password);
-
-    }
 }
