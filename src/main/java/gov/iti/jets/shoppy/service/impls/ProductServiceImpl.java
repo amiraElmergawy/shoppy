@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 public class ProductServiceImpl implements ProductService {
     private final RepoFactory repoFactory = RepoFactory.INSTANCE;
     private final ProductMapper productMapper = ProductMapper.INSTANCE;
-    private final ImageUtility imageUtility = ImageUtility.INSTANCE;
+    private final ImageUtility imageUtility = ImageUtility.getInstance();
     @Override
     public HomeViewHelper getProducts(int pageNumber, EntityManager entityManager) {
         ProductRepo productRepo = repoFactory.getProductRepo(entityManager);
