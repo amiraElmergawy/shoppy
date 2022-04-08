@@ -603,7 +603,7 @@
                                                         <div class="page-list col col-xs-12">
                                                             <ul class="bg-transparent">
                                                                 <c:choose>
-                                                                    <c:when test="${param.pageNum <= 1}">
+                                                                    <c:when test="${param.pageNum <= 1 || empty param.pageNum}">
                                                                        <li>
                                                                         <a rel="prev" href="${param.pageNum-1}" class="previous disabled js-search-link" style="pointer-events: none">
                                                                             Previous
@@ -612,7 +612,7 @@
                                                                     </c:when>
                                                                     <c:otherwise>
                                                                         <li style="background-color:#343434 ">
-                                                                            <a rel="prev" href="${param.pageNum-1}" class="previous disabled js-search-link">
+                                                                            <a rel="prev" href="home?pageNum=${param.pageNum-1}" class="previous disabled js-search-link">
                                                                                 Previous
                                                                             </a>
                                                                         </li>
@@ -670,10 +670,12 @@
 <script>
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    const currentPage = urlParams.get('pageNum');
-    if(currentPage >= 1){
-        document.getElementById(currentPage).parentElement.classList.add("active");
+    var currentPage = urlParams.get('pageNum');
+    console.log(currentPage)
+    if(currentPage == null){
+     currentPage=1;
     }
+    document.getElementById(currentPage).parentElement.classList.add("active");
 
 </script>
 </body>
