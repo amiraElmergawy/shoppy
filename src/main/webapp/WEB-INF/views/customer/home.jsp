@@ -618,16 +618,15 @@
                                                                         </li>
                                                                     </c:otherwise>
                                                                 </c:choose>
-
-                                                                <c:forEach var = "pageNumber" begin = "0" end = "${Math.round(helper.getAllProductCount()/12)}">
+                                                                <c:forEach var = "pageNumber" begin = "1" end = "${Math.round(helper.getAllProductCount()/12)}">
                                                                 <li class="current ">
-                                                                    <a rel="nofollow" href="home?pageNum=${pageNumber+1}" class="disabled js-search-link" id="${pageNumber+1}">
-                                                                        ${pageNumber+1}
+                                                                    <a rel="nofollow" href="home?pageNum=${pageNumber}" class="disabled js-search-link" id="${pageNumber}">
+                                                                        ${pageNumber}
                                                                     </a>
                                                                 </li>
                                                                 </c:forEach>
                                                                 <c:choose>
-                                                                    <c:when test="${param.pageNum > Math.round(helper.getAllProductCount()/12)}">
+                                                                    <c:when test="${param.pageNum >= Math.round(helper.getAllProductCount()/12)}">
                                                                         <li>
                                                                             <a rel="next" href="home?pageNum=${param.pageNum+1}" class="next disabled js-search-link" style="pointer-events: none">
                                                                                 Next
