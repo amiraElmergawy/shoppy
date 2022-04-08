@@ -671,7 +671,7 @@
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const currentPage = urlParams.get('pageNum');
-    if(currentPage != ''){
+    if(currentPage >= 1){
         document.getElementById(currentPage).parentElement.classList.add("active");
     }
 
