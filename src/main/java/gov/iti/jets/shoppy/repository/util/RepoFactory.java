@@ -8,14 +8,12 @@ import jakarta.persistence.EntityManager;
 
 public enum RepoFactory {
     INSTANCE;
-//    private final UserRepo userRepo = UserRepoImpl.getInstance();
-    private final ProductRepo productRepo = ProductRepoImp.getInstance();
     public UserRepo getUserRepo(EntityManager entityManager) {
         return new UserRepoImpl(entityManager);
     }
 
-    public ProductRepo getProductRepo() {
-        return productRepo;
+    public ProductRepo getProductRepo(EntityManager entityManager) {
+        return new ProductRepoImp(entityManager);
     }
 
 }
