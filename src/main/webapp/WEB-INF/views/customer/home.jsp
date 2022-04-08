@@ -674,6 +674,7 @@
     if(currentPage != ''){
         document.getElementById(currentPage).parentElement.classList.add("active");
     }
+
 </script>
 </body>
 
