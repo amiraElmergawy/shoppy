@@ -1,5 +1,6 @@
 package gov.iti.jets.shoppy.presentation.filters;
 
+import gov.iti.jets.shoppy.service.dtos.Role;
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -31,12 +32,12 @@ public class AuthFilter implements Filter {
             HttpSession httpSession = ((HttpServletRequest) servletRequest).getSession(false);
             if (httpSession != null) {
                 System.out.println("from auth filter, http session is not null");
-                String role = (String) httpSession.getAttribute("role");
-                if(!role.equals(null)){
+                Role role = (Role) httpSession.getAttribute("userRole");
+                if(role != null){
                     System.out.println("role is: "+role);
-                    if (adminUrlList.contains(requestUrl) && !role.equals("admin")){
+                    if (adminUrlList.contains(requestUrl) && !role.equals(Role.ADMIN)){
                         ((HttpServletResponse) servletResponse).sendRedirect("not-found-page");
-                    } else if (customerList.contains(requestUrl) && !(role.equals("customer") || role.equals("admin")) ) {
+                    } else if (customerList.contains(requestUrl) && !(role.equals(Role.CUSTOMER) || role.equals(Role.ADMIN)) ) {
                         ((HttpServletResponse) servletResponse).sendRedirect("not-found-page");
                     } else {
                         filterChain.doFilter(servletRequest, servletResponse);
