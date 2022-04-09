@@ -19,19 +19,20 @@ public class CookiesFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException, ServletException {
+
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res =(HttpServletResponse) response;
-        PrintWriter printWriter = res.getWriter();
+//        PrintWriter printWriter = res.getWriter();
 
-        if ((req.getRequestURI()).equals("/shoppy/")){
-            filterChain.doFilter(req , res);
+        if (req.getRequestURI().equals("/shoppy/")){
+            filterChain.doFilter(request , response);
         }else{
             Cookie[] cookies =req.getCookies();
             if (cookies==null){
                 //replace this by include jsp has error when close cookies
-                printWriter.println("<p>YOU ARE Disable Cookies , we use it please Enable it :) </p>");
+//                printWriter.println("<p>YOU ARE Disable Cookies , we use it please Enable it :) </p>");
             }else {
-                filterChain.doFilter(req , res);
+                filterChain.doFilter(request , response);
             }
         }
     }

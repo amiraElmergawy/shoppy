@@ -21,7 +21,6 @@ public class ValidationFilter implements Filter {
         Validator validator = Validator.getInstance();
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res =(HttpServletResponse) response;
-        PrintWriter printWriter = res.getWriter();
 
         String email = req.getParameter("email");
         String password = req.getParameter("password");
@@ -29,7 +28,9 @@ public class ValidationFilter implements Filter {
         if ((req.getMethod()).equals("GET")){
             chain.doFilter(req,res);
         }else {
+            System.out.println("this is post methode");
             if ((req.getRequestURI()).equals("/shoppy/login")){
+                System.out.println("this is login page");
                 if (validator.validateLoginFields(email , password)){
                     chain.doFilter(req,res);
                 }else {
@@ -39,6 +40,7 @@ public class ValidationFilter implements Filter {
             }
         }
     }
+
     @Override
     public void destroy() {
         Filter.super.destroy();
