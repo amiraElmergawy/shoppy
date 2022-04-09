@@ -62,10 +62,13 @@ const validatePasswordInput = passwordElment => {
 const validateNameInput = nameElement => {
     if (nameElement.value === '') {
         setError(nameElement, 'This field is required');
+        return false;
     } else if (!isValidName(nameElement.value)) {
         setError(nameElement, 'Wrong')
+        return false;
     } else {
         setSuccess(nameElement);
+        return true;
     }
 }
 
@@ -73,13 +76,16 @@ const checkPasswordInputsSimilarity = (passwordElement, confirmPasswordElement) 
 
     if (confirmPasswordElement.value === '') {
         setError(confirmPasswordElement, 'Please confirm your password');
+        return false;
 
     } else if (confirmPasswordElement.value !== passwordElement.value) {
         setError(confirmPasswordElement, "Passwords doesn't match");
+        return false;
 
     } else {
         console.log("match")
         setSuccess(confirmPasswordElement);
+        return true;
     }
 
 }
