@@ -29,9 +29,7 @@ public class ValidationFilter implements Filter {
         if ((req.getMethod()).equals("GET")){
             chain.doFilter(req,res);
         }else {
-            System.out.println("this is post methode");
             if ((req.getRequestURI()).equals("/shoppy/login")){
-                System.out.println("this is login page");
                 if (validator.validateLoginFields(email , password)){
                     chain.doFilter(req,res);
                 }else {
@@ -41,7 +39,6 @@ public class ValidationFilter implements Filter {
             }
         }
     }
-
     @Override
     public void destroy() {
         Filter.super.destroy();
