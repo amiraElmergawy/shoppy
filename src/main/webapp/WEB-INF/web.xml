@@ -1,6 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
          version="5.0">
+
+    <servlet>
+        <servlet-name>errorPage</servlet-name>
+        <jsp-file>/404.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>errorPage</servlet-name>
+        <url-pattern>/not-found-page</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>authFilter</filter-name>
+        <filter-class>gov.iti.jets.shoppy.presentation.filters.AuthFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>authFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>validationFilter</filter-name>
+        <filter-class>gov.iti.jets.shoppy.presentation.filters.ValidationFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>validationFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>CookiesFilter</filter-name>
+        <filter-class>gov.iti.jets.shoppy.presentation.filters.CookiesFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>CookiesFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 </web-app>

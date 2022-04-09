@@ -73,10 +73,10 @@ const checkPasswordInputsSimilarity = (passwordElement, confirmPasswordElement) 
 
     if (confirmPasswordElement.value === '') {
         setError(confirmPasswordElement, 'Please confirm your password');
-        console.log("empty")
+
     } else if (confirmPasswordElement.value !== passwordElement.value) {
         setError(confirmPasswordElement, "Passwords doesn't match");
-        console.log("not match")
+
     } else {
         console.log("match")
         setSuccess(confirmPasswordElement);
