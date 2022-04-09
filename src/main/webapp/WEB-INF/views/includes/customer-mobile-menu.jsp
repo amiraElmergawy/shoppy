@@ -28,9 +28,11 @@
                                                 <i class="fa fa-file-text-o" aria-hidden="true"></i>About Us</a>
                                         </li>
                                         <li class="item has-sub">
-                                            <a href="contact.jsp" title="Contact us">
+                                            <a href="../customer/contact.jsp" title="Contact us">
                                                 <i class="fa fa-map-marker" aria-hidden="true"></i>Contact us</a>
                                         </li>
+
+
                                     </ul>
                                 </div>
                             </nav>

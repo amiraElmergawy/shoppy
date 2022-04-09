@@ -15,6 +15,29 @@
     <title>Furnitica - Minimalist Furniture HTML Template</title>
 
     <%@ include file="../includes/customer-head.jsp" %>
+    <style>
+
+        .nivoSlider{
+            height: 400px !important;
+        }
+        .img-responsive{
+            display: block !important;
+            position: relative !important;
+            width: 100% !important;
+            height: 100% !important;
+            animation-delay: .1ms;
+            animation-duration: .1ms;
+        }
+
+        @media screen and (max-width: 991px) {
+            .nivoSlider {
+                z-index: 2;
+                height: 200px !important;
+            }
+        }
+
+
+    </style>
 </head>
 
 <body id="home" >
@@ -26,7 +49,7 @@
     <!-- slide show -->
     <div class="section banner responsive-height"  >
         <div class="tiva-slideshow-wrapper" >
-            <div id="tiva-slideshow" class="nivoSlider" style="max-height: 400px ;height: 400px">
+            <div id="tiva-slideshow" class="nivoSlider" >
                 <a href="#" >
                     <img class="img-responsive full-image img-fluid d-block w-100 h-100" src="assets/images/home/home1-banner1.jpg" title="#caption1" alt="Slideshow image">
                 </a>
