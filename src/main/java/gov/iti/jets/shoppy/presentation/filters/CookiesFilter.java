@@ -31,6 +31,8 @@ public class CookiesFilter implements Filter {
             if (cookies==null){
                 //replace this by include jsp has error when close cookies
 //                printWriter.println("<p>YOU ARE Disable Cookies , we use it please Enable it :) </p>");
+                 RequestDispatcher rd = req.getRequestDispatcher("Cookie.jsp");
+                 rd.include(req,res);
             }else {
                 filterChain.doFilter(request , response);
             }
