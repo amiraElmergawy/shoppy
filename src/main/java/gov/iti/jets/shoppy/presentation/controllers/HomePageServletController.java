@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "HomePageServletController" , value = {"/home"})
+@WebServlet(name = "HomePageServletController" , value = {"","/home"})
 public class HomePageServletController extends HttpServlet {
     private final DomainFacade domainFacade = DomainFacade.getInstance();
     @Override
