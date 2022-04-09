@@ -4,13 +4,15 @@ import gov.iti.jets.shoppy.service.DomainFacade;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
-@WebServlet(name = "HomePageServletController" , value = {"","/home"})
+@WebServlet(name = "HomePageServletController" , value = "/home")
 public class HomePageServletController extends HttpServlet {
     private final DomainFacade domainFacade = DomainFacade.getInstance();
     @Override
@@ -20,8 +22,8 @@ public class HomePageServletController extends HttpServlet {
         if(req.getParameter("pageNum") != null)
             pageNumber = Integer.parseInt(req.getParameter("pageNum"));
         try {
-            req.setAttribute("helper", domainFacade.retrieveProducts(pageNumber));
-            rd.include(req,resp);
+                req.setAttribute("helper", domainFacade.retrieveProducts(pageNumber));
+                rd.include(req,resp);
         } catch (ServletException e) {
             e.printStackTrace();
         }

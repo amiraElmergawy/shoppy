@@ -13,7 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <title>Furnitica - Minimalist Furniture HTML Template</title>
 
-    <%@ include file="../includes/customer-head.jsp" %>
+    <%@ include file="WEB-INF/views/includes/customer-head.jsp" %>
 </head>
 
 <body id="page-404" class="blog">
@@ -52,7 +52,7 @@
     </div>
 
 
-    <%@ include file="../includes/customer-footer.jsp" %>
+    <%@ include file="WEB-INF/views/includes/customer-footer.jsp" %>
 </body>
 
 

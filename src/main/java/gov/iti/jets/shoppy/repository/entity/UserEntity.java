@@ -19,7 +19,7 @@ public class UserEntity implements Serializable {
     @Column(name = "email", unique = true, nullable = false, length = 254)
     private String email;
     @Column(name = "pass", nullable = false, length = 150)
-    private String password;
+    private String pass;
 
 
     public UserEntity() {
@@ -42,11 +42,11 @@ public class UserEntity implements Serializable {
     }
 
     public String getPassword() {
-        return password;
+        return pass;
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.pass = password;
     }
 
     public void setId(Integer id) {
@@ -55,5 +55,15 @@ public class UserEntity implements Serializable {
 
     public Integer getId() {
         return id;
+    }
+
+    @Override
+    public String toString() {
+        return "UserEntity{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + pass + '\'' +
+                '}';
     }
 }
