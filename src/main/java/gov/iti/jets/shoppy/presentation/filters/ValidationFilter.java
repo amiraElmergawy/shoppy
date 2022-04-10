@@ -50,7 +50,7 @@ public class ValidationFilter implements Filter {
                 if(validator.validateSignupFields( name, email, password, birthDate,favorite, gender)){
                     chain.doFilter(req,res);
                 }else {
-                    res.sendRedirect("register?notValid=false");
+                    res.sendRedirect("register?dataValidation=false");
                 }
 
 
