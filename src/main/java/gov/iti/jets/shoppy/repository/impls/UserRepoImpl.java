@@ -83,7 +83,7 @@ public class UserRepoImpl implements UserRepo {
         Query query = entityManager.createQuery(select);
         query.setParameter("email", email);
         try {
-            String entityType = query.getSingleResult().getClass().getName().substring(query.getSingleResult().getClass().getName().lastIndexOf(".")+1);
+            query.getSingleResult();
             return true;
         }catch (NoResultException e) {
             return false;
