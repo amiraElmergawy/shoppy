@@ -19,13 +19,13 @@
 <div class="cont">
     <div class="form sign-in">
         <c:choose>
-            <c:when test="${empty helper.getError() || error }">
+            <c:when test="${empty error}">
                 <div class="alert-danger text-center h6 py-2 d-none" id="invaled" style="height: 35px">
                 </div>
             </c:when>
             <c:otherwise>
                 <div class="alert-danger text-center h6 py-2 " id="invaled" style="height: 35px">
-                    <p>${helper.getError()}</p>  <P>${error}</P>
+                    <p>${error}</p>
                 </div>
             </c:otherwise>
         </c:choose>
@@ -47,12 +47,9 @@
                 <div class="error d-none"></div>
             </div>
 
-            <div class="form-group">
-                <label>
-                    <span>Remember Me</span>
-                </label>
-                <input type="checkbox" name="password" id="rememberMe" value="checked">
-
+            <div class="form-group mb-3 row">
+                <input str type="checkbox" name="remember" id="rememberMe" value="checked">
+                <label>Remember Me</label>
             </div>
             <button class="submit" type="submit">Sign In</button>
         </form>

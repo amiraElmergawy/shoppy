@@ -4,7 +4,6 @@ import gov.iti.jets.shoppy.presentation.helpers.LoginViewHelper;
 import jakarta.persistence.EntityManager;
 
 public interface AuthService {
-
-    public LoginViewHelper signIn(String email, String password, EntityManager entityManager);
-
+    LoginViewHelper signIn(String email, String password, EntityManager entityManager);
+    LoginViewHelper rememberMe(Long uid, EntityManager entityManager);
 }
