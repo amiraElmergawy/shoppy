@@ -47,12 +47,9 @@
                 <div class="error d-none"></div>
             </div>
 
-            <div class="form-group">
-                <label>
-                    <span>Remember Me</span>
-                </label>
-                <input type="checkbox" name="password" id="rememberMe" value="checked">
-
+            <div class="form-group mb-3 row">
+                <input str type="checkbox" name="remember" id="rememberMe" value="checked">
+                <label>Remember Me</label>
             </div>
             <button class="submit" type="submit">Sign In</button>
         </form>

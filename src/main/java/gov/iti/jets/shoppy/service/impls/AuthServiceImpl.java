@@ -29,33 +29,45 @@ public class AuthServiceImpl implements AuthService {
         LoginViewHelper loginViewHelper = new LoginViewHelper();
         String hashedPassword = hashManager.generateSecurePassword(password);
         Optional<? extends UserEntity> userEntityOptional = repoFactory.getUserRepo(entityManager).findUser(email, password);
-        System.out.println(userEntityOptional);
-        userEntityOptional.ifPresentOrElse(
-                (userEntity) -> {
-//                    String entityType = value.getClass().getName().substring(value.getClass().getName().lastIndexOf(".")+1);
-//                    System.out.println("Value is present, its: "+ value);
-//                    if(entityType.equals("AdminEntity")){
-//                        loginViewHelper.setAdminDto(AdminMapper.INSTANCE.adminEntityToDto((AdminEntity) value));
-//                    }else {
-//                        loginViewHelper.setCustomerDto(CustomerMapper.INSTANCE.customerEntityToDto((CustomerEntity) value));
-//                    }
-                    loginViewHelper.setEmail(userEntity.getEmail());
-                    loginViewHelper.setId(userEntity.getId());
-                    if(userEntity instanceof AdminEntity)
-                        loginViewHelper.setRole(Role.ADMIN);
-                    else
-                        loginViewHelper.setRole(Role.CUSTOMER);
-                    /**
-                     * TODO
-                     * loading unsubmitted shopping cart
-                     * and mapp it
-                     */
-                    loginViewHelper.setShoppingCart(new OrderDto());
-                },
-                () -> {
-                    System.out.println("Value is empty");
-                    loginViewHelper.setError("Invalid email or password");
-                });
+        if(userEntityOptional.isPresent())
+            loginViewHelper = buildLoginViewHelper(userEntityOptional.get());
+        else
+            loginViewHelper.setError("Invalid email or password");
+        return loginViewHelper;
+    }
+
+    @Override
+    public LoginViewHelper rememberMe(Long uid, EntityManager entityManager) {
+        LoginViewHelper loginViewHelper = new LoginViewHelper();
+        Optional<? extends UserEntity> userEntityOptional = repoFactory.getUserRepo(entityManager).findUserById(uid);
+        if(userEntityOptional.isPresent())
+            loginViewHelper = buildLoginViewHelper(userEntityOptional.get());
+        else
+            loginViewHelper.setError("Invalid email or password");
+        return loginViewHelper;
+    }
+
+    private LoginViewHelper buildLoginViewHelper(UserEntity userEntity) {
+//     String entityType = value.getClass().getName().substring(value.getClass().getName().lastIndexOf(".")+1);
+//     System.out.println("Value is present, its: "+ value);
+//     if(entityType.equals("AdminEntity")){
+//        loginViewHelper.setAdminDto(AdminMapper.INSTANCE.adminEntityToDto((AdminEntity) value));
+//     }else {
+//        loginViewHelper.setCustomerDto(CustomerMapper.INSTANCE.customerEntityToDto((CustomerEntity) value));
+//     }
+        LoginViewHelper loginViewHelper = new LoginViewHelper();
+        loginViewHelper.setEmail(userEntity.getEmail());
+        loginViewHelper.setId(userEntity.getId());
+        if(userEntity instanceof AdminEntity)
+            loginViewHelper.setRole(Role.ADMIN);
+        else
+            loginViewHelper.setRole(Role.CUSTOMER);
+        /**
+         * TODO
+         * loading unsubmitted shopping cart
+         * and mapp it
+         */
+        loginViewHelper.setShoppingCart(new OrderDto());
         return loginViewHelper;
     }
 }

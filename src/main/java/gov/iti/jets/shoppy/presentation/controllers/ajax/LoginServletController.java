@@ -1,6 +1,8 @@
 package gov.iti.jets.shoppy.presentation.controllers.ajax;
 
 import gov.iti.jets.shoppy.presentation.helpers.LoginViewHelper;
+import gov.iti.jets.shoppy.presentation.util.CookieUtility;
+import gov.iti.jets.shoppy.presentation.util.SessionManager;
 import gov.iti.jets.shoppy.service.DomainFacade;
 import gov.iti.jets.shoppy.service.dtos.Role;
 import jakarta.servlet.RequestDispatcher;
@@ -15,7 +17,8 @@ import java.io.PrintWriter;
 
 @WebServlet (name = "LoginServletController" , value = "/login")
 public class LoginServletController extends HttpServlet {
-
+    private final SessionManager sessionManager = SessionManager.INSTANCE;
+    private final CookieUtility cookieUtility = CookieUtility.INSTANCE;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
@@ -44,9 +47,9 @@ public class LoginServletController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         String email = req.getParameter("email");
         String password = req.getParameter("password");
+        String remember = req.getParameter("remember");
         HttpSession httpSession = req.getSession();
         LoginViewHelper loginViewHelper = DomainFacade.getInstance().signIn(email, password);
 //        PrintWriter writer =resp.getWriter();
@@ -67,17 +70,18 @@ public class LoginServletController extends HttpServlet {
 //            req.getRequestDispatcher("WEB-INF/views/customer/auth-forms.jsp").forward(req, resp);
 //        }
 
-        if(loginViewHelper.getError() != null) {
+        if(loginViewHelper.getError() == null) {
+            sessionManager.createSession(req, loginViewHelper);
+            if (remember != null)
+                cookieUtility.addUIDToken(loginViewHelper.getId(), resp);
+            if (loginViewHelper.getRole().equals(Role.CUSTOMER)) {
+                resp.sendRedirect("home");
+            } else
+                resp.sendRedirect("dashboard");
+        }
+        else {
             req.setAttribute("error", loginViewHelper.getError());
             req.getRequestDispatcher("WEB-INF/views/customer/auth-forms.jsp").forward(req, resp);
         }
-        httpSession.setAttribute("userRole", loginViewHelper.getRole());
-        httpSession.setAttribute("userEmail", loginViewHelper.getEmail());
-        httpSession.setAttribute("userId", loginViewHelper.getId());
-        if(loginViewHelper.getRole().equals(Role.ADMIN)) {
-            resp.sendRedirect("dashboard");
-        }
-        else
-            resp.sendRedirect("home");
     }
 }
