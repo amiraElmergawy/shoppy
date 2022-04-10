@@ -24,4 +24,12 @@ public enum CookieUtility {
         cookie.setMaxAge(24*60*60);
         response.addCookie(cookie);
     }
+
+    public void removeUIDToken(HttpServletRequest request, HttpServletResponse response) {
+        Optional<Cookie> cookie = readUIDCookie(request);
+        cookie.ifPresent(cookie1 -> {
+            cookie1.setMaxAge(0);
+            response.addCookie(cookie1);
+        });
+    }
 }
