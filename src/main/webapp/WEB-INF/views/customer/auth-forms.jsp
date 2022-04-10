@@ -157,7 +157,7 @@
 
 
 <!-- Template JS -->
-<script type="text/javascript" src="assets/scripts/forms.js"></script>
+<script type="text/javascript" src="assets/scripts/signup-form.js"></script>
 <script type="text/javascript" src="assets/scripts/signin-form.js"></script>
 <script type="text/javascript" src="assets/scripts/forms-validator.js"></script>
 <%@ include file="../includes/customer-script.jsp" %>
