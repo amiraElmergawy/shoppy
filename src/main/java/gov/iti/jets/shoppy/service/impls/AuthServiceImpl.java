@@ -5,6 +5,7 @@ import gov.iti.jets.shoppy.repository.entity.AdminEntity;
 import gov.iti.jets.shoppy.repository.entity.CustomerEntity;
 import gov.iti.jets.shoppy.repository.entity.UserEntity;
 import gov.iti.jets.shoppy.repository.util.RepoFactory;
+import gov.iti.jets.shoppy.service.dtos.CustomerDto;
 import gov.iti.jets.shoppy.service.interfaces.AuthService;
 import gov.iti.jets.shoppy.service.mappers.AdminMapper;
 import gov.iti.jets.shoppy.service.mappers.CustomerMapper;
@@ -37,5 +38,12 @@ public class AuthServiceImpl implements AuthService {
                     loginViewHelper.setError("Invalid email or password");
                 });
         return loginViewHelper;
+    }
+
+    @Override
+    public boolean signUp(CustomerDto customerDto, EntityManager entityManager) {
+        CustomerEntity customerEntity=CustomerMapper.INSTANCE.customerDtoToEntity(customerDto);
+        boolean insertUserResult = RepoFactory.INSTANCE.getUserRepo(entityManager).insertUser(customerEntity);
+        return  insertUserResult;
     }
 }
