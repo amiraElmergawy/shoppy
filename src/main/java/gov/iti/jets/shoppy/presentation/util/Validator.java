@@ -9,8 +9,8 @@ public class Validator {
     private static Validator validator = new Validator();
     private Matcher matcher ;
     private Pattern emailPattern = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
-    private Pattern passwordPattern = Pattern.compile("(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}");
-    private Pattern namePattern = Pattern.compile("^[A-Za-z]\\\\w{5,29}$");
+    private Pattern passwordPattern = Pattern.compile("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$");
+    private Pattern namePattern = Pattern.compile("^[A-Za-z]\\w{2,29}$");
     private Pattern datePattern = Pattern.compile("^(1[0-2]|0[1-9])/(3[01]|[12][0-9]|0[1-9])/[0-9]{4}$");
 
     //Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters
@@ -33,6 +33,7 @@ public class Validator {
         if (this.matcher.matches()){
             return true;
         }
+        System.out.println("email not valid");
         return false;
     }
 
@@ -41,6 +42,7 @@ public class Validator {
         if (this.matcher.matches()){
             return true;
         }
+        System.out.println("pass not valid");
         return false;
     }
     private boolean validateUserName(String userName){
@@ -52,6 +54,7 @@ public class Validator {
                 return false;
             }
         }
+        System.out.println("name not valid");
         return false;
 
     }
@@ -70,6 +73,7 @@ public class Validator {
         if(input != null){
             return true;
         }
+        System.out.println("empty"+input);
         return false;
     }
     private boolean validateDate(String date){
@@ -81,6 +85,7 @@ public class Validator {
                 return false;
             }
         }
+        System.out.println("date not valid");
         return false;
 
     }
