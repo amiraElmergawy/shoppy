@@ -18,32 +18,50 @@ signUpForm.addEventListener('submit', e => {
    const validPassword=validatePasswordInput(signUpPasswordEelement);
    const isPasswordSimilar=checkPasswordInputsSimilarity(signUpPasswordEelement,confirmPsswordElement);
    const validBirthDate=validateEmptyInputs(birthDateElement);
+   let customerData ="";
 
-    if(validName && validEmail && validPassword && isPasswordSimilar && validBirthDate){
-    $.ajax({
-        type: 'post',
-        url: '/shoppy/register',
-        data: {
-            name:nameElement.value,
+    if(validName && validEmail && validPassword && isPasswordSimilar && validBirthDate) {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open("post", '/shoppy/register', true);
+        customerData = {
+            name: nameElement.value,
             email: emailElement.value,
             password: passwordElement.value,
-            birthDate:birthDateElement.value,
-            favorite:favouriteElement.value,
-            gender:genderElement.value
-        },
-        contentType : 'application/x-www-form-urlencoded',
-        success: function (data) {
-            if(data == "Error"){
-                var errorDiv = document.getElementById("invaled");
-                errorDiv.innerText = data;
-                errorDiv.classList.remove("d-none");
-            } else {
-                console.log(data);
-                window.location.replace(data);
-            }
+            birthDate: birthDateElement.value,
+            favorite: favouriteElement.value,
+            gender: genderElement.value
+        };
+        xmlHttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 
-        }
-    });
+        xmlHttp.send(customerData);
+
     }
-
 })
+//
+//     $.ajax({
+//         type: 'post',
+//         url: '/shoppy/register',
+//         data: {
+//             name:nameElement.value,
+//             email: emailElement.value,
+//             password: passwordElement.value,
+//             birthDate:birthDateElement.value,
+//             favorite:favouriteElement.value,
+//             gender:genderElement.value
+//         },
+//         contentType : 'application/x-www-form-urlencoded',
+//         success: function (data) {
+//             if(data == "Error"){
+//                 var errorDiv = document.getElementById("invaled");
+//                 errorDiv.innerText = data;
+//                 errorDiv.classList.remove("d-none");
+//             } else {
+//                 console.log(data);
+//                 window.location.replace(data);
+//             }
+//
+//         }
+//     });
+//     }
+//
+// })
