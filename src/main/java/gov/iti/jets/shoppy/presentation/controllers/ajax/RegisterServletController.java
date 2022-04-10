@@ -21,5 +21,10 @@ public class RegisterServletController extends HttpServlet {
             e.printStackTrace();
         }
     }
+    @Override
+    protected  void doPost(HttpServletRequest req, HttpServletResponse resp)  throws ServletException, IOException{
+
+
+    }
 
 }

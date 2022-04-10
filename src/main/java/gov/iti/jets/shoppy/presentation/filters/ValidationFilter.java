@@ -22,14 +22,15 @@ public class ValidationFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res =(HttpServletResponse) response;
 
-        String email = req.getParameter("email");
-        String password = req.getParameter("password");
+
 
         if ((req.getMethod()).equals("GET")){
             chain.doFilter(req,res);
         }else {
             System.out.println("this is post methode");
             if ((req.getRequestURI()).equals("/shoppy/login")){
+                String email = req.getParameter("email");
+                String password = req.getParameter("password");
                 System.out.println("this is login page");
                 if (validator.validateLoginFields(email , password)){
                     chain.doFilter(req,res);
@@ -37,6 +38,22 @@ public class ValidationFilter implements Filter {
                     res.sendRedirect("login?notValid=false");
 //                    res.getWriter().write("invalid format email or password");
                 }
+            }
+            else if((req.getRequestURI()).equals("/shoppy/register")){
+
+                String name= req.getParameter("name");
+                String email= req.getParameter("email");
+                String password= req.getParameter("password");
+                String birthDate= req.getParameter("birthDate");
+                String favorite= req.getParameter("favorite");
+                String gender = req.getParameter("gender");
+                if(validator.validateSignupFields( name, email, password, birthDate,favorite, gender)){
+                    chain.doFilter(req,res);
+                }else {
+                    res.sendRedirect("register?notValid=false");
+                }
+
+
             }
         }
     }

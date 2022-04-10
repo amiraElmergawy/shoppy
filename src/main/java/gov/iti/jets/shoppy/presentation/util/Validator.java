@@ -25,8 +25,8 @@ public class Validator {
         return validateEmail(email) && validatePassword(password);
     }
 
-    public boolean validateSignupFields(String userName, String email, String password, String confirmPassword, String date, String interests, String gender){
-        return validateUserName(userName) && validateEmail(email) && validatePassword(password) && checkPasswordSimilarity(password,confirmPassword) && validateDate(date) && validateEmptyInputs(interests) && validateEmptyInputs(gender);
+    public boolean validateSignupFields(String userName, String email, String password, String date, String interests, String gender){
+        return validateUserName(userName) && validateEmail(email) && validatePassword(password)  && validateDate(date) && validateEmptyInputs(interests) && validateEmptyInputs(gender);
     }
     private boolean validateEmail(String email){
         this.matcher = this.emailPattern.matcher(email);
@@ -42,7 +42,6 @@ public class Validator {
             return true;
         }
         return false;
-
     }
     private boolean validateUserName(String userName){
         if(userName != null){
