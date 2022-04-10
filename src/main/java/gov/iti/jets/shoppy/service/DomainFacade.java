@@ -2,6 +2,7 @@ package gov.iti.jets.shoppy.service;
 
 import gov.iti.jets.shoppy.presentation.helpers.HomeViewHelper;
 import gov.iti.jets.shoppy.presentation.helpers.LoginViewHelper;
+import gov.iti.jets.shoppy.service.dtos.CustomerDto;
 import gov.iti.jets.shoppy.service.interfaces.AuthService;
 import gov.iti.jets.shoppy.service.interfaces.ProductService;
 import gov.iti.jets.shoppy.service.util.ServiceFactory;
@@ -25,6 +26,12 @@ public class DomainFacade {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         return authService.signIn(email, password, entityManager);
     }
+
+    public boolean signUp(CustomerDto customerDto){
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        return authService.signUp(customerDto, entityManager);
+    }
+
     public HomeViewHelper retrieveProducts(int pageNumber){
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         return productService.getProducts(pageNumber, entityManager);
