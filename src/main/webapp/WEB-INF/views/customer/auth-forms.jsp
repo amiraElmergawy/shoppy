@@ -118,7 +118,7 @@
                     <label>
                         <span>Your Birth Date</span>
                     </label>
-                    <input type="date" id="date" required>
+                    <input type="date" id="date" required >
                     <div class="error"></div>
                 </div>
                 <div class="form-group">

@@ -18,12 +18,11 @@ signUpForm.addEventListener('submit', e => {
    const validPassword=validatePasswordInput(signUpPasswordEelement);
    const isPasswordSimilar=checkPasswordInputsSimilarity(signUpPasswordEelement,confirmPsswordElement);
    const validBirthDate=validateEmptyInputs(birthDateElement);
-   const validFavoriteElement=validateEmptyInputs(favouriteElement);
-   const validGender=validateEmptyInputs(genderElement);
-    if(validName && validEmail && validPassword && isPasswordSimilar && validBirthDate && validFavoriteElement &&validGender){
+
+    if(validName && validEmail && validPassword && isPasswordSimilar && validBirthDate){
     $.ajax({
         type: 'post',
-        url: '/shoppy/signup',
+        url: '/shoppy/register',
         data: {
             name:nameElement.value,
             email: emailElement.value,
@@ -46,10 +45,5 @@ signUpForm.addEventListener('submit', e => {
         }
     });
     }
-    console.log(nameElement.value +"kkkk"+
-        +"kkkk"+emailElement.value
-        +"kkkk"+passwordElement.value
-        +"kkkk"+birthDateElement.value
-        +"kkkk"+favouriteElement.value
-        +"kkkk"+genderElement.value)
+
 })
