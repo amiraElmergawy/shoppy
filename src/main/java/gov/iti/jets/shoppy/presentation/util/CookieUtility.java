@@ -1,6 +1,5 @@
 package gov.iti.jets.shoppy.presentation.util;
 
-import com.google.gson.Gson;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -8,7 +7,6 @@ import java.util.Optional;
 
 public enum CookieUtility {
     INSTANCE;
-    private Gson gson = new Gson();
     public Optional<Cookie> readUIDCookie(HttpServletRequest req) {
         Cookie[] cookies = req.getCookies();
         if (cookies != null) {
