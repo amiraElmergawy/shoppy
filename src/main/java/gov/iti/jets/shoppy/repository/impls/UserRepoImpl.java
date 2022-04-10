@@ -54,6 +54,8 @@ public class UserRepoImpl implements UserRepo {
 
     @Override
     public boolean insertUser(UserEntity userEntity) {
+        if(findUserByEmail(userEntity.getEmail()))
+            return false;
         entityManager.getTransaction().begin();
         try {
             entityManager.persist(userEntity);
@@ -76,4 +78,15 @@ public class UserRepoImpl implements UserRepo {
         }
     }
 
+    private boolean findUserByEmail(String email){
+        String select = "select  u from UserEntity u where u.email=:email";
+        Query query = entityManager.createQuery(select);
+        query.setParameter("email", email);
+        try {
+            String entityType = query.getSingleResult().getClass().getName().substring(query.getSingleResult().getClass().getName().lastIndexOf(".")+1);
+            return true;
+        }catch (NoResultException e) {
+            return false;
+        }
+    }
 }
