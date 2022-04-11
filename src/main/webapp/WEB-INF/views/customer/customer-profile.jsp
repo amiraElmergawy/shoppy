@@ -22,10 +22,10 @@
     <%@ include file="../includes/customer-head.jsp" %>
 
     <!-- Template CSS -->
-    <link rel="stylesheet" type="text/css" href="../../assets/styles/reponsive.css">
-    <link rel="stylesheet" type="text/css" href="../../assets/styles/style.css">
-    <link rel="stylesheet" type="text/css" href="../../assets/styles/customer-profile.css">
-    <link rel="stylesheet" type="text/css" href="../../assets/styles/validation-style.css">
+    <link rel="stylesheet" type="text/css" href="assets/styles/reponsive.css">
+    <link rel="stylesheet" type="text/css" href="assets/styles/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/styles/customer-profile.css">
+    <link rel="stylesheet" type="text/css" href="assets/styles/validation-style.css">
 </head>
 
 <body class="user-acount">
@@ -164,8 +164,8 @@
 </div>
 
 <%@ include file="../includes/customer-footer.jsp" %>
-<script src="../../assets/scripts/customer-profile-validator.js"></script>
-<script src="../../assets/scripts/forms-validator.js"></script>
+<script src="assets/scripts/customer-profile-validator.js"></script>
+<script src="assets/scripts/forms-validator.js"></script>
 
 </body>
 
