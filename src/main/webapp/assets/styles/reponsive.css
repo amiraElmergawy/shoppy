@@ -211,6 +211,7 @@
 
   .nivoSlider {
     z-index: 2;
+    height: 200px;
   }
 
   .tiva-slideshow-wrapper .nivo-controlNav {
