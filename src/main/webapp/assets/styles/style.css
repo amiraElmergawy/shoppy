@@ -9787,7 +9787,7 @@ footer [class~="title-block"],
   margin-bottom: 1.5pt;
 }
 [class~="desktop_cart"] [class~="header-cart"] {
-  margin-left: 1pc;
+  /*margin-left: 1pc;*/
 }
 [class~="footer-one"] #tiva-copyright {
   margin-left: 0;
