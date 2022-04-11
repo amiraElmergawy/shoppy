@@ -34,5 +34,10 @@ public class DomainFacade {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         return productService.getProducts(pageNumber, entityManager);
     }
+    public HomeViewHelper searchForProducts(int pageNumber, String value){
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        return  productService.searchForProducts(pageNumber, entityManager, value);
+
+    }
 
 }

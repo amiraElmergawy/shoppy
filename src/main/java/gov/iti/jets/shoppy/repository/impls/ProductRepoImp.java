@@ -35,8 +35,27 @@ public class ProductRepoImp implements ProductRepo {
     }
 
     @Override
+    public List<ProductEntity> searchProducts(int pageNumber, String value) {
+        String coulmnName = "productName";
+        String queryString = "from ProductEntity where" +coulmnName+ "LIKE '%"+value+"%'";
+        Query query = entityManager.createQuery(queryString, ProductEntity.class);
+        query.setFirstResult((pageNumber-1) * pageSize);
+        query.setMaxResults(pageSize);
+        System.out.println(query.getResultList());
+        return query.getResultList();
+    }
+
+    @Override
     public Optional<ProductEntity> findProductById(Integer id) {
         return Optional.of(entityManager.find(ProductEntity.class, id));
+    }
+
+    @Override
+    public Long getSearchProductsCount(String key, String value) {
+        String coulmnName = "productName";
+        String queryString = "from ProductEntity where" +coulmnName+ "LIKE '%"+value+"%'";
+        return entityManager.createQuery(queryString, Long.class)
+                .getSingleResult();
     }
 
 }

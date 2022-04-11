@@ -11,5 +11,6 @@ import java.util.List;
 public class HomeViewHelper {
     List<ProductDto> productDtoList;
     String error;
+    Long allSearchProductCount;
     Long allProductCount;
 }
