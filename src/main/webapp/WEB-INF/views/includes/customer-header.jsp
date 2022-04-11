@@ -16,7 +16,7 @@
                 <!-- logo -->
                 <div class="mobile-logo">
                     <a href="../customer/home">
-                        <img class="logo-mobile img-fluid" src="../../../assets/images/home/logo-mobie.png" alt="Prestashop_Furnitica">
+                        <img class="logo-mobile img-fluid" src="assets/images/home/logo-mobie.png" alt="Prestashop_Furnitica">
                     </a>
                 </div>
                 <div id="block_myaccount_infos header-cart" class="hidden-sm-down dropdown" style="
@@ -101,7 +101,7 @@
                 <div class="col-sm-2 col-md-2 d-flex align-items-center">
                     <div id="logo">
                         <a href="home">
-                            <img src="../../../assets/images/home/logo.png" alt="logo" class="img-fluid">
+                            <img src="assets/images/home/logo.png" alt="logo" class="img-fluid">
                         </a>
                     </div>
                 </div>
@@ -194,22 +194,22 @@
                                     <ul class="list-inline">
                                         <li class="list-inline-itemcurrent">
                                             <a href="#">
-                                                <img class="img-fluid" src="../../../assets/images/home/home1-flas.jpg" alt="English" width="16" height="11">
+                                                <img class="img-fluid" src="assets/images/home/home1-flas.jpg" alt="English" width="16" height="11">
                                             </a>
                                         </li>
                                         <li class="list-inline-item">
                                             <a href="#">
-                                                <img class="img-fluid" src="../../../assets/images/home/home1-flas2.jpg" alt="Italiano" width="16" height="11">
+                                                <img class="img-fluid" src="assets/images/home/home1-flas2.jpg" alt="Italiano" width="16" height="11">
                                             </a>
                                         </li>
                                         <li class="list-inline-item">
                                             <a href="#">
-                                                <img class="img-fluid" src="../../../assets/images/home/home1-flas3.jpg" alt="Français" width="16" height="11">
+                                                <img class="img-fluid" src="assets/images/home/home1-flas3.jpg" alt="Français" width="16" height="11">
                                             </a>
                                         </li>
                                         <li class="list-inline-item">
                                             <a href="#">
-                                                <img class="img-fluid" src="../../../assets/images/home/home1-flas4.jpg" alt="Español" width="16" height="11">
+                                                <img class="img-fluid" src="assets/images/home/home1-flas4.jpg" alt="Español" width="16" height="11">
                                             </a>
                                         </li>
                                     </ul>
@@ -230,7 +230,7 @@
                                         <tr>
                                             <td class="product-image">
                                                 <a href="product-detail.html">
-                                                    <img src="../../../assets/images/product/5.jpg" alt="Product">
+                                                    <img src="assets/images/product/5.jpg" alt="Product">
                                                 </a>
                                             </td>
                                             <td>
