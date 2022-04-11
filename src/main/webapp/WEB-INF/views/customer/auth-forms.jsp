@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,21 +18,41 @@
 
 <div class="cont">
     <div class="form sign-in">
+        <c:choose>
+            <c:when test="${empty helper.getError() || error }">
+                <div class="alert-danger text-center h6 py-2 d-none" id="invaled" style="height: 35px">
+                </div>
+            </c:when>
+            <c:otherwise>
+                <div class="alert-danger text-center h6 py-2 " id="invaled" style="height: 35px">
+                    <p>${helper.getError()}</p>  <P>${error}</P>
+                </div>
+            </c:otherwise>
+        </c:choose>
+
         <h2>Sign In</h2>
-        <form id="sign-in-form" >
-            <div class="form-group">
+        <form id="sign-in-form" action="login" method="post">
+            <div class="form-group mb-3">
                 <label>
                     <span>Email Address</span>
                 </label>
                 <input type="email" name="email" id="email" required>
-                <div class="error"></div>
+                <div class="error d-none"></div>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label>
                     <span>Password</span>
                 </label>
                 <input type="password" name="password" id="password" required>
-                <div class="error"></div>
+                <div class="error d-none"></div>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    <span>Remember Me</span>
+                </label>
+                <input type="checkbox" name="password" id="rememberMe" value="checked">
+
             </div>
             <button class="submit" type="submit">Sign In</button>
         </form>
@@ -97,7 +118,7 @@
                     <label>
                         <span>Your Birth Date</span>
                     </label>
-                    <input type="date" id="date" required>
+                    <input type="date" id="date" required >
                     <div class="error"></div>
                 </div>
                 <div class="form-group">
@@ -136,14 +157,11 @@
 
 
 <!-- Template JS -->
-<script type="text/javascript" src="assets/scripts/forms.js"></script>
+<script type="text/javascript" src="assets/scripts/signup-form.js"></script>
 <script type="text/javascript" src="assets/scripts/signin-form.js"></script>
 <script type="text/javascript" src="assets/scripts/forms-validator.js"></script>
 <%@ include file="../includes/customer-script.jsp" %>
 
 </body>
-
-
 <!-- user-login11:10-->
-
 </html>
