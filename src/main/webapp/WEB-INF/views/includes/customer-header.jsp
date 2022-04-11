@@ -15,7 +15,7 @@
 
                 <!-- logo -->
                 <div class="mobile-logo">
-                    <a href="../customer/home.jsp">
+                    <a href="../customer/home">
                         <img class="logo-mobile img-fluid" src="../../../assets/images/home/logo-mobie.png" alt="Prestashop_Furnitica">
                     </a>
                 </div>
@@ -50,13 +50,13 @@
                                     <tbody>
                                     <tr>
                                         <td class="product-image">
-                                            <a href="../customer/product-detail.jsp">
+                                            <a href="../customer/product-detail">
                                                 <img src="images/product/5.jpg" alt="Product">
                                             </a>
                                         </td>
                                         <td>
                                             <div class="product-name">
-                                                <a href="../customer/product-detail.jsp">Organic Strawberry Fruits</a>
+                                                <a href="../customer/product-detail">Organic Strawberry Fruits</a>
                                             </div>
                                             <div>
                                                 2 x
@@ -77,8 +77,8 @@
                                     <tr>
                                         <td colspan="3" class="d-flex justify-content-center">
                                             <div class="cart-button">
-                                                <a href="../customer/product-cart.jsp" title="View Cart">View Cart</a>
-                                                <a href="product-checkout.jsp" title="Checkout">Checkout</a>
+                                                <a href="../customer/product-cart" title="View Cart">View Cart</a>
+                                                <a href="product-checkout" title="Checkout">Checkout</a>
                                             </div>
                                         </td>
                                     </tr>
@@ -100,7 +100,7 @@
                 <!-- logo -->
                 <div class="col-sm-2 col-md-2 d-flex align-items-center">
                     <div id="logo">
-                        <a href="home.jsp">
+                        <a href="home">
                             <img src="../../../assets/images/home/logo.png" alt="logo" class="img-fluid">
                         </a>
                     </div>
@@ -111,15 +111,15 @@
                     <div class="menu navbar collapse navbar-collapse">
                         <ul class="menu-top navbar-nav">
                             <li>
-                                <a href="home.jsp" class="parent">Home</a>
+                                <a href="home" class="parent">Home</a>
 
                             </li>
                             <li>
-                                <a href="about-us.jsp" class="parent">About Us</a>
+                                <a href="about-us" class="parent">About Us</a>
                             </li>
 
                             <li class="nav-link">
-                                <a href="contact.jsp" class="parent">Contact US</a>
+                                <a href="#" class="parent">Contact US</a>
                             </li>
                         </ul>
                     </div>
@@ -157,13 +157,13 @@
                                     </a>
                                 </div>
                                 <div>
-                                    <a class="login" href="user-login.html" rel="nofollow" title="Log in to your customer account">
+                                    <a class="login" href="login" rel="nofollow" title="Log in to your customer account">
                                         <i class="fa fa-sign-in"></i>
                                         <span>Sign in</span>
                                     </a>
                                 </div>
                                 <div>
-                                    <a class="register" href="user-register.html" rel="nofollow" title="Register Account">
+                                    <a class="register" href="register" rel="nofollow" title="Register Account">
                                         <i class="fa fa-user"></i>
                                         <span>Register Account</span>
                                     </a>
