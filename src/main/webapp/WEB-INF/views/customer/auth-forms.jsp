@@ -84,7 +84,7 @@
         </div>
         <div class="form sign-up sign-up-container">
             <h2>Sign Up</h2>
-            <form id="sign-up-form" method="post" action="#">
+            <form id="sign-up-form" method="post" action="register">
                 <div class="form-group">
                     <label>
                         <span>Name</span>

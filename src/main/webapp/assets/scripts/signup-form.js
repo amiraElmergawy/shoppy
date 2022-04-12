@@ -20,24 +20,29 @@ signUpForm.addEventListener('submit', e => {
    const validBirthDate=validateEmptyInputs(birthDateElement);
    let customerData ="";
 
+   console.log("email: "+signUpEmailEelement.value);
+   console.log("password: "+signUpPasswordEelement.value);
     if(validName && validEmail && validPassword && isPasswordSimilar && validBirthDate) {
         var xmlHttp = new XMLHttpRequest();
         xmlHttp.open("post", '/shoppy/register', true);
         customerData = {
             name: nameElement.value,
-            email: emailElement.value,
-            password: passwordElement.value,
+            email: signUpEmailEelement.value,
+            password: signUpPasswordEelement.value,
             birthDate: birthDateElement.value,
             favorite: favouriteElement.value,
             gender: genderElement.value
         };
         console.log(customerData);
         xmlHttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-
         xmlHttp.send(customerData);
 
     }
 })
+
+
+
+
 //
 //     $.ajax({
 //         type: 'post',
