@@ -35,39 +35,13 @@ signUpForm.addEventListener('submit', e => {
         };
         console.log(customerData);
         xmlHttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        xmlHttp.send(customerData);
+        xmlHttp.send("customerData=" + JSON.stringify(customerData));
+        //
+        // req.open("POST", url, true);
+        // req.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+        // req.onreadystatechange = handleStateChange;
+        // req.send("uName=" + yourvalue);
 
     }
 })
 
-
-
-
-//
-//     $.ajax({
-//         type: 'post',
-//         url: '/shoppy/register',
-//         data: {
-//             name:nameElement.value,
-//             email: emailElement.value,
-//             password: passwordElement.value,
-//             birthDate:birthDateElement.value,
-//             favorite:favouriteElement.value,
-//             gender:genderElement.value
-//         },
-//         contentType : 'application/x-www-form-urlencoded',
-//         success: function (data) {
-//             if(data == "Error"){
-//                 var errorDiv = document.getElementById("invaled");
-//                 errorDiv.innerText = data;
-//                 errorDiv.classList.remove("d-none");
-//             } else {
-//                 console.log(data);
-//                 window.location.replace(data);
-//             }
-//
-//         }
-//     });
-//     }
-//
-// })
