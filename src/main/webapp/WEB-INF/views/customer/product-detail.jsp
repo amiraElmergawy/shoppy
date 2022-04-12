@@ -137,19 +137,18 @@
                                                     <div class="detail-description">
                                                         <div class="price-del">
                                                             <div class="row d-flex " style="justify-content: space-between; margin: 0px 3px 3px;">
-                                                                    <h1 class="product-name" name="productName ">Mi Note 11 Pro</h1>
+                                                                    <h1 class="product-name" name="productName ">${productDto.getProductName()}</h1>
                                                                 <span class="float-right mt-1 mb-sm-1">
                                                                 <span class="availb">Availability: </span>
                                                                 <span class="check">
-                                                                    <i class="fa fa-check-square-o" aria-hidden="true"></i>IN STOCK</span>
+                                                                    <i class="fa fa-check-square-o" aria-hidden="true"></i>${productDto.getStock()} IN STOCK</span>
                                                             </span>
                                                             </div>
 
 
                                                         </div>
-                                                            <h2 font-size="25px"  class="font-color font-weight-bold ">$1135.00</h2>
-                                                            <h6 font-size="14px" class="text-muted mr-2 mb-4">Proin gravida nibh vel velit auctor aliquet. Aenean lorem quis bibendum
-                                                                auctor, nisi elit consequat etiam non auctor.</h6>
+                                                            <h2 font-size="25px"  class="font-color font-weight-bold ">${productDto.getPrice()} LE</h2>
+                                                            <h6 font-size="14px" class="text-muted mr-2 mb-4">${productDto.getProductDesc()}</h6>
                                                    
 
                                                         <div class="cart-area has-border ">
@@ -220,14 +219,7 @@
                                                             <div class="tab-content">
                                                                 <div id="description" class="tab-pane fade in active show">
                                                                     <p  class="text-muted  mb-2 text-2" style="font-family: 'Open Sans', 'Roboto' ;font-size: 14px">
-                                                                        eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem
-                                                                        ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                                        tempor incididunt ut labore et dolore magna aliqua.
-                                                                    </p>
-                                                                    <p class="text-muted  mb-2 text-2" style="font-family: 'Open Sans', 'Roboto' ;font-size: 14px">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                                        eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem
-                                                                        ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                                        tempor incididunt ut labore et dolore magna aliqua.
+                                                                        ${productDto.getProductDesc()}
                                                                     </p>
                                                                 </div>
                                                                 

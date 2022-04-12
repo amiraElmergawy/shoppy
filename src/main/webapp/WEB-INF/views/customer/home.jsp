@@ -561,7 +561,7 @@
                                                         <div class="item text-center col-md-4 mb-4 p-1">
                                                             <div class="product-miniature js-product-miniature item-one first-item shadow rounded p-1">
                                                                 <div class="thumbnail-container border">
-                                                                    <a href="product-details">
+                                                                    <a href="product-details?productID=${product.getId()}">
                                                                         <img class="img-fluid image-cover" src="${imagesUrl}${product.getImagesPaths().get(0)}" alt="img">
                                                                         <img class="img-fluid image-secondary" src="${imagesUrl}${product.getImagesPaths().get(1)}" alt="img">
                                                                     </a>
