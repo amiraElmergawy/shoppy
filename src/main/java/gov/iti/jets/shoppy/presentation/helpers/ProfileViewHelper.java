@@ -1,0 +1,12 @@
+package gov.iti.jets.shoppy.presentation.helpers;
+
+import gov.iti.jets.shoppy.service.dtos.CustomerDto;
+import lombok.Data;
+
+@Data
+public class ProfileViewHelper {
+    private CustomerDto customerDto;
+    private Integer id;
+    private String error;
+
+}
