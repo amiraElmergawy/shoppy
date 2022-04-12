@@ -2,8 +2,10 @@ package gov.iti.jets.shoppy.service;
 
 import gov.iti.jets.shoppy.presentation.helpers.HomeViewHelper;
 import gov.iti.jets.shoppy.presentation.helpers.LoginViewHelper;
+import gov.iti.jets.shoppy.presentation.helpers.ProfileViewHelper;
 import gov.iti.jets.shoppy.service.interfaces.AuthService;
 import gov.iti.jets.shoppy.service.interfaces.ProductService;
+import gov.iti.jets.shoppy.service.interfaces.ProfileService;
 import gov.iti.jets.shoppy.service.util.ServiceFactory;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -13,6 +15,8 @@ public class DomainFacade {
     private static final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("shoppy");
     private final AuthService authService = ServiceFactory.INSTANCE.getAuthService();
     private final ProductService productService = ServiceFactory.INSTANCE.getProductService();
+    private  final ProfileService profileService=ServiceFactory.INSTANCE.getProfileService();
+
 
     private static DomainFacade domainFacade = new DomainFacade();
     private DomainFacade(){}
@@ -34,5 +38,10 @@ public class DomainFacade {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         return productService.getProducts(pageNumber, entityManager);
     }
+    public ProfileViewHelper customerProfile(int id){
+        EntityManager entityManager=entityManagerFactory.createEntityManager();
+        return profileService.getUser(id,entityManager);
+    }
+
 
 }
