@@ -38,6 +38,7 @@ public class RegisterServletController extends HttpServlet {
         String gender = req.getParameter("gender").trim();
         boolean isMale = gender == "male"? true : false;
         Date formattedDOB = new Date();
+        System.out.println(formattedDOB);
         try {
             formattedDOB = new SimpleDateFormat("yyyy-MM-dd").parse(birthDate);
         } catch (ParseException e) {
@@ -50,6 +51,7 @@ public class RegisterServletController extends HttpServlet {
                 .dateOfBirth(formattedDOB)
                 .isMale(isMale)
                 .interests(favorite).build();
+        System.out.println(customerDto);
         if(DomainFacade.getInstance().signUp(customerDto))
             resp.sendRedirect("login");
         else {

@@ -31,6 +31,7 @@ signUpForm.addEventListener('submit', e => {
             favorite: favouriteElement.value,
             gender: genderElement.value
         };
+        console.log(customerData);
         xmlHttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 
         xmlHttp.send(customerData);

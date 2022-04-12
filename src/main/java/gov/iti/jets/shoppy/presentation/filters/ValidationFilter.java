@@ -41,12 +41,13 @@ public class ValidationFilter implements Filter {
             }
             else if((req.getRequestURI()).equals("/shoppy/register")){
 
-                String name= req.getParameter("name");
-                String email= req.getParameter("email");
-                String password= req.getParameter("password");
-                String birthDate= req.getParameter("birthDate");
-                String favorite= req.getParameter("favorite");
-                String gender = req.getParameter("gender");
+                String name= req.getParameter("name").trim();
+                System.out.println(name);
+                String email= req.getParameter("email").trim();
+                String password= req.getParameter("password").trim();
+                String birthDate= req.getParameter("birthDate").trim();
+                String favorite= req.getParameter("favorite").trim();
+                String gender = req.getParameter("gender").trim();
                 if(validator.validateSignupFields( name, email, password, birthDate,favorite, gender)){
                     chain.doFilter(req,res);
                 }else {
