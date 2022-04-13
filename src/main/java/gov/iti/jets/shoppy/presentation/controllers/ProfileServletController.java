@@ -22,6 +22,9 @@ public class ProfileServletController extends HttpServlet{
         HttpSession httpSession= req.getSession();
         int userId= (int) httpSession.getAttribute("userId");
         ProfileViewHelper profileViewHelper = DomainFacade.getInstance().customerProfile(userId);
+        req.setAttribute("helper",profileViewHelper);
+        System.out.println("profile view _____"+profileViewHelper);
+        //loadCustomerprofile
 
         try {
             rd.include(req,resp);

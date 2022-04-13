@@ -5,5 +5,5 @@ import gov.iti.jets.shoppy.presentation.helpers.ProfileViewHelper;
 import jakarta.persistence.EntityManager;
 
 public interface ProfileService {
-    ProfileViewHelper getUser(int id, EntityManager entityManager);
+    ProfileViewHelper getUser(long id, EntityManager entityManager);
 }
