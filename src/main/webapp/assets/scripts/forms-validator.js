@@ -1,5 +1,5 @@
 const emailPattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
-const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+const passwordPattern = /^([A-Za-z]|[0-9]){8,}$/;
 const namePattern = /^[A-Za-z]\w{2,29}$/;
 const setError = (element, message) => {
     const inputControl = element.parentElement;
