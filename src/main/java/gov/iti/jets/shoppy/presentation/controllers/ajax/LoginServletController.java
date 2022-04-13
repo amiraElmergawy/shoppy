@@ -50,7 +50,6 @@ public class LoginServletController extends HttpServlet {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
         String remember = req.getParameter("remember");
-        HttpSession httpSession = req.getSession();
         LoginViewHelper loginViewHelper = DomainFacade.getInstance().signIn(email, password);
 //        PrintWriter writer =resp.getWriter();
 //        System.out.println("Customer DTO "+loginViewHelper.getCustomerDto());
