@@ -1,18 +1,12 @@
 package gov.iti.jets.shoppy.presentation.filters;
 
-import com.mysql.cj.xdevapi.JsonString;
-import gov.iti.jets.shoppy.presentation.util.JSONConverter;
 import gov.iti.jets.shoppy.presentation.util.Validator;
-import gov.iti.jets.shoppy.service.dtos.CustomerDto;
 import gov.iti.jets.shoppy.service.dtos.customer.CustomerPostRequestDto;
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 
 public class ValidationFilter implements Filter {
     @Override
@@ -40,8 +34,9 @@ public class ValidationFilter implements Filter {
                 }
             }
             else if((req.getRequestURI()).equals("/shoppy/register")){
-                System.out.println(req.getParameter("customerData"));
-                CustomerPostRequestDto customerDto = JSONConverter.JSONToCustomerDto(req.getParameter("customerData"));
+                String gender = req.getParameter("isMale").trim();
+                boolean isMale = gender.equals("male")? true : false;
+                CustomerPostRequestDto customerDto = new CustomerPostRequestDto(req.getParameter("username").trim(),req.getParameter("email").trim(),req.getParameter("password").trim(),req.getParameter("interests").trim(),isMale,req.getParameter("dateOfBirth").trim());
                 System.out.println(customerDto);
                 req.setAttribute("customerData", customerDto);
                 if(validator.validateSignupFields(customerDto)){
