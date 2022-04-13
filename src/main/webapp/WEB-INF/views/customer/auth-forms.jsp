@@ -89,14 +89,14 @@
                     <label>
                         <span>Name</span>
                     </label>
-                    <input type="text" id="name" required>
+                    <input type="text" id="name" name="username" required>
                     <div class="error"></div>
                 </div>
                 <div class="form-group">
                     <label>
                         <span>Email</span>
                     </label>
-                    <input type="email" id="sign-up-email" required>
+                    <input type="email" name="email" id="sign-up-email" required>
                     <div class="error"></div>
                 </div>
 
@@ -104,7 +104,7 @@
                     <label>
                         <span>Password</span>
                     </label>
-                    <input type="password" id="sign-up-password" required>
+                    <input type="password" name="password" id="sign-up-password" required>
                     <div class="error"></div>
                 </div>
                 <div class="form-group">
@@ -118,7 +118,7 @@
                     <label>
                         <span>Your Birth Date</span>
                     </label>
-                    <input type="date" id="date" required >
+                    <input type="date" name="dateOfBirth" id="date" required >
                     <div class="error"></div>
                 </div>
                 <div class="form-group">
@@ -141,7 +141,7 @@
                     <label>
                         <span>Gender </span>
                     </label>
-                    <select name="gender" id="gender" class="list" required>
+                    <select name="isMale" id="gender" class="list" required>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                     </select>
