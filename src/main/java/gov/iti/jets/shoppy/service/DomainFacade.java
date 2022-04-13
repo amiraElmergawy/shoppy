@@ -25,11 +25,14 @@ public class DomainFacade {
     public LoginViewHelper signIn(String email, String password){
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         return authService.signIn(email, password, entityManager);
+
     }
 
     public boolean signUp(CustomerDto customerDto){
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        return authService.signUp(customerDto, entityManager);
+        boolean signUpResult = authService.signUp(customerDto, entityManager);
+        entityManager.close();
+        return signUpResult;
     }
 
     public HomeViewHelper retrieveProducts(int pageNumber){
