@@ -26,7 +26,7 @@ public class AuthFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         String requestUrl = ((HttpServletRequest) servletRequest).getRequestURL().substring(((HttpServletRequest) servletRequest).getRequestURL().lastIndexOf("/")+1);
-        System.out.println(requestUrl);
+//        System.out.println(requestUrl);
         if (privateUrlList.contains(requestUrl)){
             HttpSession httpSession = ((HttpServletRequest) servletRequest).getSession(false);
             if (httpSession != null) {
