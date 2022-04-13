@@ -2,6 +2,7 @@ package gov.iti.jets.shoppy.presentation.controllers.ajax;
 
 import gov.iti.jets.shoppy.service.DomainFacade;
 import gov.iti.jets.shoppy.service.dtos.CustomerDto;
+import gov.iti.jets.shoppy.service.dtos.customer.CustomerPostRequestDto;
 import gov.iti.jets.shoppy.service.util.HashManager;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -30,27 +31,21 @@ public class RegisterServletController extends HttpServlet {
     }
     @Override
     protected  void doPost(HttpServletRequest req, HttpServletResponse resp)  throws ServletException, IOException{
-        String name= req.getParameter("name").trim();
-        String email= req.getParameter("email").trim();
-        String password= req.getParameter("password").trim();
-        String birthDate= req.getParameter("birthDate").trim();
-        String favorite= req.getParameter("favorite").trim();
-        String gender = req.getParameter("gender").trim();
-        boolean isMale = gender == "male"? true : false;
+        CustomerPostRequestDto customerReqDto = (CustomerPostRequestDto) req.getAttribute("customerData");
         Date formattedDOB = new Date();
         System.out.println(formattedDOB);
         try {
-            formattedDOB = new SimpleDateFormat("yyyy-MM-dd").parse(birthDate);
+            formattedDOB = new SimpleDateFormat("yyyy-MM-dd").parse(customerReqDto.getDateOfBirth().trim());
         } catch (ParseException e) {
             e.printStackTrace();
         }
         CustomerDto customerDto = CustomerDto.builder()
-                .username(name)
-                .email(email)
-                .password(HashManager.INSTANCE.generateSecurePassword(password))
+                .username(customerReqDto.getUsername().trim())
+                .email(customerReqDto.getEmail().trim())
+                .password(HashManager.INSTANCE.generateSecurePassword(customerReqDto.getPassword().trim()))
                 .dateOfBirth(formattedDOB)
-                .isMale(isMale)
-                .interests(favorite).build();
+                .isMale(customerReqDto.isMale())
+                .interests(customerReqDto.getInterests().trim()).build();
         System.out.println(customerDto);
         if(DomainFacade.getInstance().signUp(customerDto))
             resp.sendRedirect("login");
