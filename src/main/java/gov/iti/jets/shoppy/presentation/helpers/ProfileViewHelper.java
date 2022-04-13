@@ -6,7 +6,6 @@ import lombok.Data;
 @Data
 public class ProfileViewHelper {
     private CustomerDto customerDto;
-    private Integer id;
     private String error;
 
 }
