@@ -58,7 +58,7 @@ public class UserRepoImpl implements UserRepo {
             return false;
         entityManager.getTransaction().begin();
         try {
-            entityManager.persist(userEntity);
+            entityManager.merge(userEntity);
             entityManager.getTransaction().commit();
             return true;
         } catch (EntityExistsException exception){
