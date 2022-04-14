@@ -13,6 +13,7 @@ public class OrderRepoImp implements OrderRepo {
     }
     @Override
     public Optional<OrderEntity> getUnSubmittedOrder(Integer customerId) {
-        return Optional.empty();
+        return Optional.of(entityManager.createQuery("from OrderEntity where customer.id = :customerId and isSubmitted = false", OrderEntity.class)
+                .setParameter("customerId", customerId).getSingleResult());
     }
 }
