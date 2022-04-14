@@ -3,6 +3,7 @@ package gov.iti.jets.shoppy.repository.impls;
 import gov.iti.jets.shoppy.repository.entity.OrderEntity;
 import gov.iti.jets.shoppy.repository.interfaces.OrderRepo;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
 
 import java.util.Optional;
 
@@ -13,7 +14,13 @@ public class OrderRepoImp implements OrderRepo {
     }
     @Override
     public Optional<OrderEntity> getUnSubmittedOrder(Integer customerId) {
-        return Optional.of(entityManager.createQuery("from OrderEntity where customer.id = :customerId and isSubmitted = false", OrderEntity.class)
-                .setParameter("customerId", customerId).getSingleResult());
+        Optional<OrderEntity> optional = Optional.empty();
+        try{
+            optional = Optional.of(entityManager.createQuery("from OrderEntity where customer.id = :customerId and isSubmitted = false", OrderEntity.class)
+                    .setParameter("customerId", customerId).getSingleResult());
+        } catch (NoResultException e) {
+            System.out.println(e.getMessage());
+        }
+        return optional;
     }
 }

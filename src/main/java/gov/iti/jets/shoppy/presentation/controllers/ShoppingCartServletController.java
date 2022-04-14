@@ -18,7 +18,8 @@ public class ShoppingCartServletController extends HttpServlet {
         try {
             Integer id = Integer.parseInt(req.getSession(false).getAttribute("userId")+"");
             ShoppingCartViewHelper shoppingCartViewHelper = DomainFacade.getInstance().getShoppingCart(id);
-            req.getSession().setAttribute("cart", shoppingCartViewHelper.getOrderDto());
+            if(shoppingCartViewHelper.getOrderDto() != null)
+                req.getSession().setAttribute("cart", shoppingCartViewHelper.getOrderDto());
             rd.include(req,resp);
         } catch (ServletException e) {
             e.printStackTrace();

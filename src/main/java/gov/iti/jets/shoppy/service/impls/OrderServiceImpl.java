@@ -30,9 +30,7 @@ public class OrderServiceImpl implements OrderService {
         if(orderEntityOptional.isPresent()) {
             OrderEntity orderEntity = orderEntityOptional.get();
             shoppingCartViewHelper.setOrderDto(mapOrderEntityToDto(orderEntity));
-        }else
-            shoppingCartViewHelper.setOrderDto(getNewShoppingCart(customerId, entityManager));
-
+        }
         return shoppingCartViewHelper;
     }
 
