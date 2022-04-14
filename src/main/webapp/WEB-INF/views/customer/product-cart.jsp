@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if IE 9 ]><html class="ie ie9" lang="en"> <![endif]-->
@@ -16,6 +17,7 @@
 
     <%@ include file="../includes/customer-head.jsp" %>
 </head>
+<c:url value="/" var="imagesUrl" context="/images"/>
 
 <body class="product-cart checkout-cart blog">
 <%@ include file="../includes/customer-header.jsp" %>
@@ -32,6 +34,7 @@
                                 <div class="col-md-9 col-xs-12 check-info">
                                     <h1 class="title-page">Shopping Cart</h1>
                                     <div class="cart-container">
+                                       <c:forEach var="orderProduct" items="${cart.getOrderProducts()}">
                                         <div class="cart-overview js-cart">
                                             <ul class="cart-items">
                                                 <li class="cart-item bg-white rounded shadow-lg mb-2">
@@ -40,31 +43,31 @@
                                                         <div class="product-line-grid-left col-md-2">
                                                             <span class="product-image media-middle">
                                                                 <a href="product-detail.jsp">
-                                                                    <img class="img-fluid" src="assets/images/product/3.jpg" alt="Organic Strawberry Fruits">
+                                                                    <img class="img-fluid" src="${imagesUrl}${orderProduct.getProduct().getImagesPaths().get(0)}" alt="Organic Strawberry Fruits">
                                                                 </a>
                                                             </span>
                                                         </div>
                                                         <div class="product-line-grid-body col-md-6 ">
                                                             <div class="product-line-info">
-                                                                <a class="label" href="product-detail.jsp" data-id_customization="0">Organic Strawberry Fruits
-
-                                                                    <span class="danger font-weight-bold text-danger text-lg-center">
-                                                                        £20.00
+                                                                <a class="label" href="product-detail.jsp" data-id_customization="0">
+                                                                    ${orderProduct.getProduct().getProductName()}
+                                                                    <span class="font-weight-bold text-danger text-lg-center">
+                                                                            ${orderProduct.getProduct().getProductDesc()}
                                                                     </span>
                                                                 </a>
                                                                
                                                             </div>
                                                             <div class="product-line-info product-price">
-                                                                <span class="value">£20.00</span>
+                                                                <span class="value">${orderProduct.getProduct().getPrice()} EG</span>
                                                             </div>
-                                                            <div class="product-line-info">
-                                                                <span class="label-atrr">Size:</span>
-                                                                <span class="value">S</span>
-                                                            </div>
-                                                            <div class="product-line-info">
-                                                                <span class="label-atrr">Color:</span>
-                                                                <span class="value">Blue</span>
-                                                            </div>
+<%--                                                            <div class="product-line-info">--%>
+<%--                                                                <span class="label-atrr">Size:</span>--%>
+<%--                                                                <span class="value">S</span>--%>
+<%--                                                            </div>--%>
+<%--                                                            <div class="product-line-info">--%>
+<%--                                                                <span class="label-atrr">Color:</span>--%>
+<%--                                                                <span class="value">Blue</span>--%>
+<%--                                                            </div>--%>
                                                         </div>
                                                         <div class="product-line-grid-right text-center product-line-actions col-md-4 justify-content-between">
                                                             <div class="row">
@@ -74,7 +77,7 @@
                                                                             -
                                                                         </div>
                                                                         <div class="btn-sm bg-white font-weight-bold mx-2">
-                                                                            1
+                                                                                ${orderProduct.getQuantity()}
                                                                         </div>
                                                                         <div id="plus" class="shadow-sm btn-sm btn-primary font-weight-bold">
                                                                             +
@@ -83,7 +86,7 @@
                                                                 </div>
                                                                 <div class="col-md-5 price col m-auto">
                                                                     <div class="product-price total ">
-                                                                        £60.00
+                                                                        ${orderProduct.getTotal()} EG
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-2 text-xs-right align-self-end col">
@@ -100,74 +103,7 @@
                                                
                                             </ul>
                                         </div>
-                                        <div class="cart-overview js-cart">
-                                            <ul class="cart-items">
-                                                <li class="cart-item bg-white rounded shadow-lg mb-2">
-                                                    <div class="product-line-grid row justify-content-between">
-                                                        <!--  product left content: image-->
-                                                        <div class="product-line-grid-left col-md-2">
-                                                            <span class="product-image media-middle">
-                                                                <a href="product-detail.jsp">
-                                                                    <img class="img-fluid" src="assets/images/product/3.jpg" alt="Organic Strawberry Fruits">
-                                                                </a>
-                                                            </span>
-                                                        </div>
-                                                        <div class="product-line-grid-body col-md-6 ">
-                                                            <div class="product-line-info">
-                                                                <a class="label" href="product-detail.jsp" data-id_customization="0">Organic Strawberry Fruits
-
-                                                                    <span class="danger font-weight-bold text-danger text-lg-center">
-                                                                        £20.00
-                                                                    </span>
-                                                                </a>
-                                                               
-                                                            </div>
-                                                            <div class="product-line-info product-price">
-                                                                <span class="value">£20.00</span>
-                                                            </div>
-                                                            <div class="product-line-info">
-                                                                <span class="label-atrr">Size:</span>
-                                                                <span class="value">S</span>
-                                                            </div>
-                                                            <div class="product-line-info">
-                                                                <span class="label-atrr">Color:</span>
-                                                                <span class="value">Blue</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="product-line-grid-right text-center product-line-actions col-md-4 justify-content-between">
-                                                            <div class="row">
-                                                                <div class="col-md-5 col m-auto ">
-                                                                    <div class="quantity d-flex ">
-                                                                        <div id="minus" class="shadow-sm btn-sm btn-primary font-weight-bold">
-                                                                            -
-                                                                        </div>
-                                                                        <div class="btn-sm bg-white font-weight-bold mx-2">
-                                                                            1
-                                                                        </div>
-                                                                        <div id="plus" class="shadow-sm btn-sm btn-primary font-weight-bold">
-                                                                            +
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-5 price col m-auto">
-                                                                    <div class="product-price total ">
-                                                                        £60.00
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-2 text-xs-right align-self-end col">
-                                                                    <div class="cart-line-product-actions m-0">
-                                                                        <a class="remove-from-cart m-0" rel="nofollow" href="#" data-link-action="delete-from-cart" data-id-product="1">
-                                                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                               
-                                            </ul>
-                                        </div>
+                                       </c:forEach>
                                     </div>
                                    <div class="text-center">
                                     <a href="product-checkout.jsp" class="continue btn btn-primary pull-xs-right">
@@ -204,11 +140,11 @@
                                         <div class="cart-detailed-totals">
                                             <div class=" d-flex justify-content-between">
                                                 <div class="summary-label  text-white">Products Number: </div>
-                                                <div class="summary-label text-white"><span class="value   font-weight-bold font-italic text-white">3</span></div>
+                                                <div class="summary-label text-white"><span class="value   font-weight-bold font-italic text-white">${cart.getOrderProducts().size()}</span></div>
                                             </div>
                                             <div class=" d-flex justify-content-between">
                                                 <div class="summary-label  text-white">Total : </div>
-                                                <div class="text-black  font-weight-bold font-italic text-white">£200.00</div>
+                                                <div class="text-black  font-weight-bold font-italic text-white">${cart.getTotalPrice()}</div>
                                             </div> 
                                             <div class=" d-flex justify-content-between">
                                                 <div class="summary-label  text-white">Shipping : </div>
@@ -228,7 +164,7 @@
                                                       <i class="fa fa-user" class="text-muted mr-1" aria-hidden="true"></i>
                                                         <span class="font-weight-bold font-italic h6">Name</span>
                                                     </div>
-                                                    <div class="summary-label font-weight-bold font-italic"><h6 class="value  ">terabithia</h6></div>
+                                                    <div class="summary-label font-weight-bold font-italic"><h6 class="value">${cart.getCustomer().getUsername()}</h6></div>
                                                 </div>
                                             </li>
                                             <li style="padding-bottom: 0px">
@@ -237,7 +173,7 @@
                                                         <i class="fa fa-credit-card-alt" class="text-muted mr-1" aria-hidden="true"></i>
                                                         <span class="font-weight-bold font-italic h6">Credit Limit</span>
                                                     </div>
-                                                    <div class="summary-label font-weight-bold font-italic"><h6 class="value  ">11111</h6></div>
+                                                    <div class="summary-label font-weight-bold font-italic"><h6 class="value">${cart.getCustomer().getCreditLimit()}</h6></div>
                                                 </div>
                                             </li>
                                             <li style="padding-bottom: 0px">
@@ -246,14 +182,19 @@
                                                         <i class="fa fa-map-marker"  class="text-muted mr-1" aria-hidden="true"></i>
                                                         <span class="font-weight-bold font-italic h6">Address</span>
                                                     </div>
-                                                    <div class="summary-label font-weight-bold font-italic"><p class="value  ">123 Suspendis matti, Visaosang Building VST District NY Accums, North American</p></div>
+                                                        <c:if test="${not empty cart.getCustomer().getAddress()}">
+                                                            <div class="summary-label font-weight-bold font-italic">
+                                                                <p class="value">
+                                                                    ${cart.getCustomer().getAddress().getArea()},
+                                                                    ${cart.getCustomer().getAddress().getStreet()},
+                                                                    ${cart.getCustomer().getAddress().getBuildingNum()},
+                                                                    ${cart.getCustomer().getAddress().getFloorNum()}
+                                                                </p>
+                                                            </div>
+                                                        </c:if>
                                                 </div>
                                             </li>
-
-
-
                                         </ul>
-
                                     </div>
                                 </div>
                             </div>
