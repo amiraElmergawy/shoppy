@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.lang.Math" %>
 <!doctype html>
 <html lang="en">
 
@@ -39,17 +41,20 @@
           <th scope="col">Name</th>
           <th scope="col">Price</th>
           <th scope="col">category</th>
+          <th scope="col">Description</th>
           <th scope="col">Quantity</th>
           <th scope="col">Action</th>
         </tr>
         </thead>
         <tbody>
+        <c:forEach var="product" items="${helper.getProductDtoList()}">
         <tr>
-          <th scope="row">1</th>
-          <td>clean code</td>
-          <td>20 LE</td>
-          <td>book</td>
-          <td>10</td>
+          <th scope="row">${product.getId()}</th>
+          <td>${product.getProductName()}</td>
+          <td>${product.getPrice()} LE</td>
+          <td>${product.getCategory()}</td>
+          <td>${product.getProductDesc()}</td>
+          <td>${product.getStock()}</td>
           <td>
             <a href="">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil-square pr-1 text-success" viewBox="0 0 16 16">
@@ -65,6 +70,7 @@
               </a>
           </td>
         </tr>
+        </c:forEach>
         </tbody>
       </table>
     </main>
