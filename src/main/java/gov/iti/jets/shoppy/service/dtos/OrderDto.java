@@ -13,5 +13,11 @@ public class OrderDto {
     private Date createdAt;
     private double totalPrice;
     private Boolean isSubmitted;
-    private List<ProductDto> products;
+    private List<OrderProductDto> orderProducts;
+    private CustomerDto customer;
+    public double getTotalPrice() {
+        totalPrice = 0;
+        orderProducts.forEach(orderProductDto -> {totalPrice += orderProductDto.getTotal();});
+        return totalPrice;
+    }
 }
