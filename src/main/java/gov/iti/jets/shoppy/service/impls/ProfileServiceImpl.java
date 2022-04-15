@@ -31,4 +31,12 @@ public class ProfileServiceImpl implements ProfileService {
         return  profileViewHelper;
     }
 
+    @Override
+    public boolean updateUser(CustomerDto customerDto, EntityManager entityManager) {
+        CustomerEntity customerEntity=CustomerMapper.INSTANCE.customerDtoToEntity(customerDto);
+        boolean updateUserResult = repoFactory.getUserRepo(entityManager).updateUser(customerEntity);
+
+        return updateUserResult;
+    }
+
 }
