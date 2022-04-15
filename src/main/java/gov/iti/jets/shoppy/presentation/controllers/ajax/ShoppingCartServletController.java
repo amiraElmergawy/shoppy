@@ -29,7 +29,13 @@ public class ShoppingCartServletController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        //check product q in db
+        //if q > 0 => decrease it in db & add it to shoppingCart
+        var currentCustomerSession = req.getSession(false);
+        int productId = Integer.parseInt(req.getParameter("productId"));
+        var orderDto = (OrderDto)currentCustomerSession.getAttribute("cart");
+        //logic here^_^
+        currentCustomerSession.setAttribute("cart", orderDto);
     }
 
     @Override
@@ -49,6 +55,7 @@ public class ShoppingCartServletController extends HttpServlet {
                         orderProductDto.setQuantity(orderProductDto.getQuantity()+1);
                     }
                 });
+                currentCustomerSession.setAttribute("cart", orderDto);
             }
         } else {
             //check product q in shopping cart => to handle q=0 case
@@ -60,6 +67,7 @@ public class ShoppingCartServletController extends HttpServlet {
                     DomainFacade.getInstance().decreaseProductInShoppingCart(productId);
                 }
             });
+            currentCustomerSession.setAttribute("cart", orderDto);
         }
         resp.getWriter().print("");
     }
@@ -77,6 +85,7 @@ public class ShoppingCartServletController extends HttpServlet {
                 orderDto.getOrderProducts().remove(orderProductDto);
             }
         });
-
+        currentCustomerSession.setAttribute("cart", orderDto);
+        resp.getWriter().print("");
     }
 }
