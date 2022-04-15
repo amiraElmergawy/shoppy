@@ -4,6 +4,7 @@ import gov.iti.jets.shoppy.presentation.helpers.HomeViewHelper;
 import gov.iti.jets.shoppy.presentation.helpers.LoginViewHelper;
 import gov.iti.jets.shoppy.presentation.helpers.ShoppingCartViewHelper;
 import gov.iti.jets.shoppy.presentation.helpers.ViewProductHelper;
+import gov.iti.jets.shoppy.service.dtos.OrderDto;
 import gov.iti.jets.shoppy.service.interfaces.AuthService;
 import gov.iti.jets.shoppy.service.interfaces.ShoppingCartService;
 import gov.iti.jets.shoppy.service.interfaces.ProductService;
@@ -11,6 +12,8 @@ import gov.iti.jets.shoppy.service.util.ServiceFactory;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+
+import java.util.Optional;
 
 public class DomainFacade {
     private static final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("shoppy");
@@ -44,7 +47,7 @@ public class DomainFacade {
         return productService.getProductById(id,entityManager);
     }
 
-    public ShoppingCartViewHelper getShoppingCart(Integer id) {
+    public ShoppingCartViewHelper loadShoppingCart(Integer id) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         return shoppingCartService.getShoppingCart(id, entityManager);
     }
@@ -71,5 +74,10 @@ public class DomainFacade {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         shoppingCartService.deleteProductFromShoppingCard(productId, currentProductQuantity, entityManager);
         entityManager.close();
+    }
+
+    public ShoppingCartViewHelper addProductToCart(OrderDto orderDto, Integer productId) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        return shoppingCartService.addProductToShoppingCart(orderDto, productId, entityManager);
     }
 }

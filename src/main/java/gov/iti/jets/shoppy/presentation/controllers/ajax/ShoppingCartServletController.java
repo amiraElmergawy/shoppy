@@ -9,6 +9,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 
 @WebServlet(name = "ShoppingCartServletController" , value = "/shopping-cart")
@@ -18,7 +20,7 @@ public class ShoppingCartServletController extends HttpServlet {
         RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/customer/product-cart.jsp");
         try {
             Integer id = Integer.parseInt(req.getSession(false).getAttribute("userId")+"");
-            ShoppingCartViewHelper shoppingCartViewHelper = DomainFacade.getInstance().getShoppingCart(id);
+            ShoppingCartViewHelper shoppingCartViewHelper = DomainFacade.getInstance().loadShoppingCart(id);
             if(shoppingCartViewHelper.getOrderDto() != null)
                 req.getSession().setAttribute("cart", shoppingCartViewHelper.getOrderDto());
             rd.include(req,resp);
@@ -31,11 +33,14 @@ public class ShoppingCartServletController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //check product q in db
         //if q > 0 => decrease it in db & add it to shoppingCart
-        var currentCustomerSession = req.getSession(false);
-        int productId = Integer.parseInt(req.getParameter("productId"));
-        var orderDto = (OrderDto)currentCustomerSession.getAttribute("cart");
-        //logic here^_^
-        currentCustomerSession.setAttribute("cart", orderDto);
+//        var currentCustomerSession = req.getSession(false);
+//        int productId = Integer.parseInt(req.getParameter("productId"));
+//        var orderDto = (OrderDto)currentCustomerSession.getAttribute("cart");
+//        //logic here^_^
+//        currentCustomerSession.setAttribute("cart", orderDto);
+
+        System.out.println("test");
+        System.out.println("rewlkssdkldsklsdmksdldskmldslkslkds");
     }
 
     @Override

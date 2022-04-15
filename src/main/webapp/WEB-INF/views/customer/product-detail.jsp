@@ -17,7 +17,9 @@
 
     <%@ include file="../includes/customer-head.jsp" %>
     <c:url value="/" var="imagesUrl" context="/images"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
+    <script src="assets/scripts/product-details.js"></script>
 </head>
 
 <body id="product-detail">
@@ -36,6 +38,16 @@
                                 <div class="row">
                                     
                                     <div class="col-sm-11 col-lg-12 col-md-12">
+
+                                        <div>
+                                            <c:choose>
+                                                <c:when test="${not empty error}">
+                                                    <div class="alert-danger text-center h6 py-2 d-none" id="invaled" style="height: 35px">
+                                                        ${error}
+                                                    </div>
+                                                </c:when>
+                                            </c:choose>
+                                        </div>
                                         <div class="main-product-detail">
                                             <div class="product-single row">
                                                 <div class="product-detail col-xs-12 col-md-5 col-sm-5">
@@ -139,12 +151,16 @@
                                                                         
                                                                         </div>
                                                                         <span class="add" style="margin-top: -10px;">
-                                                                         
-                                                                            <button class="btn btn-primary add-to-cart add-item" data-button-action="add-to-cart" type="submit">
-                                                                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                                                <span>Add to cart</span>
-                                                                            </button>
-                                                                            
+<%--                                                                                <button class="btn btn-primary add-to-cart add-item" type="submit">--%>
+<%--                                                                                <button class="btn btn-primary add-to-cart add-item" onclick="addProduct(${productDto.getId()})">--%>
+                                                                                <div>
+                                                                                    <a href="add-to-cart?productId=${productDto.getId()}">
+                                                                                        <button class="btn btn-primary dd-item">
+                                                                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                                                                            <span>Add to cart</span>
+                                                                                        </button>
+                                                                                    </a>
+                                                                                </div>
                                                                             <a class="addToWishlist" href="#">
                                                                                 <i class="fa fa-heart" aria-hidden="true"></i>
                                                                             </a>

@@ -17,9 +17,7 @@ import gov.iti.jets.shoppy.service.mappers.OrderMapper;
 import gov.iti.jets.shoppy.service.mappers.ProductMapper;
 import jakarta.persistence.EntityManager;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Optional;
+import java.util.*;
 
 public class ShoppingCartServiceImpl implements ShoppingCartService {
     private final RepoFactory repoFactory = RepoFactory.INSTANCE;
@@ -58,11 +56,68 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
             ProductEntity productEntity = optionalProduct.get();
             ProductDto productDto = productMapper.productEntityToDto(productEntity);
             OrderDto orderDto = getNewShoppingCart(customerId, entityManager);
-            addProductToShoppingCart(orderDto, productDto);
+            // add product to order
+            orderDto.getOrderProducts().add(OrderProductDto.builder().product(productDto).quantity(1).build());
+            // add order to hepler
             shoppingCartViewHelper.setOrderDto(orderDto);
         }else
-            shoppingCartViewHelper.setError("could not add product to shopping cart");
+            shoppingCartViewHelper.setError("could not add product to card");
         return shoppingCartViewHelper;
+    }
+
+    public ShoppingCartViewHelper addProductToShoppingCart(OrderDto orderDto, Integer productId, EntityManager entityManager) {
+        ShoppingCartViewHelper shoppingCartViewHelper = new ShoppingCartViewHelper();
+        ProductRepo productRepo = repoFactory.getProductRepo(entityManager);
+        Optional<ProductEntity> optionalProduct = getProduct(productId, productRepo);
+        if(optionalProduct.isPresent()) {
+            ProductDto productDto = productMapper.productEntityToDto(optionalProduct.get());
+            addProductToOrderProductList(orderDto.getOrderProducts(), productDto);
+            shoppingCartViewHelper.setOrderDto(orderDto);
+        } else
+            shoppingCartViewHelper.setError("could not add product to card");
+        return shoppingCartViewHelper;
+    }
+
+//    @Override
+//    public ShoppingCartViewHelper mergeShoppingCart(Optional<OrderDto> orderDtoOptional, ShoppingCartViewHelper shoppingCartViewHelper) {
+//        if(orderDtoOptional.isEmpty()) {
+//            return shoppingCartViewHelper;
+//        }
+//        if(shoppingCartViewHelper.getOrderDto() == null) {
+//            shoppingCartViewHelper.setOrderDto(orderDtoOptional.get());
+//            return shoppingCartViewHelper;
+//        }
+//        List<OrderProductDto> orderProducts1 = shoppingCartViewHelper.getOrderDto().getOrderProducts();
+//        List<OrderProductDto> orderProducts2 = orderDtoOptional.get().getOrderProducts();
+//
+//        orderProducts1.forEach(orderProduct1 -> {
+//            orderProducts2.forEach(orderProduct2 ->{
+//                if(orderProduct1.getProduct().getId().equals(orderProduct2.getProduct().getId())) {
+//                    orderProduct1.
+//                }
+//            });
+//        });
+//    }
+
+    /**
+     * add product Dto to list of OrderProducts
+     * if exist increase quantity
+     * else add as new product
+     * @param orderProducts
+     * @param productDto
+     */
+    private void addProductToOrderProductList(List<OrderProductDto> orderProducts, ProductDto productDto) {
+        Optional<OrderProductDto> optionalOrderProductDto = orderProducts.stream()
+                .filter(orderProductDto -> orderProductDto.getProduct().getId().equals(productDto.getId()))
+                .findFirst();
+        if(optionalOrderProductDto.isPresent()) {
+            OrderProductDto orderProductDto = optionalOrderProductDto.get();
+            orderProductDto.setQuantity(orderProductDto.getQuantity()+1);
+        }
+        else
+            orderProducts.add(OrderProductDto.builder()
+                    .product(productDto)
+                    .quantity(1).build());
     }
 
     @Override
@@ -86,6 +141,12 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         decreaseProductQuantity(optionalProduct.get(), productRepo, productQuantity);
     }
 
+    /**
+     * getProduct if quantity > 0
+     * @param productId
+     * @param productRepo
+     * @return
+     */
     private Optional<ProductEntity> getProduct(Integer productId, ProductRepo productRepo) {
         Optional<ProductEntity> optionalProduct = productRepo.findProductById(productId);
         if(optionalProduct.isPresent() && optionalProduct.get().getStock() > 0)
@@ -93,12 +154,6 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         return Optional.empty();
     }
 
-    private void addProductToShoppingCart(OrderDto orderDto, ProductDto productDto) {
-        OrderProductDto orderProductDto = OrderProductDto.builder()
-                .product(productDto)
-                .quantity(1).build();
-        orderDto.getOrderProducts().add(orderProductDto);
-    }
 
     private OrderDto getNewShoppingCart(Integer customerId, EntityManager entityManager) {
         CustomerEntity customerEntity = (CustomerEntity) repoFactory.getUserRepo(entityManager).findUserById(customerId).get();
@@ -111,11 +166,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     public boolean increaseProductQuantity(ProductEntity productEntity, ProductRepo productRepo) {
-        //decrease product in db test
-        //??
-//        Integer stock = productEntity.getStock();
-//        productEntity.setStock(--stock);
-        productEntity.setStock(productEntity.getStock()- 1);
+        productEntity.setStock(productEntity.getStock() - 1);
         return productRepo.updateProduct(productEntity);
     }
 

@@ -22,18 +22,36 @@ public class AddProductToCartServletController extends HttpServlet {
         Integer productId = Integer.parseInt(req.getParameter("productId"));
         HttpSession httpSession = req.getSession(false);
         Integer customerId = Integer.parseInt(httpSession.getAttribute("userId")+"");
-        OrderDto orderDto = (OrderDto) httpSession.getAttribute("cart");
-        ShoppingCartViewHelper shoppingCartViewHelper = new ShoppingCartViewHelper();
-
-        if(orderDto == null)
+        OrderDto sessionCart = (OrderDto) httpSession.getAttribute("cart");
+        ShoppingCartViewHelper shoppingCartViewHelper;
+        if(sessionCart == null) {
             shoppingCartViewHelper = facade.initializeCustomerCart(customerId, productId);
+        }else {
+            /**
+             * check product quantity by id > 0 (decrease, )
+             * if(q > 0) decrease quantity, get productDetails
+             * else null
+             * List <orderProduct>
+             *     <product already exist>
+             *     orderDto.getOrderProduct.add(orderProduct)
+             *
+             *
+             * ShoppingCart (productId)
+             *
+             *
+             */
+            shoppingCartViewHelper = facade.addProductToCart(sessionCart, productId);
 
-        if(shoppingCartViewHelper.getError() == null)
-            httpSession.setAttribute("cart", shoppingCartViewHelper.getOrderDto());
-        else
-            httpSession.setAttribute("error", shoppingCartViewHelper.getError());
-
-        System.out.println(httpSession.getAttribute("cart"));
-
+        }
+        req.setAttribute("error", "could add product to dto");
+        req.getRequestDispatcher("WEB-INF/views/customer/product-detail.jsp").forward(req, resp);
+//        if(shoppingCartViewHelper.getError() == null) {
+//            httpSession.setAttribute("cart", shoppingCartViewHelper.getOrderDto());
+//            resp.sendRedirect("shopping-cart");
+//        }
+//        else {
+//            req.setAttribute("error", shoppingCartViewHelper.getError());
+//            req.getRequestDispatcher("WEB-INF/views/customer/product-detail.jsp").forward(req, resp);
+//        }
     }
 }
