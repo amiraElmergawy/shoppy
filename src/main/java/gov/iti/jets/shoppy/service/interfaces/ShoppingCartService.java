@@ -6,6 +6,7 @@ import jakarta.persistence.EntityManager;
 public interface ShoppingCartService {
     ShoppingCartViewHelper getShoppingCart(Integer customerId, EntityManager entityManager);
     ShoppingCartViewHelper initializeCustomerCart(Integer customerId, Integer productId, EntityManager entityManager);
-    boolean increaseProductInShoppingCartTest(Integer productId, EntityManager entityManager);
+    boolean increaseProductInShoppingCart(Integer productId, EntityManager entityManager);
     void decreaseProductInShoppingCart(Integer productId, EntityManager entityManager);
+    void deleteProductFromShoppingCard(Integer productId, Integer productQuantity, EntityManager entityManager);
 }

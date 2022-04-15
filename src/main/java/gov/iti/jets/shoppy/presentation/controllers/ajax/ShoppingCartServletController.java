@@ -66,6 +66,17 @@ public class ShoppingCartServletController extends HttpServlet {
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //increase product quantity in db by orderProduct quantity
+        //remove orderProduct from order??
+        var currentCustomerSession = req.getSession(false);
+        int productId = Integer.parseInt(req.getParameter("productId"));
+        var orderDto = (OrderDto)currentCustomerSession.getAttribute("cart");
+        orderDto.getOrderProducts().forEach(orderProductDto -> {
+            if (orderProductDto.getProduct().getId() == productId){
+                DomainFacade.getInstance().deleteProductFromShoppingCart(productId, orderProductDto.getQuantity());
+                orderDto.getOrderProducts().remove(orderProductDto);
+            }
+        });
 
     }
 }

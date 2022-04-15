@@ -56,7 +56,7 @@ public class DomainFacade {
 
     public boolean increaseProductInShoppingCart(int productId){
        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        boolean increaseQuantityResult = shoppingCartService.increaseProductInShoppingCartTest(productId, entityManager);
+        boolean increaseQuantityResult = shoppingCartService.increaseProductInShoppingCart(productId, entityManager);
         entityManager.close();
         return increaseQuantityResult;
     }
@@ -67,4 +67,9 @@ public class DomainFacade {
         entityManager.close();
     }
 
+    public void deleteProductFromShoppingCart(int productId, int currentProductQuantity){
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        shoppingCartService.deleteProductFromShoppingCard(productId, currentProductQuantity, entityManager);
+        entityManager.close();
+    }
 }
