@@ -56,6 +56,7 @@
         </nav>
 
         <div class="acount head-acount">
+
             <div class="container">
                 <div id="main">
                     <h1 class="title-page">My Account</h1>
@@ -75,7 +76,7 @@
                             </div>
                             <!-- Text input -->
                             <div class="form-outline mb-1 form-group">
-                                <label class="form-label" for="jop">Jop</label>
+                                <label class="form-label" for="jop">Job</label>
                                 <input type="text" id="jop" value="${helper.getCustomerDto().getJobTitle()}" class="form-control" disabled="disabled" required/>
                                 <div class="error"></div>
                             </div>
@@ -84,25 +85,26 @@
                             <div class="form-outline mb-1 form-group">
 
                                 <label class="form-label" >City</label>
-                                <input type="text" id="city" value="${helper.getCustomerDto().getAddress().getArea()}" class="form-control" disabled="disabled" required/>
+                                <input type="text" id="city" value="" class="form-control" disabled="disabled" required/>
                                 <div class="error"></div>
                             </div>
                             <div class="form-outline mb-1 form-group">
 
-                                <label class="form-label" >street</label>
-                                <input type="text" id="street" value="${helper.getCustomerDto().getStreet()}" class="form-control" disabled="disabled" required/>
+                                <label class="form-label" >Street</label>
+                                <input type="text" id="street" value="" class="form-control" disabled="disabled" required/>
                                 <div class="error"></div>
                             </div>
                             <div class="form-outline mb-1 form-group">
 
                                 <label class="form-label" >Building Number</label>
-                                <input type="text" id="building-number" value="${helper.getCustomerDto().getBuildingNum()}" class="form-control" disabled="disabled" required/>
+
+                                <input type="text" id="building-number" value="" class="form-control" disabled="disabled" required/>
                                 <div class="error"></div>
                             </div>
                             <div class="form-outline mb-1 form-group">
 
                                 <label class="form-label" >Floor Number</label>
-                                <input type="text" id="floor-number" value="${helper.getCustomerDto().getFloorNum()}" class="form-control" disabled="disabled" required/>
+                                <input type="text" id="floor-number" value="" class="form-control" disabled="disabled" required/>
                                 <div class="error"></div>
                             </div>
 
@@ -122,20 +124,30 @@
                             </div>
                             <div class="form-outline mb-1 form-group">
                                 <label class="form-label" for="gender">Gender</label>
-                                <input type="text" id="gender" value="fe" class="form-control" disabled="disabled" required/>
+<%--                                <input type="text" id="gender" value="fe" class="form-control" disabled="disabled" required/>--%>
+                                <select name="gender" id="gender" class="list form-control" required>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
                                 <div class="error"></div>
 
                             </div>
 
                             <div class="form-outline mb-1 form-group">
                                 <label class="form-label" for="interests">Favourites</label>
-                                <input type="text" id="interests" value="${helper.getCustomerDto().getInterests()}" class="form-control" disabled="disabled" required/>
+<%--                                <input type="text" id="interests" value="${helper.getCustomerDto().getInterests()}" class="form-control" disabled="disabled" required/>--%>
+                                <select name="interests" id="interests" class="list form-control"   required>
+                                    <option value="Chairs">Chairs</option>
+                                    <option value="Rooms">Rooms</option>
+                                    <option value="Kitchen">Kitchen</option>
+                                    <option value="Accessories">Accessories</option>
+                                </select>
                                 <div class="error"></div>
 
                             </div>
 
                             <!-- Submit button -->
-                            <button type="submit" id="submit" class="btn btn-primary btn-block mb-4 non_visible" >Save</button>
+                            <button type="submit" id="submit" class="btn btn-primary btn-block mb-4 non_visible saveBtn" >Save</button>
                         </form>
 
                     </div>
@@ -166,6 +178,8 @@
 <%@ include file="../includes/customer-footer.jsp" %>
 <script src="assets/scripts/customer-profile-validator.js"></script>
 <script src="assets/scripts/forms-validator.js"></script>
+<%--<script src="assets/scripts/update-profile.js"></script>--%>
+
 
 </body>
 
