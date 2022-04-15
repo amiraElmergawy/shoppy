@@ -3,6 +3,7 @@ package gov.iti.jets.shoppy.service;
 import gov.iti.jets.shoppy.presentation.helpers.HomeViewHelper;
 import gov.iti.jets.shoppy.presentation.helpers.LoginViewHelper;
 import gov.iti.jets.shoppy.presentation.helpers.ProfileViewHelper;
+import gov.iti.jets.shoppy.service.dtos.CustomerDto;
 import gov.iti.jets.shoppy.service.interfaces.AuthService;
 import gov.iti.jets.shoppy.service.interfaces.ProductService;
 import gov.iti.jets.shoppy.service.interfaces.ProfileService;
@@ -41,6 +42,10 @@ public class DomainFacade {
     public ProfileViewHelper customerProfile(int id){
         EntityManager entityManager=entityManagerFactory.createEntityManager();
         return profileService.getUser(id,entityManager);
+    }
+    public boolean updateProfile(CustomerDto customerDto){
+        EntityManager entityManager=entityManagerFactory.createEntityManager();
+        return profileService.updateUser(customerDto,entityManager);
     }
 
 
