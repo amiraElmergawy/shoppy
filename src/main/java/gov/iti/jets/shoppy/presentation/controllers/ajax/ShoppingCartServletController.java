@@ -31,16 +31,26 @@ public class ShoppingCartServletController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //check product q in db
-        //if q > 0 => decrease it in db & add it to shoppingCart
-//        var currentCustomerSession = req.getSession(false);
-//        int productId = Integer.parseInt(req.getParameter("productId"));
-//        var orderDto = (OrderDto)currentCustomerSession.getAttribute("cart");
-//        //logic here^_^
-//        currentCustomerSession.setAttribute("cart", orderDto);
-
         System.out.println("test");
         System.out.println("rewlkssdkldsklsdmksdldskmldslkslkds");
+
+        Integer productId = Integer.parseInt(req.getParameter("productId"));
+        HttpSession httpSession = req.getSession(false);
+        Integer customerId = Integer.parseInt(httpSession.getAttribute("userId")+"");
+        OrderDto sessionCart = (OrderDto) httpSession.getAttribute("cart");
+        ShoppingCartViewHelper shoppingCartViewHelper;
+        if(sessionCart == null) {
+            shoppingCartViewHelper = DomainFacade.getInstance().initializeCustomerCart(customerId, productId);
+        }else {
+            shoppingCartViewHelper = DomainFacade.getInstance().addProductToCart(sessionCart, productId);
+        }
+        if(shoppingCartViewHelper.getError() == null) {
+            httpSession.setAttribute("cart", shoppingCartViewHelper.getOrderDto());
+            resp.sendRedirect("shopping-cart");
+        }
+        else {
+            resp.sendRedirect("product-details?productID="+productId+"&error=true");
+        }
     }
 
     @Override

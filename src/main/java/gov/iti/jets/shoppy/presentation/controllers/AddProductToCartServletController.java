@@ -14,7 +14,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebServlet(name = "AddProductToCartServletController", urlPatterns = "/add-to-cart")
+@WebServlet(name = "AddProductToCartServletController", value = "/add-to-cart")
 public class AddProductToCartServletController extends HttpServlet {
     private final DomainFacade facade = DomainFacade.getInstance();
     @Override
@@ -26,32 +26,17 @@ public class AddProductToCartServletController extends HttpServlet {
         ShoppingCartViewHelper shoppingCartViewHelper;
         if(sessionCart == null) {
             shoppingCartViewHelper = facade.initializeCustomerCart(customerId, productId);
+            System.out.println(shoppingCartViewHelper);
         }else {
-            /**
-             * check product quantity by id > 0 (decrease, )
-             * if(q > 0) decrease quantity, get productDetails
-             * else null
-             * List <orderProduct>
-             *     <product already exist>
-             *     orderDto.getOrderProduct.add(orderProduct)
-             *
-             *
-             * ShoppingCart (productId)
-             *
-             *
-             */
             shoppingCartViewHelper = facade.addProductToCart(sessionCart, productId);
-
         }
-        req.setAttribute("error", "could add product to dto");
-        req.getRequestDispatcher("WEB-INF/views/customer/product-detail.jsp").forward(req, resp);
-//        if(shoppingCartViewHelper.getError() == null) {
-//            httpSession.setAttribute("cart", shoppingCartViewHelper.getOrderDto());
-//            resp.sendRedirect("shopping-cart");
-//        }
-//        else {
-//            req.setAttribute("error", shoppingCartViewHelper.getError());
-//            req.getRequestDispatcher("WEB-INF/views/customer/product-detail.jsp").forward(req, resp);
-//        }
+
+        if(shoppingCartViewHelper.getError() == null) {
+            httpSession.setAttribute("cart", shoppingCartViewHelper.getOrderDto());
+            resp.sendRedirect("shopping-cart");
+        }
+        else {
+            resp.sendRedirect("product-details?productID="+productId+"&error=true");
+        }
     }
 }

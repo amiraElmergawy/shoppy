@@ -40,13 +40,11 @@
                                     <div class="col-sm-11 col-lg-12 col-md-12">
 
                                         <div>
-                                            <c:choose>
-                                                <c:when test="${not empty error}">
-                                                    <div class="alert-danger text-center h6 py-2 d-none" id="invaled" style="height: 35px">
-                                                        ${error}
-                                                    </div>
-                                                </c:when>
-                                            </c:choose>
+                                             <c:if test="${not empty param.error}">
+                                                <div class="alert-danger text-center h6 py-2" id="invaled" style="height: 35px">
+                                                    could not add product to card
+                                                </div>
+                                             </c:if>
                                         </div>
                                         <div class="main-product-detail">
                                             <div class="product-single row">
@@ -153,14 +151,14 @@
                                                                         <span class="add" style="margin-top: -10px;">
 <%--                                                                                <button class="btn btn-primary add-to-cart add-item" type="submit">--%>
 <%--                                                                                <button class="btn btn-primary add-to-cart add-item" onclick="addProduct(${productDto.getId()})">--%>
-                                                                                <div>
-                                                                                    <a href="add-to-cart?productId=${productDto.getId()}">
-                                                                                        <button class="btn btn-primary dd-item">
-                                                                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                                                            <span>Add to cart</span>
-                                                                                        </button>
-                                                                                    </a>
-                                                                                </div>
+<%--                                                                                    <a href="add-to-cart?productId=${productDto.getId()}">--%>
+                                                                                        <form method="get" action="add-to-cart">
+                                                                                            <input style="display: none" type="number" name="productId" value="${productDto.getId()}"/><br>
+                                                                                            <button class="btn btn-primary add-to-cart add-item" type="submit">
+                                                                                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                                                                                    <span>Add to cart</span>
+                                                                                            </button>
+                                                                                       </form>
                                                                             <a class="addToWishlist" href="#">
                                                                                 <i class="fa fa-heart" aria-hidden="true"></i>
                                                                             </a>

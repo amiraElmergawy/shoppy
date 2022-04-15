@@ -19,6 +19,7 @@ public class ProductDetailsServletController extends HttpServlet {
         RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/customer/product-detail.jsp");
         try {
             req.setAttribute("productDto", domainFacade.getProductById(Integer.parseInt(req.getParameter("productID"))).getProductDto());
+            req.setAttribute("error",req.getParameter("error"));
             rd.include(req,resp);
             System.out.println(domainFacade.getProductById(Integer.parseInt(req.getParameter("productID"))).getProductDto());
         } catch (ServletException e) {

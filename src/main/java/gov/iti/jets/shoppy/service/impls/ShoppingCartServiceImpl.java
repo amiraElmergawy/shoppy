@@ -7,6 +7,7 @@ import gov.iti.jets.shoppy.repository.entity.ProductEntity;
 import gov.iti.jets.shoppy.repository.interfaces.ProductRepo;
 import gov.iti.jets.shoppy.repository.util.ImageUtility;
 import gov.iti.jets.shoppy.repository.util.RepoFactory;
+import gov.iti.jets.shoppy.service.dtos.CustomerDto;
 import gov.iti.jets.shoppy.service.dtos.OrderDto;
 import gov.iti.jets.shoppy.service.dtos.OrderProductDto;
 import gov.iti.jets.shoppy.service.dtos.ProductDto;
@@ -52,6 +53,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         ProductRepo productRepo = repoFactory.getProductRepo(entityManager);
         Optional<ProductEntity> optionalProduct = getProduct(productId, productRepo);
         ShoppingCartViewHelper shoppingCartViewHelper = new ShoppingCartViewHelper();
+        System.out.println("from initialize: "+optionalProduct);
         if(optionalProduct.isPresent() && increaseProductQuantity(optionalProduct.get(), productRepo)) {
             ProductEntity productEntity = optionalProduct.get();
             ProductDto productDto = productMapper.productEntityToDto(productEntity);
@@ -157,11 +159,13 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
     private OrderDto getNewShoppingCart(Integer customerId, EntityManager entityManager) {
         CustomerEntity customerEntity = (CustomerEntity) repoFactory.getUserRepo(entityManager).findUserById(customerId).get();
+        CustomerDto customerDto = customerMapper.customerEntityToDto(customerEntity);
+        customerDto.setAddress(addressMapper.addressEntityToDto(customerEntity.getAddressEntity()));
         return OrderDto.builder().orderProducts(new ArrayList<>())
                 .createdAt(new Date())
                 .isSubmitted(false)
                 .totalPrice(0)
-                .customer(customerMapper.customerEntityToDto(customerEntity))
+                .customer(customerDto)
                 .build();
     }
 
