@@ -28,48 +28,52 @@ public class AuthFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        String requestUrl = ((HttpServletRequest) servletRequest).getRequestURL().substring(((HttpServletRequest) servletRequest).getRequestURL().lastIndexOf("/")+1);
-        System.out.println("getRequestURL().substring: "+requestUrl);
-        System.out.println("uri: "+((HttpServletRequest) servletRequest).getRequestURI());
-        if (privateUrlList.contains(requestUrl)){
-            //private urls
-            HttpSession httpSession = ((HttpServletRequest) servletRequest).getSession(false);
-            if (httpSession != null) {
-                Role role = (Role) httpSession.getAttribute("userRole");
-                if(role != null){
-                    if (adminUrlList.contains(requestUrl) && !role.equals(Role.ADMIN)){
-                        ((HttpServletResponse) servletResponse).sendRedirect("not-found-page");
-                    } else if (customerUrlList.contains(requestUrl) && !(role.equals(Role.CUSTOMER) || role.equals(Role.ADMIN)) ) {
-                        ((HttpServletResponse) servletResponse).sendRedirect("not-found-page");
+        String requestUrl = ((HttpServletRequest) servletRequest).getRequestURL().substring(((HttpServletRequest) servletRequest).getRequestURL().lastIndexOf("/") + 1);
+        System.out.println("getRequestURL().substring: " + requestUrl);
+        System.out.println("uri: " + ((HttpServletRequest) servletRequest).getRequestURI());
+        if (requestUrl.isBlank())
+            ((HttpServletResponse) servletResponse).sendRedirect("home");
+        else {
+            if (privateUrlList.contains(requestUrl)) {
+                //private urls
+                HttpSession httpSession = ((HttpServletRequest) servletRequest).getSession(false);
+                if (httpSession != null) {
+                    Role role = (Role) httpSession.getAttribute("userRole");
+                    if (role != null) {
+                        if (adminUrlList.contains(requestUrl) && !role.equals(Role.ADMIN)) {
+                            ((HttpServletResponse) servletResponse).sendRedirect("not-found-page");
+                        } else if (customerUrlList.contains(requestUrl) && !(role.equals(Role.CUSTOMER) || role.equals(Role.ADMIN))) {
+                            ((HttpServletResponse) servletResponse).sendRedirect("not-found-page");
+                        } else {
+                            filterChain.doFilter(servletRequest, servletResponse);
+                        }
                     } else {
-                        filterChain.doFilter(servletRequest, servletResponse);
+                        ((HttpServletResponse) servletResponse).sendRedirect("login");
                     }
                 } else {
                     ((HttpServletResponse) servletResponse).sendRedirect("login");
                 }
+            } else if (publicUrlList.contains(requestUrl)) {
+                //public
+                if (requestUrl.equals("login") || requestUrl.equals("register")) {
+                    HttpSession httpSession = ((HttpServletRequest) servletRequest).getSession(false);
+                    if (httpSession != null) {
+                        Role role = (Role) httpSession.getAttribute("userRole");
+                        if (role != null) {
+                            if (role.equals(Role.CUSTOMER))
+                                ((HttpServletResponse) servletResponse).sendRedirect("home");
+                            else
+                                ((HttpServletResponse) servletResponse).sendRedirect("dashboard");
+                        } else filterChain.doFilter(servletRequest, servletResponse);
+                    } else filterChain.doFilter(servletRequest, servletResponse);
+                } else filterChain.doFilter(servletRequest, servletResponse);
+            } else if (((HttpServletRequest) servletRequest).getRequestURI().contains("assets")) {
+                //resources
+                filterChain.doFilter(servletRequest, servletResponse);
             } else {
-                ((HttpServletResponse) servletResponse).sendRedirect("login");
+                //not exist urls
+                ((HttpServletResponse) servletResponse).sendRedirect("not-found-page");
             }
-        } else if (publicUrlList.contains(requestUrl)){
-            //public
-            if(requestUrl.equals("login") || requestUrl.equals("register")){
-                HttpSession httpSession = ((HttpServletRequest) servletRequest).getSession(false);
-                if (httpSession != null) {
-                    Role role = (Role) httpSession.getAttribute("userRole");
-                    if(role != null){
-                        if (role.equals(Role.CUSTOMER))
-                            ((HttpServletResponse) servletResponse).sendRedirect("home");
-                        else
-                            ((HttpServletResponse) servletResponse).sendRedirect("dashboard");
-                    } else filterChain.doFilter(servletRequest , servletResponse);
-                } else filterChain.doFilter(servletRequest , servletResponse);
-            } else filterChain.doFilter(servletRequest , servletResponse);
-        } else if (((HttpServletRequest) servletRequest).getRequestURI().contains("assets")){
-            //resources
-            filterChain.doFilter(servletRequest , servletResponse);
-        }  else {
-            //not exist urls
-            ((HttpServletResponse) servletResponse).sendRedirect("not-found-page");
         }
     }
 
