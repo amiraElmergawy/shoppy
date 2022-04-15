@@ -13,43 +13,63 @@ import java.util.List;
 public class AuthFilter implements Filter {
 
     private final List<String> adminUrlList = new ArrayList<>();
-    private final List<String> customerList = new ArrayList<>();
+    private final List<String> customerUrlList = new ArrayList<>();
     private final List<String> privateUrlList = new ArrayList<>();
+    private final List<String> publicUrlList = new ArrayList<>();
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         fillCustomerUrlsList();
         fillAdminUrlsList();
         fillPrivateUrlList();
+        fillPublicUrlsList();
         Filter.super.init(filterConfig);
     }
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         String requestUrl = ((HttpServletRequest) servletRequest).getRequestURL().substring(((HttpServletRequest) servletRequest).getRequestURL().lastIndexOf("/")+1);
-        System.out.println(requestUrl);
+        System.out.println("getRequestURL().substring: "+requestUrl);
+        System.out.println("uri: "+((HttpServletRequest) servletRequest).getRequestURI());
         if (privateUrlList.contains(requestUrl)){
+            //private urls
             HttpSession httpSession = ((HttpServletRequest) servletRequest).getSession(false);
             if (httpSession != null) {
-                System.out.println("from auth filter, http session is not null");
                 Role role = (Role) httpSession.getAttribute("userRole");
                 if(role != null){
-                    System.out.println("role is: "+role);
                     if (adminUrlList.contains(requestUrl) && !role.equals(Role.ADMIN)){
                         ((HttpServletResponse) servletResponse).sendRedirect("not-found-page");
-                    } else if (customerList.contains(requestUrl) && !(role.equals(Role.CUSTOMER) || role.equals(Role.ADMIN)) ) {
+                    } else if (customerUrlList.contains(requestUrl) && !(role.equals(Role.CUSTOMER) || role.equals(Role.ADMIN)) ) {
                         ((HttpServletResponse) servletResponse).sendRedirect("not-found-page");
                     } else {
                         filterChain.doFilter(servletRequest, servletResponse);
                     }
                 } else {
-                    ((HttpServletResponse) servletResponse).sendRedirect("not-found-page");
+                    ((HttpServletResponse) servletResponse).sendRedirect("login");
                 }
             } else {
-                ((HttpServletResponse) servletResponse).sendRedirect("not-found-page");
+                ((HttpServletResponse) servletResponse).sendRedirect("login");
             }
-        } else {
-            filterChain.doFilter(servletRequest, servletResponse);
+        } else if (publicUrlList.contains(requestUrl)){
+            //public
+            if(requestUrl.equals("login") || requestUrl.equals("register")){
+                HttpSession httpSession = ((HttpServletRequest) servletRequest).getSession(false);
+                if (httpSession != null) {
+                    Role role = (Role) httpSession.getAttribute("userRole");
+                    if(role != null){
+                        if (role.equals(Role.CUSTOMER))
+                            ((HttpServletResponse) servletResponse).sendRedirect("home");
+                        else
+                            ((HttpServletResponse) servletResponse).sendRedirect("dashboard");
+                    } else filterChain.doFilter(servletRequest , servletResponse);
+                } else filterChain.doFilter(servletRequest , servletResponse);
+            } else filterChain.doFilter(servletRequest , servletResponse);
+        } else if (((HttpServletRequest) servletRequest).getRequestURI().contains("assets")){
+            //resources
+            filterChain.doFilter(servletRequest , servletResponse);
+        }  else {
+            //not exist urls
+            ((HttpServletResponse) servletResponse).sendRedirect("not-found-page");
         }
     }
 
@@ -59,13 +79,14 @@ public class AuthFilter implements Filter {
     }
 
     private void fillPrivateUrlList(){
-        privateUrlList.addAll(customerList);
+        privateUrlList.addAll(customerUrlList);
         privateUrlList.addAll(adminUrlList);
+        privateUrlList.add("logout");
     }
 
     private void fillCustomerUrlsList(){
 //        customerList.addAll(publicUrlList);
-        customerList.add("shopping-cart");
+        customerUrlList.add("shopping-cart");
 
     }
 
@@ -79,5 +100,13 @@ public class AuthFilter implements Filter {
         adminUrlList.add("show-all-customers");
         adminUrlList.add("show-all-orders");
         adminUrlList.add("dashboard");
+    }
+
+    private void fillPublicUrlsList(){
+       publicUrlList.add("register");
+        publicUrlList.add("login");
+        publicUrlList.add("home");
+        publicUrlList.add("product-details");
+        publicUrlList.add("about-us");
     }
 }
