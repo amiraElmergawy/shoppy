@@ -4,23 +4,21 @@ import gov.iti.jets.shoppy.presentation.helpers.HomeViewHelper;
 import gov.iti.jets.shoppy.presentation.helpers.LoginViewHelper;
 import gov.iti.jets.shoppy.presentation.helpers.ShoppingCartViewHelper;
 import gov.iti.jets.shoppy.presentation.helpers.ViewProductHelper;
-import gov.iti.jets.shoppy.service.dtos.OrderDto;
 import gov.iti.jets.shoppy.service.interfaces.AuthService;
-import gov.iti.jets.shoppy.service.interfaces.OrderService;
+import gov.iti.jets.shoppy.service.interfaces.ShoppingCartService;
 import gov.iti.jets.shoppy.service.interfaces.ProductService;
 import gov.iti.jets.shoppy.service.util.ServiceFactory;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
-import jakarta.persistence.criteria.Order;
 
 public class DomainFacade {
     private static final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("shoppy");
     private final AuthService authService = ServiceFactory.INSTANCE.getAuthService();
     private final ProductService productService = ServiceFactory.INSTANCE.getProductService();
-    private final OrderService orderService = ServiceFactory.INSTANCE.getOrderService();
+    private final ShoppingCartService shoppingCartService = ServiceFactory.INSTANCE.getShoppingCartService();
 
-    private static DomainFacade domainFacade = new DomainFacade();
+    private static final DomainFacade domainFacade = new DomainFacade();
     private DomainFacade(){}
 
     public static DomainFacade getInstance(){
@@ -41,14 +39,19 @@ public class DomainFacade {
         return productService.getProducts(pageNumber, entityManager);
     }
 
-    public ViewProductHelper getProductById(int id){
+    public ViewProductHelper getProductById(int id) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         return productService.getProductById(id,entityManager);
     }
 
     public ShoppingCartViewHelper getShoppingCart(Integer id) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        return orderService.getShoppingCart(id, entityManager);
+        return shoppingCartService.getShoppingCart(id, entityManager);
+    }
+
+    public ShoppingCartViewHelper initializeCustomerCart(Integer customerId,Integer productId) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        return shoppingCartService.initializeCustomerCart(customerId, productId, entityManager);
     }
 
 }
