@@ -152,7 +152,7 @@
 <%--                                                                                <button class="btn btn-primary add-to-cart add-item" type="submit">--%>
 <%--                                                                                <button class="btn btn-primary add-to-cart add-item" onclick="addProduct(${productDto.getId()})">--%>
 <%--                                                                                    <a href="add-to-cart?productId=${productDto.getId()}">--%>
-                                                                                        <form method="get" action="add-to-cart">
+                                                                                        <form method="post" action="shopping-cart">
                                                                                             <input style="display: none" type="number" name="productId" value="${productDto.getId()}"/><br>
                                                                                             <button class="btn btn-primary add-to-cart add-item" type="submit">
                                                                                                     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
