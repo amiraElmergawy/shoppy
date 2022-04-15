@@ -65,6 +65,20 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         return shoppingCartViewHelper;
     }
 
+    @Override
+    public boolean increaseProductInShoppingCartTest(Integer productId, EntityManager entityManager) {
+        ProductRepo productRepo = repoFactory.getProductRepo(entityManager);
+        Optional<ProductEntity> optionalProduct = getProduct(productId, productRepo);
+        return increaseProductQuantity(optionalProduct.get(), productRepo);
+       }
+
+    @Override
+    public void decreaseProductInShoppingCart(Integer productId, EntityManager entityManager) {
+        ProductRepo productRepo = repoFactory.getProductRepo(entityManager);
+        Optional<ProductEntity> optionalProduct = getProduct(productId, productRepo);
+        decreaseProductQuantity(optionalProduct.get(), productRepo);
+    }
+
     private Optional<ProductEntity> getProduct(Integer productId, ProductRepo productRepo) {
         Optional<ProductEntity> optionalProduct = productRepo.findProductById(productId);
         if(optionalProduct.isPresent() && optionalProduct.get().getStock() > 0)
@@ -90,9 +104,16 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     public boolean increaseProductQuantity(ProductEntity productEntity, ProductRepo productRepo) {
-        Integer stock = productEntity.getStock();
+        //decrease product in db test
+        //??
+//        Integer stock = productEntity.getStock();
+//        productEntity.setStock(--stock);
         productEntity.setStock(productEntity.getStock()- 1);
-        productEntity.setStock(--stock);
         return productRepo.updateProduct(productEntity);
+    }
+
+    public void decreaseProductQuantity(ProductEntity productEntity, ProductRepo productRepo) {
+        productEntity.setStock(productEntity.getStock()+ 1);
+        productRepo.updateProduct(productEntity);
     }
 }

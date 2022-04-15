@@ -54,4 +54,17 @@ public class DomainFacade {
         return shoppingCartService.initializeCustomerCart(customerId, productId, entityManager);
     }
 
+    public boolean increaseProductInShoppingCart(int productId){
+       EntityManager entityManager = entityManagerFactory.createEntityManager();
+        boolean increaseQuantityResult = shoppingCartService.increaseProductInShoppingCartTest(productId, entityManager);
+        entityManager.close();
+        return increaseQuantityResult;
+    }
+
+    public void decreaseProductInShoppingCart(int productId){
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        shoppingCartService.decreaseProductInShoppingCart(productId, entityManager);
+        entityManager.close();
+    }
+
 }
