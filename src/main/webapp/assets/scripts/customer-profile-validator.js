@@ -27,7 +27,6 @@ editButton.addEventListener('click',e=>{
     dateElement.removeAttribute("disabled");
     genderElement.removeAttribute("disabled");
     interestsElement.removeAttribute("disabled");
-    interestsElement.removeAttribute("disabled");
     cityElement.removeAttribute("disabled");
     streetElement.removeAttribute('disabled');
     buildingElement.removeAttribute('disabled');
@@ -51,6 +50,7 @@ submitButton.addEventListener('submit', e => {
 
     if(validName && validEmail && validBirthDate &&validFloorNumber &&validJob && validBuildingNumber && validStreet && validCity) {
 
+
         let xmlHttp = new XMLHttpRequest();
         xmlHttp.open("PUT", '/shoppy/profile', true);
         customerData = {
@@ -63,6 +63,7 @@ submitButton.addEventListener('submit', e => {
             floorNumber:floorElement.value,
             buildingNumber:buildingElement.value,
             city:cityElement.value,
+            gender:genderElement.value
         };
         console.log(customerData);
         xmlHttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
