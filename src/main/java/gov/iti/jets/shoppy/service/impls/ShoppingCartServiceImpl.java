@@ -126,6 +126,8 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     public boolean increaseProductInShoppingCart(Integer productId, EntityManager entityManager) {
         ProductRepo productRepo = repoFactory.getProductRepo(entityManager);
         Optional<ProductEntity> optionalProduct = getProduct(productId, productRepo);
+        if (optionalProduct.get().getStock()-1 < 0)
+            return false;
         return increaseProductQuantity(optionalProduct.get(), productRepo);
        }
 
