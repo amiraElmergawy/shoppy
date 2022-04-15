@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.lang.Math" %>
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if IE 9 ]><html class="ie ie9" lang="en"> <![endif]-->
@@ -137,16 +139,15 @@
                                             <div class="product-info col-xs-12 col-md-7 col-sm-7 py-md-5 ">
                                                 <div class="detail-description">
                                                     <div class="price-del">
-                                                        <h1 class="product-name" name="productName">Mi Note 11 Pro</h1>
-                                                        <h2 font-size="25px"  class="mt-3 font-color font-weight-bold mb-3">$1135.00</h2>
+                                                        <h1 class="product-name" name="productName">${productDto.getProductName()}</h1>
+                                                        <h2 font-size="25px"  class="mt-3 font-color font-weight-bold mb-3">${productDto.getPrice()}</h2>
                                                         <span class="float-right mt-1">
-                                                                <span class="availb">Availability: </span>
+                                                                <span class="availb">Availability: ${productDto.getStock()} </span>
                                                                 <span class="check">
                                                                     <i class="fa fa-check-square-o" aria-hidden="true"></i>IN STOCK</span>
                                                             </span>
                                                     </div>
-                                                    <h6 font-size="14px" class="text-muted mr-2 mb-4">Proin gravida nibh vel velit auctor aliquet. Aenean lorem quis bibendum
-                                                        auctor, nisi elit consequat etiam non auctor.</h6>
+                                                    <h6 font-size="14px" class="text-muted mr-2 mb-4">${productDto.getProductDesc()}.</h6>
 
 
                                                     <div class="cart-area has-border ">
@@ -154,7 +155,7 @@
                                                             <div class="qty">
                                                                 <div class="input-group d-flex">
                                                                     <div class="quantity" style="width:120px">
-                                                                        <label>Quantity: </label>
+<%--                                                                        <label>Quantity: </label>--%>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -188,15 +189,9 @@
 
                                                         <div class="tab-content">
                                                             <div id="description" class="tab-pane fade in active show">
-                                                                <p font-size="14px" class="text-muted mr-2 mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                                    eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem
-                                                                    ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                                    tempor incididunt ut labore et dolore magna aliqua.
+                                                                <p font-size="14px" class="text-muted mr-2 mb-4">${productDto.getProductDesc()}.
                                                                 </p>
-                                                                <p font-size="14px" class="text-muted mr-2 mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                                    eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem
-                                                                    ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                                    tempor incididunt ut labore et dolore magna aliqua.
+                                                                <p font-size="14px" class="text-muted mr-2 mb-4">${productDto.getProductDesc()}.
                                                                 </p>
                                                             </div>
                                                     </div>
