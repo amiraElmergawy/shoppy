@@ -32,7 +32,7 @@ public class ProfileServletController extends HttpServlet{
         //loadCustomerprofile
         DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
 
-        System.out.println("____________*******________"+ dateFormat.format(profileViewHelper.getCustomerDto().getDateOfBirth().toString()));
+//        System.out.println("____________*******________"+ dateFormat.format(profileViewHelper.getCustomerDto().getDateOfBirth().toString()));
 
 
         try {
@@ -44,26 +44,34 @@ public class ProfileServletController extends HttpServlet{
 
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        CustomerPostRequestDto customerReqDto = (CustomerPostRequestDto) req.getAttribute("customerData");
-//        Date formattedDOB = new Date();
-//        System.out.println(formattedDOB);
-//        try {
-//            formattedDOB = new SimpleDateFormat("yyyy-MM-dd").parse(customerReqDto.getDateOfBirth().trim());
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
-//        CustomerDto customerDto = CustomerDto.builder()
-//                .username(customerReqDto.getUsername().trim())
-//                .email(customerReqDto.getEmail().trim())
-//                .dateOfBirth(formattedDOB)
-//                .isMale(customerReqDto.isMale())
-//                .interests(customerReqDto.getInterests().trim()).build();
-//        System.out.println(customerDto);
-//        if(DomainFacade.getInstance().updateProfile(customerDto))
-//            resp.sendRedirect("profile");
-//        else {
-//            resp.sendRedirect("profile?updateError=false");
-//        }
+        Date formattedDOB = new Date();
+        System.out.println(formattedDOB);
+        boolean isMaleValue;
+        if(req.getParameter("gender")=="male"){
+            isMaleValue=true;
+        }
+        else {
+            isMaleValue=false;
+        }
+        try {
+            formattedDOB = new SimpleDateFormat("yyyy-MM-dd").parse(req.getParameter("dateOfBirth").trim());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        CustomerDto customerDto = CustomerDto.builder()
+                .username(req.getParameter("username").trim())
+                .email(req.getParameter("email").trim())
+                .dateOfBirth(formattedDOB)
+                .isMale(isMaleValue)
+                .interests(req.getParameter("interests").trim())
+                .jobTitle(req.getParameter("job"))
+                .build();
+        System.out.println(customerDto);
+        if(DomainFacade.getInstance().updateProfile(customerDto))
+            resp.sendRedirect("profile");
+        else {
+            resp.sendRedirect("profile?updateError=false");
+        }
 
     }
 }
