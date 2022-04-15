@@ -2,6 +2,7 @@ package gov.iti.jets.shoppy.repository.impls;
 
 import gov.iti.jets.shoppy.repository.entity.AdminEntity;
 import gov.iti.jets.shoppy.repository.entity.CustomerEntity;
+import gov.iti.jets.shoppy.repository.entity.ProductEntity;
 import gov.iti.jets.shoppy.repository.entity.UserEntity;
 import gov.iti.jets.shoppy.repository.interfaces.UserRepo;
 import jakarta.persistence.EntityExistsException;
@@ -21,6 +22,7 @@ public class UserRepoImpl implements UserRepo {
 //    public static UserRepoImpl getInstance() {
 //        return userRepo;
 //    }
+    private static int pageSize = 12;
     private EntityManager entityManager;
     public UserRepoImpl(EntityManager entityManager){
         this.entityManager = entityManager;
@@ -76,4 +78,17 @@ public class UserRepoImpl implements UserRepo {
         }
     }
 
+    @Override
+    public List<CustomerEntity> getCustomers(int pageNumber) {
+        Query query = entityManager.createQuery("from CustomerEntity", CustomerEntity.class);
+        query.setFirstResult((pageNumber-1) * pageSize);
+        query.setMaxResults(pageSize);
+        return query.getResultList();
+    }
+
+    @Override
+    public Long getCustomerCount() {
+        return entityManager.createQuery("select count(*) from CustomerEntity ", Long.class)
+                .getSingleResult();
+    }
 }
