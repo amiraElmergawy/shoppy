@@ -152,6 +152,15 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
                 .build();
     }
 
+    @Override
+    public boolean saveShoppingCart(Optional<OrderDto> orderDtoOptional) {
+        if(orderDtoOptional.isPresent()) {
+            OrderEntity orderEntity = orderMapper.orderDTOToEntity(orderDtoOptional.get());
+            System.out.println(orderEntity);
+        }
+        return true;
+    }
+
     public boolean increaseProductQuantity(ProductEntity productEntity, ProductRepo productRepo) {
         productEntity.setStock(productEntity.getStock() - 1);
         return productRepo.updateProduct(productEntity);

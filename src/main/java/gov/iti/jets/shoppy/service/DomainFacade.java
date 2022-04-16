@@ -13,6 +13,8 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
+import java.util.Optional;
+
 public class DomainFacade {
     private static final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("shoppy");
     private final AuthService authService = ServiceFactory.INSTANCE.getAuthService();
@@ -63,14 +65,6 @@ public class DomainFacade {
         return shoppingCartService.addProductToShoppingCart(orderDto, productId, entityManager);
     }
 
-//    public ShoppingCartViewHelper initializeCustomerCart(Integer customerId,Integer productId) {
-//        EntityManager entityManager = entityManagerFactory.createEntityManager();
-//        ShoppingCartViewHelper shoppingCartViewHelper = shoppingCartService.getShoppingCart(customerId, entityManager);
-//        shoppingCartViewHelper.setOrderDto(shoppingCartService.getNewShoppingCart(customerId, entityManager));
-//        shoppingCartViewHelper = addProductToCart(shoppingCartViewHelper.getOrderDto(), )
-//        return shoppingCartService.initializeCustomerCart(customerId, productId, entityManager);
-//    }
-
     public boolean increaseProductInShoppingCart(int productId){
        EntityManager entityManager = entityManagerFactory.createEntityManager();
         boolean increaseQuantityResult = shoppingCartService.increaseProductInShoppingCart(productId, entityManager);
@@ -88,5 +82,9 @@ public class DomainFacade {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         shoppingCartService.deleteProductFromShoppingCard(productId, currentProductQuantity, entityManager);
         entityManager.close();
+    }
+
+    public boolean saveShoppingCart(Optional<OrderDto> orderDtoOptional) {
+        return shoppingCartService.saveShoppingCart(orderDtoOptional);
     }
 }
