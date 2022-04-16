@@ -7,6 +7,7 @@ import java.util.Optional;
 public interface ProductRepo {
     List<ProductEntity> getAllProducts();
     List<ProductEntity> getProducts(int pageNumber);
+    List<ProductEntity> searchProducts(String value);
     Long getProductsCount();
     Optional<ProductEntity> findProductById(Integer id);
     boolean updateProduct(ProductEntity productEntity);
