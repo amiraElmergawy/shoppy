@@ -127,10 +127,10 @@
 
                 <!-- search and acount -->
                 <div class="col-sm-5 col-md-5 d-flex align-items-center justify-content-end" id="search_widget">
-                    <form method="get" action="#">
+                    <form method="get" action="">
 
                         <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
-                        <input type="text" name="s" value="" placeholder="Search" class="ui-autocomplete-input" autocomplete="off">
+                        <input type="text" name="key" value="" placeholder="Search" class="ui-autocomplete-input" autocomplete="off">
                         <button type="submit">
                             <i class="fa fa-search"></i>
                         </button>
