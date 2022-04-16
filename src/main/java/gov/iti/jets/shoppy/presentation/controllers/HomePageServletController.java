@@ -22,6 +22,7 @@ public class HomePageServletController extends HttpServlet {
         if(req.getParameter("pageNum") != null)
             pageNumber = Integer.parseInt(req.getParameter("pageNum"));
         try {
+                System.out.println(domainFacade.retrieveProducts(pageNumber));
                 req.setAttribute("helper", domainFacade.retrieveProducts(pageNumber));
                 rd.include(req,resp);
         } catch (ServletException e) {
