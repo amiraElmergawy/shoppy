@@ -56,7 +56,7 @@ submitButton.addEventListener('submit', e => {
         customerData = {
             username: nameElement.value,
             email: emailEelement.value,
-            dateOfBirth: dateElement.value,
+            dob: dateElement.value,
             interests: interestsElement.value,
             job:jopElement.value,
             street:streetElement.value,

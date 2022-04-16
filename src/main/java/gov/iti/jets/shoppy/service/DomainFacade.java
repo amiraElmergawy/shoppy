@@ -4,7 +4,10 @@ import gov.iti.jets.shoppy.presentation.helpers.HomeViewHelper;
 import gov.iti.jets.shoppy.presentation.helpers.LoginViewHelper;
 import gov.iti.jets.shoppy.presentation.helpers.ProfileViewHelper;
 import gov.iti.jets.shoppy.service.dtos.CustomerDto;
+import gov.iti.jets.shoppy.presentation.helpers.ShoppingCartViewHelper;
+import gov.iti.jets.shoppy.presentation.helpers.ViewProductHelper;
 import gov.iti.jets.shoppy.service.interfaces.AuthService;
+import gov.iti.jets.shoppy.service.interfaces.ShoppingCartService;
 import gov.iti.jets.shoppy.service.interfaces.ProductService;
 import gov.iti.jets.shoppy.service.interfaces.ProfileService;
 import gov.iti.jets.shoppy.service.util.ServiceFactory;
@@ -18,8 +21,9 @@ public class DomainFacade {
     private final ProductService productService = ServiceFactory.INSTANCE.getProductService();
     private  final ProfileService profileService=ServiceFactory.INSTANCE.getProfileService();
 
+    private final ShoppingCartService shoppingCartService = ServiceFactory.INSTANCE.getShoppingCartService();
 
-    private static DomainFacade domainFacade = new DomainFacade();
+    private static final DomainFacade domainFacade = new DomainFacade();
     private DomainFacade(){}
 
     public static DomainFacade getInstance(){
@@ -49,4 +53,37 @@ public class DomainFacade {
     }
 
 
+    public ViewProductHelper getProductById(int id) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        return productService.getProductById(id,entityManager);
+    }
+
+    public ShoppingCartViewHelper getShoppingCart(Integer id) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        return shoppingCartService.getShoppingCart(id, entityManager);
+    }
+
+    public ShoppingCartViewHelper initializeCustomerCart(Integer customerId,Integer productId) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        return shoppingCartService.initializeCustomerCart(customerId, productId, entityManager);
+    }
+
+    public boolean increaseProductInShoppingCart(int productId){
+       EntityManager entityManager = entityManagerFactory.createEntityManager();
+        boolean increaseQuantityResult = shoppingCartService.increaseProductInShoppingCart(productId, entityManager);
+        entityManager.close();
+        return increaseQuantityResult;
+    }
+
+    public void decreaseProductInShoppingCart(int productId){
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        shoppingCartService.decreaseProductInShoppingCart(productId, entityManager);
+        entityManager.close();
+    }
+
+    public void deleteProductFromShoppingCart(int productId, int currentProductQuantity){
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        shoppingCartService.deleteProductFromShoppingCard(productId, currentProductQuantity, entityManager);
+        entityManager.close();
+    }
 }

@@ -54,17 +54,17 @@ public class ProfileServletController extends HttpServlet{
             isMaleValue=false;
         }
         try {
-            formattedDOB = new SimpleDateFormat("yyyy-MM-dd").parse(req.getParameter("dateOfBirth").trim());
+            formattedDOB = new SimpleDateFormat("yyyy-MM-dd").parse(req.getParameter("dob").trim());
         } catch (ParseException e) {
             e.printStackTrace();
         }
         CustomerDto customerDto = CustomerDto.builder()
                 .username(req.getParameter("username").trim())
                 .email(req.getParameter("email").trim())
-                .dateOfBirth(formattedDOB)
+                .dob(formattedDOB)
                 .isMale(isMaleValue)
                 .interests(req.getParameter("interests").trim())
-                .jobTitle(req.getParameter("job"))
+                .job(req.getParameter("job"))
                 .build();
         System.out.println(customerDto);
         if(DomainFacade.getInstance().updateProfile(customerDto))

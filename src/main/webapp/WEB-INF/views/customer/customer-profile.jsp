@@ -77,7 +77,7 @@
                             <!-- Text input -->
                             <div class="form-outline mb-1 form-group">
                                 <label class="form-label" for="jop">Job</label>
-                                <input type="text" id="jop" value="${helper.getCustomerDto().getJobTitle()}" class="form-control" disabled="disabled" required/>
+                                <input type="text" id="jop" value="${helper.getCustomerDto().getJob()}" class="form-control" disabled="disabled" required/>
                                 <div class="error"></div>
                             </div>
 
@@ -119,7 +119,7 @@
                             <div class="form-outline mb-1 form-group">
 
                                 <label class="form-label" for="date">Birth Date</label>
-                                <input type="date" id="date" value="${helper.getCustomerDto().getDateOfBirth()}" class="form-control" disabled="disabled" required/>
+                                <input type="date" id="date" value="${helper.getCustomerDto().getDob()}" class="form-control" disabled="disabled" required/>
                                 <div class="error"></div>
                             </div>
                             <div class="form-outline mb-1 form-group">
