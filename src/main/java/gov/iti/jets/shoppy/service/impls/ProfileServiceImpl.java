@@ -21,7 +21,9 @@ public class ProfileServiceImpl implements ProfileService {
         ProfileViewHelper profileViewHelper=new ProfileViewHelper();
         Optional<? extends UserEntity> userEntityOptional = repoFactory.getUserRepo(entityManager).findUserById(id);
         if(userEntityOptional.isPresent()){
-            CustomerDto customerDto=customerMapper.customerEntityToDto((CustomerEntity) userEntityOptional.get());
+            CustomerEntity customerEntity= (CustomerEntity) userEntityOptional.get();
+            System.out.println("from getUserMethod>>"+customerEntity);
+            CustomerDto customerDto=customerMapper.customerEntityToDto(customerEntity);
             profileViewHelper.setCustomerDto(customerDto);
         }
         else {
