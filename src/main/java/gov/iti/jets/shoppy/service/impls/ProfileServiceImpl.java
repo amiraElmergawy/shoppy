@@ -6,6 +6,7 @@ import gov.iti.jets.shoppy.repository.entity.UserEntity;
 import gov.iti.jets.shoppy.repository.util.RepoFactory;
 import gov.iti.jets.shoppy.service.dtos.CustomerDto;
 import gov.iti.jets.shoppy.service.interfaces.ProfileService;
+import gov.iti.jets.shoppy.service.mappers.AddressMapper;
 import gov.iti.jets.shoppy.service.mappers.CustomerMapper;
 import jakarta.persistence.EntityManager;
 
@@ -14,6 +15,7 @@ import java.util.Optional;
 public class ProfileServiceImpl implements ProfileService {
     private final RepoFactory repoFactory = RepoFactory.INSTANCE;
     private final CustomerMapper customerMapper = CustomerMapper.INSTANCE;
+    private final AddressMapper addressMapper = AddressMapper.INSTANCE;
 
 
     @Override
@@ -21,7 +23,10 @@ public class ProfileServiceImpl implements ProfileService {
         ProfileViewHelper profileViewHelper=new ProfileViewHelper();
         Optional<? extends UserEntity> userEntityOptional = repoFactory.getUserRepo(entityManager).findUserById(id);
         if(userEntityOptional.isPresent()){
-            CustomerDto customerDto=customerMapper.customerEntityToDto((CustomerEntity) userEntityOptional.get());
+            CustomerEntity customerEntity = (CustomerEntity) userEntityOptional.get();
+            CustomerDto customerDto = customerMapper.customerEntityToDto(customerEntity);
+            customerDto.setAddress(addressMapper.addressEntityToDto(customerEntity.getAddressEntity()));
+            System.out.println("profileViewHepler" + customerDto);
             profileViewHelper.setCustomerDto(customerDto);
         }
         else {
@@ -33,9 +38,9 @@ public class ProfileServiceImpl implements ProfileService {
 
     @Override
     public boolean updateUser(CustomerDto customerDto, EntityManager entityManager) {
-        CustomerEntity customerEntity=CustomerMapper.INSTANCE.customerDtoToEntity(customerDto);
+        CustomerEntity customerEntity = CustomerMapper.INSTANCE.customerDtoToEntity(customerDto);
+        customerEntity.setAddressEntity(addressMapper.addressDtoToEntity(customerDto.getAddress()));
         boolean updateUserResult = repoFactory.getUserRepo(entityManager).updateUser(customerEntity);
-
         return updateUserResult;
     }
 
