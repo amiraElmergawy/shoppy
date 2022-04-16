@@ -5,5 +5,5 @@ import jakarta.persistence.EntityManager;
 
 public interface ProductService {
     HomeViewHelper getProducts(int pageNumber, EntityManager entityManager);
-    HomeViewHelper searchForProducts(int pageNumber, EntityManager entityManager, String value);
+    HomeViewHelper searchForProducts(EntityManager entityManager, String value);
 }
