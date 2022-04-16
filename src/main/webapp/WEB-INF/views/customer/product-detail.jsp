@@ -41,10 +41,18 @@
 
                                         <div>
                                              <c:if test="${not empty param.error}">
-                                                <div class="alert-danger text-center h6 py-2" id="invaled" style="height: 35px">
-                                                    could not add product to card
-                                                </div>
+                                                 <c:if test="${param.error == true}">
+                                                    <div class="alert-danger text-center h6 py-2" id="invaled" style="height: 35px">
+                                                        could not add product to card
+                                                    </div>
+                                                 </c:if>
+                                                 <c:if test="${param.error == false}">
+                                                     <div class="alert-success text-center h6 py-2" id="valed" style="height: 35px">
+                                                         product added to cart
+                                                     </div>
+                                                 </c:if>
                                              </c:if>
+
                                         </div>
                                         <div class="main-product-detail">
                                             <div class="product-single row">

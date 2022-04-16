@@ -31,11 +31,7 @@ public class AddProductToCartServletController extends HttpServlet {
         }
         if(shoppingCartViewHelper.getError() == null) {
             httpSession.setAttribute("cart", shoppingCartViewHelper.getOrderDto());
-            /**
-             * redirect to product page with confirmation msg
-             */
-            resp.sendRedirect("shopping-cart");
-
+            resp.sendRedirect("product-details?productID="+productId+"&error=false");
         }
         else {
             resp.sendRedirect("product-details?productID="+productId+"&error=true");
