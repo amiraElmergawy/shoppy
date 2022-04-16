@@ -39,6 +39,7 @@ public class ShoppingCartServletController extends HttpServlet {
         if(sessionCart == null) {
             shoppingCartViewHelper = DomainFacade.getInstance().addProductToCart(customerId, productId);
         }else {
+
             shoppingCartViewHelper = DomainFacade.getInstance().addProductToCart(sessionCart, productId);
         }
         if(shoppingCartViewHelper.getError() == null) {
