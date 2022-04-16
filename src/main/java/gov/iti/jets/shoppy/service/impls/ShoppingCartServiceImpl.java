@@ -49,23 +49,24 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         return orderDto;
     }
 
-    public ShoppingCartViewHelper initializeCustomerCart(Integer customerId, Integer productId, EntityManager entityManager) {
-        ProductRepo productRepo = repoFactory.getProductRepo(entityManager);
-        Optional<ProductEntity> optionalProduct = getProduct(productId, productRepo);
-        ShoppingCartViewHelper shoppingCartViewHelper = new ShoppingCartViewHelper();
-        System.out.println("from initialize: "+optionalProduct);
-        if(optionalProduct.isPresent() && increaseProductQuantity(optionalProduct.get(), productRepo)) {
-            ProductEntity productEntity = optionalProduct.get();
-            ProductDto productDto = productMapper.productEntityToDto(productEntity);
-            OrderDto orderDto = getNewShoppingCart(customerId, entityManager);
-            // add product to order
-            orderDto.getOrderProducts().add(OrderProductDto.builder().product(productDto).quantity(1).build());
-            // add order to hepler
-            shoppingCartViewHelper.setOrderDto(orderDto);
-        }else
-            shoppingCartViewHelper.setError("could not add product to card");
-        return shoppingCartViewHelper;
-    }
+//    public ShoppingCartViewHelper initializeCustomerCart(Integer customerId, Integer productId, EntityManager entityManager) {
+//        ProductRepo productRepo = repoFactory.getProductRepo(entityManager);
+//        Optional<ProductEntity> optionalProduct = getProduct(productId, productRepo);
+//        ShoppingCartViewHelper shoppingCartViewHelper = new ShoppingCartViewHelper();
+//        System.out.println("from initialize: "+optionalProduct);
+//        if(optionalProduct.isPresent() && increaseProductQuantity(optionalProduct.get(), productRepo)) {
+//            ProductEntity productEntity = optionalProduct.get();
+//            ProductDto productDto = productMapper.productEntityToDto(productEntity);
+//            OrderDto orderDto = getNewShoppingCart(customerId, entityManager);
+//            // add product to order
+//            orderDto.getOrderProducts().add(OrderProductDto.builder().product(productDto).quantity(1).build());
+//            // add order to helper
+//            shoppingCartViewHelper.setOrderDto(orderDto);
+//        }else
+//            shoppingCartViewHelper.setError("could not add product to card");
+//        return shoppingCartViewHelper;
+//    }
+
 
     public ShoppingCartViewHelper addProductToShoppingCart(OrderDto orderDto, Integer productId, EntityManager entityManager) {
         ShoppingCartViewHelper shoppingCartViewHelper = new ShoppingCartViewHelper();
@@ -73,6 +74,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         Optional<ProductEntity> optionalProduct = getProduct(productId, productRepo);
         if(optionalProduct.isPresent()) {
             ProductDto productDto = productMapper.productEntityToDto(optionalProduct.get());
+            productDto.setImagesPaths(imageUtility.loadImages(productId));
             addProductToOrderProductList(orderDto.getOrderProducts(), productDto);
             shoppingCartViewHelper.setOrderDto(orderDto);
         } else
@@ -80,26 +82,6 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         return shoppingCartViewHelper;
     }
 
-//    @Override
-//    public ShoppingCartViewHelper mergeShoppingCart(Optional<OrderDto> orderDtoOptional, ShoppingCartViewHelper shoppingCartViewHelper) {
-//        if(orderDtoOptional.isEmpty()) {
-//            return shoppingCartViewHelper;
-//        }
-//        if(shoppingCartViewHelper.getOrderDto() == null) {
-//            shoppingCartViewHelper.setOrderDto(orderDtoOptional.get());
-//            return shoppingCartViewHelper;
-//        }
-//        List<OrderProductDto> orderProducts1 = shoppingCartViewHelper.getOrderDto().getOrderProducts();
-//        List<OrderProductDto> orderProducts2 = orderDtoOptional.get().getOrderProducts();
-//
-//        orderProducts1.forEach(orderProduct1 -> {
-//            orderProducts2.forEach(orderProduct2 ->{
-//                if(orderProduct1.getProduct().getId().equals(orderProduct2.getProduct().getId())) {
-//                    orderProduct1.
-//                }
-//            });
-//        });
-//    }
 
     /**
      * add product Dto to list of OrderProducts
@@ -151,15 +133,14 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
      * @param productRepo
      * @return
      */
-    private Optional<ProductEntity> getProduct(Integer productId, ProductRepo productRepo) {
+    public Optional<ProductEntity> getProduct(Integer productId, ProductRepo productRepo) {
         Optional<ProductEntity> optionalProduct = productRepo.findProductById(productId);
         if(optionalProduct.isPresent() && optionalProduct.get().getStock() > 0)
             return optionalProduct;
         return Optional.empty();
     }
 
-
-    private OrderDto getNewShoppingCart(Integer customerId, EntityManager entityManager) {
+    public OrderDto getNewShoppingCart(Integer customerId, EntityManager entityManager) {
         CustomerEntity customerEntity = (CustomerEntity) repoFactory.getUserRepo(entityManager).findUserById(customerId).get();
         CustomerDto customerDto = customerMapper.customerEntityToDto(customerEntity);
         customerDto.setAddress(addressMapper.addressEntityToDto(customerEntity.getAddressEntity()));

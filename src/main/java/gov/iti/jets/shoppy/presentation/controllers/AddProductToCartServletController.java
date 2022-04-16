@@ -25,15 +25,17 @@ public class AddProductToCartServletController extends HttpServlet {
         OrderDto sessionCart = (OrderDto) httpSession.getAttribute("cart");
         ShoppingCartViewHelper shoppingCartViewHelper;
         if(sessionCart == null) {
-            shoppingCartViewHelper = facade.initializeCustomerCart(customerId, productId);
-            System.out.println(shoppingCartViewHelper);
+            shoppingCartViewHelper = facade.addProductToCart(customerId, productId);
         }else {
             shoppingCartViewHelper = facade.addProductToCart(sessionCart, productId);
         }
-
         if(shoppingCartViewHelper.getError() == null) {
             httpSession.setAttribute("cart", shoppingCartViewHelper.getOrderDto());
+            /**
+             * redirect to product page with confirmation msg
+             */
             resp.sendRedirect("shopping-cart");
+
         }
         else {
             resp.sendRedirect("product-details?productID="+productId+"&error=true");

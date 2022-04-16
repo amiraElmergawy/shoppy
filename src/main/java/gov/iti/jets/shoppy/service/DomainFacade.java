@@ -13,8 +13,6 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
-import java.util.Optional;
-
 public class DomainFacade {
     private static final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("shoppy");
     private final AuthService authService = ServiceFactory.INSTANCE.getAuthService();
@@ -52,10 +50,26 @@ public class DomainFacade {
         return shoppingCartService.getShoppingCart(id, entityManager);
     }
 
-    public ShoppingCartViewHelper initializeCustomerCart(Integer customerId,Integer productId) {
+    public ShoppingCartViewHelper addProductToCart(Integer customerId, Integer productId) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        return shoppingCartService.initializeCustomerCart(customerId, productId, entityManager);
+        ShoppingCartViewHelper shoppingCartViewHelper = shoppingCartService.getShoppingCart(customerId, entityManager);
+        if(shoppingCartViewHelper.getOrderDto() == null)
+            shoppingCartViewHelper.setOrderDto(shoppingCartService.getNewShoppingCart(customerId, entityManager));
+        return shoppingCartService.addProductToShoppingCart(shoppingCartViewHelper.getOrderDto(), productId, entityManager);
     }
+
+    public ShoppingCartViewHelper addProductToCart(OrderDto orderDto, Integer productId) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        return shoppingCartService.addProductToShoppingCart(orderDto, productId, entityManager);
+    }
+
+//    public ShoppingCartViewHelper initializeCustomerCart(Integer customerId,Integer productId) {
+//        EntityManager entityManager = entityManagerFactory.createEntityManager();
+//        ShoppingCartViewHelper shoppingCartViewHelper = shoppingCartService.getShoppingCart(customerId, entityManager);
+//        shoppingCartViewHelper.setOrderDto(shoppingCartService.getNewShoppingCart(customerId, entityManager));
+//        shoppingCartViewHelper = addProductToCart(shoppingCartViewHelper.getOrderDto(), )
+//        return shoppingCartService.initializeCustomerCart(customerId, productId, entityManager);
+//    }
 
     public boolean increaseProductInShoppingCart(int productId){
        EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -74,10 +88,5 @@ public class DomainFacade {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         shoppingCartService.deleteProductFromShoppingCard(productId, currentProductQuantity, entityManager);
         entityManager.close();
-    }
-
-    public ShoppingCartViewHelper addProductToCart(OrderDto orderDto, Integer productId) {
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        return shoppingCartService.addProductToShoppingCart(orderDto, productId, entityManager);
     }
 }

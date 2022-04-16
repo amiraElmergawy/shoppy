@@ -1,13 +1,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.lang.Math" %>
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if IE 9 ]><html class="ie ie9" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
-<!--<![endif]-->
+
 <html lang="en">
 
 
-<!-- product-cart07:06-->
 <head>
     <!-- Basic Page Needs -->
     <meta charset="utf-8">
@@ -39,10 +38,9 @@
                                             <ul class="cart-items">
                                                 <li class="cart-item bg-white rounded shadow-lg mb-2">
                                                     <div class="product-line-grid row justify-content-between">
-                                                        <!--  product left content: image-->
                                                         <div class="product-line-grid-left col-md-2">
                                                             <span class="product-image media-middle">
-                                                                <a href="product-detail.jsp">
+                                                                <a href="product-details?productID=${orderProduct.getProduct().getId()}">
                                                                     <img class="img-fluid" src="${imagesUrl}${orderProduct.getProduct().getImagesPaths().get(0)}" alt="Organic Strawberry Fruits">
                                                                 </a>
                                                             </span>
@@ -60,14 +58,6 @@
                                                             <div class="product-line-info product-price">
                                                                 <span class="value">${orderProduct.getProduct().getPrice()} EG</span>
                                                             </div>
-<%--                                                            <div class="product-line-info">--%>
-<%--                                                                <span class="label-atrr">Size:</span>--%>
-<%--                                                                <span class="value">S</span>--%>
-<%--                                                            </div>--%>
-<%--                                                            <div class="product-line-info">--%>
-<%--                                                                <span class="label-atrr">Color:</span>--%>
-<%--                                                                <span class="value">Blue</span>--%>
-<%--                                                            </div>--%>
                                                         </div>
                                                         <div class="product-line-grid-right text-center product-line-actions col-md-4 justify-content-between">
                                                             <div class="row">
@@ -86,7 +76,7 @@
                                                                 </div>
                                                                 <div class="col-md-5 price col m-auto">
                                                                     <div class="product-price total ">
-                                                                        ${orderProduct.getTotal()} EG
+                                                                        ${Math.round(orderProduct.getTotal())} EG
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-2 text-xs-right align-self-end col">
@@ -111,30 +101,6 @@
                                     </a>
                                    </div>
                                 </div>
-                                <!-- <div class="cart-grid-right col-xs-12 col-lg-3 mt-5">
-                                    <div class="cart-summary bg-white rounded shadow-sm mt-4">
-                                        <div >
-                                            <div class=" d-flex justify-content-between">
-                                                <div class="summary-label text-muted">Products Number: </div>
-                                                <div class="summary-label text-muted"><span class="value  text-dark font-weight-bold font-italic">3</span></div>
-                                            </div>
-                                            <div class=" d-flex justify-content-between">
-                                                <div class="summary-label text-muted">Total : </div>
-                                                <div class="text-black text-dark font-weight-bold font-italic">£200.00</div>
-                                            </div> 
-                                            <div class=" d-flex justify-content-between">
-                                                <div class="summary-label text-muted">Shipping : </div>
-                                                <div class="text-black text-dark font-weight-bold font-italic">Free</div>
-                                            </div> 
-                                            <div class=" d-flex justify-content-between">
-                                                <div class="summary-label text-muted"></div>
-                                                <div class="text-black text-dark font-weight-bold font-italic"></div>
-                                            </div> 
-                                           
-                                        </div>
-                                    </div>
-                                   
-                                </div> -->
                                 <div class="cart-grid-right col-xs-12 col-lg-3 mt-5 ">
                                     <div class="cart-summary shadow-sm mt-4 rounded">
                                         <div class="cart-detailed-totals">
@@ -144,7 +110,7 @@
                                             </div>
                                             <div class=" d-flex justify-content-between">
                                                 <div class="summary-label  text-white">Total : </div>
-                                                <div class="text-black  font-weight-bold font-italic text-white">${cart.getTotalPrice()}</div>
+                                                <div class="text-black  font-weight-bold font-italic text-white">${Math.round(cart.getTotalPrice())}</div>
                                             </div> 
                                             <div class=" d-flex justify-content-between">
                                                 <div class="summary-label  text-white">Shipping : </div>

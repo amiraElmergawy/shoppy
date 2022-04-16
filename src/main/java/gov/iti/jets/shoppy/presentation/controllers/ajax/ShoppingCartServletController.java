@@ -10,7 +10,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-
 import java.io.IOException;
 
 @WebServlet(name = "ShoppingCartServletController" , value = "/shopping-cart")
@@ -20,9 +19,9 @@ public class ShoppingCartServletController extends HttpServlet {
         RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/customer/product-cart.jsp");
         try {
             Integer id = Integer.parseInt(req.getSession(false).getAttribute("userId")+"");
-            ShoppingCartViewHelper shoppingCartViewHelper = DomainFacade.getInstance().loadShoppingCart(id);
-            if(shoppingCartViewHelper.getOrderDto() != null)
-                req.getSession().setAttribute("cart", shoppingCartViewHelper.getOrderDto());
+            OrderDto orderDto = (OrderDto) req.getSession().getAttribute("cart");
+            if(orderDto == null)
+                req.getSession().setAttribute("cart", DomainFacade.getInstance().loadShoppingCart(id).getOrderDto());
             rd.include(req,resp);
         } catch (ServletException e) {
             e.printStackTrace();
@@ -30,17 +29,15 @@ public class ShoppingCartServletController extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("test");
-        System.out.println("rewlkssdkldsklsdmksdldskmldslkslkds");
-
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         Integer productId = Integer.parseInt(req.getParameter("productId"));
         HttpSession httpSession = req.getSession(false);
         Integer customerId = Integer.parseInt(httpSession.getAttribute("userId")+"");
         OrderDto sessionCart = (OrderDto) httpSession.getAttribute("cart");
         ShoppingCartViewHelper shoppingCartViewHelper;
+        System.out.println("test test");
         if(sessionCart == null) {
-            shoppingCartViewHelper = DomainFacade.getInstance().initializeCustomerCart(customerId, productId);
+            shoppingCartViewHelper = DomainFacade.getInstance().addProductToCart(customerId, productId);
         }else {
             shoppingCartViewHelper = DomainFacade.getInstance().addProductToCart(sessionCart, productId);
         }
