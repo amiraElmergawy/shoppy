@@ -1,10 +1,8 @@
 package gov.iti.jets.shoppy.service;
 
-import gov.iti.jets.shoppy.presentation.helpers.HomeViewHelper;
-import gov.iti.jets.shoppy.presentation.helpers.LoginViewHelper;
-import gov.iti.jets.shoppy.presentation.helpers.ViewCustomerHelper;
-import gov.iti.jets.shoppy.presentation.helpers.ViewProductHelper;
+import gov.iti.jets.shoppy.presentation.helpers.*;
 import gov.iti.jets.shoppy.service.interfaces.AuthService;
+import gov.iti.jets.shoppy.service.interfaces.OrderService;
 import gov.iti.jets.shoppy.service.interfaces.ProductService;
 import gov.iti.jets.shoppy.service.interfaces.UserService;
 import gov.iti.jets.shoppy.service.util.ServiceFactory;
@@ -17,6 +15,7 @@ public class DomainFacade {
     private final AuthService authService = ServiceFactory.INSTANCE.getAuthService();
     private final ProductService productService = ServiceFactory.INSTANCE.getProductService();
     private final UserService userService = ServiceFactory.INSTANCE.getUserService();
+    private final OrderService orderService = ServiceFactory.INSTANCE.getOrderService();
 
     private static DomainFacade domainFacade = new DomainFacade();
     private DomainFacade(){}
@@ -47,6 +46,11 @@ public class DomainFacade {
     public ViewCustomerHelper retrieveCustomers(int pageNumber){
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         return userService.getCustomers(pageNumber, entityManager);
+    }
+
+    public ViewOrderHelper retrieveOrders(int pageNumber){
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        return orderService.getOrders(pageNumber, entityManager);
     }
 
 }
