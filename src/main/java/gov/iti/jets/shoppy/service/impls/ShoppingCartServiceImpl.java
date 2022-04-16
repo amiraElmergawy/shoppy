@@ -72,7 +72,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         ShoppingCartViewHelper shoppingCartViewHelper = new ShoppingCartViewHelper();
         ProductRepo productRepo = repoFactory.getProductRepo(entityManager);
         Optional<ProductEntity> optionalProduct = getProduct(productId, productRepo);
-        if(optionalProduct.isPresent()) {
+        if(optionalProduct.isPresent() && increaseProductQuantity(optionalProduct.get(), productRepo)) {
             ProductDto productDto = productMapper.productEntityToDto(optionalProduct.get());
             productDto.setImagesPaths(imageUtility.loadImages(productId));
             addProductToOrderProductList(orderDto.getOrderProducts(), productDto);
