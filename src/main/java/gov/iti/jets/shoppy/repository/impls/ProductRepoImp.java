@@ -35,12 +35,13 @@ public class ProductRepoImp implements ProductRepo {
     }
 
     @Override
-    public List<ProductEntity> searchProducts(int pageNumber, String value) {
+    public List<ProductEntity> searchProducts(String value) {
+
         String coulmnName = "productName";
-        String queryString = "from ProductEntity where" +coulmnName+ "LIKE '%"+value+"%'";
-        Query query = entityManager.createQuery(queryString, ProductEntity.class);
-        query.setFirstResult((pageNumber-1) * pageSize);
-        query.setMaxResults(pageSize);
+        Query query = entityManager.createQuery("from ProductEntity where productName like :value", ProductEntity.class)
+                .setParameter("value","%"+value+"%");
+        query.setFirstResult(0);
+        query.setMaxResults(11);
         System.out.println(query.getResultList());
         return query.getResultList();
     }
@@ -50,12 +51,16 @@ public class ProductRepoImp implements ProductRepo {
         return Optional.of(entityManager.find(ProductEntity.class, id));
     }
 
-    @Override
-    public Long getSearchProductsCount(String key, String value) {
-        String coulmnName = "productName";
-        String queryString = "from ProductEntity where" +coulmnName+ "LIKE '%"+value+"%'";
-        return entityManager.createQuery(queryString, Long.class)
-                .getSingleResult();
-    }
+//    @Override
+//    public Long getSearchProductsCount(String key, String value) {
+//        System.out.println(entityManager.createQuery("select count(*) from ProductEntity where productName like :value", Long.class)
+//                .setParameter("value","%"+value+"%")
+//                .getSingleResult());
+//        //String coulmnName = "product_name";
+//        return entityManager.createQuery("select count(*) from ProductEntity where productName like :value", Long.class)
+//                .setParameter("value","%"+value+"%")
+//                .getSingleResult();
+//
+//    }
 
 }

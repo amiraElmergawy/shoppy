@@ -30,17 +30,17 @@ public class ProductServiceImpl implements ProductService {
         return HomeViewHelper.builder().productDtoList(productDtoList).allProductCount(allProductCount).build();
     }
     @Override
-    public HomeViewHelper searchForProducts(int pageNumber, EntityManager entityManager, String value) {
+    public HomeViewHelper searchForProducts(EntityManager entityManager, String value) {
         ProductRepo productRepo = repoFactory.getProductRepo(entityManager);
-        List<ProductDto> productDtoList = productRepo.searchProducts(pageNumber, value).stream().map(
+        List<ProductDto> productDtoList = productRepo.searchProducts(value).stream().map(
                 productEntity -> {
                     ProductDto productDto = productMapper.productEntityToDto(productEntity);
                     productDto.setImagesPaths(imageUtility.loadImages(productDto.getId()));
                     return productDto;
                 }
         ).collect(Collectors.toList());
-        Long allSearchProductCount = productRepo.getProductsCount();
-        return HomeViewHelper.builder().productDtoList(productDtoList).allSearchProductCount(allSearchProductCount).build();
+
+        return HomeViewHelper.builder().productDtoList(productDtoList).build();
 
     }
 }
