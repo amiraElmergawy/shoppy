@@ -39,4 +39,16 @@ public class ProductRepoImp implements ProductRepo {
         return Optional.of(entityManager.find(ProductEntity.class, id));
     }
 
+    @Override
+    public boolean updateProduct(ProductEntity productEntity) {
+        entityManager.getTransaction().begin();
+        try {
+            entityManager.merge(productEntity);
+            entityManager.getTransaction().commit();
+            return true;
+        } catch (IllegalArgumentException exception){
+            return false;
+        }
+    }
+
 }

@@ -1,20 +1,23 @@
 package gov.iti.jets.shoppy.service.dtos;
 
 
-import gov.iti.jets.shoppy.repository.entity.CustomerEntity;
-import gov.iti.jets.shoppy.repository.entity.OrderProductsEntity;
-import gov.iti.jets.shoppy.repository.entity.ProductEntity;
+import lombok.Builder;
 import lombok.Data;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 @Data
+@Builder
 public class OrderDto {
     private Integer id;
     private Date createdAt;
     private double totalPrice;
-    private List<ProductDto> products;
+    private Boolean isSubmitted;
+    private List<OrderProductDto> orderProducts;
     private CustomerDto customer;
-    private Set<OrderProductsEntity> orderProducts;
+    public double getTotalPrice() {
+        totalPrice = 0;
+        orderProducts.forEach(orderProductDto -> {totalPrice += orderProductDto.getTotal();});
+        return totalPrice;
+    }
 }

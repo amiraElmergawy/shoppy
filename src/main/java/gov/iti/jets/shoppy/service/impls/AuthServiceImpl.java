@@ -2,17 +2,10 @@ package gov.iti.jets.shoppy.service.impls;
 
 import gov.iti.jets.shoppy.presentation.helpers.LoginViewHelper;
 import gov.iti.jets.shoppy.repository.entity.AdminEntity;
-import gov.iti.jets.shoppy.repository.entity.CustomerEntity;
-import gov.iti.jets.shoppy.repository.entity.OrderEntity;
 import gov.iti.jets.shoppy.repository.entity.UserEntity;
-import gov.iti.jets.shoppy.repository.interfaces.OrderRepo;
 import gov.iti.jets.shoppy.repository.util.RepoFactory;
-import gov.iti.jets.shoppy.service.dtos.OrderDto;
 import gov.iti.jets.shoppy.service.dtos.Role;
 import gov.iti.jets.shoppy.service.interfaces.AuthService;
-import gov.iti.jets.shoppy.service.mappers.AdminMapper;
-import gov.iti.jets.shoppy.service.mappers.CustomerMapper;
-import gov.iti.jets.shoppy.service.mappers.OrderMapper;
 import gov.iti.jets.shoppy.service.util.HashManager;
 import jakarta.persistence.EntityManager;
 
@@ -20,9 +13,7 @@ import java.util.Optional;
 
 public class AuthServiceImpl implements AuthService {
     private final HashManager hashManager = HashManager.INSTANCE;
-    private final OrderMapper orderMapper = OrderMapper.INSTANCE;
     private final RepoFactory repoFactory = RepoFactory.INSTANCE;
-
 
     @Override
     public LoginViewHelper signIn(String email, String password, EntityManager entityManager){
@@ -62,12 +53,6 @@ public class AuthServiceImpl implements AuthService {
             loginViewHelper.setRole(Role.ADMIN);
         else
             loginViewHelper.setRole(Role.CUSTOMER);
-        /**
-         * TODO
-         * loading unsubmitted shopping cart
-         * and mapp it
-         */
-        loginViewHelper.setShoppingCart(new OrderDto());
         return loginViewHelper;
     }
 }

@@ -1,6 +1,7 @@
 package gov.iti.jets.shoppy.presentation.helpers;
 
 
+import gov.iti.jets.shoppy.service.dtos.AddressDto;
 import gov.iti.jets.shoppy.service.dtos.OrderDto;
 import gov.iti.jets.shoppy.service.dtos.Role;
 import lombok.Data;
@@ -11,5 +12,4 @@ public class LoginViewHelper {
     private Role role;
     private Integer id;
     private String error;
-    private OrderDto shoppingCart;
 }
