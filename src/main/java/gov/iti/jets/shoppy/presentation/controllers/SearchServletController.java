@@ -1,4 +1,4 @@
-package gov.iti.jets.shoppy.presentation.controllers.ajax;
+package gov.iti.jets.shoppy.presentation.controllers;
 
 import gov.iti.jets.shoppy.service.DomainFacade;
 import jakarta.servlet.RequestDispatcher;

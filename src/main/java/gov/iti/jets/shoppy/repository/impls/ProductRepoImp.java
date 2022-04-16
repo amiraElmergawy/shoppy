@@ -41,7 +41,7 @@ public class ProductRepoImp implements ProductRepo {
         Query query = entityManager.createQuery("from ProductEntity where productName like :value", ProductEntity.class)
                 .setParameter("value","%"+value+"%");
         query.setFirstResult(0);
-        query.setMaxResults(11);
+        query.setMaxResults(12);
         System.out.println(query.getResultList());
         return query.getResultList();
     }
