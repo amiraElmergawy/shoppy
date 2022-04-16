@@ -77,7 +77,7 @@
                                     <tr>
                                         <td colspan="3" class="d-flex justify-content-center">
                                             <div class="cart-button">
-                                                <a href="../customer/product-cart" title="View Cart">View Cart</a>
+                                                <a href="shopping-cart" title="View Cart">View Cart</a>
                                                 <a href="product-checkout" title="Checkout">Checkout</a>
                                             </div>
                                         </td>
@@ -256,7 +256,7 @@
                                         <tr>
                                             <td colspan="3" class="d-flex justify-content-center">
                                                 <div class="cart-button">
-                                                    <a href="product-cart.html" title="View Cart">View Cart</a>
+                                                    <a href="shopping-cart" title="View Cart">View Cart</a>
                                                     <a href="product-checkout.html" title="Checkout">Checkout</a>
                                                 </div>
                                             </td>

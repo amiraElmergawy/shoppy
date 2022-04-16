@@ -9,5 +9,6 @@ public interface ProductRepo {
     List<ProductEntity> getProducts(int pageNumber);
     Long getProductsCount();
     Optional<ProductEntity> findProductById(Integer id);
+    boolean updateProduct(ProductEntity productEntity);
 
 }
