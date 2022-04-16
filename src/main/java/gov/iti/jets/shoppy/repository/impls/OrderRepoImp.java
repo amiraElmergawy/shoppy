@@ -23,4 +23,17 @@ public class OrderRepoImp implements OrderRepo {
         }
         return optional;
     }
+
+    @Override
+    public boolean updateOrder(OrderEntity orderEntity) {
+        entityManager.getTransaction().begin();
+        try {
+            entityManager.merge(orderEntity);
+            entityManager.getTransaction().commit();
+            return true;
+        } catch (IllegalArgumentException exception){
+            return false;
+        }
+    }
+
 }
