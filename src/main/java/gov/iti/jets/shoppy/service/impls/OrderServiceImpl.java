@@ -23,7 +23,9 @@ public class OrderServiceImpl implements OrderService {
         OrderRepo orderRepo = repoFactory.getOrderRepo(entityManager);
         List<OrderDto> orderDtoList = orderRepo.getOrders(pageNumber).stream().map(
                 OrderEntity -> {
+                    System.out.println(OrderEntity.toString());
                     OrderDto orderDto = orderMapper.orderEntityToDTO(OrderEntity);
+                    System.out.println(orderDto.toString());
                     return orderDto;
                 }
         ).collect(Collectors.toList());
