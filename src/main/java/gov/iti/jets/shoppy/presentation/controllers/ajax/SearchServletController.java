@@ -12,18 +12,16 @@ import java.io.IOException;
 
 @WebServlet(name = "SearchProductServlet" , value = "/search")
 
-public class SearchProductController extends HttpServlet{
+public class SearchServletController extends HttpServlet{
     private final DomainFacade domainFacade = DomainFacade.getInstance();
     int pageNumber = 1;
     String value = "";
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException,ServletException {
         RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/customer/home.jsp");
-        if (req.getParameter("pageNum") != null )
-            pageNumber = Integer.parseInt(req.getParameter("pageNum"));
         value = req.getParameter("key");
 
         try {
-            req.setAttribute("helper", domainFacade.searchForProducts(pageNumber, value));
+            req.setAttribute("helper", domainFacade.searchForProducts(value));
             rd.include(req, resp);
         } catch (ServletException e) {
             e.printStackTrace();
