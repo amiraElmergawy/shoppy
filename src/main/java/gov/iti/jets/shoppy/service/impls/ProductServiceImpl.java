@@ -48,6 +48,12 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public boolean deleteProduct(int id , EntityManager entityManager) {
+        ProductRepo productRepo = repoFactory.getProductRepo(entityManager);
+        return productRepo.deleteProduct(id);
+    }
+
+    @Override
     public ViewProductHelper getProductById(int id , EntityManager entityManager) {
         ProductRepo productRepo = RepoFactory.INSTANCE.getProductRepo(entityManager);
         Optional<ProductEntity> productEntity =  productRepo.findProductById(id);

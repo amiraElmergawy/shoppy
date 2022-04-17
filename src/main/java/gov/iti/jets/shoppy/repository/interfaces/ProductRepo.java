@@ -11,5 +11,7 @@ public interface ProductRepo {
     Long getProductsCount();
     Optional<ProductEntity> findProductById(Integer id);
     boolean updateProduct(ProductEntity productEntity);
+    boolean deleteProduct(int id);
+
 
 }

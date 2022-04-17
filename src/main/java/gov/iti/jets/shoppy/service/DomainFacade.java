@@ -92,4 +92,9 @@ public class DomainFacade {
         shoppingCartService.deleteProductFromShoppingCard(productId, currentProductQuantity, entityManager);
         entityManager.close();
     }
+
+    public boolean deleteProduct(int id){
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        return productService.deleteProduct(id,entityManager);
+    }
 }
