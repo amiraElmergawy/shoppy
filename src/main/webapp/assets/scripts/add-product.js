@@ -1,10 +1,10 @@
 const form = document.getElementById('form');
-const productName = document.getElementById('productName')
-const category = document.getElementById('category')
-const price = document.getElementById('price');
-const stock = document.getElementById('stock');
+const productNameElement = document.getElementById('productName')
+const productCategory = document.getElementById('category')
+const productPrice = document.getElementById('price');
+const productStock = document.getElementById('stock');
 const images = document.getElementById("images");
-const desc = document.getElementById('desc');
+const productDesc = document.getElementById('desc');
 
 images.onchange = function (event) {
     var fileList = images.files;
@@ -30,18 +30,45 @@ function PreviewImage(files) {
 form.addEventListener('submit', e => {
     e.preventDefault();
 
-    validateEmptyInputs(productName)
+    validateEmptyInputs(productNameElement)
     checkCategory()
     checkImages()
-    validateEmptyInputs(price)
-    validateEmptyInputs(stock)
-    validateEmptyInputs(desc)
+    validateEmptyInputs(productPrice)
+    validateEmptyInputs(productStock)
+    validateEmptyInputs(productDesc)
 
-    // if( validateEmptyInputs(productName) && checkCategory() && validateEmptyInputs(price) && validateEmptyInputs(stock) && validateEmptyInputs(desc)){
-    //     console.log("you can send the request now ^_^");
-    //     //send the post request
-    // }
+    if( validateEmptyInputs(productNameElement) && checkCategory() && validateEmptyInputs(productPrice) && validateEmptyInputs(productStock) && validateEmptyInputs(productDesc)){
+        console.log("you can send the request now ^_^");
+        //send the post request
+        console.log("button is clicked");
+        const productName = productNameElement.value;
+        const desc = productDesc.value;
+        const price = productPrice.value;
+        const stock = productStock.value;
+        const category = productCategory.value;
+        const jsonData = {
+            "productName": productName,
+            "desc": desc,
+            "price": price,
+            "stock": stock,
+            "category": category
+        };
+
+
+        $.ajax({
+            type: 'POST', //servlet request type
+            contentType: 'application/x-www-form-urlencoded;charset=UTF-8', //For input type
+            data: jsonData, //input data
+            dataType: 'json',
+            url: 'add-product',
+        })
+
+
+    }
+
 });
+
+
 
 function checkCategory() {
     console.log(category.options[category.selectedIndex].value)
