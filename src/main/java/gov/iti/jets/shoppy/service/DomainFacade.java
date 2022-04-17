@@ -33,12 +33,16 @@ public class DomainFacade {
 
     public LoginViewHelper signIn(String email, String password){
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        return authService.signIn(email, password, entityManager);
+        LoginViewHelper loginViewHelper = authService.signIn(email, password, entityManager);
+        entityManager.close();
+        return loginViewHelper;
     }
 
     public LoginViewHelper rememberMe(Long uid) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        return authService.rememberMe(uid, entityManager);
+        LoginViewHelper loginViewHelper = authService.rememberMe(uid, entityManager);
+        entityManager.close();
+        return loginViewHelper;
     }
 
     public boolean signUp(CustomerDto customerDto){
