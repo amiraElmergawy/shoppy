@@ -16,8 +16,6 @@
     <title>Furnitica - Minimalist Furniture HTML Template</title>
 
     <%@ include file="../includes/customer-head.jsp" %>
-    <c:url value="/" var="imagesUrl" context="/images"/>
-
 </head>
 
 <body id="product-detail">
@@ -43,11 +41,11 @@
                                                         <div class="images-container">
                                                             <div class="js-qv-mask mask tab-content ">
                                                                 <div id="item1" class="tab-pane fade active in show border-0">
-                                                                    <img src="${imagesUrl}${productDto.getImagesPaths().get(0)}" alt="img">
+                                                                    <img src="images${productDto.getImagesPaths().get(0)}" alt="img">
                                                                 </div>
                                                                 <c:forEach begin="1" end="${productDto.getImagesPaths().size()-1}" var="current">
                                                                     <div id="item${current}" class="tab-pane fade">
-                                                                        <img src="${imagesUrl}${productDto.getImagesPaths().get(current)}" alt="img">
+                                                                        <img src="images${productDto.getImagesPaths().get(current)}" alt="img">
                                                                     </div>
                                                                 </c:forEach>
                                                                 <div class="layer hidden-sm-down" data-toggle="modal" data-target="#product-modal">
@@ -58,7 +56,7 @@
                                                                 <c:forEach begin="1" end="${productDto.getImagesPaths().size()-1}" var="current">
                                                                     <li class="active col ">
                                                                         <a href="#item${current}" data-toggle="tab" aria-expanded="true" class="active show shadow rounded p-1 border-0">
-                                                                            <img src="${imagesUrl}${productDto.getImagesPaths().get(current)}" alt="img">
+                                                                            <img src="images${productDto.getImagesPaths().get(current)}" alt="img">
                                                                         </a>
                                                                     </li>
                                                                 </c:forEach>
@@ -76,7 +74,7 @@
                                                                                             <div class="js-qv-mask mask tab-content">
                                                                                                 <c:forEach begin="1" end="${productDto.getImagesPaths().size()-1}" var="current">
                                                                                                     <div id="modal-item${current}" class="tab-pane fade active in show">
-                                                                                                        <img class="img-fluid" src="${imagesUrl}${productDto.getImagesPaths().get(current)}" alt="img">
+                                                                                                        <img class="img-fluid" src="images${productDto.getImagesPaths().get(current)}" alt="img">
                                                                                                     </div>
                                                                                                 </c:forEach>
                                                                                             </div>
@@ -84,7 +82,7 @@
                                                                                                 <c:forEach begin="1" end="${productDto.getImagesPaths().size()-1}" var="current">
                                                                                                     <li class="active">
                                                                                                         <a href="#modal-item${current}" data-toggle="tab" class=" active show">
-                                                                                                            <img src="${imagesUrl}${productDto.getImagesPaths().get(current)}" alt="img">
+                                                                                                            <img src="images${productDto.getImagesPaths().get(current)}" alt="img">
                                                                                                         </a>
                                                                                                     </li>
                                                                                                 </c:forEach>

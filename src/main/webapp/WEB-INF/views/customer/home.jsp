@@ -43,7 +43,6 @@
 <body id="home" >
 
 <%@ include file="../includes/customer-header.jsp" %>
-<c:url value="/" var="imagesUrl" context="/images"/>
 <div class="wrap-banner">
 
     <!-- slide show -->
@@ -562,8 +561,8 @@
                                                             <div class="product-miniature js-product-miniature item-one first-item shadow rounded p-1">
                                                                 <div class="thumbnail-container border">
                                                                     <a href="product-details?productID=${product.getId()}">
-                                                                        <img class="img-fluid image-cover" src="${imagesUrl}${product.getImagesPaths().get(0)}" alt="img">
-                                                                        <img class="img-fluid image-secondary" src="${imagesUrl}${product.getImagesPaths().get(1)}" alt="img">
+                                                                        <img class="img-fluid image-cover" src="images${product.getImagesPaths().get(0)}" alt="img">
+                                                                        <img class="img-fluid image-secondary" src="images${product.getImagesPaths().get(1)}" alt="img">
                                                                     </a>
                                                                     <div class="highlighted-informations">
                                                                         <div class="variant-links">
