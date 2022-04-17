@@ -1,6 +1,6 @@
 const emailPattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
-const passwordPattern = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/;
-const namePattern = /^[a-zA-Z ]{2,30}$/;
+const passwordPattern = /^([A-Za-z]|[0-9]){8,}$/;
+const namePattern = /^[A-Za-z]\w{2,29}$/;
 const setError = (element, message) => {
     const inputControl = element.parentElement;
     const errorDisplay = inputControl.querySelector('.error');
@@ -62,10 +62,13 @@ const validatePasswordInput = passwordElment => {
 const validateNameInput = nameElement => {
     if (nameElement.value === '') {
         setError(nameElement, 'This field is required');
+        return false;
     } else if (!isValidName(nameElement.value)) {
         setError(nameElement, 'Wrong')
+        return false;
     } else {
         setSuccess(nameElement);
+        return true;
     }
 }
 
@@ -73,13 +76,16 @@ const checkPasswordInputsSimilarity = (passwordElement, confirmPasswordElement) 
 
     if (confirmPasswordElement.value === '') {
         setError(confirmPasswordElement, 'Please confirm your password');
+        return false;
 
     } else if (confirmPasswordElement.value !== passwordElement.value) {
         setError(confirmPasswordElement, "Passwords doesn't match");
+        return false;
 
     } else {
+        console.log("match")
         setSuccess(confirmPasswordElement);
-
+        return true;
     }
 
 }
