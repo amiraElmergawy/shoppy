@@ -10,11 +10,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatterBuilder;
 import java.util.Date;
 
 @WebServlet (name = "RegisterServletController" , value = "/register")
@@ -47,8 +45,9 @@ public class RegisterServletController extends HttpServlet {
                 .isMale(customerReqDto.isMale())
                 .interests(customerReqDto.getInterests().trim()).build();
         System.out.println(customerDto);
-        if(DomainFacade.getInstance().signUp(customerDto))
+        if(DomainFacade.getInstance().signUp(customerDto)) {
             resp.sendRedirect("login");
+        }
         else {
             resp.sendRedirect("register?emailValidation=false");
         }
