@@ -16,4 +16,17 @@ public class ProductDto {
     private ProductCategory category;
     private Integer stock;
     private List<String> imagesPaths;
+
+    @Override
+    public String toString() {
+        return "ProductDto{" +
+                "id=" + id +
+                ", productName='" + productName + '\'' +
+                ", productDesc='" + productDesc + '\'' +
+                ", price=" + price +
+                ", category=" + category +
+                ", stock=" + stock +
+                ", imagesPaths=" + imagesPaths +
+                '}';
+    }
 }

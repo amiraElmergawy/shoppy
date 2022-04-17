@@ -51,4 +51,22 @@ public class ProductRepoImp implements ProductRepo {
         }
     }
 
+    @Override
+    public boolean addProduct(ProductEntity productEntity) {
+        System.out.println(productEntity);
+        entityManager.getTransaction().begin();
+        try {
+          //should add image path here
+            productEntity.setImgPath("1.jpg");
+            entityManager.persist(productEntity);
+            entityManager.getTransaction().commit();
+
+            return  true;
+
+        } catch (IllegalArgumentException exception){
+            System.out.println("error");
+            return  false;
+        }
+    }
+
 }
