@@ -67,7 +67,8 @@ public class AuthFilter implements Filter {
                         } else filterChain.doFilter(servletRequest, servletResponse);
                     } else filterChain.doFilter(servletRequest, servletResponse);
                 } else filterChain.doFilter(servletRequest, servletResponse);
-            } else if (((HttpServletRequest) servletRequest).getRequestURI().contains("assets")) {
+            } else if (((HttpServletRequest) servletRequest).getRequestURI().contains("assets") ||
+                    ((HttpServletRequest) servletRequest).getRequestURI().contains("images/C:/upload/products")) {
                 //resources
                 filterChain.doFilter(servletRequest, servletResponse);
             } else {
