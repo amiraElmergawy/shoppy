@@ -75,7 +75,6 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
      * add product Dto to list of OrderProducts
      * if exist increase quantity
      * else add as new product
-     *
      * @param orderProducts
      * @param productDto
      */
@@ -96,28 +95,27 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     public boolean increaseProductInShoppingCart(Integer productId, EntityManager entityManager) {
         ProductRepo productRepo = repoFactory.getProductRepo(entityManager);
         Optional<ProductEntity> optionalProduct = getProduct(productId, productRepo);
-        if (optionalProduct.get().getStock() - 1 < 0)
-            return false;
-        return increaseProductQuantity(optionalProduct.get(), productRepo);
+        if (optionalProduct.isPresent()){
+            return increaseProductQuantity(optionalProduct.get(), productRepo);
+        } else return false;
     }
 
     @Override
     public void decreaseProductInShoppingCart(Integer productId, EntityManager entityManager) {
         ProductRepo productRepo = repoFactory.getProductRepo(entityManager);
-        Optional<ProductEntity> optionalProduct = getProduct(productId, productRepo);
+        Optional<ProductEntity> optionalProduct = productRepo.findProductById(productId);
         decreaseProductQuantity(optionalProduct.get(), productRepo);
     }
 
     @Override
     public void deleteProductFromShoppingCard(Integer productId, Integer productQuantity, EntityManager entityManager) {
         ProductRepo productRepo = repoFactory.getProductRepo(entityManager);
-        Optional<ProductEntity> optionalProduct = getProduct(productId, productRepo);
+        Optional<ProductEntity> optionalProduct = productRepo.findProductById(productId);
         decreaseProductQuantity(optionalProduct.get(), productRepo, productQuantity);
     }
 
     /**
      * getProduct if quantity > 0
-     *
      * @param productId
      * @param productRepo
      * @return

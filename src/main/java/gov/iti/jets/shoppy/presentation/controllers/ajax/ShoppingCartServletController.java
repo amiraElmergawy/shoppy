@@ -3,8 +3,10 @@ package gov.iti.jets.shoppy.presentation.controllers.ajax;
 import gov.iti.jets.shoppy.presentation.helpers.ShoppingCartViewHelper;
 import gov.iti.jets.shoppy.service.DomainFacade;
 import gov.iti.jets.shoppy.service.dtos.OrderDto;
+import gov.iti.jets.shoppy.service.dtos.OrderProductDto;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletInputStream;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -30,37 +32,14 @@ public class ShoppingCartServletController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        Integer productId = Integer.parseInt(req.getParameter("productId"));
-        HttpSession httpSession = req.getSession(false);
-        Integer customerId = Integer.parseInt(httpSession.getAttribute("userId")+"");
-        OrderDto sessionCart = (OrderDto) httpSession.getAttribute("cart");
-        ShoppingCartViewHelper shoppingCartViewHelper;
-        System.out.println("test test");
-        if(sessionCart == null) {
-            shoppingCartViewHelper = DomainFacade.getInstance().addProductToCart(customerId, productId);
-        }else {
-
-            shoppingCartViewHelper = DomainFacade.getInstance().addProductToCart(sessionCart, productId);
-        }
-        if(shoppingCartViewHelper.getError() == null) {
-            httpSession.setAttribute("cart", shoppingCartViewHelper.getOrderDto());
-            resp.sendRedirect("shopping-cart");
-        }
-        else {
-            resp.sendRedirect("product-details?productID="+productId+"&error=true");
-        }
-    }
-
-    @Override
-    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         var currentCustomerSession = req.getSession(false);
         int productId = Integer.parseInt(req.getParameter("productId"));
         String quantityAction = req.getParameter("quantityAction");
-        if (quantityAction.equals("increase")){
+        if (quantityAction != null && quantityAction.equals("increase")){
             //check product q in db
             //if q > 0 => decrease it in db & increase it in shoppingCart
             if(!DomainFacade.getInstance().increaseProductInShoppingCart(productId)) {
-                resp.getWriter().print("Product quantity can't be increased");
+                resp.getWriter().print("this product out of stuck");
             } else {
                 var orderDto = (OrderDto)currentCustomerSession.getAttribute("cart");
                 orderDto.getOrderProducts().forEach(orderProductDto -> {
@@ -70,7 +49,7 @@ public class ShoppingCartServletController extends HttpServlet {
                 });
                 currentCustomerSession.setAttribute("cart", orderDto);
             }
-        } else {
+        } else if(quantityAction != null && quantityAction.equals("decrease")) {
             //check product q in shopping cart => to handle q=0 case
             //if q > 0 => increase it in db & decrease it in shoppingCart
             var orderDto = (OrderDto)currentCustomerSession.getAttribute("cart");
@@ -81,24 +60,21 @@ public class ShoppingCartServletController extends HttpServlet {
                 }
             });
             currentCustomerSession.setAttribute("cart", orderDto);
+        } else {
+            //increase product quantity in db by orderProduct quantity
+            //remove orderProduct from order
+            var orderDto = (OrderDto)currentCustomerSession.getAttribute("cart");
+            OrderProductDto orderProductDto = null;
+            for(var orderProduct : orderDto.getOrderProducts()){
+                if (orderProduct.getProduct().getId() == productId){
+                    DomainFacade.getInstance().deleteProductFromShoppingCart(productId, orderProduct.getQuantity());
+                    orderProductDto = orderProduct;
+                }
+            }
+            currentCustomerSession.setAttribute("cart", orderDto);
+            if(!orderProductDto.equals(null)) orderDto.getOrderProducts().remove(orderProductDto);
         }
         resp.getWriter().print("");
     }
 
-    @Override
-    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //increase product quantity in db by orderProduct quantity
-        //remove orderProduct from order??
-        var currentCustomerSession = req.getSession(false);
-        int productId = Integer.parseInt(req.getParameter("productId"));
-        var orderDto = (OrderDto)currentCustomerSession.getAttribute("cart");
-        orderDto.getOrderProducts().forEach(orderProductDto -> {
-            if (orderProductDto.getProduct().getId() == productId){
-                DomainFacade.getInstance().deleteProductFromShoppingCart(productId, orderProductDto.getQuantity());
-                orderDto.getOrderProducts().remove(orderProductDto);
-            }
-        });
-        currentCustomerSession.setAttribute("cart", orderDto);
-        resp.getWriter().print("");
-    }
 }

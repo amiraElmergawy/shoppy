@@ -15,6 +15,8 @@
 
 
     <%@ include file="../includes/customer-head.jsp" %>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 <c:url value="/" var="imagesUrl" context="/images"/>
 
@@ -32,9 +34,10 @@
                             <div class="cart-grid row">
                                 <div class="col-md-9 col-xs-12 check-info">
                                     <h1 class="title-page">Shopping Cart</h1>
-                                    <div class="cart-container">
+                                    <div class="d-none alert-danger p-2 mb-4 text-center h6" id="error"></div>
+                                    <div class="cart-container" id="productsContainer">
                                        <c:forEach var="orderProduct" items="${cart.getOrderProducts()}">
-                                        <div class="cart-overview js-cart">
+                                        <div class="cart-overview js-cart" id=${orderProduct.getProduct().getId()}>
                                             <ul class="cart-items">
                                                 <li class="cart-item bg-white rounded shadow-lg mb-2">
                                                     <div class="product-line-grid row justify-content-between">
@@ -63,15 +66,15 @@
                                                             <div class="row">
                                                                 <div class="col-md-5 col m-auto ">
                                                                     <div class="quantity d-flex ">
-                                                                        <div id="minus" class="shadow-sm btn-sm btn-primary font-weight-bold">
+                                                                        <button id="minus" class="shadow-sm btn-sm btn-primary font-weight-bold" onclick="decreaseProduct(${orderProduct.getProduct().getId()})">
                                                                             -
-                                                                        </div>
-                                                                        <div class="btn-sm bg-white font-weight-bold mx-2">
+                                                                        </button>
+                                                                        <div id=${orderProduct.getProduct().getId()}quantity class="btn-sm bg-white font-weight-bold mx-2">
                                                                                 ${orderProduct.getQuantity()}
                                                                         </div>
-                                                                        <div id="plus" class="shadow-sm btn-sm btn-primary font-weight-bold">
+                                                                        <button id="plus" class="shadow-sm btn-sm btn-primary font-weight-bold " onclick="increaseProduct(${orderProduct.getProduct().getId()})">
                                                                             +
-                                                                        </div>
+                                                                        </button>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-5 price col m-auto">
@@ -81,9 +84,9 @@
                                                                 </div>
                                                                 <div class="col-md-2 text-xs-right align-self-end col">
                                                                     <div class="cart-line-product-actions m-0">
-                                                                        <a class="remove-from-cart m-0" rel="nofollow" href="#" data-link-action="delete-from-cart" data-id-product="1">
+                                                                        <button class="remove-from-cart m-0" rel="nofollow" data-link-action="delete-from-cart" data-id-product="1" onclick="deleteProduct(${orderProduct.getProduct().getId()})">
                                                                             <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                                                        </a>
+                                                                        </button>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -177,6 +180,8 @@
     <%@ include file="../includes/customer-mobile-menu.jsp" %>
     <%@ include file="../includes/customer-footer.jsp" %>
 <%@ include file="../includes/customer-script.jsp" %>
+
+    <script src="assets/scripts/product-cart.js"></script>
 
 </body>
 
