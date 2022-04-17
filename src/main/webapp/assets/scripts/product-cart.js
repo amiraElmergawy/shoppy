@@ -24,6 +24,9 @@ function increaseProduct(productId){
                 div.classList.add("d-none");
             } else {
                 div.disabled = false;
+                let quantityDiv = document.getElementById(productId+"quantity");
+                console.log(quantityDiv);
+                quantityDiv.innerText = (+quantityDiv.textContent) +1;
             }
         }
     });
@@ -44,6 +47,8 @@ function decreaseProduct(productId){
         // dataType: 'json',
         success: function(data) {
             console.log(data)
+            let quantityDiv = document.getElementById(productId+"quantity");
+            quantityDiv.innerText = (+quantityDiv.textContent) -1;
         }
     });
 
@@ -64,6 +69,8 @@ function deleteProduct(productId){
         // dataType: 'json',
         success: function(data) {
             console.log(data)
+            let productsContainer = document.getElementById("productsContainer");
+            productsContainer.removeChild(document.getElementById(productId));
         }
     });
 }
