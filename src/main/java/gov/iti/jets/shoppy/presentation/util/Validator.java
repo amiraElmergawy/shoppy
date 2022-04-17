@@ -1,7 +1,6 @@
 package gov.iti.jets.shoppy.presentation.util;
 
-import gov.iti.jets.shoppy.service.dtos.CustomerDto;
-import gov.iti.jets.shoppy.service.dtos.customer.CustomerPostRequestDto;
+import gov.iti.jets.shoppy.presentation.dtos.CustomerPostRequestDto;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

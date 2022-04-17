@@ -1,8 +1,8 @@
-package gov.iti.jets.shoppy.presentation.controllers.ajax;
+package gov.iti.jets.shoppy.presentation.controllers;
 
 import gov.iti.jets.shoppy.service.DomainFacade;
 import gov.iti.jets.shoppy.service.dtos.CustomerDto;
-import gov.iti.jets.shoppy.service.dtos.customer.CustomerPostRequestDto;
+import gov.iti.jets.shoppy.presentation.dtos.CustomerPostRequestDto;
 import gov.iti.jets.shoppy.service.util.HashManager;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -41,7 +41,7 @@ public class RegisterServletController extends HttpServlet {
                 .username(customerReqDto.getUsername().trim())
                 .email(customerReqDto.getEmail().trim())
                 .password(HashManager.INSTANCE.generateSecurePassword(customerReqDto.getPassword().trim()))
-                .dateOfBirth(formattedDOB)
+                .dob(formattedDOB)
                 .isMale(customerReqDto.isMale())
                 .interests(customerReqDto.getInterests().trim()).build();
         System.out.println(customerDto);

@@ -1,7 +1,7 @@
 package gov.iti.jets.shoppy.presentation.filters;
 
 import gov.iti.jets.shoppy.presentation.util.Validator;
-import gov.iti.jets.shoppy.service.dtos.customer.CustomerPostRequestDto;
+import gov.iti.jets.shoppy.presentation.dtos.CustomerPostRequestDto;
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

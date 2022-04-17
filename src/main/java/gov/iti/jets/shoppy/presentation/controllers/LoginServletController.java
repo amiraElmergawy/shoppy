@@ -1,4 +1,4 @@
-package gov.iti.jets.shoppy.presentation.controllers.ajax;
+package gov.iti.jets.shoppy.presentation.controllers;
 
 import gov.iti.jets.shoppy.presentation.helpers.LoginViewHelper;
 import gov.iti.jets.shoppy.presentation.util.CookieUtility;

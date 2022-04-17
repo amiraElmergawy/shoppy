@@ -1,4 +1,4 @@
-package gov.iti.jets.shoppy.service.dtos.customer;
+package gov.iti.jets.shoppy.presentation.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
