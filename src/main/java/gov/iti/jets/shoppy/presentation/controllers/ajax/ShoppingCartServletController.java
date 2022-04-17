@@ -39,7 +39,7 @@ public class ShoppingCartServletController extends HttpServlet {
             //check product q in db
             //if q > 0 => decrease it in db & increase it in shoppingCart
             if(!DomainFacade.getInstance().increaseProductInShoppingCart(productId)) {
-                resp.getWriter().print("Product quantity can't be increased");
+                resp.getWriter().print("this product out of stuck");
             } else {
                 var orderDto = (OrderDto)currentCustomerSession.getAttribute("cart");
                 orderDto.getOrderProducts().forEach(orderProductDto -> {
