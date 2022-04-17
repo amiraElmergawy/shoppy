@@ -1,9 +1,7 @@
 package gov.iti.jets.shoppy.service.impls;
 
 import gov.iti.jets.shoppy.presentation.helpers.ShoppingCartViewHelper;
-import gov.iti.jets.shoppy.repository.entity.CustomerEntity;
-import gov.iti.jets.shoppy.repository.entity.OrderEntity;
-import gov.iti.jets.shoppy.repository.entity.ProductEntity;
+import gov.iti.jets.shoppy.repository.entity.*;
 import gov.iti.jets.shoppy.repository.interfaces.ProductRepo;
 import gov.iti.jets.shoppy.repository.util.ImageUtility;
 import gov.iti.jets.shoppy.repository.util.RepoFactory;
@@ -23,7 +21,7 @@ import java.util.*;
 public class ShoppingCartServiceImpl implements ShoppingCartService {
     private final RepoFactory repoFactory = RepoFactory.INSTANCE;
     private final OrderMapper orderMapper = OrderMapper.INSTANCE;
-    private final ImageUtility  imageUtility = ImageUtility.getInstance();
+    private final ImageUtility imageUtility = ImageUtility.getInstance();
     private final CustomerMapper customerMapper = CustomerMapper.INSTANCE;
     private final AddressMapper addressMapper = AddressMapper.INSTANCE;
     private final ProductMapper productMapper = ProductMapper.INSTANCE;
@@ -32,21 +30,11 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     public ShoppingCartViewHelper getShoppingCart(Integer customerId, EntityManager entityManager) {
         Optional<OrderEntity> orderEntityOptional = repoFactory.getOrderRepo(entityManager).getUnSubmittedOrder(customerId);
         ShoppingCartViewHelper shoppingCartViewHelper = new ShoppingCartViewHelper();
-        if(orderEntityOptional.isPresent()) {
+        if (orderEntityOptional.isPresent()) {
             OrderEntity orderEntity = orderEntityOptional.get();
             shoppingCartViewHelper.setOrderDto(mapOrderEntityToDto(orderEntity));
         }
         return shoppingCartViewHelper;
-    }
-
-    private OrderDto mapOrderEntityToDto(OrderEntity orderEntity) {
-        OrderDto orderDto = orderMapper.orderEntityToDTO(orderEntity);
-        orderDto.getCustomer().setAddress(addressMapper.addressEntityToDto(orderEntity.getCustomer().getAddressEntity()));
-        orderDto.getOrderProducts().forEach(orderProductDto -> {
-            ProductDto productDto = orderProductDto.getProduct();
-            productDto.setImagesPaths(imageUtility.loadImages(productDto.getId()));
-        });
-        return orderDto;
     }
 
 //    public ShoppingCartViewHelper initializeCustomerCart(Integer customerId, Integer productId, EntityManager entityManager) {
@@ -72,7 +60,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         ShoppingCartViewHelper shoppingCartViewHelper = new ShoppingCartViewHelper();
         ProductRepo productRepo = repoFactory.getProductRepo(entityManager);
         Optional<ProductEntity> optionalProduct = getProduct(productId, productRepo);
-        if(optionalProduct.isPresent() && increaseProductQuantity(optionalProduct.get(), productRepo)) {
+        if (optionalProduct.isPresent() && increaseProductQuantity(optionalProduct.get(), productRepo)) {
             ProductDto productDto = productMapper.productEntityToDto(optionalProduct.get());
             productDto.setImagesPaths(imageUtility.loadImages(productId));
             addProductToOrderProductList(orderDto.getOrderProducts(), productDto);
@@ -87,6 +75,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
      * add product Dto to list of OrderProducts
      * if exist increase quantity
      * else add as new product
+     *
      * @param orderProducts
      * @param productDto
      */
@@ -94,11 +83,10 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         Optional<OrderProductDto> optionalOrderProductDto = orderProducts.stream()
                 .filter(orderProductDto -> orderProductDto.getProduct().getId().equals(productDto.getId()))
                 .findFirst();
-        if(optionalOrderProductDto.isPresent()) {
+        if (optionalOrderProductDto.isPresent()) {
             OrderProductDto orderProductDto = optionalOrderProductDto.get();
-            orderProductDto.setQuantity(orderProductDto.getQuantity()+1);
-        }
-        else
+            orderProductDto.setQuantity(orderProductDto.getQuantity() + 1);
+        } else
             orderProducts.add(OrderProductDto.builder()
                     .product(productDto)
                     .quantity(1).build());
@@ -108,10 +96,10 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     public boolean increaseProductInShoppingCart(Integer productId, EntityManager entityManager) {
         ProductRepo productRepo = repoFactory.getProductRepo(entityManager);
         Optional<ProductEntity> optionalProduct = getProduct(productId, productRepo);
-        if (optionalProduct.get().getStock()-1 < 0)
+        if (optionalProduct.get().getStock() - 1 < 0)
             return false;
         return increaseProductQuantity(optionalProduct.get(), productRepo);
-       }
+    }
 
     @Override
     public void decreaseProductInShoppingCart(Integer productId, EntityManager entityManager) {
@@ -129,13 +117,14 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
     /**
      * getProduct if quantity > 0
+     *
      * @param productId
      * @param productRepo
      * @return
      */
     public Optional<ProductEntity> getProduct(Integer productId, ProductRepo productRepo) {
         Optional<ProductEntity> optionalProduct = productRepo.findProductById(productId);
-        if(optionalProduct.isPresent() && optionalProduct.get().getStock() > 0)
+        if (optionalProduct.isPresent() && optionalProduct.get().getStock() > 0)
             return optionalProduct;
         return Optional.empty();
     }
@@ -153,12 +142,15 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     @Override
-    public boolean saveShoppingCart(Optional<OrderDto> orderDtoOptional) {
-        if(orderDtoOptional.isPresent()) {
-            OrderEntity orderEntity = orderMapper.orderDTOToEntity(orderDtoOptional.get());
-            System.out.println(orderEntity);
+    public boolean saveShoppingCart(Optional<OrderDto> orderDtoOptional, EntityManager entityManager) {
+        if (orderDtoOptional.isPresent()) {
+            OrderDto orderDto = orderDtoOptional.get();
+            OrderEntity orderEntity = mapOrderDtoToEntity(orderDto);
+            System.out.println("save fun in shopping cart service" + orderEntity);
+            System.out.println(repoFactory.getOrderRepo(entityManager).updateOrder(orderEntity));
+
         }
-        return true;
+        return false;
     }
 
     public boolean increaseProductQuantity(ProductEntity productEntity, ProductRepo productRepo) {
@@ -176,5 +168,34 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
             productEntity.setStock(productEntity.getStock() + quantity);
             productRepo.updateProduct(productEntity);
         }
+    }
+
+    private OrderDto mapOrderEntityToDto(OrderEntity orderEntity) {
+        OrderDto orderDto = orderMapper.orderEntityToDTO(orderEntity);
+        orderDto.getCustomer().setAddress(addressMapper.addressEntityToDto(orderEntity.getCustomer().getAddressEntity()));
+        orderDto.getOrderProducts().forEach(orderProductDto -> {
+            ProductDto productDto = orderProductDto.getProduct();
+            productDto.setImagesPaths(imageUtility.loadImages(productDto.getId()));
+        });
+        return orderDto;
+    }
+
+    private OrderEntity mapOrderDtoToEntity(OrderDto orderDto) {
+        OrderEntity orderEntity = orderMapper.orderDTOToEntity(orderDto);
+        for (OrderProductDto orderProduct : orderDto.getOrderProducts()) {
+            OrderProductsEntity orderProductsEntity = new OrderProductsEntity();
+            OrderProductsIdEntity orderProductsIdEntity = new OrderProductsIdEntity();
+            // fill products
+            orderProductsEntity.setProducts(productMapper.productDtoToEntity(orderProduct.getProduct()));
+            // fill quantity
+            orderProductsEntity.setQuantity(orderProduct.getQuantity());
+            // fill orderProductId
+            orderProductsIdEntity.setOrderId(orderDto.getId());
+            orderProductsIdEntity.setProductId(orderProduct.getProduct().getId());
+            orderProductsEntity.setId(orderProductsIdEntity);
+            // add to list
+            orderEntity.getOrderProducts().add(orderProductsEntity);
+        }
+        return orderEntity;
     }
 }

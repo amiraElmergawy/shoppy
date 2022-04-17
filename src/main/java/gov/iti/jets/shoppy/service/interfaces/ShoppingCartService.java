@@ -22,5 +22,5 @@ public interface ShoppingCartService {
 
     OrderDto getNewShoppingCart(Integer customerId, EntityManager entityManager);
 
-    boolean saveShoppingCart(Optional<OrderDto> orderDtoOptional);
+    boolean saveShoppingCart(Optional<OrderDto> orderDtoOptional, EntityManager entityManager);
 }

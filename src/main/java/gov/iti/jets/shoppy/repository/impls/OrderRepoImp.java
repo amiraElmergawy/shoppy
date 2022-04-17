@@ -19,19 +19,23 @@ public class OrderRepoImp implements OrderRepo {
             optional = Optional.of(entityManager.createQuery("from OrderEntity where customer.id = :customerId and isSubmitted = false", OrderEntity.class)
                     .setParameter("customerId", customerId).getSingleResult());
         } catch (NoResultException e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
         return optional;
     }
 
     @Override
     public boolean updateOrder(OrderEntity orderEntity) {
-        entityManager.getTransaction().begin();
         try {
-            entityManager.merge(orderEntity);
+            entityManager.getTransaction().begin();
+            System.out.println("ssssss");
+            entityManager.persist(orderEntity);
             entityManager.getTransaction().commit();
+            System.out.println("lol");
             return true;
-        } catch (IllegalArgumentException exception){
+        } catch (Exception exception){
+            exception.printStackTrace();
+            System.out.println(exception);
             return false;
         }
     }

@@ -39,7 +39,7 @@ public class ImageUtility {
         }
         for (int i = 0; i < Objects.requireNonNull(listOfFiles).length; i++)
             if (listOfFiles[i].isFile())
-                images.add(folderName + "/" + listOfFiles[i].getName());
+                images.add(path + folderName + "/" + listOfFiles[i].getName());
         return images;
     }
 

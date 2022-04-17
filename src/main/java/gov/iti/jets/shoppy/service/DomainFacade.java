@@ -85,6 +85,10 @@ public class DomainFacade {
     }
 
     public boolean saveShoppingCart(Optional<OrderDto> orderDtoOptional) {
-        return shoppingCartService.saveShoppingCart(orderDtoOptional);
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        boolean saved = shoppingCartService.saveShoppingCart(orderDtoOptional, entityManager);
+        entityManager.close();
+        System.out.println("domain facade save: " + saved);
+        return saved;
     }
 }
