@@ -5,6 +5,7 @@ import gov.iti.jets.shoppy.presentation.helpers.HomeViewHelper;
 import gov.iti.jets.shoppy.presentation.helpers.LoginViewHelper;
 import gov.iti.jets.shoppy.presentation.helpers.ShoppingCartViewHelper;
 import gov.iti.jets.shoppy.presentation.helpers.ViewProductHelper;
+import gov.iti.jets.shoppy.service.dtos.ProductDto;
 import gov.iti.jets.shoppy.service.interfaces.AuthService;
 import gov.iti.jets.shoppy.service.interfaces.OrderService;
 import gov.iti.jets.shoppy.service.interfaces.ShoppingCartService;
@@ -86,5 +87,18 @@ public class DomainFacade {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         shoppingCartService.deleteProductFromShoppingCard(productId, currentProductQuantity, entityManager);
         entityManager.close();
+    }
+    public boolean addProduct(ProductDto productDto){
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        if( productService.addProduct(productDto,entityManager))
+        {  entityManager.close();
+            return true;
+
+        }
+        else {
+            return false;
+        }
+
+
     }
 }
