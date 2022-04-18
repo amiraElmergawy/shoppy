@@ -1,15 +1,19 @@
 package gov.iti.jets.shoppy.service;
 
+import gov.iti.jets.shoppy.presentation.helpers.*;
 import gov.iti.jets.shoppy.presentation.helpers.HomeViewHelper;
 import gov.iti.jets.shoppy.presentation.helpers.LoginViewHelper;
 import gov.iti.jets.shoppy.presentation.helpers.ProfileViewHelper;
 import gov.iti.jets.shoppy.service.dtos.CustomerDto;
 import gov.iti.jets.shoppy.presentation.helpers.ShoppingCartViewHelper;
 import gov.iti.jets.shoppy.presentation.helpers.ViewProductHelper;
+import gov.iti.jets.shoppy.service.dtos.CustomerDto;
 import gov.iti.jets.shoppy.service.interfaces.AuthService;
+import gov.iti.jets.shoppy.service.interfaces.OrderService;
 import gov.iti.jets.shoppy.service.interfaces.ShoppingCartService;
 import gov.iti.jets.shoppy.service.interfaces.ProductService;
 import gov.iti.jets.shoppy.service.interfaces.ProfileService;
+import gov.iti.jets.shoppy.service.interfaces.UserService;
 import gov.iti.jets.shoppy.service.util.ServiceFactory;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -21,6 +25,8 @@ public class DomainFacade {
     private final ProductService productService = ServiceFactory.INSTANCE.getProductService();
     private  final ProfileService profileService=ServiceFactory.INSTANCE.getProfileService();
 
+    private final UserService userService = ServiceFactory.INSTANCE.getUserService();
+    private final OrderService orderService = ServiceFactory.INSTANCE.getOrderService();
     private final ShoppingCartService shoppingCartService = ServiceFactory.INSTANCE.getShoppingCartService();
 
     private static final DomainFacade domainFacade = new DomainFacade();
@@ -32,16 +38,35 @@ public class DomainFacade {
 
     public LoginViewHelper signIn(String email, String password){
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        return authService.signIn(email, password, entityManager);
+        LoginViewHelper loginViewHelper = authService.signIn(email, password, entityManager);
+        entityManager.close();
+        return loginViewHelper;
     }
 
     public LoginViewHelper rememberMe(Long uid) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        return authService.rememberMe(uid, entityManager);
+        LoginViewHelper loginViewHelper = authService.rememberMe(uid, entityManager);
+        entityManager.close();
+        return loginViewHelper;
     }
+
+    public boolean signUp(CustomerDto customerDto){
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        boolean signUpResult = authService.signUp(customerDto, entityManager);
+        entityManager.close();
+        return signUpResult;
+    }
+
     public HomeViewHelper retrieveProducts(int pageNumber){
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        return productService.getProducts(pageNumber, entityManager);
+        HomeViewHelper homeViewHelper = productService.getProducts(pageNumber, entityManager);
+        entityManager.close();
+        return homeViewHelper;
+    }
+    public HomeViewHelper searchForProducts(String value){
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        return  productService.searchForProducts(entityManager, value);
+
     }
     public ProfileViewHelper customerProfile(int id){
         EntityManager entityManager=entityManagerFactory.createEntityManager();
@@ -53,9 +78,19 @@ public class DomainFacade {
     }
 
 
-    public ViewProductHelper getProductById(int id) {
+    public ViewProductHelper getProductById(int id){
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         return productService.getProductById(id,entityManager);
+    }
+
+    public ViewCustomerHelper retrieveCustomers(int pageNumber){
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        return userService.getCustomers(pageNumber, entityManager);
+    }
+
+    public ViewOrderHelper retrieveOrders(int pageNumber){
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        return orderService.getOrders(pageNumber, entityManager);
     }
 
     public ShoppingCartViewHelper getShoppingCart(Integer id) {

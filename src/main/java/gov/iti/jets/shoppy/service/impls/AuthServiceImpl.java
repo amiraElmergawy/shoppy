@@ -2,10 +2,13 @@ package gov.iti.jets.shoppy.service.impls;
 
 import gov.iti.jets.shoppy.presentation.helpers.LoginViewHelper;
 import gov.iti.jets.shoppy.repository.entity.AdminEntity;
+import gov.iti.jets.shoppy.repository.entity.CustomerEntity;
 import gov.iti.jets.shoppy.repository.entity.UserEntity;
 import gov.iti.jets.shoppy.repository.util.RepoFactory;
 import gov.iti.jets.shoppy.service.dtos.Role;
+import gov.iti.jets.shoppy.service.dtos.CustomerDto;
 import gov.iti.jets.shoppy.service.interfaces.AuthService;
+import gov.iti.jets.shoppy.service.mappers.CustomerMapper;
 import gov.iti.jets.shoppy.service.util.HashManager;
 import jakarta.persistence.EntityManager;
 
@@ -19,7 +22,7 @@ public class AuthServiceImpl implements AuthService {
     public LoginViewHelper signIn(String email, String password, EntityManager entityManager){
         LoginViewHelper loginViewHelper = new LoginViewHelper();
         String hashedPassword = hashManager.generateSecurePassword(password);
-        Optional<? extends UserEntity> userEntityOptional = repoFactory.getUserRepo(entityManager).findUser(email, password);
+        Optional<? extends UserEntity> userEntityOptional = repoFactory.getUserRepo(entityManager).findUser(email, hashedPassword);
         if(userEntityOptional.isPresent())
             loginViewHelper = buildLoginViewHelper(userEntityOptional.get());
         else
@@ -54,5 +57,12 @@ public class AuthServiceImpl implements AuthService {
         else
             loginViewHelper.setRole(Role.CUSTOMER);
         return loginViewHelper;
+    }
+
+    @Override
+    public boolean signUp(CustomerDto customerDto, EntityManager entityManager) {
+        CustomerEntity customerEntity= CustomerMapper.INSTANCE.customerDtoToEntity(customerDto);
+        boolean insertUserResult = RepoFactory.INSTANCE.getUserRepo(entityManager).insertUser(customerEntity);
+        return  insertUserResult;
     }
 }

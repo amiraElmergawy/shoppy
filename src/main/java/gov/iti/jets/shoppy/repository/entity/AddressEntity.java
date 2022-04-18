@@ -105,12 +105,6 @@ public class AddressEntity implements java.io.Serializable {
 
     @Override
     public String toString() {
-        return "AddressEntity{" +
-                "id=" + id +
-                ", area='" + area + '\'' +
-                ", buildingNum=" + buildingNum +
-                ", floorNum=" + floorNum +
-                ", street='" + street + '\'' +
-                '}';
+        return "building number "+buildingNum+", "+street+", "+area+", "+" floor Number "+floorNum;
     }
 }

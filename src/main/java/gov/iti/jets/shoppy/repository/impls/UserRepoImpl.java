@@ -2,6 +2,7 @@ package gov.iti.jets.shoppy.repository.impls;
 
 import gov.iti.jets.shoppy.repository.entity.AdminEntity;
 import gov.iti.jets.shoppy.repository.entity.CustomerEntity;
+import gov.iti.jets.shoppy.repository.entity.ProductEntity;
 import gov.iti.jets.shoppy.repository.entity.UserEntity;
 import gov.iti.jets.shoppy.repository.interfaces.UserRepo;
 import jakarta.persistence.EntityExistsException;
@@ -21,6 +22,7 @@ public class UserRepoImpl implements UserRepo {
 //    public static UserRepoImpl getInstance() {
 //        return userRepo;
 //    }
+    private static int pageSize = 12;
     private EntityManager entityManager;
     public UserRepoImpl(EntityManager entityManager){
         this.entityManager = entityManager;
@@ -54,9 +56,11 @@ public class UserRepoImpl implements UserRepo {
 
     @Override
     public boolean insertUser(UserEntity userEntity) {
+        if(findUserByEmail(userEntity.getEmail()))
+            return false;
         entityManager.getTransaction().begin();
         try {
-            entityManager.persist(userEntity);
+            entityManager.merge(userEntity);
             entityManager.getTransaction().commit();
             return true;
         } catch (EntityExistsException exception){
@@ -76,4 +80,28 @@ public class UserRepoImpl implements UserRepo {
         }
     }
 
+    @Override
+    public List<CustomerEntity> getCustomers(int pageNumber) {
+        Query query = entityManager.createQuery("from CustomerEntity", CustomerEntity.class);
+        query.setFirstResult((pageNumber-1) * pageSize);
+        query.setMaxResults(pageSize);
+        return query.getResultList();
+    }
+
+    @Override
+    public Long getCustomerCount() {
+        return entityManager.createQuery("select count(*) from CustomerEntity ", Long.class)
+                .getSingleResult();
+    }
+    private boolean findUserByEmail(String email){
+        String select = "select  u from UserEntity u where u.email=:email";
+        Query query = entityManager.createQuery(select);
+        query.setParameter("email", email);
+        try {
+            query.getSingleResult();
+            return true;
+        }catch (NoResultException e) {
+            return false;
+        }
+    }
 }

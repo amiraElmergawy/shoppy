@@ -12,11 +12,8 @@ public class ImageUtility {
     private String path;
 
     private ImageUtility(){
-        try {
-            this.path = new URI(getClass().getResource("/products").toString()).getPath();
-        } catch (URISyntaxException e) {
-            System.out.println("Exception happened when loading product images paths");
-        }
+//      this.path = System.getProperty("user.dir").replace("\\", "/") + "/products/";
+        this.path = "C:/upload/products/";
     }
 
     public static ImageUtility getInstance() {
@@ -30,6 +27,8 @@ public class ImageUtility {
     }
 
     public List<String> loadImages(Integer productId) {
+        System.out.println("image utility" + path);
+
         List<String> images = new ArrayList<>();
         String folderName = productId + "";
         File[] listOfFiles = new File(path + folderName).listFiles();
@@ -39,7 +38,7 @@ public class ImageUtility {
         }
         for (int i = 0; i < Objects.requireNonNull(listOfFiles).length; i++)
             if (listOfFiles[i].isFile())
-                images.add(folderName + "/" + listOfFiles[i].getName());
+                images.add("/" + path + folderName + "/" + listOfFiles[i].getName());
         return images;
     }
 

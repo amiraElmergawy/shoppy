@@ -10,17 +10,24 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "AdminProductDetailsServletController" , value = "/show-product")
-public class AdminProductDetailsServletController extends HttpServlet {
+@WebServlet(name = "SearchProductServlet" , value = "/search")
+
+public class SearchServletController extends HttpServlet{
     private final DomainFacade domainFacade = DomainFacade.getInstance();
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/admin/product.jsp");
+    int pageNumber = 1;
+    String value = "";
+    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException,ServletException {
+        RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/customer/home.jsp");
+        value = req.getParameter("key");
+
         try {
-            req.setAttribute("productDto", domainFacade.getProductById(Integer.parseInt(req.getParameter("productID"))).getProductDto());
-            rd.include(req,resp);
+            req.setAttribute("helper", domainFacade.searchForProducts(value));
+            rd.include(req, resp);
         } catch (ServletException e) {
             e.printStackTrace();
         }
+
+
     }
 }
+

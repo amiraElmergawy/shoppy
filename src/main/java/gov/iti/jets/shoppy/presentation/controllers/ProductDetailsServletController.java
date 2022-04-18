@@ -20,7 +20,6 @@ public class ProductDetailsServletController extends HttpServlet {
         try {
             req.setAttribute("productDto", domainFacade.getProductById(Integer.parseInt(req.getParameter("productID"))).getProductDto());
             rd.include(req,resp);
-            System.out.println(domainFacade.getProductById(Integer.parseInt(req.getParameter("productID"))).getProductDto());
         } catch (ServletException e) {
             e.printStackTrace();
         }

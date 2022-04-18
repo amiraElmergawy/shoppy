@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.lang.Math" %>
 <!doctype html>
 <html lang="en">
 
@@ -43,14 +45,15 @@
                     </tr>
                     </thead>
                     <tbody>
+                    <c:forEach var="customer" items="${customers.getCustomerDtoList()}">
                     <tr>
-                        <th scope="row">1</th>
-                        <td>ahmed</td>
-                        <td>ahmed@gmail.com</td>
-                        <td>books</td>
-                        <td>2/3/1887</td>
-                        <td>IT</td>
-                        <td>giza</td>
+                        <th scope="row">${customer.getId()}</th>
+                        <td>${customer.getUsername()}</td>
+                        <td>${customer.getEmail()}</td>
+                        <td>${customer.getInterests()}</td>
+                        <td>${customer.getDob()}</td>
+                        <td>${customer.getJob()}</td>
+                        <td>${customer.getAddress()}</td>
                         <td>
                             <a href="" style="color: #333333">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-people pr-1" viewBox="0 0 16 16">
@@ -65,6 +68,7 @@
                             </a>
                         </td>
                     </tr>
+                    </c:forEach>
                     </tbody>
                 </table>
             </div>
