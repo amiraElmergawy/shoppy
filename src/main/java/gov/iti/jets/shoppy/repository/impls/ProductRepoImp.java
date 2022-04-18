@@ -63,4 +63,16 @@ public class ProductRepoImp implements ProductRepo {
         }
     }
 
+    @Override
+    public boolean deleteProduct(int id) {
+        ProductEntity productEntity = entityManager.find(ProductEntity.class , id);
+        if (productEntity != null){
+            entityManager.getTransaction().begin();
+            entityManager.remove(productEntity);
+            entityManager.getTransaction().commit();
+            entityManager.close();
+            return true;
+        }
+        return false;
+    }
 }

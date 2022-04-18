@@ -10,4 +10,5 @@ public interface OrderRepo {
     Optional<OrderEntity> getUnSubmittedOrder(Integer customerId);
     Long getOrdersCount();
     List<OrderEntity> getOrders(int pageNumber);
+    List<OrderEntity> getOrdersByCustomerId(int customerId);
 }

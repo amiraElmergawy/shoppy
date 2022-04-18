@@ -32,4 +32,18 @@ public class OrderServiceImpl implements OrderService {
         Long allOrdersCount = orderRepo.getOrdersCount();
         return ViewOrderHelper.builder().ordersDtoList(orderDtoList).allOrdersCount(allOrdersCount).build();
     }
+
+    @Override
+    public ViewOrderHelper getOrdersByCustomerId(int id , EntityManager entityManager) {
+        OrderRepo orderRepo = repoFactory.getOrderRepo(entityManager);
+        List<OrderDto> orderDtoList = orderRepo.getOrdersByCustomerId(id).stream().map(
+                OrderEntity -> {
+                    System.out.println(OrderEntity.toString());
+                    OrderDto orderDto = orderMapper.orderEntityToDTO(OrderEntity);
+                    System.out.println(orderDto.toString());
+                    return orderDto;
+                }
+        ).collect(Collectors.toList());
+        return ViewOrderHelper.builder().ordersDtoList(orderDtoList).build();
+    }
 }
