@@ -21,8 +21,8 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public LoginViewHelper signIn(String email, String password, EntityManager entityManager){
         LoginViewHelper loginViewHelper = new LoginViewHelper();
-        String hashedPassword = hashManager.generateSecurePassword(password);
-        Optional<? extends UserEntity> userEntityOptional = repoFactory.getUserRepo(entityManager).findUser(email, hashedPassword);
+//        String hashedPassword = hashManager.generateSecurePassword(password);
+        Optional<? extends UserEntity> userEntityOptional = repoFactory.getUserRepo(entityManager).findUser(email, password);
         if(userEntityOptional.isPresent())
             loginViewHelper = buildLoginViewHelper(userEntityOptional.get());
         else
