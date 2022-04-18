@@ -53,7 +53,7 @@
                         <td>${customer.getInterests()}</td>
                         <td>${customer.getDob()}</td>
                         <td>${customer.getJob()}</td>
-                        <td>${customer.getAddress()}</td>
+                        <td>${customer.getAddress().getArea()} area , building number ${customer.getAddress().getBuildingNum()} , ${customer.getAddress().getStreet()} , floor number  ${customer.getAddress().getFloorNum()} </td>
                         <td>
                             <a href="customer-orders?id=${customer.getId()}" style="color: #333333">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bag pl-1" viewBox="0 0 16 16">
