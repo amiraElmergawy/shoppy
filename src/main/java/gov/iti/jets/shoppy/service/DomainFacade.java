@@ -4,6 +4,7 @@ import gov.iti.jets.shoppy.presentation.helpers.*;
 import gov.iti.jets.shoppy.presentation.helpers.HomeViewHelper;
 import gov.iti.jets.shoppy.presentation.helpers.LoginViewHelper;
 import gov.iti.jets.shoppy.presentation.helpers.ProfileViewHelper;
+import gov.iti.jets.shoppy.service.dtos.AddressDto;
 import gov.iti.jets.shoppy.service.dtos.CustomerDto;
 import gov.iti.jets.shoppy.presentation.helpers.ShoppingCartViewHelper;
 import gov.iti.jets.shoppy.presentation.helpers.ViewProductHelper;
@@ -71,9 +72,9 @@ public class DomainFacade {
         EntityManager entityManager=entityManagerFactory.createEntityManager();
         return profileService.getUser(id,entityManager);
     }
-    public boolean updateProfile(CustomerDto customerDto){
+    public boolean updateProfile(int id , CustomerDto customerDto, AddressDto addressDto){
         EntityManager entityManager=entityManagerFactory.createEntityManager();
-        return profileService.updateUser(customerDto,entityManager);
+        return profileService.updateUser(id,customerDto,addressDto,entityManager);
     }
 
 
