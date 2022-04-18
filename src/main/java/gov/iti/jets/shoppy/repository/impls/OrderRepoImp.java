@@ -1,11 +1,13 @@
 package gov.iti.jets.shoppy.repository.impls;
 
 import gov.iti.jets.shoppy.repository.entity.OrderEntity;
+import gov.iti.jets.shoppy.repository.entity.OrderProductsEntity;
 import gov.iti.jets.shoppy.repository.interfaces.OrderRepo;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 
 import java.util.Optional;
+import java.util.Set;
 
 public class OrderRepoImp implements OrderRepo {
     private final EntityManager entityManager;
@@ -25,17 +27,20 @@ public class OrderRepoImp implements OrderRepo {
     }
 
     @Override
-    public boolean updateOrder(OrderEntity orderEntity) {
+    public boolean saveOrder(OrderEntity orderEntity) {
+        Set<OrderProductsEntity> orderProductsEntityList = orderEntity.getOrderProducts();
+        orderEntity.setOrderProducts(null);
         try {
             entityManager.getTransaction().begin();
-            System.out.println("ssssss");
-            entityManager.persist(orderEntity);
+            OrderEntity order = entityManager.merge(orderEntity);
+            orderProductsEntityList.forEach(orderProductsEntity -> {
+                orderProductsEntity.getId().setOrderId(order.getId());
+                entityManager.merge(orderProductsEntity);
+            });
             entityManager.getTransaction().commit();
-            System.out.println("lol");
             return true;
         } catch (Exception exception){
             exception.printStackTrace();
-            System.out.println(exception);
             return false;
         }
     }
