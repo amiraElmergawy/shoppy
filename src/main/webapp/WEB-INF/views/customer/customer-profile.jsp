@@ -1,3 +1,4 @@
+
 <%--
   Created by IntelliJ IDEA.
   User: pc
@@ -22,8 +23,6 @@
     <%@ include file="../includes/customer-head.jsp" %>
 
     <!-- Template CSS -->
-    <link rel="stylesheet" type="text/css" href="assets/styles/reponsive.css">
-    <link rel="stylesheet" type="text/css" href="assets/styles/style.css">
     <link rel="stylesheet" type="text/css" href="assets/styles/customer-profile.css">
     <link rel="stylesheet" type="text/css" href="assets/styles/validation-style.css">
 </head>
@@ -41,12 +40,12 @@
                 <div class="breadcrumb">
                     <ol>
                         <li>
-                            <a href="#">
+                            <a href="home">
                                 <span>Home</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="profile">
                                 <span>My Account</span>
                             </a>
                         </li>
@@ -65,19 +64,19 @@
                     <i class="fa fa-pencil edit-pen" id="edit"></i>
 
                     <div class="content" id="block-history">
-                        <form id="edit-form">
-                            <!-- 2 column grid layout with text inputs for the first and last names -->
+                        <form id="edit-form" method="post" action="#">
+
 
                             <div class="form-outline mb-1 form-group">
                                 <label class="form-label" for="name">Name</label>
-                                <input type="text" id="name" value="${helper.getCustomerDto().getUsername()}" class="form-control" disabled="disabled" required/>
+                                <input type="text" id="name" name="username" value="${helper.getCustomerDto().getUsername()}" class="form-control"  disabled="disabled" required/>
                                 <div class="error"></div>
 
                             </div>
                             <!-- Text input -->
                             <div class="form-outline mb-1 form-group">
                                 <label class="form-label" for="jop">Job</label>
-                                <input type="text" id="jop" value="${helper.getCustomerDto().getJob()}" class="form-control" disabled="disabled" required/>
+                                <input type="text" id="jop" name="job" value="${helper.getCustomerDto().getJob()}" class="form-control" disabled="disabled" required/>
                                 <div class="error"></div>
                             </div>
 
@@ -85,33 +84,33 @@
                             <div class="form-outline mb-1 form-group">
 
                                 <label class="form-label" >City</label>
-                                <input type="text" id="city" value="" class="form-control" disabled="disabled" required/>
+                                <input type="text" id="city" name="city" value="${helper.getCustomerDto().getAddress().getArea()}" class="form-control" disabled="disabled" required/>
                                 <div class="error"></div>
                             </div>
                             <div class="form-outline mb-1 form-group">
 
                                 <label class="form-label" >Street</label>
-                                <input type="text" id="street" value="" class="form-control" disabled="disabled" required/>
+                                <input type="text" id="street" name="street" value="${helper.getCustomerDto().getAddress().getStreet()}" class="form-control" disabled="disabled" required/>
                                 <div class="error"></div>
                             </div>
                             <div class="form-outline mb-1 form-group">
 
                                 <label class="form-label" >Building Number</label>
 
-                                <input type="text" id="building-number" value="" class="form-control" disabled="disabled" required/>
+                                <input type="text" id="building-number" name="buildingNum" value="${helper.getCustomerDto().getAddress().getBuildingNum()}" class="form-control" disabled="disabled" required/>
                                 <div class="error"></div>
                             </div>
                             <div class="form-outline mb-1 form-group">
 
                                 <label class="form-label" >Floor Number</label>
-                                <input type="text" id="floor-number" value="" class="form-control" disabled="disabled" required/>
+                                <input type="text" id="floor-number" name="floorNum" value="${helper.getCustomerDto().getAddress().getFloorNum()}" class="form-control" disabled="disabled" required/>
                                 <div class="error"></div>
                             </div>
 
                             <!-- Email input -->
                             <div class="form-outline mb-1 form-group">
                                 <label class="form-label" for="email">Email</label>
-                                <input type="email" id="email" value="${helper.getCustomerDto().getEmail()}" class="form-control" disabled="disabled"/>
+                                <input type="email" id="email" name="email" value="${helper.getCustomerDto().getEmail()}" class="form-control" disabled="disabled"/>
                                 <div class="error"></div>
 
                             </div>
@@ -119,13 +118,13 @@
                             <div class="form-outline mb-1 form-group">
 
                                 <label class="form-label" for="date">Birth Date</label>
-                                <input type="date" id="date" value="${helper.getCustomerDto().getDob()}" class="form-control" disabled="disabled" required/>
+                                <input type="date" id="date" name="date" value="${helper.getCustomerDto().getDob()}" class="form-control" disabled="disabled" required/>
                                 <div class="error"></div>
                             </div>
                             <div class="form-outline mb-1 form-group">
                                 <label class="form-label" for="gender">Gender</label>
 <%--                                <input type="text" id="gender" value="fe" class="form-control" disabled="disabled" required/>--%>
-                                <select name="gender" id="gender" class="list form-control" required>
+                                <select name="gender" id="gender" name="gender" class="list form-control" disabled="disabled" required>
                                     <option value="male">Male</option>
                                     <option value="female">Female</option>
                                 </select>
@@ -136,7 +135,7 @@
                             <div class="form-outline mb-1 form-group">
                                 <label class="form-label" for="interests">Favourites</label>
 <%--                                <input type="text" id="interests" value="${helper.getCustomerDto().getInterests()}" class="form-control" disabled="disabled" required/>--%>
-                                <select name="interests" id="interests" class="list form-control"   required>
+                                <select name="interests" id="interests" name="interests" class="list form-control"  disabled="disabled"  required>
                                     <option value="Chairs">Chairs</option>
                                     <option value="Rooms">Rooms</option>
                                     <option value="Kitchen">Kitchen</option>
@@ -147,7 +146,7 @@
                             </div>
 
                             <!-- Submit button -->
-                            <button type="submit" id="submit" class="btn btn-primary btn-block mb-4 non_visible saveBtn" >Save</button>
+                            <button type="submit" id="save" class="btn btn-primary btn-block mb-4 non_visible saveBtn" >Save</button>
                         </form>
 
                     </div>
