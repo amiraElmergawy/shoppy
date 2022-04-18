@@ -58,7 +58,7 @@
             <div class="wrap-banner">
 
                 <!-- slide show -->
-                <div class="section banner">
+                <div class="section banner mt-5">
                     <div class="tiva-slideshow-wrapper">
                         <div id="tiva-slideshow" class="nivoSlider">
                             <a href="#">

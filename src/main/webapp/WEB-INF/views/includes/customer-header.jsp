@@ -93,7 +93,7 @@
 
     <!-- header desktop -->
 
-    <div class="header-top d-xs-none mt-5 ">
+    <div class="header-top d-xs-none ">
         <div class="container">
             <div class="row">
                 <!-- logo -->
