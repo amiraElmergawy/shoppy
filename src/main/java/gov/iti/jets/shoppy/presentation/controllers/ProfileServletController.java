@@ -23,6 +23,7 @@ import java.util.Date;
 @WebServlet(name = "ProfileServletController" , value = "/profile")
 public class ProfileServletController extends HttpServlet{
 
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/customer/customer-profile.jsp");
@@ -30,8 +31,13 @@ public class ProfileServletController extends HttpServlet{
         int userId= (int) httpSession.getAttribute("userId");
         ProfileViewHelper profileViewHelper = DomainFacade.getInstance().customerProfile(userId);
         req.setAttribute("helper",profileViewHelper);
-
         System.out.println("profile view _____"+profileViewHelper);
+        System.out.println("cridur___"+profileViewHelper.getCustomerDto().getCreditLimit());
+        String gender="Female";
+        if(profileViewHelper.getCustomerDto().isMale()==true){
+            gender="Male";
+        }
+        req.setAttribute("genderValue",gender);
 
         try {
             rd.include(req,resp);
@@ -42,16 +48,12 @@ public class ProfileServletController extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession httpSession= req.getSession();
+        int userId= (int) httpSession.getAttribute("userId");
         System.out.println("first line post method");
         Date formattedDOB = new Date();
         System.out.println(formattedDOB);
-        boolean isMaleValue;
-        if(req.getParameter("gender")=="male"){
-            isMaleValue=true;
-        }
-        else {
-            isMaleValue=false;
-        }
+
         try {
             formattedDOB = new SimpleDateFormat("yyyy-MM-dd").parse(req.getParameter("date").trim());
         } catch (ParseException e) {
@@ -66,16 +68,16 @@ public class ProfileServletController extends HttpServlet{
                 .build();
         CustomerDto customerDto = CustomerDto.builder()
                 .username(req.getParameter("username").trim())
-                .email(req.getParameter("email").trim())
                 .dob(formattedDOB)
-                .isMale(isMaleValue)
                 .address(addressDto)
                 .interests(req.getParameter("interests").trim())
                 .job(req.getParameter("job"))
+                .creditLimit(Float.parseFloat(req.getParameter("credit")))
+                .isMale(Boolean.parseBoolean(req.getParameter("gender")))
                 .build();
 
         System.out.println("customer dto --------"+customerDto);
-        if(DomainFacade.getInstance().updateProfile(customerDto))
+        if(DomainFacade.getInstance().updateProfile(userId,customerDto,addressDto))
             resp.sendRedirect("profile");
         else {
             resp.sendRedirect("profile?updateError=false");
