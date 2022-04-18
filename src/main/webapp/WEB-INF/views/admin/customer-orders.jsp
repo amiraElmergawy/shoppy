@@ -35,6 +35,8 @@
                     <th scope="col">Is Submitted</th>
                     <th scope="col">Date of Order</th>
                     <th scope="col">Total price</th>
+                    <th scope="col">Customer Email</th>
+                    <th scope="col">Products</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -44,6 +46,22 @@
                     <td>${orders.getIsSubmitted()}</td>
                     <td>${orders.getCreatedAt()}</td>
                     <td>${orders.getTotalPrice()}</td>
+                    <td>${orders.getCustomer().getEmail()}</td>
+                    <td>
+                        <c:forEach var="product" items="${orders.getOrderProducts()}">
+                            Name: ${product.getProduct().getProductName()}
+                            &emsp;
+                            Desc: ${product.getProduct().getProductDesc()}
+                            &emsp;
+                            Price: ${product.getProduct().getPrice()}
+                            &emsp;
+                            Stock: ${product.getProduct().getStock()}
+                            &emsp;
+                            Category: ${product.getProduct().getCategory()}
+                            <br>
+                        </c:forEach>
+                    </td>
+
                 </tr>
                 </c:forEach>
                 </tbody>
