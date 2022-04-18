@@ -11,5 +11,6 @@ public interface ProductRepo {
     Optional<ProductEntity> findProductById(Integer id);
     boolean updateProduct(ProductEntity productEntity);
     boolean addProduct(ProductEntity productEntity);
+    boolean updateProductById(ProductEntity productEntity, int id);
 
 }
