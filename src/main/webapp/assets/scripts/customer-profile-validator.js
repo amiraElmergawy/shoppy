@@ -1,14 +1,19 @@
 const form = document.getElementById("edit-form");
 const nameElement = document.getElementById("name");
-const genderElement = document.getElementById("gender");
+const creditElement = document.getElementById("credit");
 const interestsElement=document.getElementById("interests");
-const  dateElement = document.getElementById("date")
-const jopElement = document.getElementById("jop");
+const  dateElement = document.getElementById("date");
+const jopElement = document.getElementById("job");
 const cityElement = document.getElementById("city");
 const streetElement = document.getElementById("street");
 const floorElement = document.getElementById("floor-number");
 const buildingElement = document.getElementById("building-number");
-const emailEelement=document.getElementById("email");
+const emailEelement=document.getElementById("emailDiv");
+const interestsDisplayElement=document.getElementById("interestsDisplay");
+const genderElement=document.getElementById("gender");
+const genderDisplayElement=document.getElementById("genderDisplay");
+
+
 
 const editButton= document.getElementById("edit");
 const submitButton = document.getElementById("save");
@@ -25,16 +30,19 @@ const submitButton = document.getElementById("save");
 // })
 editButton.addEventListener('click',e=>{
     nameElement.removeAttribute("disabled");
-    emailEelement.removeAttribute("disabled");
-    jopElement.removeAttribute("disabled");
     dateElement.removeAttribute("disabled");
-    genderElement.removeAttribute("disabled");
-    interestsElement.removeAttribute("disabled");
+    creditElement.removeAttribute("disabled");
     cityElement.removeAttribute("disabled");
     streetElement.removeAttribute('disabled');
     buildingElement.removeAttribute('disabled');
     floorElement.removeAttribute('disabled');
     submitButton.classList.remove('non_visible');
+    interestsElement.classList.remove('non_visible');
+    genderElement.classList.remove('non_visible');
+    interestsDisplayElement.classList.add('non_visible');
+    genderDisplayElement.classList.add('non_visible');
+    emailEelement.classList.add('non_visible');
+    jopElement.removeAttribute("disabled");
 
  })
 
@@ -48,13 +56,6 @@ form.addEventListener('submit', e => {
     const validFloorNumber=validateEmptyInputs(floorElement);
     const validJob=validateEmptyInputs(jopElement);
     const validCity=validateEmptyInputs(cityElement);
-    console.log(validName);
-    console.log(validBirthDate);
-    console.log(validFloorNumber);
-    console.log(validJob );
-    console.log(validBuildingNumber);
-    console.log(validCity);
-    console.log(validStreet);
 
     let customerData ="";
 
