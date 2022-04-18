@@ -3,7 +3,9 @@ package gov.iti.jets.shoppy.presentation.controllers;
 import gov.iti.jets.shoppy.presentation.helpers.LoginViewHelper;
 import gov.iti.jets.shoppy.presentation.helpers.ProfileViewHelper;
 import gov.iti.jets.shoppy.service.DomainFacade;
+import gov.iti.jets.shoppy.service.dtos.AddressDto;
 import gov.iti.jets.shoppy.service.dtos.CustomerDto;
+import gov.iti.jets.shoppy.service.util.HashManager;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -28,12 +30,8 @@ public class ProfileServletController extends HttpServlet{
         int userId= (int) httpSession.getAttribute("userId");
         ProfileViewHelper profileViewHelper = DomainFacade.getInstance().customerProfile(userId);
         req.setAttribute("helper",profileViewHelper);
+
         System.out.println("profile view _____"+profileViewHelper);
-        //loadCustomerprofile
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-
-//        System.out.println("____________*******________"+ dateFormat.format(profileViewHelper.getCustomerDto().getDateOfBirth().toString()));
-
 
         try {
             rd.include(req,resp);
@@ -43,7 +41,8 @@ public class ProfileServletController extends HttpServlet{
     }
 
     @Override
-    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("first line post method");
         Date formattedDOB = new Date();
         System.out.println(formattedDOB);
         boolean isMaleValue;
@@ -54,19 +53,28 @@ public class ProfileServletController extends HttpServlet{
             isMaleValue=false;
         }
         try {
-            formattedDOB = new SimpleDateFormat("yyyy-MM-dd").parse(req.getParameter("dob").trim());
+            formattedDOB = new SimpleDateFormat("yyyy-MM-dd").parse(req.getParameter("date").trim());
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        System.out.println("************ before customer dto --------");
+        AddressDto addressDto=AddressDto.builder()
+                .street(req.getParameter("street"))
+                .area(req.getParameter("city"))
+                .buildingNum(Integer.valueOf(req.getParameter("buildingNum")))
+                .floorNum(Integer.valueOf(req.getParameter("floorNum")))
+                .build();
         CustomerDto customerDto = CustomerDto.builder()
                 .username(req.getParameter("username").trim())
                 .email(req.getParameter("email").trim())
                 .dob(formattedDOB)
                 .isMale(isMaleValue)
+                .address(addressDto)
                 .interests(req.getParameter("interests").trim())
                 .job(req.getParameter("job"))
                 .build();
-        System.out.println(customerDto);
+
+        System.out.println("customer dto --------"+customerDto);
         if(DomainFacade.getInstance().updateProfile(customerDto))
             resp.sendRedirect("profile");
         else {
