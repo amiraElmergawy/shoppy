@@ -5,6 +5,10 @@ const productPrice = document.getElementById('price');
 const productStock = document.getElementById('stock');
 const images = document.getElementById("images");
 const productDesc = document.getElementById('desc');
+const btn = document.getElementById("btn");
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const productId = urlParams.get('productID');
 
 images.onchange = function (event) {
     var fileList = images.files;
@@ -38,32 +42,41 @@ form.addEventListener('submit', e => {
     validateEmptyInputs(productDesc)
 
     if( validateEmptyInputs(productNameElement) && checkCategory() && validateEmptyInputs(productPrice) && validateEmptyInputs(productStock) && validateEmptyInputs(productDesc)){
-        console.log("you can send the request now ^_^");
-        //send the post request
-        console.log("button is clicked");
         const productName = productNameElement.value;
         const desc = productDesc.value;
         const price = productPrice.value;
         const stock = productStock.value;
         const category = productCategory.value;
+        const id=productId;
         const jsonData = {
             "productName": productName,
             "desc": desc,
             "price": price,
             "stock": stock,
-            "category": category
+            "category": category,
+            "id":id
         };
 
 
-        $.ajax({
-            type: 'POST', //servlet request type
-            contentType: 'application/x-www-form-urlencoded;charset=UTF-8', //For input type
-            data: jsonData, //input data
-            dataType: 'json',
-            url: 'add-product',
-        })
-
-
+        if(document.getElementById("btn").innerText.trim() == "Save Product"){
+            $.ajax({
+                type: 'POST', //servlet request type
+                contentType: 'application/x-www-form-urlencoded;charset=UTF-8', //For input type
+                data: jsonData, //input data
+                dataType: 'json',
+                url: 'add-product',
+            })
+        }
+        else {
+            console.log("in add");
+            $.ajax({
+                type: 'POST', //servlet request type
+                contentType: 'application/x-www-form-urlencoded;charset=UTF-8', //For input type
+                data: jsonData, //input data
+                dataType: 'json',
+                url: 'update-product',
+            })
+        }
     }
 
 });
