@@ -47,7 +47,7 @@ public class LoginServletController extends HttpServlet {
         }
         else {
             req.setAttribute("error", loginViewHelper.getError());
-            req.getRequestDispatcher("login").forward(req, resp);
+            req.getRequestDispatcher("WEB-INF/views/customer/auth-forms.jsp").forward(req, resp);
         }
     }
 }
