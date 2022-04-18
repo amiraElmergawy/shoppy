@@ -33,14 +33,14 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-    <filter>
-        <filter-name>validationFilter</filter-name>
-        <filter-class>gov.iti.jets.shoppy.presentation.filters.ValidationFilter</filter-class>
-    </filter>
+<!--    <filter>-->
+<!--        <filter-name>validationFilter</filter-name>-->
+<!--        <filter-class>gov.iti.jets.shoppy.presentation.filters.ValidationFilter</filter-class>-->
+<!--    </filter>-->
 
-    <filter-mapping>
-        <filter-name>validationFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
+<!--    <filter-mapping>-->
+<!--        <filter-name>validationFilter</filter-name>-->
+<!--        <url-pattern>/*</url-pattern>-->
+<!--    </filter-mapping>-->
 
 </web-app>
