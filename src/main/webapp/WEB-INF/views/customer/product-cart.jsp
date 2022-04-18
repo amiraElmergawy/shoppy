@@ -48,7 +48,7 @@
                                                                 </a>
                                                             </span>
                                                         </div>
-                                                        <div class="product-line-grid-body col-md-6 ">
+                                                        <div class="product-line-grid-body col-md-4 ">
                                                             <div class="product-line-info">
                                                                 <a class="label" href="product-detail.jsp" data-id_customization="0">
                                                                     ${orderProduct.getProduct().getProductName()}
@@ -62,7 +62,7 @@
                                                                 <span class="value">${orderProduct.getProduct().getPrice()} EG</span>
                                                             </div>
                                                         </div>
-                                                        <div class="product-line-grid-right text-center product-line-actions col-md-4 justify-content-between">
+                                                        <div class="product-line-grid-right text-center product-line-actions col-md-6 justify-content-between">
                                                             <div class="row">
                                                                 <div class="col-md-5 col m-auto ">
                                                                     <div class="quantity d-flex ">
