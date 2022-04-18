@@ -30,7 +30,7 @@ button {
     overflow: hidden;
     position: relative;
     width: 900px;
-    height: 800px;
+    height: 850px;
     background: #fff;
     box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
@@ -349,11 +349,25 @@ select {
 .sign-up-container {
     padding:0px 30px ;
     line-height: 0.5 !important;
-    margin-top: 30px !important;
+    margin-top: 85px !important;
     margin-bottom: 30px !important;
 }
 
 .submit-btn {
     margin-top: 20px;
     margin-bottom: 10px;
+}
+.remember-me{
+    margin: 26px 85px;
+
+}
+.remember-me span{
+    color: #3eadcf;
+}
+.error-message{
+    height: 35px;
+    position: absolute;
+    top: -60px;
+    left: 65px;
+    width: 80%;
 }
