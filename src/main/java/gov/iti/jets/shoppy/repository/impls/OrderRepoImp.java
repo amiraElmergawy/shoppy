@@ -28,11 +28,23 @@ public class OrderRepoImp implements OrderRepo {
 
     @Override
     public boolean saveOrder(OrderEntity orderEntity) {
+        //check for order
+        //if it already exists delete all its current products and add the products in the session only update the order updates
+        //if not add the order then add its products
         Set<OrderProductsEntity> orderProductsEntityList = orderEntity.getOrderProducts();
-        orderEntity.setOrderProducts(null);
+
         try {
             entityManager.getTransaction().begin();
+            if (!orderEntity.getId().equals(null)){
+                var currentOrderProducts = entityManager.createQuery("from OrderProductsEntity where order.id = :orderId").setParameter("orderId", orderEntity.getId()).getResultList();
+                currentOrderProducts.forEach(orderProduct->{
+                    entityManager.remove(orderProduct);
+                });
+            }
+
+            orderEntity.setOrderProducts(null);
             OrderEntity order = entityManager.merge(orderEntity);
+
             orderProductsEntityList.forEach(orderProductsEntity -> {
                 orderProductsEntity.getId().setOrderId(order.getId());
                 entityManager.merge(orderProductsEntity);
