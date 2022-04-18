@@ -97,4 +97,9 @@ public class DomainFacade {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         return productService.deleteProduct(id,entityManager);
     }
+
+    public ViewOrderHelper getOrderByCustomerId(int id){
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        return orderService.getOrdersByCustomerId(id , entityManager);
+    }
 }

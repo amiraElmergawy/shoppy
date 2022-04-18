@@ -6,6 +6,8 @@ import gov.iti.jets.shoppy.repository.interfaces.OrderRepo;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import jakarta.persistence.NoResultException;
+import jakarta.persistence.TypedQuery;
+import jakarta.persistence.criteria.Order;
 
 import java.util.List;
 import java.util.Optional;
@@ -40,5 +42,12 @@ public class OrderRepoImp implements OrderRepo {
         query.setFirstResult((pageNumber-1) * pageSize);
         query.setMaxResults(pageSize);
         return query.getResultList();
+    }
+
+    @Override
+    public List<OrderEntity> getOrdersByCustomerId(int customerId) {
+        TypedQuery<OrderEntity> typedQuery = entityManager.createQuery("from OrderEntity where customer.id=:customerID" , OrderEntity.class)
+                .setParameter("customerID",customerId);
+        return typedQuery.getResultList();
     }
 }
