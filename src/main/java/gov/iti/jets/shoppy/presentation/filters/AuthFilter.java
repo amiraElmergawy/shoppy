@@ -105,6 +105,8 @@ public class AuthFilter implements Filter {
         adminUrlList.add("show-all-customers");
         adminUrlList.add("show-all-orders");
         adminUrlList.add("dashboard");
+        adminUrlList.add("delete");
+        adminUrlList.add("customer-orders");
     }
 
     private void fillPublicUrlsList(){
