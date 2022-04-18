@@ -66,13 +66,13 @@
                                                             <div class="row">
                                                                 <div class="col-md-5 col m-auto ">
                                                                     <div class="quantity d-flex ">
-                                                                        <button id="minus" class="shadow-sm btn-sm btn-primary font-weight-bold" onclick="decreaseProduct(${orderProduct.getProduct().getId()})">
+                                                                        <button id="minus" class="btn shadow-sm btn-sm btn-primary font-weight-bold" onclick="decreaseProduct(${orderProduct.getProduct().getId()})">
                                                                             -
                                                                         </button>
                                                                         <div id=${orderProduct.getProduct().getId()}quantity class="btn-sm bg-white font-weight-bold mx-2">
                                                                                 ${orderProduct.getQuantity()}
                                                                         </div>
-                                                                        <button id="plus" class="shadow-sm btn-sm btn-primary font-weight-bold " onclick="increaseProduct(${orderProduct.getProduct().getId()})">
+                                                                        <button id="plus" class="btn shadow-sm btn-sm btn-primary font-weight-bold " onclick="increaseProduct(${orderProduct.getProduct().getId()})">
                                                                             +
                                                                         </button>
                                                                     </div>
@@ -84,7 +84,7 @@
                                                                 </div>
                                                                 <div class="col-md-2 text-xs-right align-self-end col">
                                                                     <div class="cart-line-product-actions m-0">
-                                                                        <button class="remove-from-cart m-0" rel="nofollow" data-link-action="delete-from-cart" data-id-product="1" onclick="deleteProduct(${orderProduct.getProduct().getId()})">
+                                                                        <button class="btn remove-from-cart m-0" rel="nofollow" data-link-action="delete-from-cart" data-id-product="1" onclick="deleteProduct(${orderProduct.getProduct().getId()})">
                                                                             <i class="fa fa-trash-o" aria-hidden="true"></i>
                                                                         </button>
                                                                     </div>
