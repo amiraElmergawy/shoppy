@@ -9,4 +9,5 @@ public interface ProductService {
     HomeViewHelper getProducts(int pageNumber, EntityManager entityManager);
     ViewProductHelper getProductById(int id , EntityManager entityManager);
     boolean addProduct(ProductDto productDto,EntityManager entityManager);
+    boolean updateProduct(ProductDto productDto, EntityManager entityManager, int id);
 }
