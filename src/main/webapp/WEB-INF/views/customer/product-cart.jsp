@@ -99,9 +99,7 @@
                                        </c:forEach>
                                     </div>
                                    <div class="text-center">
-                                    <a href="product-checkout.jsp" class="continue btn btn-primary pull-xs-right">
-                                        checkout
-                                    </a>
+                                    <%@ include file="../includes/cart-modal.jsp" %>
                                    </div>
                                 </div>
                                 <div class="cart-grid-right col-xs-12 col-lg-3 mt-5 ">
