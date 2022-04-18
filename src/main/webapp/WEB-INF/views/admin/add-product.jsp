@@ -91,7 +91,7 @@
                                     <textarea class="form-control input" id="desc" rows="3" required></textarea>
                                     <div class="error"></div>
                                 </div>
-                                <button type="submit" class="btn btn-success my-2">Save Product</button>
+                                <button type="submit" id="btn" class="btn btn-success my-2">Save Product</button>
                             </form>
                         </div>
                         ${isAdded}
