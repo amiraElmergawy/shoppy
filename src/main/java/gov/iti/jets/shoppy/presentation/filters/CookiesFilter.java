@@ -1,5 +1,9 @@
 package gov.iti.jets.shoppy.presentation.filters;
 
+import gov.iti.jets.shoppy.presentation.helpers.LoginViewHelper;
+import gov.iti.jets.shoppy.presentation.util.CookieUtility;
+import gov.iti.jets.shoppy.presentation.util.SessionManager;
+import gov.iti.jets.shoppy.service.DomainFacade;
 import jakarta.servlet.*;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
@@ -7,11 +11,11 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 
 public class CookiesFilter implements Filter {
+    private final CookieUtility cookieUtility = CookieUtility.INSTANCE;
+    private final DomainFacade domainFacade = DomainFacade.getInstance();
+    private final SessionManager sessionManager = SessionManager.INSTANCE;
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -19,21 +23,18 @@ public class CookiesFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException, ServletException {
-
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res =(HttpServletResponse) response;
-//        PrintWriter printWriter = res.getWriter();
 
         if (req.getRequestURI().equals("/shoppy/")){
             filterChain.doFilter(request , response);
         }else{
             Cookie[] cookies =req.getCookies();
             if (cookies==null){
-                //replace this by include jsp has error when close cookies
-//                printWriter.println("<p>YOU ARE Disable Cookies , we use it please Enable it :) </p>");
                  RequestDispatcher rd = req.getRequestDispatcher("Cookie.jsp");
                  rd.include(req,res);
             }else {
+                handleRememberMe(req, res);
                 filterChain.doFilter(request , response);
             }
         }
@@ -44,4 +45,11 @@ public class CookiesFilter implements Filter {
         Filter.super.destroy();
     }
 
+    private void handleRememberMe(HttpServletRequest req, HttpServletResponse resp){
+        cookieUtility.readUIDCookie(req).ifPresent(cookie -> {
+            LoginViewHelper loginViewHelper = domainFacade.rememberMe(Long.parseLong(cookie.getValue()));
+            if(loginViewHelper.getError() == null)
+                sessionManager.createSession(req, loginViewHelper);
+        });
     }
+}

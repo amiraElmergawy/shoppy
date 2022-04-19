@@ -47,17 +47,8 @@
         font-weight: bold;
         cursor: pointer;
 }
-.full-image{
-    width: 100%;
-    height: 100%;
-}
-.nivoSlider{
-    max-height: 400px !important;
-}
 
-.responsive-height{
-    max-height: 400px !important;
-}
+
 
 
 

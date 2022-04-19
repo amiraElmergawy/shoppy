@@ -15,17 +15,23 @@
 </head>
 
 <body class="user-login blog">
-
-<div class="cont">
+    <c:choose>
+        <c:when test="${pageContext.request.requestURI.equals('/shoppy/register')}">
+            <div class="cont s-signup">
+        </c:when>
+        <c:otherwise>
+            <div class="cont">
+        </c:otherwise>
+    </c:choose>
     <div class="form sign-in">
         <c:choose>
-            <c:when test="${empty helper.getError() || error }">
+            <c:when test="${empty error}">
                 <div class="alert-danger text-center h6 py-2 d-none" id="invaled" style="height: 35px">
                 </div>
             </c:when>
             <c:otherwise>
                 <div class="alert-danger text-center h6 py-2 " id="invaled" style="height: 35px">
-                    <p>${helper.getError()}</p>  <P>${error}</P>
+                    <p>${error}</p>
                 </div>
             </c:otherwise>
         </c:choose>
@@ -47,12 +53,9 @@
                 <div class="error d-none"></div>
             </div>
 
-            <div class="form-group">
-                <label>
-                    <span>Remember Me</span>
-                </label>
-                <input type="checkbox" name="password" id="rememberMe" value="checked">
-
+            <div class="form-group mb-3 row">
+                <input str type="checkbox" name="remember" id="rememberMe" value="checked">
+                <label>Remember Me</label>
             </div>
             <button class="submit" type="submit">Sign In</button>
         </form>
@@ -83,20 +86,34 @@
             </div>
         </div>
         <div class="form sign-up sign-up-container">
+            <c:choose>
+                <c:when test="${not empty param.emailValidation}">
+                    <div class="alert-danger text-center h6 py-2" id="invaled" style="height: 35px">
+                        user already exists!
+                    </div>
+                </c:when>
+
+                <c:when test="${not empty param.dataValidation}">
+                    <div class="alert-danger text-center h6 py-2" id="invaled" style="height: 35px">
+                        Please enter your info again!
+                    </div>
+                </c:when>
+            </c:choose>
+
             <h2>Sign Up</h2>
-            <form id="sign-up-form" method="post" action="#">
+            <form id="sign-up-form" method="post" action="register">
                 <div class="form-group">
                     <label>
                         <span>Name</span>
                     </label>
-                    <input type="text" id="name" required>
+                    <input type="text" id="name" name="username" required>
                     <div class="error"></div>
                 </div>
                 <div class="form-group">
                     <label>
                         <span>Email</span>
                     </label>
-                    <input type="email" id="sign-up-email" required>
+                    <input type="email" name="email" id="sign-up-email" required>
                     <div class="error"></div>
                 </div>
 
@@ -104,7 +121,7 @@
                     <label>
                         <span>Password</span>
                     </label>
-                    <input type="password" id="sign-up-password" required>
+                    <input type="password" name="password" id="sign-up-password" required>
                     <div class="error"></div>
                 </div>
                 <div class="form-group">
@@ -118,7 +135,7 @@
                     <label>
                         <span>Your Birth Date</span>
                     </label>
-                    <input type="date" id="date" required >
+                    <input type="date" name="dateOfBirth" id="date" required >
                     <div class="error"></div>
                 </div>
                 <div class="form-group">
@@ -141,7 +158,7 @@
                     <label>
                         <span>Gender </span>
                     </label>
-                    <select name="gender" id="gender" class="list" required>
+                    <select name="isMale" id="gender" class="list" required>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                     </select>

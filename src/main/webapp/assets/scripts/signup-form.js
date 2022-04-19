@@ -8,7 +8,7 @@ const signUpPasswordEelement = document.getElementById("sign-up-password");
 const confirmPsswordElement = document.getElementById("confirm-password");
 const birthDateElement=document.getElementById("date");
 const favouriteElement=document.getElementById("interests");
-const genderElement=document.getElementById("gender");
+const genderElement=document.getElementById("gender").value === "male"?true:false;
 
 
 signUpForm.addEventListener('submit', e => {
@@ -20,48 +20,26 @@ signUpForm.addEventListener('submit', e => {
    const validBirthDate=validateEmptyInputs(birthDateElement);
    let customerData ="";
 
-    if(validName && validEmail && validPassword && isPasswordSimilar && validBirthDate) {
-        var xmlHttp = new XMLHttpRequest();
-        xmlHttp.open("post", '/shoppy/register', true);
-        customerData = {
-            name: nameElement.value,
-            email: emailElement.value,
-            password: passwordElement.value,
-            birthDate: birthDateElement.value,
-            favorite: favouriteElement.value,
-            gender: genderElement.value
-        };
-        xmlHttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-
-        xmlHttp.send(customerData);
+   if(validName && validEmail && validPassword && isPasswordSimilar && validBirthDate) {
+       console.log(signUpForm.value);
+       for (var pair of new FormData(signUpForm).entries()) {
+           console.log(pair[0] + ': ' + pair[1]);
+       }
+       signUpForm.submit();
+        // var xmlHttp = new XMLHttpRequest();
+        // xmlHttp.open("post", '/shoppy/register', true);
+        // customerData = {
+        //     username: nameElement.value,
+        //     email: signUpEmailEelement.value,
+        //     password: signUpPasswordEelement.value,
+        //     dateOfBirth: birthDateElement.value,
+        //     interests: favouriteElement.value,
+        //     isMale: genderElement
+        // };
+        // console.log(customerData);
+        // xmlHttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        // xmlHttp.send("customerData=" + JSON.stringify(customerData));
 
     }
 })
-//
-//     $.ajax({
-//         type: 'post',
-//         url: '/shoppy/register',
-//         data: {
-//             name:nameElement.value,
-//             email: emailElement.value,
-//             password: passwordElement.value,
-//             birthDate:birthDateElement.value,
-//             favorite:favouriteElement.value,
-//             gender:genderElement.value
-//         },
-//         contentType : 'application/x-www-form-urlencoded',
-//         success: function (data) {
-//             if(data == "Error"){
-//                 var errorDiv = document.getElementById("invaled");
-//                 errorDiv.innerText = data;
-//                 errorDiv.classList.remove("d-none");
-//             } else {
-//                 console.log(data);
-//                 window.location.replace(data);
-//             }
-//
-//         }
-//     });
-//     }
-//
-// })
+

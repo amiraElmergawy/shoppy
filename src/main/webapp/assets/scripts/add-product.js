@@ -1,15 +1,22 @@
 const form = document.getElementById('form');
-const productName = document.getElementById('productName')
-const category = document.getElementById('category')
-const price = document.getElementById('price');
-const stock = document.getElementById('stock');
+const productNameElement = document.getElementById('productName')
+const productCategory = document.getElementById('category')
+const productPrice = document.getElementById('price');
+const productStock = document.getElementById('stock');
 const images = document.getElementById("images");
-const desc = document.getElementById('desc');
-
+const productDesc = document.getElementById('desc');
+encodedImages = [];
 images.onchange = function (event) {
     var fileList = images.files;
-    if (fileList.length != 0) {//test
-        PreviewImage(fileList);
+    if (fileList.length !== 0) {//test
+        if(encodedImages.length === 4)
+            showImagesError("maximum 4 images for product")
+        else if(fileList[0].size > 300000)
+            showImagesError("image size should not exceed 300 kb")
+        else {
+            removeImageError();
+            PreviewImage(fileList);
+        }
     }
 }
 
@@ -22,26 +29,56 @@ function PreviewImage(files) {
         img.src = oFREvent.target.result;
         img.width = 100;
         img.height = 100;
-        img.classList.add("m-1")
+        img.classList.add("m-1");
         document.getElementById("imagesArea").appendChild(img);
+        encodedImages.push(oFREvent.target.result);
     };
 };
 
 form.addEventListener('submit', e => {
     e.preventDefault();
 
-    validateEmptyInputs(productName)
+    validateEmptyInputs(productNameElement)
     checkCategory()
     checkImages()
-    validateEmptyInputs(price)
-    validateEmptyInputs(stock)
-    validateEmptyInputs(desc)
+    validateEmptyInputs(productPrice)
+    validateEmptyInputs(productStock)
+    validateEmptyInputs(productDesc)
 
-    // if( validateEmptyInputs(productName) && checkCategory() && validateEmptyInputs(price) && validateEmptyInputs(stock) && validateEmptyInputs(desc)){
-    //     console.log("you can send the request now ^_^");
-    //     //send the post request
-    // }
+    if( validateEmptyInputs(productNameElement) && checkCategory() && validateEmptyInputs(productPrice) && validateEmptyInputs(productStock) && validateEmptyInputs(productDesc)){
+        console.log("you can send the request now ^_^");
+        //send the post request
+        console.log("button is clicked");
+        const productName = productNameElement.value;
+        const desc = productDesc.value;
+        const price = productPrice.value;
+        const stock = productStock.value;
+        const category = productCategory.value;
+
+        const jsonData = {
+            "productName": productName,
+            "desc": desc,
+            "price": price,
+            "stock": stock,
+            "category": category,
+            "images": JSON.stringify(encodedImages)
+        };
+
+        $.post("add-product", jsonData);
+        // $.ajax({
+        //     type: 'POST', //servlet request type
+        //     contentType: 'application/x-www-form-urlencoded;charset=UTF-8', //For input type
+        //     data: jsonData, //input data
+        //     dataType: 'json',
+        //     url: 'add-product',
+        // })
+
+
+    }
+
 });
+
+
 
 function checkCategory() {
     console.log(category.options[category.selectedIndex].value)
@@ -68,12 +105,12 @@ function checkImages() {
     var imagesArea = document.getElementById("imagesArea");
     var errorDiv = imagesArea.children[1];
     var fileInput = imagesArea.children[0];
-    if (images.files.length == 0) { //there is no selected img
+    if (images.files == 0) { //there is no selected img
         fileInput.classList.add("select-error");
         errorDiv.classList.add("custom-error");
         errorDiv.innerHTML = "This field is required";
         return false;
-    } else {
+    }else {
         if (errorDiv.classList.contains("custom-error"))
             errorDiv.classList.remove("custom-error");
         if (fileInput.classList.contains("select-error"))
@@ -83,6 +120,23 @@ function checkImages() {
     }
 }
 
+function showImagesError(msg) {
+    var imagesArea = document.getElementById("imagesArea");
+    var errorDiv = imagesArea.children[1];
+    var fileInput = imagesArea.children[0];
+    fileInput.classList.add("select-error");
+    errorDiv.classList.add("custom-error");
+    errorDiv.innerHTML = msg;
+}
+
+function removeImageError() {
+    imagesArea = document.getElementById("imagesArea");
+    errorDiv = imagesArea.children[1];
+    fileInput = imagesArea.children[0];
+    fileInput.classList.remove("select-error");
+    errorDiv.classList.remove("custom-error");
+    errorDiv.innerHTML = "";
+}
 //upload image with ajax
 // async function uploadFile() {
 //     let formData = new FormData();

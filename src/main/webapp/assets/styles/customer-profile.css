@@ -1,0 +1,21 @@
+#main{
+    position: relative !important;
+}
+.edit-pen {
+    position: absolute;
+    top: 3px;
+    right: 4px;
+    font-size: 30px;
+    cursor:pointer !important;
+}
+input{
+    border: 0;
+    border-bottom: 1px solid #ced4da;
+}
+.non_visible{
+display: none;
+}
+.visible{
+    display: block;
+}
+

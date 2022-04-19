@@ -1,22 +1,22 @@
 const emailPattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
-const passwordPattern = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/;
-const namePattern = /^[a-zA-Z ]{2,30}$/;
+const passwordPattern = /^([A-Za-z]|[0-9]){8,}$/;
+const namePattern = /^[A-Za-z]\w{2,29}$/;
 const setError = (element, message) => {
     const inputControl = element.parentElement;
     const errorDisplay = inputControl.querySelector('.error');
-
+console.log(inputControl);
     errorDisplay.innerText = message;
     inputControl.classList.add('error');
     // inputControl.classList.remove('success')
+    console.log(errorDisplay);
 }
 
 const setSuccess = element => {
     const inputControl = element.parentElement;
-    const errorDisplay = inputControl.querySelector('.error');
-
-    errorDisplay.innerText = '';
-    // inputControl.classList.add('success');
+    //const errorDisplay = inputControl.querySelector('.error');
+     //errorDisplay.innerText ='';
     inputControl.classList.remove('error');
+    inputControl.classList.add('success');
 };
 
 const validateEmptyInputs = element => {
@@ -72,6 +72,19 @@ const validateNameInput = nameElement => {
     }
 }
 
+const validateGenderInput = genderElement =>{
+    if (genderElement.value === '') {
+        setError(genderElement, 'You should enter your gender');
+        return false;
+    } else if (!isValidGender(genderElement.value)) {
+        setError(genderElement, 'Wrong')
+        return false;
+    } else {
+        setSuccess(genderElement);
+        return true;
+    }
+
+}
 const checkPasswordInputsSimilarity = (passwordElement, confirmPasswordElement) => {
 
     if (confirmPasswordElement.value === '') {
@@ -108,4 +121,14 @@ const isValidName = nameElementValue => {
         return true;
     else
         return false;
+}
+const isValidGender = genderElementValue => {
+
+    if(genderElementValue === "female" || genderElementValue === "male"){
+        return true;
+    }
+    else{
+        return false;
+    }
+
 }

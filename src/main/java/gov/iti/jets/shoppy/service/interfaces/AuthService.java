@@ -5,8 +5,8 @@ import gov.iti.jets.shoppy.service.dtos.CustomerDto;
 import jakarta.persistence.EntityManager;
 
 public interface AuthService {
-
-    public LoginViewHelper signIn(String email, String password, EntityManager entityManager);
-    public boolean signUp(CustomerDto customerDto,EntityManager entityManager);
+    LoginViewHelper signIn(String email, String password, EntityManager entityManager);
+    LoginViewHelper rememberMe(Long uid, EntityManager entityManager);
+    boolean signUp(CustomerDto customerDto,EntityManager entityManager);
 
 }

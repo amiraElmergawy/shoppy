@@ -1,8 +1,6 @@
 package gov.iti.jets.shoppy.repository.impls;
 
-import gov.iti.jets.shoppy.repository.entity.AdminEntity;
-import gov.iti.jets.shoppy.repository.entity.CustomerEntity;
-import gov.iti.jets.shoppy.repository.entity.UserEntity;
+import gov.iti.jets.shoppy.repository.entity.*;
 import gov.iti.jets.shoppy.repository.interfaces.UserRepo;
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityManager;
@@ -10,6 +8,7 @@ import jakarta.persistence.NoResultException;
 import jakarta.persistence.Query;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,6 +20,7 @@ public class UserRepoImpl implements UserRepo {
 //    public static UserRepoImpl getInstance() {
 //        return userRepo;
 //    }
+    private static int pageSize = 12;
     private EntityManager entityManager;
     public UserRepoImpl(EntityManager entityManager){
         this.entityManager = entityManager;
@@ -58,7 +58,7 @@ public class UserRepoImpl implements UserRepo {
             return false;
         entityManager.getTransaction().begin();
         try {
-            entityManager.persist(userEntity);
+            entityManager.merge(userEntity);
             entityManager.getTransaction().commit();
             return true;
         } catch (EntityExistsException exception){
@@ -67,10 +67,27 @@ public class UserRepoImpl implements UserRepo {
     }
 
     @Override
-    public boolean updateUser(UserEntity userEntity) {
+    public boolean updateUser(int id , CustomerEntity customer, AddressEntity addressEntity) {
         entityManager.getTransaction().begin();
+
         try {
-            entityManager.merge(userEntity);
+            AddressEntity addressEntityData=entityManager.find(AddressEntity.class,id);
+            addressEntityData.setArea(addressEntity.getArea());
+            addressEntityData.setBuildingNum(addressEntity.getBuildingNum());
+            addressEntityData.setFloorNum(addressEntity.getFloorNum());
+            addressEntityData.setStreet(addressEntity.getStreet());
+
+            CustomerEntity customerEntity=entityManager.find(CustomerEntity.class,id);
+            customerEntity.setUsername(customer.getUsername());
+            customerEntity.setDob(customer.getDob());
+            customerEntity.setInterests(customer.getInterests());
+            customerEntity.setCreditLimit(customer.getCreditLimit());
+            customerEntity.setAddressEntity(addressEntityData);
+            customerEntity.setJob(customer.getJob());
+            customerEntity.setIsMale(customer.getIsMale());
+
+            entityManager.merge(customerEntity);
+
             entityManager.getTransaction().commit();
             return true;
         } catch (IllegalArgumentException exception){
@@ -78,6 +95,19 @@ public class UserRepoImpl implements UserRepo {
         }
     }
 
+    @Override
+    public List<CustomerEntity> getCustomers(int pageNumber) {
+        Query query = entityManager.createQuery("from CustomerEntity", CustomerEntity.class);
+        query.setFirstResult((pageNumber-1) * pageSize);
+        query.setMaxResults(pageSize);
+        return query.getResultList();
+    }
+
+    @Override
+    public Long getCustomerCount() {
+        return entityManager.createQuery("select count(*) from CustomerEntity ", Long.class)
+                .getSingleResult();
+    }
     private boolean findUserByEmail(String email){
         String select = "select  u from UserEntity u where u.email=:email";
         Query query = entityManager.createQuery(select);

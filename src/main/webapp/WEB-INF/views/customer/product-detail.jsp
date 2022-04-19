@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if IE 9 ]><html class="ie ie9" lang="en"> <![endif]-->
@@ -39,42 +41,25 @@
                                                         <div class="images-container">
                                                             <div class="js-qv-mask mask tab-content ">
                                                                 <div id="item1" class="tab-pane fade active in show border-0">
-                                                                    <img src="assets/images/product/1.jpg" alt="img">
+                                                                    <img src="images${productDto.getImagesPaths().get(0)}" alt="img">
                                                                 </div>
-                                                                <div id="item2" class="tab-pane fade">
-                                                                    <img src="assets/images/product/2.jpg" alt="img">
-                                                                </div>
-                                                                <div id="item3" class="tab-pane fade">
-                                                                    <img src="assets/images/product/3.jpg" alt="img">
-                                                                </div>
-                                                                <div id="item4" class="tab-pane fade">
-                                                                    <img src="assets/images/product/5.jpg" alt="img">
-                                                                </div>
+                                                                <c:forEach begin="1" end="${productDto.getImagesPaths().size()-1}" var="current">
+                                                                    <div id="item${current}" class="tab-pane fade">
+                                                                        <img src="images${productDto.getImagesPaths().get(current)}" alt="img">
+                                                                    </div>
+                                                                </c:forEach>
                                                                 <div class="layer hidden-sm-down" data-toggle="modal" data-target="#product-modal">
                                                                     <i class="fa fa-expand"></i>
                                                                 </div>
                                                             </div>
                                                             <ul class="product-tab nav nav-tabs d-flex">
-                                                                <li class="active col ">
-                                                                    <a href="#item1" data-toggle="tab" aria-expanded="true" class="active show shadow rounded p-1 border-0">
-                                                                        <img src="assets/images/product/1.jpg" alt="img">
-                                                                    </a>
-                                                                </li>
-                                                                <li class="col">
-                                                                    <a href="#item2" data-toggle="tab" class=" shadow rounded p-1 border-0">
-                                                                        <img src="assets/images/product/2.jpg" alt="img">
-                                                                    </a>
-                                                                </li>
-                                                                <li class="col">
-                                                                    <a href="#item3" data-toggle="tab" class=" shadow rounded p-1 border-0">
-                                                                        <img src="assets/images/product/3.jpg" alt="img">
-                                                                    </a>
-                                                                </li>
-                                                                <li class="col">
-                                                                    <a href="#item4" data-toggle="tab" class=" shadow rounded p-1 border-0">
-                                                                        <img src="assets/images/product/5.jpg" alt="img">
-                                                                    </a>
-                                                                </li>
+                                                                <c:forEach begin="1" end="${productDto.getImagesPaths().size()-1}" var="current">
+                                                                    <li class="active col ">
+                                                                        <a href="#item${current}" data-toggle="tab" aria-expanded="true" class="active show shadow rounded p-1 border-0">
+                                                                            <img src="images${productDto.getImagesPaths().get(current)}" alt="img">
+                                                                        </a>
+                                                                    </li>
+                                                                </c:forEach>
                                                             </ul>
                                                             <div class="modal fade" id="product-modal" role="dialog">
                                                                 <div class="modal-dialog">
@@ -87,40 +72,20 @@
                                                                                     <div>
                                                                                         <div class="images-container col-10 m-0">
                                                                                             <div class="js-qv-mask mask tab-content">
-                                                                                                <div id="modal-item1" class="tab-pane fade active in show">
-                                                                                                    <img class="img-fluid" src="assets/images/product/2.jpg" alt="img">
-                                                                                                </div>
-                                                                                                <div id="modal-item2" class="tab-pane fade">
-                                                                                                    <img src="assets/images/product/2.jpg" alt="img">
-                                                                                                </div>
-                                                                                                <div id="modal-item3" class="tab-pane fade">
-                                                                                                    <img src="assets/images/product/3.jpg" alt="img">
-                                                                                                </div>
-                                                                                                <div id="modal-item4" class="tab-pane fade">
-                                                                                                    <img src="assets/images/product/5.jpg" alt="img">
-                                                                                                </div>
+                                                                                                <c:forEach begin="1" end="${productDto.getImagesPaths().size()-1}" var="current">
+                                                                                                    <div id="modal-item${current}" class="tab-pane fade active in show">
+                                                                                                        <img class="img-fluid" src="images${productDto.getImagesPaths().get(current)}" alt="img">
+                                                                                                    </div>
+                                                                                                </c:forEach>
                                                                                             </div>
                                                                                             <ul class="product-tab nav nav-tabs">
-                                                                                                <li class="active">
-                                                                                                    <a href="#modal-item1" data-toggle="tab" class=" active show">
-                                                                                                        <img src="assets/images/product/1.jpg" alt="img">
-                                                                                                    </a>
-                                                                                                </li>
-                                                                                                <li>
-                                                                                                    <a href="#modal-item2" data-toggle="tab">
-                                                                                                        <img src="assets/images/product/2.jpg" alt="img">
-                                                                                                    </a>
-                                                                                                </li>
-                                                                                                <li>
-                                                                                                    <a href="#modal-item3" data-toggle="tab">
-                                                                                                        <img src="assets/images/product/3.jpg" alt="img">
-                                                                                                    </a>
-                                                                                                </li>
-                                                                                                <li>
-                                                                                                    <a href="#modal-item4" data-toggle="tab">
-                                                                                                        <img src="assets/images/product/5.jpg" alt="img">
-                                                                                                    </a>
-                                                                                                </li>
+                                                                                                <c:forEach begin="1" end="${productDto.getImagesPaths().size()-1}" var="current">
+                                                                                                    <li class="active">
+                                                                                                        <a href="#modal-item${current}" data-toggle="tab" class=" active show">
+                                                                                                            <img src="images${productDto.getImagesPaths().get(current)}" alt="img">
+                                                                                                        </a>
+                                                                                                    </li>
+                                                                                                </c:forEach>
                                                                                             </ul>
                                                                                         </div>
                                                                                     </div>
@@ -137,19 +102,18 @@
                                                     <div class="detail-description">
                                                         <div class="price-del">
                                                             <div class="row d-flex " style="justify-content: space-between; margin: 0px 3px 3px;">
-                                                                    <h1 class="product-name" name="productName ">Mi Note 11 Pro</h1>
+                                                                    <h1 class="product-name" name="productName ">${productDto.getProductName()}</h1>
                                                                 <span class="float-right mt-1 mb-sm-1">
                                                                 <span class="availb">Availability: </span>
                                                                 <span class="check">
-                                                                    <i class="fa fa-check-square-o" aria-hidden="true"></i>IN STOCK</span>
+                                                                    <i class="fa fa-check-square-o" aria-hidden="true"></i>${productDto.getStock()} IN STOCK</span>
                                                             </span>
                                                             </div>
 
 
                                                         </div>
-                                                            <h2 font-size="25px"  class="font-color font-weight-bold ">$1135.00</h2>
-                                                            <h6 font-size="14px" class="text-muted mr-2 mb-4">Proin gravida nibh vel velit auctor aliquet. Aenean lorem quis bibendum
-                                                                auctor, nisi elit consequat etiam non auctor.</h6>
+                                                            <h2 font-size="25px"  class="font-color font-weight-bold ">${productDto.getPrice()} LE</h2>
+                                                            <h6 font-size="14px" class="text-muted mr-2 mb-4">${productDto.getProductDesc()}</h6>
                                                    
 
                                                         <div class="cart-area has-border ">
@@ -220,14 +184,7 @@
                                                             <div class="tab-content">
                                                                 <div id="description" class="tab-pane fade in active show">
                                                                     <p  class="text-muted  mb-2 text-2" style="font-family: 'Open Sans', 'Roboto' ;font-size: 14px">
-                                                                        eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem
-                                                                        ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                                        tempor incididunt ut labore et dolore magna aliqua.
-                                                                    </p>
-                                                                    <p class="text-muted  mb-2 text-2" style="font-family: 'Open Sans', 'Roboto' ;font-size: 14px">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                                        eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem
-                                                                        ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                                        tempor incididunt ut labore et dolore magna aliqua.
+                                                                        ${productDto.getProductDesc()}
                                                                     </p>
                                                                 </div>
                                                                 

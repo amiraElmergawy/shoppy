@@ -1,13 +1,15 @@
 package gov.iti.jets.shoppy.presentation.helpers;
 
-import gov.iti.jets.shoppy.repository.entity.AdminEntity;
-import gov.iti.jets.shoppy.service.dtos.AdminDto;
-import gov.iti.jets.shoppy.service.dtos.CustomerDto;
+
+import gov.iti.jets.shoppy.service.dtos.AddressDto;
+import gov.iti.jets.shoppy.service.dtos.OrderDto;
+import gov.iti.jets.shoppy.service.dtos.Role;
 import lombok.Data;
 
 @Data
 public class LoginViewHelper {
-    private CustomerDto customerDto;
-    private AdminDto adminDto;
+    private String email;
+    private Role role;
+    private Integer id;
     private String error;
 }
