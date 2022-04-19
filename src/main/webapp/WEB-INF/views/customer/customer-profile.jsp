@@ -187,7 +187,7 @@
 <%@ include file="../includes/customer-footer.jsp" %>
 <script src="assets/scripts/customer-profile-validator.js"></script>
 <script src="assets/scripts/forms-validator.js"></script>
-<%--<script src="assets/scripts/update-profile.js"></script>--%>
+<%@ include file="../includes/customer-script.jsp" %>
 
 
 </body>
