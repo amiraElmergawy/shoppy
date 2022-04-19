@@ -68,16 +68,13 @@ public class ProductRepoImp implements ProductRepo {
 
     @Override
     public boolean addProduct(ProductEntity productEntity, List<String> encodedImages) {
-        System.out.println(productEntity);
         boolean added = false;
         try {
             entityManager.getTransaction().begin();
-            //should add image path here
-            productEntity.setImgPath("products");
+            productEntity.setImgPath("product_id");
             entityManager.persist(productEntity);
             entityManager.getTransaction().commit();
             imageUtility.saveImages(productEntity.getId(), encodedImages);
-            System.out.println("test s");
             added = true;
         } catch (IllegalArgumentException exception){
             exception.printStackTrace();

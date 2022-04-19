@@ -26,28 +26,62 @@ public class ImageUtility {
         return imageUtility;
     }
 
+    public List<String> loadImages(Integer productId) {
+        List<String> images = new ArrayList<>();
+        String folderName = productId + "";
+        File[] listOfFiles = new File(path + folderName).listFiles();
+        if (listOfFiles == null) {
+            folderName = "default";
+            listOfFiles = new File(path + folderName).listFiles();
+        }
+        for (int i = 0; i < Objects.requireNonNull(listOfFiles).length; i++)
+            if (listOfFiles[i].isFile())
+                images.add("/" + path + folderName + "/" + listOfFiles[i].getName());
+        return images;
+    }
+
     public boolean saveImages(Integer productId, List<String> encodedImages) {
-        System.out.println("hehe");
+        StringBuilder imgPath;
         try {
-            createFolder(productId);
+            String folderPath = createFolder(productId);
+            for(int i = 0;i < encodedImages.size(); i++){
+                String []array = encodedImages.get(i).split(",");
+                imgPath = new StringBuilder();
+                imgPath.append(folderPath)
+                        .append("/")
+                        .append(i)
+                        .append(".")
+                        .append(getImageExtension(array[0]));
+                writeImageToDisk(imgPath.toString(), array[1]);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
-//        for(int i = 0;i < encodedImages.size(); i++){
-//            String []array = encodedImages.get(i).split(",");
-//            StringBuilder imgName = new StringBuilder();
-//            imgName.append(getImageExtension(array[0])).append(array[1]);
-//            writeImageToDisk(, array[1]);
-//        }
+
         return false;
     }
 
-    private void createFolder(Integer productId) throws IOException {
-        if (Files.exists(Path.of(path))) {
-            FileUtils.cleanDirectory( new File(path + productId));
+    private boolean writeImageToDisk(String path, String encodedString) {
+        byte[] decodedBytes = Base64.getDecoder().decode(encodedString);
+        boolean written = false;
+        try {
+            File file = new File(path);
+            FileUtils.writeByteArrayToFile(file, decodedBytes);
+            written = true;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return written;
+    }
+
+    private String createFolder(Integer productId) throws IOException {
+        String folderPath = path + productId;
+        if (Files.exists(Path.of(folderPath))) {
+            FileUtils.cleanDirectory( new File(folderPath));
         } else {
             new File(path + productId).mkdir();
         }
+        return folderPath;
     }
 
     private String getImageExtension(String imageInfo) {
@@ -64,35 +98,6 @@ public class ImageUtility {
             i++;
         }
         return str.toString();
-    }
-
-    public boolean writeImageToDisk(String path, String encodedString) {
-        byte[] decodedBytes = Base64.getDecoder().decode(encodedString);
-        boolean written = false;
-        try {
-            File file = new File(path);
-            FileUtils.writeByteArrayToFile(file, decodedBytes);
-            written = true;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return written;
-    }
-
-    public List<String> loadImages(Integer productId) {
-        System.out.println("image utility" + path);
-
-        List<String> images = new ArrayList<>();
-        String folderName = productId + "";
-        File[] listOfFiles = new File(path + folderName).listFiles();
-        if (listOfFiles == null) {
-            folderName = "default";
-            listOfFiles = new File(path + folderName).listFiles();
-        }
-        for (int i = 0; i < Objects.requireNonNull(listOfFiles).length; i++)
-            if (listOfFiles[i].isFile())
-                images.add("/" + path + folderName + "/" + listOfFiles[i].getName());
-        return images;
     }
 
 }
