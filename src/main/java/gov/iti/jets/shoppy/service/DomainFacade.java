@@ -25,12 +25,11 @@ public class DomainFacade {
     private final AuthService authService = ServiceFactory.INSTANCE.getAuthService();
     private final ProductService productService = ServiceFactory.INSTANCE.getProductService();
     private  final ProfileService profileService=ServiceFactory.INSTANCE.getProfileService();
-
     private final UserService userService = ServiceFactory.INSTANCE.getUserService();
     private final OrderService orderService = ServiceFactory.INSTANCE.getOrderService();
     private final ShoppingCartService shoppingCartService = ServiceFactory.INSTANCE.getShoppingCartService();
-
     private static final DomainFacade domainFacade = new DomainFacade();
+
     private DomainFacade(){}
 
     public static DomainFacade getInstance(){
@@ -66,42 +65,57 @@ public class DomainFacade {
     }
     public HomeViewHelper searchForProducts(String value){
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        return  productService.searchForProducts(entityManager, value);
-
+        HomeViewHelper homeViewHelper =  productService.searchForProducts(entityManager, value);
+        entityManager.close();
+        return homeViewHelper;
     }
     public ProfileViewHelper customerProfile(int id){
         EntityManager entityManager=entityManagerFactory.createEntityManager();
-        return profileService.getUser(id,entityManager);
+        ProfileViewHelper profileViewHelper =  profileService.getUser(id,entityManager);
+        entityManager.close();
+        return profileViewHelper;
     }
     public boolean updateProfile(int id , CustomerDto customerDto, AddressDto addressDto){
         EntityManager entityManager=entityManagerFactory.createEntityManager();
-        return profileService.updateUser(id,customerDto,addressDto,entityManager);
+        boolean updated = profileService.updateUser(id,customerDto,addressDto,entityManager);
+        entityManager.close();
+        return updated;
     }
 
 
     public ViewProductHelper getProductById(int id){
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        return productService.getProductById(id,entityManager);
+        ViewProductHelper viewProductHelper =  productService.getProductById(id,entityManager);
+        entityManager.close();
+        return viewProductHelper;
     }
 
     public ViewCustomerHelper retrieveCustomers(int pageNumber){
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        return userService.getCustomers(pageNumber, entityManager);
+        ViewCustomerHelper viewCustomerHelper =  userService.getCustomers(pageNumber, entityManager);
+        entityManager.close();
+        return viewCustomerHelper;
     }
 
     public ViewOrderHelper retrieveOrders(int pageNumber){
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        return orderService.getOrders(pageNumber, entityManager);
+        ViewOrderHelper viewOrderHelper = orderService.getOrders(pageNumber, entityManager);
+        entityManager.close();
+        return viewOrderHelper;
     }
 
     public ShoppingCartViewHelper getShoppingCart(Integer id) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        return shoppingCartService.getShoppingCart(id, entityManager);
+        ShoppingCartViewHelper shoppingCartViewHelper =  shoppingCartService.getShoppingCart(id, entityManager);
+        entityManager.close();
+        return shoppingCartViewHelper;
     }
 
     public ShoppingCartViewHelper initializeCustomerCart(Integer customerId,Integer productId) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        return shoppingCartService.initializeCustomerCart(customerId, productId, entityManager);
+        ShoppingCartViewHelper shoppingCartViewHelper = shoppingCartService.initializeCustomerCart(customerId, productId, entityManager);
+        entityManager.close();
+        return shoppingCartViewHelper;
     }
 
     public boolean increaseProductInShoppingCart(int productId){
@@ -131,11 +145,15 @@ public class DomainFacade {
 
     public boolean deleteProduct(int id){
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        return productService.deleteProduct(id,entityManager);
+        boolean deleted = productService.deleteProduct(id,entityManager);
+        entityManager.close();
+        return deleted;
     }
 
     public ViewOrderHelper getOrderByCustomerId(int id){
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        return orderService.getOrdersByCustomerId(id , entityManager);
+        ViewOrderHelper viewOrderHelper = orderService.getOrdersByCustomerId(id , entityManager);
+        entityManager.close();
+        return viewOrderHelper;
     }
 }
