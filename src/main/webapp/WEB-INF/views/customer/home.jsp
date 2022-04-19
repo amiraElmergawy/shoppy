@@ -1217,7 +1217,7 @@
                                                                                    aria-hidden="true"></i>
                                                                             </a>
                                                                         </form>
-                                                                        <a href="#" class="quick-view hidden-sm-down"
+                                                                        <a href="product-details?productID=${product.getId()}" class="quick-view hidden-sm-down"
                                                                            data-link-action="quickview">
                                                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                                                         </a>
