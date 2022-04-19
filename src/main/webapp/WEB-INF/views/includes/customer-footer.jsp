@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="text-center col-lg-12 ">
                         <span>
-							<a target="_blank" class="text-white" href="https://github.com/heshmAhmed/shoppy">Shoopy Created by iti team java track </a>
+							<a target="_blank" class="text-white" href="https://github.com/heshmAhmed/shoppy">Shoppy Created by iti team java track </a>
                         </span>
                 </div>
             </div>

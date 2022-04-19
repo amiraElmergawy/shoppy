@@ -7,7 +7,7 @@
     <!-- Basic Page Needs -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Shoppy</title>
+    <title>Auth Form</title>
     <%@ include file="../includes/customer-head.jsp" %>
     <!-- libs CSS -->
     <link rel="stylesheet" type="text/css" href="assets/styles/user-forms.css">

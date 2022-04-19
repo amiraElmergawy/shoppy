@@ -13,7 +13,7 @@
     <!-- Basic Page Needs -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Furnitica - Minimalist Furniture HTML Template</title>
+    <title>Product Details</title>
 
     <%@ include file="../includes/customer-head.jsp" %>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -65,7 +65,7 @@
                                                         <div class="images-container">
                                                             <div class="js-qv-mask mask tab-content ">
                                                                 <div id="item1" class="tab-pane fade active in show border-0">
-                                                                    <img src="images${productDto.getImagesPaths().get(0)}" alt="img">
+                                                                    <img src="images${productDto.getImagesPaths().get(0)}" alt="img" width="250px" height="350px">
                                                                 </div>
                                                                 <c:forEach begin="1" end="${productDto.getImagesPaths().size()-1}" var="current">
                                                                     <div id="item${current}" class="tab-pane fade">
@@ -78,9 +78,9 @@
                                                             </div>
                                                             <ul class="product-tab nav nav-tabs d-flex">
                                                                 <c:forEach begin="1" end="${productDto.getImagesPaths().size()-1}" var="current">
-                                                                    <li class="active col ">
+                                                                    <li class="active col " width="140px" height="140px">
                                                                         <a href="#item${current}" data-toggle="tab" aria-expanded="true" class="active show shadow rounded p-1 border-0">
-                                                                            <img src="images${productDto.getImagesPaths().get(current)}" alt="img">
+                                                                            <img src="images${productDto.getImagesPaths().get(current)}" alt="img" >
                                                                         </a>
                                                                     </li>
                                                                 </c:forEach>
@@ -136,31 +136,16 @@
 
 
                                                         </div>
+
                                                             <h2 font-size="25px"  class="font-color font-weight-bold ">${productDto.getPrice()} LE</h2>
-                                                            <h6 font-size="14px" class="text-muted mr-2 mb-4">${productDto.getProductDesc()}</h6>
                                                    
 
                                                         <div class="cart-area has-border ">
                                                             <div class="product-quantity">
                                                                 <div class="qty">
                                                                     <div class="input-group d-flex">
-                                                                        <div class="quantity" style="width:120px">
-                                                                            
-                                                                                <div class="quantity d-flex ">
-                                                                                    <div id="minus" class="shadow-sm btn-sm btn-primary font-weight-bold">
-                                                                                        -
-                                                                                    </div>
-                                                                                    <div class="btn-sm bg-white font-weight-bold mx-2">
-                                                                                        1
-                                                                                    </div>
-                                                                                    <div id="plus" class="shadow-sm btn-sm btn-primary font-weight-bold">
-                                                                                        +
-                                                                                    </div>
-                                                                                </div>
-                                                                                
-                                                                        
-                                                                        </div>
-                                                                        <span class="add" style="margin-top: -10px;">
+
+                                                                        <span class="add  ml-0" style="margin-top: -10px;">
 <%--                                                                                <button class="btn btn-primary add-to-cart add-item" type="submit">--%>
 <%--                                                                                <button class="btn btn-primary add-to-cart add-item" onclick="addProduct(${productDto.getId()})">--%>
 <%--                                                                                    <a href="add-to-cart?productId=${productDto.getId()}">--%>
@@ -174,19 +159,9 @@
                                                                                                     </button>
                                                                                                 </c:when>
                                                                                                 <c:otherwise>
-                                                                                                    <button class="btn btn-primary disabled add-to-cart add-item" disabled>
-                                                                                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                                                                            <span>Add to cart</span>
-                                                                                                    </button>
                                                                                                 </c:otherwise>
                                                                                             </c:choose>
-
-
-
                                                                                        </form>
-                                                                            <a class="addToWishlist" href="#">
-                                                                                <i class="fa fa-heart" aria-hidden="true"></i>
-                                                                            </a>
                                                                         </span>
                                                                     </div>
                                                                 </div>
@@ -195,22 +170,13 @@
                                                             <p class="product-minimal-quantity">
                                                             </p>
                                                         </div>
-                                                       
-                                                        <div class="rating-comment  d-flex">
-                                                            <div class="review-description d-flex">
-                                                                <h6 font-size="14px" class="text-muted mr-2">Rated:</h6>
-                                                                <div class="rating">
-                                                                    <div class="star-content">
-                                                                        <div class="star"></div>
-                                                                        <div class="star"></div>
-                                                                        <div class="star"></div>
-                                                                        <div class="star"></div>
-                                                                        <div class="star"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                           
-                                                           
+
+                                                        <div class="rating-comment ">
+                                                            <h4 class="font-italic mb-3 text-muted">Description</h4>
+                                                            <h6 font-size="14px" class="text-muted font-italic mr-2 mb-4 mx-1">${productDto.getProductDesc()}</h6>
+
+
+
                                                         </div>
 <%--                                                        <div class="review">--%>
 <%--                                                            <ul class="nav nav-tabs">--%>
