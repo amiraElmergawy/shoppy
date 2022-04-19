@@ -1169,7 +1169,7 @@
                                                                             </li>
                                                                         </c:forEach>
                                                                 <c:choose>
-                                                                    <c:when test="${param.pageNum >= Math.round(helper.getAllProductCount()/12)}">
+                                                                    <c:when test="${param.pageNum >= Math.ceil(helper.getAllProductCount()/12)}">
                                                                         <li>
                                                                             <a rel="next" href="home?pageNum=${param.pageNum+1}" class="next disabled js-search-link" style="pointer-events: none">
                                                                                 Next
