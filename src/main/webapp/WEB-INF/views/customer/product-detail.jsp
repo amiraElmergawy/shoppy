@@ -16,6 +16,9 @@
     <title>Furnitica - Minimalist Furniture HTML Template</title>
 
     <%@ include file="../includes/customer-head.jsp" %>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <script src="assets/scripts/product-details.js"></script>
 </head>
 
 <body id="product-detail">
@@ -34,6 +37,27 @@
                                 <div class="row">
                                     
                                     <div class="col-sm-11 col-lg-12 col-md-12">
+
+                                        <div>
+                                             <c:if test="${not empty param.error}">
+                                                 <c:if test="${param.error == true}">
+                                                    <div class="alert-danger text-center h6 py-2" id="invaled" style="height: 35px">
+                                                        could not add product to card
+                                                    </div>
+                                                 </c:if>
+                                                 <c:if test="${param.error == false}">
+                                                     <div class="alert-success text-center h6 py-2" id="valed" style="height: 35px">
+                                                         product added to cart
+                                                     </div>
+                                                 </c:if>
+                                             </c:if>
+                                            <c:if test="${productDto.getStock() == 0}">
+                                                <div class="alert-secondary text-center h6 py-2" id="valed" style="height: 35px">
+                                                    product out of stock
+                                                </div>
+                                            </c:if>
+
+                                        </div>
                                         <div class="main-product-detail">
                                             <div class="product-single row">
                                                 <div class="product-detail col-xs-12 col-md-5 col-sm-5">
@@ -137,12 +161,29 @@
                                                                         
                                                                         </div>
                                                                         <span class="add" style="margin-top: -10px;">
-                                                                         
-                                                                            <button class="btn btn-primary add-to-cart add-item" data-button-action="add-to-cart" type="submit">
-                                                                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                                                <span>Add to cart</span>
-                                                                            </button>
-                                                                            
+<%--                                                                                <button class="btn btn-primary add-to-cart add-item" type="submit">--%>
+<%--                                                                                <button class="btn btn-primary add-to-cart add-item" onclick="addProduct(${productDto.getId()})">--%>
+<%--                                                                                    <a href="add-to-cart?productId=${productDto.getId()}">--%>
+                                                                                        <form method="get" action="add-to-cart">
+                                                                                            <input style="display: none" type="number" name="productId" value="${productDto.getId()}"/><br>
+                                                                                            <c:choose>
+                                                                                                <c:when test="${productDto.getStock() > 0}">
+                                                                                                    <button class="btn btn-primary add-to-cart add-item" type="submit">
+                                                                                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                                                                                            <span>Add to cart</span>
+                                                                                                    </button>
+                                                                                                </c:when>
+                                                                                                <c:otherwise>
+                                                                                                    <button class="btn btn-primary disabled add-to-cart add-item" disabled>
+                                                                                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                                                                                            <span>Add to cart</span>
+                                                                                                    </button>
+                                                                                                </c:otherwise>
+                                                                                            </c:choose>
+
+
+
+                                                                                       </form>
                                                                             <a class="addToWishlist" href="#">
                                                                                 <i class="fa fa-heart" aria-hidden="true"></i>
                                                                             </a>
@@ -171,128 +212,128 @@
                                                            
                                                            
                                                         </div>
-                                                        <div class="review">
-                                                            <ul class="nav nav-tabs">
-                                                                <li class="active">
-                                                                    <a data-toggle="tab" href="#description" class="active show font-weight-bold font-italic h6">Description</a>
-                                                                </li>
-                                                                <li  style="margin-top: 0px;">
-                                                                    <a data-toggle="tab" href="#review" class="font-weight-bold font-italic h6">Reviews (2)</a>
-                                                                </li>
-                                                            </ul>
-                                                            
-                                                            <div class="tab-content">
-                                                                <div id="description" class="tab-pane fade in active show">
-                                                                    <p  class="text-muted  mb-2 text-2" style="font-family: 'Open Sans', 'Roboto' ;font-size: 14px">
-                                                                        ${productDto.getProductDesc()}
-                                                                    </p>
-                                                                </div>
-                                                                
-                                                                <div id="review" class="tab-pane fade">
-                                                                    <div class="spr-form">
-                                                                        <div class="user-comment">
-                                                                            <div class="spr-review">
-                                                                                <div class="spr-review-header">
-                                                                                    <span class="spr-review-header-byline">
-                                                                                        <strong>Peter Capidal</strong> -
-                                                                                        <span>Apr 14, 2018</span>
-                                                                                    </span>
-                                                                                    <div class="rating">
-                                                                                        <div class="star-content">
-                                                                                            <div class="star"></div>
-                                                                                            <div class="star"></div>
-                                                                                            <div class="star"></div>
-                                                                                            <div class="star"></div>
-                                                                                            <div class="star"></div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="spr-review-content">
-                                                                                    <p class="spr-review-content-body">In feugiat venenatis enim, non finibus metus bibendum
-                                                                                        eu. Proin massa justo, eleifend fermentum varius
-                                                                                        quis, semper gravida quam. Cras nec enim sed
-                                                                                        lacus viverra luctus. Nunc quis accumsan mauris.
-                                                                                        Aliquam fermentum sit amet est id scelerisque.
-                                                                                        Nam porta risus metus.</p>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="spr-review preview2">
-                                                                                <div class="spr-review-header">
-                                                                                    <span class="spr-review-header-byline">
-                                                                                        <strong>David James</strong> -
-                                                                                        <span>Apr 13, 2018</span>
-                                                                                    </span>
-                                                                                    <div class="rating">
-                                                                                        <div class="star-content">
-                                                                                            <div class="star"></div>
-                                                                                            <div class="star"></div>
-                                                                                            <div class="star"></div>
-                                                                                            <div class="star"></div>
-                                                                                            <div class="star"></div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="spr-review-content">
-                                                                                    <p class="spr-review-content-body">In feugiat venenatis enim, non finibus metus bibendum
-                                                                                        eu. Proin massa justo, eleifend fermentum varius
-                                                                                        quis, semper gravida quam. Cras nec enim sed
-                                                                                        lacus viverra luctus. Nunc quis accumsan mauris.
-                                                                                        Aliquam fermentum sit amet est id scelerisque.
-                                                                                        Nam porta risus metus.</p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <form method="post" action="#" class="new-review-form">
-                                                                        <input type="hidden" name="review[rating]" value="3">
-                                                                        <input type="hidden" name="product_id">
-                                                                        <h3 class="spr-form-title">Write a review</h3>
-                                                                        <fieldset>
-                                                                            <div class="spr-form-review-rating">
-                                                                                <label class="spr-form-label">Your Rating</label>
-                                                                                <fieldset class="ratings">
-                                                                                    <input type="radio" id="star5" name="rating" value="5" />
-                                                                                    <label class="full" for="star5" title="Awesome - 5 stars"></label>
-                                                                                    <input type="radio" id="star4half" name="rating" value="4 and a half" />
-                                                                                    <input type="radio" id="star4" name="rating" value="4" />
-                                                                                    <label class="full" for="star4" title="Pretty good - 4 stars"></label>
-                                                                                    <input type="radio" id="star3half" name="rating" value="3 and a half" />
-                                                                                    <input type="radio" id="star3" name="rating" value="3" />
-                                                                                    <label class="full" for="star3" title="Meh - 3 stars"></label>
-                                                                                    <input type="radio" id="star2half" name="rating" value="2 and a half" />
-                                                                                    <input type="radio" id="star2" name="rating" value="2" />
-                                                                                    <label class="full" for="star2" title="Kinda bad - 2 stars"></label>
-                                                                                    <input type="radio" id="star1half" name="rating" value="1 and a half" />
-                                                                                    <input type="radio" id="star1" name="rating" value="1" />
-                                                                                    <label class="full" for="star1" title="Sucks big time - 1 star"></label>
-                                                                                    <input type="radio" id="starhalf" name="rating" value="half" />
-                                                                                </fieldset>
-                                                                            </div>
-                                                                        </fieldset>
-                                                                        <fieldset class="spr-form-contact">
-                                                                            <div class="spr-form-contact-name">
-                                                                                <input class="spr-form-input spr-form-input-text form-control" value="" placeholder="Enter your name">
-                                                                            </div>
-                                                                            <div class="spr-form-contact-email">
-                                                                                <input class="spr-form-input spr-form-input-email form-control" value="" placeholder="Enter your email">
-                                                                            </div>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <div class="spr-form-review-body">
-                                                                                <div class="spr-form-input">
-                                                                                    <textarea class="spr-form-input-textarea" rows="10" placeholder="Write your comments here"></textarea>
-                                                                                </div>
-                                                                            </div>
-                                                                        </fieldset>
-                                                                        <div class="submit">
-                                                                            <input type="submit" name="addComment" id="submitComment" class="btn btn-default" value="Submit Review">
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
-                                                                
-                                                            </div>
-                                                        </div>
-                                                       
+<%--                                                        <div class="review">--%>
+<%--                                                            <ul class="nav nav-tabs">--%>
+<%--                                                                <li class="active">--%>
+<%--                                                                    <a data-toggle="tab" href="#description" class="active show font-weight-bold font-italic h6">Description</a>--%>
+<%--                                                                </li>--%>
+<%--                                                                <li  style="margin-top: 0px;">--%>
+<%--                                                                    <a data-toggle="tab" href="#review" class="font-weight-bold font-italic h6">Reviews (2)</a>--%>
+<%--                                                                </li>--%>
+<%--                                                            </ul>--%>
+<%--                                                            --%>
+<%--                                                            <div class="tab-content">--%>
+<%--                                                                <div id="description" class="tab-pane fade in active show">--%>
+<%--                                                                    <p  class="text-muted  mb-2 text-2" style="font-family: 'Open Sans', 'Roboto' ;font-size: 14px">--%>
+<%--                                                                        ${productDto.getProductDesc()}--%>
+<%--                                                                    </p>--%>
+<%--                                                                </div>--%>
+<%--                                                                --%>
+<%--                                                                <div id="review" class="tab-pane fade">--%>
+<%--                                                                    <div class="spr-form">--%>
+<%--                                                                        <div class="user-comment">--%>
+<%--                                                                            <div class="spr-review">--%>
+<%--                                                                                <div class="spr-review-header">--%>
+<%--                                                                                    <span class="spr-review-header-byline">--%>
+<%--                                                                                        <strong>Peter Capidal</strong> ---%>
+<%--                                                                                        <span>Apr 14, 2018</span>--%>
+<%--                                                                                    </span>--%>
+<%--                                                                                    <div class="rating">--%>
+<%--                                                                                        <div class="star-content">--%>
+<%--                                                                                            <div class="star"></div>--%>
+<%--                                                                                            <div class="star"></div>--%>
+<%--                                                                                            <div class="star"></div>--%>
+<%--                                                                                            <div class="star"></div>--%>
+<%--                                                                                            <div class="star"></div>--%>
+<%--                                                                                        </div>--%>
+<%--                                                                                    </div>--%>
+<%--                                                                                </div>--%>
+<%--                                                                                <div class="spr-review-content">--%>
+<%--                                                                                    <p class="spr-review-content-body">In feugiat venenatis enim, non finibus metus bibendum--%>
+<%--                                                                                        eu. Proin massa justo, eleifend fermentum varius--%>
+<%--                                                                                        quis, semper gravida quam. Cras nec enim sed--%>
+<%--                                                                                        lacus viverra luctus. Nunc quis accumsan mauris.--%>
+<%--                                                                                        Aliquam fermentum sit amet est id scelerisque.--%>
+<%--                                                                                        Nam porta risus metus.</p>--%>
+<%--                                                                                </div>--%>
+<%--                                                                            </div>--%>
+<%--                                                                            <div class="spr-review preview2">--%>
+<%--                                                                                <div class="spr-review-header">--%>
+<%--                                                                                    <span class="spr-review-header-byline">--%>
+<%--                                                                                        <strong>David James</strong> ---%>
+<%--                                                                                        <span>Apr 13, 2018</span>--%>
+<%--                                                                                    </span>--%>
+<%--                                                                                    <div class="rating">--%>
+<%--                                                                                        <div class="star-content">--%>
+<%--                                                                                            <div class="star"></div>--%>
+<%--                                                                                            <div class="star"></div>--%>
+<%--                                                                                            <div class="star"></div>--%>
+<%--                                                                                            <div class="star"></div>--%>
+<%--                                                                                            <div class="star"></div>--%>
+<%--                                                                                        </div>--%>
+<%--                                                                                    </div>--%>
+<%--                                                                                </div>--%>
+<%--                                                                                <div class="spr-review-content">--%>
+<%--                                                                                    <p class="spr-review-content-body">In feugiat venenatis enim, non finibus metus bibendum--%>
+<%--                                                                                        eu. Proin massa justo, eleifend fermentum varius--%>
+<%--                                                                                        quis, semper gravida quam. Cras nec enim sed--%>
+<%--                                                                                        lacus viverra luctus. Nunc quis accumsan mauris.--%>
+<%--                                                                                        Aliquam fermentum sit amet est id scelerisque.--%>
+<%--                                                                                        Nam porta risus metus.</p>--%>
+<%--                                                                                </div>--%>
+<%--                                                                            </div>--%>
+<%--                                                                        </div>--%>
+<%--                                                                    </div>--%>
+<%--                                                                    <form method="post" action="#" class="new-review-form">--%>
+<%--                                                                        <input type="hidden" name="review[rating]" value="3">--%>
+<%--                                                                        <input type="hidden" name="product_id">--%>
+<%--                                                                        <h3 class="spr-form-title">Write a review</h3>--%>
+<%--                                                                        <fieldset>--%>
+<%--                                                                            <div class="spr-form-review-rating">--%>
+<%--                                                                                <label class="spr-form-label">Your Rating</label>--%>
+<%--                                                                                <fieldset class="ratings">--%>
+<%--                                                                                    <input type="radio" id="star5" name="rating" value="5" />--%>
+<%--                                                                                    <label class="full" for="star5" title="Awesome - 5 stars"></label>--%>
+<%--                                                                                    <input type="radio" id="star4half" name="rating" value="4 and a half" />--%>
+<%--                                                                                    <input type="radio" id="star4" name="rating" value="4" />--%>
+<%--                                                                                    <label class="full" for="star4" title="Pretty good - 4 stars"></label>--%>
+<%--                                                                                    <input type="radio" id="star3half" name="rating" value="3 and a half" />--%>
+<%--                                                                                    <input type="radio" id="star3" name="rating" value="3" />--%>
+<%--                                                                                    <label class="full" for="star3" title="Meh - 3 stars"></label>--%>
+<%--                                                                                    <input type="radio" id="star2half" name="rating" value="2 and a half" />--%>
+<%--                                                                                    <input type="radio" id="star2" name="rating" value="2" />--%>
+<%--                                                                                    <label class="full" for="star2" title="Kinda bad - 2 stars"></label>--%>
+<%--                                                                                    <input type="radio" id="star1half" name="rating" value="1 and a half" />--%>
+<%--                                                                                    <input type="radio" id="star1" name="rating" value="1" />--%>
+<%--                                                                                    <label class="full" for="star1" title="Sucks big time - 1 star"></label>--%>
+<%--                                                                                    <input type="radio" id="starhalf" name="rating" value="half" />--%>
+<%--                                                                                </fieldset>--%>
+<%--                                                                            </div>--%>
+<%--                                                                        </fieldset>--%>
+<%--                                                                        <fieldset class="spr-form-contact">--%>
+<%--                                                                            <div class="spr-form-contact-name">--%>
+<%--                                                                                <input class="spr-form-input spr-form-input-text form-control" value="" placeholder="Enter your name">--%>
+<%--                                                                            </div>--%>
+<%--                                                                            <div class="spr-form-contact-email">--%>
+<%--                                                                                <input class="spr-form-input spr-form-input-email form-control" value="" placeholder="Enter your email">--%>
+<%--                                                                            </div>--%>
+<%--                                                                        </fieldset>--%>
+<%--                                                                        <fieldset>--%>
+<%--                                                                            <div class="spr-form-review-body">--%>
+<%--                                                                                <div class="spr-form-input">--%>
+<%--                                                                                    <textarea class="spr-form-input-textarea" rows="10" placeholder="Write your comments here"></textarea>--%>
+<%--                                                                                </div>--%>
+<%--                                                                            </div>--%>
+<%--                                                                        </fieldset>--%>
+<%--                                                                        <div class="submit">--%>
+<%--                                                                            <input type="submit" name="addComment" id="submitComment" class="btn btn-default" value="Submit Review">--%>
+<%--                                                                        </div>--%>
+<%--                                                                    </form>--%>
+<%--                                                                </div>--%>
+<%--                                                                --%>
+<%--                                                            </div>--%>
+<%--                                                        </div>--%>
+<%--                                                       --%>
                                                     </div>
                                                 </div>
                                             </div>

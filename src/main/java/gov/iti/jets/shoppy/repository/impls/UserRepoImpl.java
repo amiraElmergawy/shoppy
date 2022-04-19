@@ -6,22 +6,12 @@ import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.Query;
-
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 public class UserRepoImpl implements UserRepo {
-
-//    private final static UserRepoImpl userRepo = new UserRepoImpl();
-//    private UserRepoImpl() {}
-
-//    public static UserRepoImpl getInstance() {
-//        return userRepo;
-//    }
-    private static int pageSize = 12;
-    private EntityManager entityManager;
+    private final static int pageSize = 12;
+    private final EntityManager entityManager;
     public UserRepoImpl(EntityManager entityManager){
         this.entityManager = entityManager;
     }
@@ -119,4 +109,21 @@ public class UserRepoImpl implements UserRepo {
             return false;
         }
     }
+    @Override
+    public boolean updateCustomerCreditLimit(Integer customerId, double amount) {
+        try {
+            entityManager.getTransaction().begin();
+            var customer = entityManager.find(CustomerEntity.class,customerId);
+            customer.setCreditLimit(amount);
+            System.out.println(entityManager.merge(customer));
+//            System.out.println(entityManager.createQuery("update CustomerEntity c set c.creditLimit = 1000 where c.id = 4").executeUpdate());
+//                    .setParameter("creditLimit", customerEntity.getCreditLimit()).setParameter("id",customerEntity.getId()).getResultList());
+            entityManager.getTransaction().commit();
+            return true;
+        } catch (Exception exception){
+            exception.printStackTrace();
+            return false;
+        }
+    }
+
 }

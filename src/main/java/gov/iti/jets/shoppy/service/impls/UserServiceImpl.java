@@ -32,4 +32,8 @@ public class UserServiceImpl implements UserService {
         Long allCustomerCount = userRepo.getCustomerCount();
         return ViewCustomerHelper.builder().customerDtoList(CustomerDtoList).allCustomerCount(allCustomerCount).build();
     }
+    @Override
+    public boolean updateCustomer(Integer customerId, double amount, EntityManager entityManager) {
+        return repoFactory.getUserRepo(entityManager).updateCustomerCreditLimit(customerId, amount);
+    }
 }

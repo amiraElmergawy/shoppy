@@ -80,7 +80,8 @@ public class ProductEntity implements java.io.Serializable {
     }
 
     public void setStock(Integer stock) {
-        this.stock = stock;
+        if (stock >= 0)
+            this.stock = stock;
     }
 
     public String getImgPath() {

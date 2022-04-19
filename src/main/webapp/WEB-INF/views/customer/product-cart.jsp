@@ -1,13 +1,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.lang.Math" %>
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if IE 9 ]><html class="ie ie9" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
-<!--<![endif]-->
+
 <html lang="en">
 
 
-<!-- product-cart07:06-->
 <head>
     <!-- Basic Page Needs -->
     <meta charset="utf-8">
@@ -16,6 +15,8 @@
 
 
     <%@ include file="../includes/customer-head.jsp" %>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 
 <body class="product-cart checkout-cart blog">
@@ -30,23 +31,23 @@
                     <div id="content-wrapper" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 onecol">
                         <section id="main" class="mt-2">
                             <div class="cart-grid row">
-                                <div class="col-md-9 col-xs-12 check-info">
+                                <div class="col-md-9 col-xs-12 check-info" id="cartContainer">
                                     <h1 class="title-page">Shopping Cart</h1>
-                                    <div class="cart-container">
+                                    <div class="d-none alert-danger p-2 mb-4 text-center h6" id="error"></div>
+                                    <div class="cart-container" id="productsContainer">
                                        <c:forEach var="orderProduct" items="${cart.getOrderProducts()}">
-                                        <div class="cart-overview js-cart">
+                                        <div class="cart-overview js-cart" id=${orderProduct.getProduct().getId()}>
                                             <ul class="cart-items">
                                                 <li class="cart-item bg-white rounded shadow-lg mb-2">
                                                     <div class="product-line-grid row justify-content-between">
-                                                        <!--  product left content: image-->
                                                         <div class="product-line-grid-left col-md-2">
                                                             <span class="product-image media-middle">
-                                                                <a href="product-detail.jsp">
-                                                                    <img class="img-fluid" src="images${orderProduct.getProduct().getImagesPaths().get(0)}" alt="Organic Strawberry Fruits">
+                                                                <a href="product-details?productID">
+                                                                    <img class="img-fluid" src="images${orderProduct.getProduct().getImagesPaths().get(0)}" alt="Organic Strawberry Fruits"/>
                                                                 </a>
                                                             </span>
                                                         </div>
-                                                        <div class="product-line-grid-body col-md-6 ">
+                                                        <div class="product-line-grid-body col-md-4 ">
                                                             <div class="product-line-info">
                                                                 <a class="label" href="product-detail.jsp" data-id_customization="0">
                                                                     ${orderProduct.getProduct().getProductName()}
@@ -57,42 +58,35 @@
                                                                
                                                             </div>
                                                             <div class="product-line-info product-price">
-                                                                <span class="value">${orderProduct.getProduct().getPrice()} EG</span>
+                                                                <span class="value" id=${orderProduct.getProduct().getId()}price>${orderProduct.getProduct().getPrice()}</span> EG
                                                             </div>
-<%--                                                            <div class="product-line-info">--%>
-<%--                                                                <span class="label-atrr">Size:</span>--%>
-<%--                                                                <span class="value">S</span>--%>
-<%--                                                            </div>--%>
-<%--                                                            <div class="product-line-info">--%>
-<%--                                                                <span class="label-atrr">Color:</span>--%>
-<%--                                                                <span class="value">Blue</span>--%>
-<%--                                                            </div>--%>
                                                         </div>
-                                                        <div class="product-line-grid-right text-center product-line-actions col-md-4 justify-content-between">
+                                                        <div class="product-line-grid-right text-center product-line-actions col-md-6 justify-content-between">
                                                             <div class="row">
                                                                 <div class="col-md-5 col m-auto ">
                                                                     <div class="quantity d-flex ">
-                                                                        <div id="minus" class="shadow-sm btn-sm btn-primary font-weight-bold">
+                                                                        <button id="minus" class="btn shadow-sm btn-sm btn-primary font-weight-bold" onclick="decreaseProduct(${orderProduct.getProduct().getId()})">
                                                                             -
-                                                                        </div>
-                                                                        <div class="btn-sm bg-white font-weight-bold mx-2">
+                                                                        </button>
+                                                                        <div id=${orderProduct.getProduct().getId()}quantity class="btn-sm bg-white font-weight-bold mx-2">
                                                                                 ${orderProduct.getQuantity()}
                                                                         </div>
-                                                                        <div id="plus" class="shadow-sm btn-sm btn-primary font-weight-bold">
+                                                                        <button id="plus" class="btn shadow-sm btn-sm btn-primary font-weight-bold " onclick="increaseProduct(${orderProduct.getProduct().getId()})">
                                                                             +
-                                                                        </div>
+                                                                        </button>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-5 price col m-auto">
-                                                                    <div class="product-price total ">
-                                                                        ${orderProduct.getTotal()} EG
-                                                                    </div>
+                                                                    <span class="product-price total " id=${orderProduct.getProduct().getId()}productTotal>
+                                                                        ${Math.round(orderProduct.getTotal())}
+                                                                    </span>
+                                                                    EG
                                                                 </div>
                                                                 <div class="col-md-2 text-xs-right align-self-end col">
                                                                     <div class="cart-line-product-actions m-0">
-                                                                        <a class="remove-from-cart m-0" rel="nofollow" href="#" data-link-action="delete-from-cart" data-id-product="1">
+                                                                        <button class="btn remove-from-cart m-0" rel="nofollow" data-link-action="delete-from-cart" data-id-product="1" onclick="deleteProduct(${orderProduct.getProduct().getId()})">
                                                                             <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                                                        </a>
+                                                                        </button>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -105,35 +99,9 @@
                                        </c:forEach>
                                     </div>
                                    <div class="text-center">
-                                    <a href="product-checkout.jsp" class="continue btn btn-primary pull-xs-right">
-                                        checkout
-                                    </a>
+                                       <%@ include file="../includes/cart-modal.jsp" %>
                                    </div>
                                 </div>
-                                <!-- <div class="cart-grid-right col-xs-12 col-lg-3 mt-5">
-                                    <div class="cart-summary bg-white rounded shadow-sm mt-4">
-                                        <div >
-                                            <div class=" d-flex justify-content-between">
-                                                <div class="summary-label text-muted">Products Number: </div>
-                                                <div class="summary-label text-muted"><span class="value  text-dark font-weight-bold font-italic">3</span></div>
-                                            </div>
-                                            <div class=" d-flex justify-content-between">
-                                                <div class="summary-label text-muted">Total : </div>
-                                                <div class="text-black text-dark font-weight-bold font-italic">£200.00</div>
-                                            </div> 
-                                            <div class=" d-flex justify-content-between">
-                                                <div class="summary-label text-muted">Shipping : </div>
-                                                <div class="text-black text-dark font-weight-bold font-italic">Free</div>
-                                            </div> 
-                                            <div class=" d-flex justify-content-between">
-                                                <div class="summary-label text-muted"></div>
-                                                <div class="text-black text-dark font-weight-bold font-italic"></div>
-                                            </div> 
-                                           
-                                        </div>
-                                    </div>
-                                   
-                                </div> -->
                                 <div class="cart-grid-right col-xs-12 col-lg-3 mt-5 ">
                                     <div class="cart-summary shadow-sm mt-4 rounded">
                                         <div class="cart-detailed-totals">
@@ -143,7 +111,7 @@
                                             </div>
                                             <div class=" d-flex justify-content-between">
                                                 <div class="summary-label  text-white">Total : </div>
-                                                <div class="text-black  font-weight-bold font-italic text-white">${cart.getTotalPrice()}</div>
+                                                <div class="text-black  font-weight-bold font-italic text-white" id="productsTotal">${Math.round(cart.getTotalPrice())}</div>
                                             </div> 
                                             <div class=" d-flex justify-content-between">
                                                 <div class="summary-label  text-white">Shipping : </div>
@@ -172,7 +140,7 @@
                                                         <i class="fa fa-credit-card-alt" class="text-muted mr-1" aria-hidden="true"></i>
                                                         <span class="font-weight-bold font-italic h6">Credit Limit</span>
                                                     </div>
-                                                    <div class="summary-label font-weight-bold font-italic"><h6 class="value">${cart.getCustomer().getCreditLimit()}</h6></div>
+                                                    <div class="summary-label font-weight-bold font-italic"><h6 class="value" id="creditLimit">${cart.getCustomer().getCreditLimit()}</h6></div>
                                                 </div>
                                             </li>
                                             <li style="padding-bottom: 0px">
@@ -210,6 +178,8 @@
     <%@ include file="../includes/customer-mobile-menu.jsp" %>
     <%@ include file="../includes/customer-footer.jsp" %>
 <%@ include file="../includes/customer-script.jsp" %>
+
+    <script src="assets/scripts/product-cart.js"></script>
 
 </body>
 

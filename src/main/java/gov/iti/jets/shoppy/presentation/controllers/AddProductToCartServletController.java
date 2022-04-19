@@ -14,7 +14,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebServlet(name = "AddProductToCartServletController", urlPatterns = "/add-to-cart")
+@WebServlet(name = "AddProductToCartServletController", value = "/add-to-cart")
 public class AddProductToCartServletController extends HttpServlet {
     private final DomainFacade facade = DomainFacade.getInstance();
     @Override
@@ -22,18 +22,19 @@ public class AddProductToCartServletController extends HttpServlet {
         Integer productId = Integer.parseInt(req.getParameter("productId"));
         HttpSession httpSession = req.getSession(false);
         Integer customerId = Integer.parseInt(httpSession.getAttribute("userId")+"");
-        OrderDto orderDto = (OrderDto) httpSession.getAttribute("cart");
-        ShoppingCartViewHelper shoppingCartViewHelper = new ShoppingCartViewHelper();
-
-        if(orderDto == null)
-            shoppingCartViewHelper = facade.initializeCustomerCart(customerId, productId);
-
-        if(shoppingCartViewHelper.getError() == null)
+        OrderDto sessionCart = (OrderDto) httpSession.getAttribute("cart");
+        ShoppingCartViewHelper shoppingCartViewHelper;
+        if(sessionCart == null) {
+            shoppingCartViewHelper = facade.addProductToCart(customerId, productId);
+        }else {
+            shoppingCartViewHelper = facade.addProductToCart(sessionCart, productId);
+        }
+        if(shoppingCartViewHelper.getError() == null) {
             httpSession.setAttribute("cart", shoppingCartViewHelper.getOrderDto());
-        else
-            httpSession.setAttribute("error", shoppingCartViewHelper.getError());
-
-        System.out.println(httpSession.getAttribute("cart"));
-
+            resp.sendRedirect("product-details?productID="+productId+"&error=false");
+        }
+        else {
+            resp.sendRedirect("product-details?productID="+productId+"&error=true");
+        }
     }
 }
