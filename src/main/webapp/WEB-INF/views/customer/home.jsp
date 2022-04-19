@@ -1315,9 +1315,11 @@
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     var currentPage = urlParams.get('pageNum');
+    const nextURL = 'http://localhost:9595/shoppy/home?pageNum=1';
     console.log(currentPage)
     if (currentPage == null) {
         currentPage = 1;
+        window.location.href = nextURL;
     }
     document.getElementById(currentPage).parentElement.classList.add("active");
 
