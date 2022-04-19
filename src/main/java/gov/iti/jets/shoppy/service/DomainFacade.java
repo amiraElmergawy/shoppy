@@ -6,23 +6,20 @@ import gov.iti.jets.shoppy.presentation.helpers.LoginViewHelper;
 import gov.iti.jets.shoppy.presentation.helpers.ProfileViewHelper;
 import gov.iti.jets.shoppy.service.dtos.AddressDto;
 import gov.iti.jets.shoppy.service.dtos.CustomerDto;
+import gov.iti.jets.shoppy.service.interfaces.ShoppingCartService;
 import gov.iti.jets.shoppy.presentation.helpers.ShoppingCartViewHelper;
 import gov.iti.jets.shoppy.presentation.helpers.ViewProductHelper;
 import gov.iti.jets.shoppy.service.dtos.ProductDto;
 import gov.iti.jets.shoppy.service.dtos.OrderDto;
 import gov.iti.jets.shoppy.service.interfaces.AuthService;
 import gov.iti.jets.shoppy.service.interfaces.OrderService;
-import gov.iti.jets.shoppy.service.interfaces.ShoppingCartService;
 import gov.iti.jets.shoppy.service.interfaces.ProductService;
 import gov.iti.jets.shoppy.service.interfaces.ProfileService;
 import gov.iti.jets.shoppy.service.interfaces.UserService;
-import gov.iti.jets.shoppy.service.interfaces.UserService;
-import gov.iti.jets.shoppy.service.mappers.CustomerMapper;
 import gov.iti.jets.shoppy.service.util.ServiceFactory;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
-
 import java.util.Optional;
 
 public class DomainFacade {

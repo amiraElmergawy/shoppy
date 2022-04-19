@@ -42,8 +42,8 @@
                                                     <div class="product-line-grid row justify-content-between">
                                                         <div class="product-line-grid-left col-md-2">
                                                             <span class="product-image media-middle">
-                                                                <a href="product-details?productID>
-                                                                    <img class="img-fluid" src="images${orderProduct.getProduct().getImagesPaths().get(0)}" alt="Organic Strawberry Fruits">
+                                                                <a href="product-details?productID">
+                                                                    <img class="img-fluid" src="images${orderProduct.getProduct().getImagesPaths().get(0)}" alt="Organic Strawberry Fruits"/>
                                                                 </a>
                                                             </span>
                                                         </div>
