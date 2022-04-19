@@ -158,6 +158,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
             OrderEntity orderEntity = mapOrderDtoToEntity(orderDto);
             System.out.println("save fun in shopping cart service" + orderEntity);
             System.out.println(repoFactory.getOrderRepo(entityManager).saveOrder(orderEntity));
+            return true;
         }
         return false;
     }

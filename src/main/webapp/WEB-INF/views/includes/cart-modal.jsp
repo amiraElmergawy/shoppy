@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!-- Button trigger modal -->
-<button type="button" class="continue btn btn-primary pull-xs-right" data-toggle="modal" data-target="#exampleModalLong">
+<button type="button" id="checkout" class="continue btn btn-primary pull-xs-right" data-toggle="modal" data-target="#exampleModalLong">
     CHECKOUT
 </button>
 

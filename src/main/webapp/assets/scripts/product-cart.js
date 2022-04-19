@@ -11,7 +11,7 @@ function increaseProduct(productId){
         // dataType: 'json',
         success: function(data) {
             console.log(data);
-            div = document.getElementById("error");
+            let div = document.getElementById("error");
             if (data!=""){
                 div.disabled = true;
                 setTimeout(
@@ -88,5 +88,26 @@ function deleteProduct(productId){
 }
 
 function saveOrder(){
-    $.post("checkout");
+    $.ajax({
+        url:'checkout',
+        type: 'post',
+        success: function(data) {
+            console.log(data);
+            let div = document.getElementById("error");
+            if (data!=""){
+                div.disabled = true;
+                setTimeout(
+                    ()=>{
+                        div.classList.remove("d-none");
+                        div.innerText = data;
+                    },
+                    500
+                );
+                div.classList.add("d-none");
+            } else {
+                document.getElementById("cartContainer").removeChild(document.getElementById("productsContainer"));
+            }
+        }
+    });
+    // $.post("checkout");
 }

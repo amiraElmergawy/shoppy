@@ -105,6 +105,7 @@ public class DomainFacade {
             System.out.println(customer);
             userService.updateCustomer((int) customer.getId(), customer.getCreditLimit(), entityManager);
             saved = shoppingCartService.saveOrder(orderDtoOptional, entityManager);
+            System.out.println("order saving result: "+ saved);
         }
         entityManager.close();
         return saved;

@@ -21,11 +21,11 @@ public class CheckoutServletController extends HttpServlet {
             System.out.println(orderDto);
             if (orderDto.getOrderProducts().size() != 0)
                 if(!DomainFacade.getInstance().saveOrder(Optional.of(orderDto)))
-                    response.sendRedirect("shopping-cart?increaseCreditLimit=true");
+                    response.getWriter().print("please update your credit limit");
                 else
-                    response.sendRedirect("shopping-cart?successOperation=true");
+                    response.getWriter().print("");
             else
-                response.sendRedirect("shopping-cart?emptyCart=true");
+                response.getWriter().print("your order is empty");
         }
     }
 

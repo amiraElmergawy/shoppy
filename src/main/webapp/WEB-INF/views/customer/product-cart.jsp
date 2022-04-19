@@ -32,7 +32,7 @@
                     <div id="content-wrapper" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 onecol">
                         <section id="main" class="mt-2">
                             <div class="cart-grid row">
-                                <div class="col-md-9 col-xs-12 check-info">
+                                <div class="col-md-9 col-xs-12 check-info" id="cartContainer">
                                     <h1 class="title-page">Shopping Cart</h1>
                                     <div class="d-none alert-danger p-2 mb-4 text-center h6" id="error"></div>
                                     <div class="cart-container" id="productsContainer">
@@ -78,9 +78,9 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-5 price col m-auto">
-                                                                    <div class="product-price total " id=${orderProduct.getProduct().getId()}productTotal>
+                                                                    <span class="product-price total " id=${orderProduct.getProduct().getId()}productTotal>
                                                                         ${Math.round(orderProduct.getTotal())}
-                                                                    </div>
+                                                                    </span>
                                                                     EG
                                                                 </div>
                                                                 <div class="col-md-2 text-xs-right align-self-end col">
