@@ -190,12 +190,12 @@
                                         <span>Checkout</span>
                                     </a>
                                 </div>
-                                <div class="link_wishlist">
-                                    <a href="wishlist" title="My Wishlists">
-                                        <i class="fa fa-heart"></i>
-                                        <span>My Wishlists</span>
-                                    </a>
-                                </div>
+<%--                                <div class="link_wishlist">--%>
+<%--                                    <a href="wishlist" title="My Wishlists">--%>
+<%--                                        <i class="fa fa-heart"></i>--%>
+<%--                                        <span>My Wishlists</span>--%>
+<%--                                    </a>--%>
+<%--                                </div>--%>
                             </div>
                         </div>
                     </div>
