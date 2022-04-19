@@ -26,7 +26,12 @@ function increaseProduct(productId){
                 div.disabled = false;
                 let quantityDiv = document.getElementById(productId+"quantity");
                 console.log(quantityDiv);
+                let productPrice = document.getElementById(productId+"price");
+                let productTotal = document.getElementById(productId+"productTotal");
+                //update quantity
                 quantityDiv.innerText = (+quantityDiv.textContent) +1;
+                //update total product price
+                productTotal.innerText = (+productPrice.textContent)*(+quantityDiv.textContent);
             }
         }
     });
@@ -48,7 +53,14 @@ function decreaseProduct(productId){
         success: function(data) {
             console.log(data)
             let quantityDiv = document.getElementById(productId+"quantity");
-            quantityDiv.innerText = (+quantityDiv.textContent) -1;
+            let productPrice = document.getElementById(productId+"price");
+            let productTotal = document.getElementById(productId+"productTotal");
+            if ((+quantityDiv.textContent) -1 > 0) {
+                //update quantity
+                quantityDiv.innerText = (+quantityDiv.textContent) - 1;//===> 0 -> delete
+                //update total product price
+                productTotal.innerText = (+productPrice.textContent) * (+quantityDiv.textContent);
+            } else deleteProduct(productId);
         }
     });
 
@@ -73,4 +85,8 @@ function deleteProduct(productId){
             productsContainer.removeChild(document.getElementById(productId));
         }
     });
+}
+
+function saveOrder(){
+    $.post("checkout");
 }

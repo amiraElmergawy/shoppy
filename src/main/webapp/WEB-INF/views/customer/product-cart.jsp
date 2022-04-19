@@ -59,7 +59,7 @@
                                                                
                                                             </div>
                                                             <div class="product-line-info product-price">
-                                                                <span class="value">${orderProduct.getProduct().getPrice()} EG</span>
+                                                                <span class="value" id=${orderProduct.getProduct().getId()}price>${orderProduct.getProduct().getPrice()}</span> EG
                                                             </div>
                                                         </div>
                                                         <div class="product-line-grid-right text-center product-line-actions col-md-6 justify-content-between">
@@ -78,9 +78,10 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-5 price col m-auto">
-                                                                    <div class="product-price total ">
-                                                                        ${Math.round(orderProduct.getTotal())} EG
+                                                                    <div class="product-price total " id=${orderProduct.getProduct().getId()}productTotal>
+                                                                        ${Math.round(orderProduct.getTotal())}
                                                                     </div>
+                                                                    EG
                                                                 </div>
                                                                 <div class="col-md-2 text-xs-right align-self-end col">
                                                                     <div class="cart-line-product-actions m-0">
@@ -99,7 +100,7 @@
                                        </c:forEach>
                                     </div>
                                    <div class="text-center">
-                                    <%@ include file="../includes/cart-modal.jsp" %>
+                                       <%@ include file="../includes/cart-modal.jsp" %>
                                    </div>
                                 </div>
                                 <div class="cart-grid-right col-xs-12 col-lg-3 mt-5 ">
@@ -111,7 +112,7 @@
                                             </div>
                                             <div class=" d-flex justify-content-between">
                                                 <div class="summary-label  text-white">Total : </div>
-                                                <div class="text-black  font-weight-bold font-italic text-white">${Math.round(cart.getTotalPrice())}</div>
+                                                <div class="text-black  font-weight-bold font-italic text-white" id="productsTotal">${Math.round(cart.getTotalPrice())}</div>
                                             </div> 
                                             <div class=" d-flex justify-content-between">
                                                 <div class="summary-label  text-white">Shipping : </div>

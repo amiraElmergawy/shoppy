@@ -31,7 +31,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" id="minus" class="btn shadow-sm btn-sm btn-primary font-weight-bold text-dark mr-1" data-dismiss="modal">Cancel</button>
-                <button type="button" id="plus" class="btn shadow-sm btn-sm btn-primary font-weight-bold">Confirm</button>
+                <button type="button" id="plus" class="btn shadow-sm btn-sm btn-primary font-weight-bold" onclick="saveOrder()" data-dismiss="modal">Confirm</button>
             </div>
         </div>
     </div>
