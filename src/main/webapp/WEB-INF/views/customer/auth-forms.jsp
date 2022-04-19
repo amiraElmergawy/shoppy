@@ -57,7 +57,7 @@
             </div>
 
             <div class="form-group remember-me">
-                <label style="display: inline"><input type="checkbox" name="password" id="rememberMe" value="checked" style="display:inline; width: 10%; padding-top: 2px"><span>Remember Me</span> </label>
+                <label style="display: inline ;margin-left: 54px;"><input type="checkbox" name="password" id="rememberMe" value="checked" style="display:inline; width: 10%; padding-top: 2px"><span>Remember Me</span> </label>
 
 
 
