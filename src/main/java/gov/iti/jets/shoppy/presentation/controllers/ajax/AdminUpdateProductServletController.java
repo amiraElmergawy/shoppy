@@ -1,5 +1,7 @@
 package gov.iti.jets.shoppy.presentation.controllers.ajax;
 
+import com.google.gson.Gson;
+import gov.iti.jets.shoppy.presentation.helpers.ProductViewHelper;
 import gov.iti.jets.shoppy.repository.entity.ProductCategory;
 import gov.iti.jets.shoppy.service.DomainFacade;
 import gov.iti.jets.shoppy.service.dtos.ProductDto;
@@ -11,10 +13,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @WebServlet(name = "AdminUpdateProductServletController" , value = "/update-product")
 public class AdminUpdateProductServletController extends HttpServlet {
     private final DomainFacade domainFacade = DomainFacade.getInstance();
+    Gson gson = new Gson();
+    ProductViewHelper productViewHelper = new ProductViewHelper();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/admin/update-product.jsp");
@@ -28,23 +34,21 @@ public class AdminUpdateProductServletController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("in do post");
-        int productId = Integer.parseInt(req.getParameter("id"));
-
-        System.out.println(ProductCategory.valueOf(req.getParameter("category")));
-
-
+        PrintWriter out = resp.getWriter();
+        int productId=Integer.parseInt(req.getParameter("id"));
         ProductDto productDto = ProductDto.builder().productDesc(req.getParameter("desc")).
                 productName(req.getParameter("productName")).stock(Integer.valueOf(req.getParameter("stock")))
-                .price(Double.valueOf(req.getParameter("price"))).category(ProductCategory.valueOf(req.getParameter("category"))).id(productId).build();
-        boolean isAdded = domainFacade.updateProduct(productDto,productId);
-        System.out.println(isAdded);
-        try {
-            RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/admin/update-product.jsp");
-            rd.forward(req,resp);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        }
+                .price(Double.valueOf(req.getParameter("price"))).category(ProductCategory.valueOf(req.getParameter("category"))).build();
 
+        boolean isAdded = domainFacade.updateProduct(productDto, productId);
+        if(isAdded){
+            productViewHelper.setInformation("updated");
+            productViewHelper.setMessage("true");
+        }
+        else {
+            productViewHelper.setInformation("not updated");
+            productViewHelper.setMessage("false");
+        }
+        out.print(gson.toJson(productViewHelper));
     }
 }
