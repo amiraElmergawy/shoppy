@@ -109,7 +109,7 @@
 
     <%@ include file="../includes/admin-script.jsp" %>
     <script src="assets/scripts/forms-validator.js"></script>
-    <script src="assets/scripts/add-product.js"></script>
+    <script src="assets/scripts/product.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </body>
 
