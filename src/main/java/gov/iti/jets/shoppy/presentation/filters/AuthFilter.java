@@ -115,5 +115,7 @@ public class AuthFilter implements Filter {
         publicUrlList.add("home");
         publicUrlList.add("product-details");
         publicUrlList.add("about-us");
+        publicUrlList.add("search");
+
     }
 }
