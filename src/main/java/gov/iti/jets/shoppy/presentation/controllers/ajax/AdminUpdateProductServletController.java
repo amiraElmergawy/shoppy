@@ -14,6 +14,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 @WebServlet(name = "AdminUpdateProductServletController" , value = "/update-product")
 public class AdminUpdateProductServletController extends HttpServlet {
@@ -35,12 +36,18 @@ public class AdminUpdateProductServletController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter out = resp.getWriter();
+        List<String> encodedImages = new Gson().fromJson(req.getParameter("images"), List.class);
         int productId=Integer.parseInt(req.getParameter("id"));
-        ProductDto productDto = ProductDto.builder().productDesc(req.getParameter("desc")).
-                productName(req.getParameter("productName")).stock(Integer.valueOf(req.getParameter("stock")))
-                .price(Double.valueOf(req.getParameter("price"))).category(ProductCategory.valueOf(req.getParameter("category"))).build();
+        ProductDto productDto = ProductDto.builder()
+                .id(productId)
+                .productDesc(req.getParameter("desc"))
+                .productName(req.getParameter("productName"))
+                .stock(Integer.valueOf(req.getParameter("stock")))
+                .price(Double.parseDouble(req.getParameter("price")))
+                .category(ProductCategory.valueOf(req.getParameter("category")))
+                .imagesPaths(encodedImages).build();
 
-        boolean isAdded = domainFacade.updateProduct(productDto, productId);
+        boolean isAdded = domainFacade.updateProduct(productDto);
         if(isAdded){
             productViewHelper.setInformation("updated");
             productViewHelper.setMessage("true");
@@ -50,5 +57,6 @@ public class AdminUpdateProductServletController extends HttpServlet {
             productViewHelper.setMessage("false");
         }
         out.print(gson.toJson(productViewHelper));
+        out.close();
     }
 }

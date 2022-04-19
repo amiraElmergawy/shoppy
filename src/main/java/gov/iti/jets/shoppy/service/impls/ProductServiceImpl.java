@@ -77,11 +77,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public boolean updateProduct(ProductDto productDto, EntityManager entityManager,int id) {
+    public boolean updateProduct(ProductDto productDto, EntityManager entityManager) {
         ProductEntity productEntity= productMapper.productDtoToEntity(productDto);
         System.out.println(productEntity);
         ProductRepo productRepo = RepoFactory.INSTANCE.getProductRepo(entityManager);
-        return productRepo.updateProductById(productEntity,id);
+        return productRepo.updateProductById(productEntity, productDto.getImagesPaths());
     }
 
 }

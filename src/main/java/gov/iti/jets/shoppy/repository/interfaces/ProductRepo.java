@@ -13,6 +13,6 @@ public interface ProductRepo {
     boolean updateProduct(ProductEntity productEntity);
     boolean addProduct(ProductEntity productEntity, List<String> images);
     boolean deleteProduct(int id);
-    boolean updateProductById(ProductEntity productEntity, int id);
+    boolean updateProductById(ProductEntity productEntity, List<String> images);
 
 }

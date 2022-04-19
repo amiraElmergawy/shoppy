@@ -188,18 +188,12 @@ public class DomainFacade {
         entityManager.close();
         return saved;
     }
-    public boolean updateProduct(ProductDto productDto, int id){
+    public boolean updateProduct(ProductDto productDto){
+        boolean updated = false;
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        if( productService.updateProduct(productDto,entityManager, id))
-        {
-            entityManager.close();
-            return true;
-
-        }
-        else {
-            return false;
-        }
-
+        updated = productService.updateProduct(productDto,entityManager);
+        entityManager.close();
+        return updated;
     }
 
 }

@@ -39,7 +39,6 @@ public class ProductRepoImp implements ProductRepo {
 
     @Override
     public List<ProductEntity> searchProducts(String value) {
-
         String coulmnName = "productName";
         Query query = entityManager.createQuery("from ProductEntity where productName like :value", ProductEntity.class)
                 .setParameter("value","%"+value+"%");
@@ -72,11 +71,6 @@ public class ProductRepoImp implements ProductRepo {
         try {
             entityManager.getTransaction().begin();
             productEntity.setImgPath("product_id");
-    public boolean addProduct(ProductEntity productEntity) {
-        entityManager.getTransaction().begin();
-        try {
-          //should add image path here
-            productEntity.setImgPath("1.jpg");
             entityManager.persist(productEntity);
             entityManager.getTransaction().commit();
             imageUtility.saveImages(productEntity.getId(), encodedImages);
@@ -88,22 +82,22 @@ public class ProductRepoImp implements ProductRepo {
     }
 
     @Override
-    public boolean updateProductById(ProductEntity productEntity, int id) {
+    public boolean updateProductById(ProductEntity productEntity, List<String> encodedImages) {
         entityManager.getTransaction().begin();
-        ProductEntity updatedProduct = entityManager.find(ProductEntity.class, id);
+        ProductEntity updatedProduct = entityManager.find(ProductEntity.class, productEntity.getId());
         try {
             updatedProduct.setProductName(productEntity.getProductName());
             updatedProduct.setProductDesc(updatedProduct.getProductDesc());
             updatedProduct.setPrice(productEntity.getPrice());
             updatedProduct.setStock(productEntity.getStock());
             updatedProduct.setCategory(productEntity.getCategory());
-            updatedProduct.setImgPath("1.jpg");
+            updatedProduct.setImgPath("product_id");
             entityManager.merge(updatedProduct);
             entityManager.getTransaction().commit();
+            imageUtility.saveImages(productEntity.getId(), encodedImages);
             return  true;
-
         } catch (IllegalArgumentException exception){
-            System.out.println("error");
+            exception.printStackTrace();
             return  false;
         }
     }

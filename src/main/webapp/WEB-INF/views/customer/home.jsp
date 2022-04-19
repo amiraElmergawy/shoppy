@@ -43,14 +43,6 @@
 <body id="home" >
 
 <%@ include file="../includes/customer-header.jsp" %>
-
-
-
-
-
-
-
-
     <!-- main content -->
         <!-- main content -->
         <div  id="product-sidebar-left" class="product-grid-sidebar-left" style="margin-top: -50px;">

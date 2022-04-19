@@ -50,21 +50,26 @@ form.addEventListener('submit', e => {
     validateEmptyInputs(productStock)
     validateEmptyInputs(productDesc)
 
+    if(encodedImages.length < 3) {
+        showImagesError("images between 3 - 4 for product");
+        return;
+    }
+
     if( validateEmptyInputs(productNameElement) && checkCategory() && validateEmptyInputs(productPrice) && validateEmptyInputs(productStock) && validateEmptyInputs(productDesc)){
         const productName = productNameElement.value;
         const desc = productDesc.value;
         const price = productPrice.value;
         const stock = productStock.value;
         const category = productCategory.value;
-
         const id=productId;
+
         const jsonData = {
             "productName": productName,
             "desc": desc,
             "price": price,
             "stock": stock,
             "category": category,
-            "images": JSON.stringify(encodedImages)
+            "images": JSON.stringify(encodedImages),
             "id":id
         };
 
