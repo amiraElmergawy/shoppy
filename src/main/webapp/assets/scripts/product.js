@@ -75,6 +75,17 @@ form.addEventListener('submit', e => {
                 data: jsonData, //input data
                 dataType: 'json',
                 url: 'update-product',
+                success: function(data) {
+                    if(data.message == "true"){
+                    console.log(data.message);
+                        document.getElementById("successmessage").classList.remove("d-none")
+                        document.getElementById("successmessage").innerText = " Product is "+ data.information +" successfully"
+                    }else{
+                        document.getElementById("errormessage").classList.remove("d-none")
+                        document.getElementById("errormessage").innerText = "We are sorry product "+ data.information +" , Try Again Please !"
+
+                    }
+                }
             })
         }
     }
