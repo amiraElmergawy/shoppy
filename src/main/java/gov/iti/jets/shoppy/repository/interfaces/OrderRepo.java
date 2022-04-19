@@ -11,4 +11,6 @@ public interface OrderRepo {
     Long getOrdersCount();
     List<OrderEntity> getOrders(int pageNumber);
     List<OrderEntity> getOrdersByCustomerId(int customerId);
+    boolean saveOrder(OrderEntity orderEntity);
+
 }

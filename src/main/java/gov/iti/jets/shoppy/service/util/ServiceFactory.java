@@ -8,7 +8,6 @@ import gov.iti.jets.shoppy.service.impls.ProfileServiceImpl;
 import gov.iti.jets.shoppy.service.impls.UserServiceImpl;
 import gov.iti.jets.shoppy.service.interfaces.AuthService;
 import gov.iti.jets.shoppy.service.interfaces.OrderService;
-import gov.iti.jets.shoppy.service.interfaces.ShoppingCartService;
 import gov.iti.jets.shoppy.service.interfaces.ProductService;
 import gov.iti.jets.shoppy.service.interfaces.ProfileService;
 import gov.iti.jets.shoppy.service.interfaces.UserService;

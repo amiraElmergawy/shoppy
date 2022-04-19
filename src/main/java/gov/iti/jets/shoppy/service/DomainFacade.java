@@ -9,16 +9,21 @@ import gov.iti.jets.shoppy.service.dtos.CustomerDto;
 import gov.iti.jets.shoppy.presentation.helpers.ShoppingCartViewHelper;
 import gov.iti.jets.shoppy.presentation.helpers.ViewProductHelper;
 import gov.iti.jets.shoppy.service.dtos.ProductDto;
+import gov.iti.jets.shoppy.service.dtos.OrderDto;
 import gov.iti.jets.shoppy.service.interfaces.AuthService;
 import gov.iti.jets.shoppy.service.interfaces.OrderService;
 import gov.iti.jets.shoppy.service.interfaces.ShoppingCartService;
 import gov.iti.jets.shoppy.service.interfaces.ProductService;
 import gov.iti.jets.shoppy.service.interfaces.ProfileService;
 import gov.iti.jets.shoppy.service.interfaces.UserService;
+import gov.iti.jets.shoppy.service.interfaces.UserService;
+import gov.iti.jets.shoppy.service.mappers.CustomerMapper;
 import gov.iti.jets.shoppy.service.util.ServiceFactory;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+
+import java.util.Optional;
 
 public class DomainFacade {
     private static final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("shoppy");
@@ -104,18 +109,24 @@ public class DomainFacade {
         return viewOrderHelper;
     }
 
-    public ShoppingCartViewHelper getShoppingCart(Integer id) {
+    public ShoppingCartViewHelper loadShoppingCart(Integer id) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         ShoppingCartViewHelper shoppingCartViewHelper =  shoppingCartService.getShoppingCart(id, entityManager);
         entityManager.close();
         return shoppingCartViewHelper;
     }
 
-    public ShoppingCartViewHelper initializeCustomerCart(Integer customerId,Integer productId) {
+    public ShoppingCartViewHelper addProductToCart(Integer customerId, Integer productId) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        ShoppingCartViewHelper shoppingCartViewHelper = shoppingCartService.initializeCustomerCart(customerId, productId, entityManager);
-        entityManager.close();
-        return shoppingCartViewHelper;
+        ShoppingCartViewHelper shoppingCartViewHelper = shoppingCartService.getShoppingCart(customerId, entityManager);
+        if(shoppingCartViewHelper.getOrderDto() == null)
+            shoppingCartViewHelper.setOrderDto(shoppingCartService.getNewShoppingCart(customerId, entityManager));
+        return shoppingCartService.addProductToShoppingCart(shoppingCartViewHelper.getOrderDto(), productId, entityManager);
+    }
+
+    public ShoppingCartViewHelper addProductToCart(OrderDto orderDto, Integer productId) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        return shoppingCartService.addProductToShoppingCart(orderDto, productId, entityManager);
     }
 
     public boolean increaseProductInShoppingCart(int productId){
@@ -155,5 +166,29 @@ public class DomainFacade {
         ViewOrderHelper viewOrderHelper = orderService.getOrdersByCustomerId(id , entityManager);
         entityManager.close();
         return viewOrderHelper;
+    }
+
+    public boolean saveShoppingCart(Optional<OrderDto> orderDtoOptional) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        boolean saved = shoppingCartService.saveShoppingCart(orderDtoOptional, entityManager);
+        entityManager.close();
+        System.out.println("domain facade save: " + saved);
+        return saved;
+    }
+
+    public boolean saveOrder(Optional<OrderDto> orderDtoOptional) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        boolean saved = false;
+        if (orderDtoOptional.isPresent() && (orderDtoOptional.get().getCustomer().getCreditLimit() >= orderDtoOptional.get().getTotalPrice())){
+            var customer= orderDtoOptional.get().getCustomer();
+            System.out.println(customer);
+            customer.setCreditLimit(customer.getCreditLimit() - orderDtoOptional.get().getTotalPrice());
+            System.out.println(customer);
+            userService.updateCustomer((int) customer.getId(), customer.getCreditLimit(), entityManager);
+            saved = shoppingCartService.saveOrder(orderDtoOptional, entityManager);
+            System.out.println("order saving result: "+ saved);
+        }
+        entityManager.close();
+        return saved;
     }
 }

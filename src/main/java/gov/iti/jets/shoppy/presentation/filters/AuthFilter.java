@@ -93,6 +93,8 @@ public class AuthFilter implements Filter {
 //        customerList.addAll(publicUrlList);
         customerUrlList.add("shopping-cart");
         customerUrlList.add("profile");
+        customerUrlList.add("add-to-cart");
+        customerUrlList.add("checkout");
     }
 
     private void fillAdminUrlsList(){
