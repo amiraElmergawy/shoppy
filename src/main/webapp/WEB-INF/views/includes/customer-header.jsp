@@ -178,7 +178,7 @@
                                 </c:if>
                                 <c:if test="${userId!=null}">
                                 <div>
-                                    <a class="register" href="login" rel="nofollow" title="Register Account">
+                                    <a class="register" href="logout" rel="nofollow" title="Register Account">
                                         <i class="fa fa-sign-out" aria-hidden="true"></i>
                                         <span>Logout</span>
                                     </a>
