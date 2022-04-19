@@ -33,7 +33,7 @@
         @media screen and (max-width: 991px) {
             .nivoSlider {
                 z-index: 2;
-                height: 200px !important;
+                height: 300px !important;
             }
         }
 
@@ -1243,50 +1243,39 @@
                                                             <c:when test="${pageContext.request.servletPath eq '/search'}">
                                                             </c:when>
                                                             <c:otherwise>
-                                                                <ul class="bg-transparent">
-                                                                    <c:choose>
-                                                                        <c:when test="${param.pageNum <= 1 || empty param.pageNum}">
-                                                                            <li>
-                                                                                <a rel="prev" href="${param.pageNum-1}"
-                                                                                   class="previous disabled js-search-link"
-                                                                                   style="pointer-events: none">
-                                                                                    Previous
-                                                                                </a>
-                                                                            </li>
-                                                                        </c:when>
-                                                                        <c:otherwise>
-                                                                            <li style="background-color:#343434 ">
-                                                                                <a rel="prev"
-                                                                                   href="home?pageNum=${param.pageNum-1}"
-                                                                                   class="previous disabled js-search-link">
-                                                                                    Previous
-                                                                                </a>
-                                                                            </li>
-                                                                        </c:otherwise>
-                                                                    </c:choose>
-                                                                    <c:forEach var="pageNumber" begin="1"
-                                                                               end="${Math.ceil(helper.getAllProductCount()/12)}">
-                                                                        <li class="current ">
-                                                                            <a rel="nofollow"
-                                                                               href="home?pageNum=${pageNumber}"
-                                                                               class="disabled js-search-link"
-                                                                               id="${pageNumber}">
-                                                                                    ${pageNumber}
+                                                            <ul class="bg-transparent">
+                                                                <c:choose>
+                                                                    <c:when test="${param.pageNum <= 1 || empty param.pageNum}">
+                                                                       <li>
+                                                                        <a rel="prev" href="${param.pageNum-1}" class="previous disabled js-search-link" style="pointer-events: none">
+                                                                            Previous
+                                                                        </a>
+                                                                       </li>
+                                                                    </c:when>
+                                                                    <c:otherwise>
+                                                                        <li style="background-color:#343434 ">
+                                                                            <a rel="prev" href="home?pageNum=${param.pageNum-1}" class="previous disabled js-search-link">
+                                                                                Previous
                                                                             </a>
                                                                         </li>
-                                                                    </c:forEach>
-                                                                    <c:choose>
-                                                                        <c:when test="${param.pageNum >= Math.round(helper.getAllProductCount()/12)}">
-                                                                            <li>
-                                                                                <a rel="next"
-                                                                                   href="home?pageNum=${param.pageNum+1}"
-                                                                                   class="next disabled js-search-link"
-                                                                                   style="pointer-events: none">
-                                                                                    Next
+                                                                    </c:otherwise>
+                                                                </c:choose>
+                                                                        <c:forEach var = "pageNumber" begin = "1" end = "${Math.ceil(helper.getAllProductCount()/12)}">
+                                                                            <li class="current ">
+                                                                                <a rel="nofollow" href="home?pageNum=${pageNumber}" class="disabled js-search-link" id="${pageNumber}">
+                                                                                        ${pageNumber}
                                                                                 </a>
                                                                             </li>
-                                                                        </c:when>
-                                                                        <c:otherwise>
+                                                                        </c:forEach>
+                                                                <c:choose>
+                                                                    <c:when test="${param.pageNum >= Math.ceil(helper.getAllProductCount()/12)}">
+                                                                        <li>
+                                                                            <a rel="next" href="home?pageNum=${param.pageNum+1}" class="next disabled js-search-link" style="pointer-events: none">
+                                                                                Next
+                                                                            </a>
+                                                                        </li>
+                                                                    </c:when>
+                                                                    <c:otherwise>
 
                                                                             <li style="background-color: #FF5151">
                                                                                 <a rel="next"
@@ -1326,9 +1315,11 @@
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     var currentPage = urlParams.get('pageNum');
+    const nextURL = 'http://localhost:9595/shoppy/home?pageNum=1';
     console.log(currentPage)
     if (currentPage == null) {
         currentPage = 1;
+        window.location.href = nextURL;
     }
     document.getElementById(currentPage).parentElement.classList.add("active");
 
