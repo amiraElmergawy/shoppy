@@ -151,6 +151,17 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         return false;
     }
 
+    @Override
+    public boolean saveOrder(Optional<OrderDto> orderDtoOptional, EntityManager entityManager) {
+        if (orderDtoOptional.isPresent()) {
+            OrderDto orderDto = orderDtoOptional.get();
+            OrderEntity orderEntity = mapOrderDtoToEntity(orderDto);
+            System.out.println("save fun in shopping cart service" + orderEntity);
+            System.out.println(repoFactory.getOrderRepo(entityManager).saveOrder(orderEntity));
+        }
+        return false;
+    }
+
     public boolean increaseProductQuantity(ProductEntity productEntity, ProductRepo productRepo) {
         productEntity.setStock(productEntity.getStock() - 1);
         return productRepo.updateProduct(productEntity);

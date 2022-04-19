@@ -8,6 +8,8 @@ import gov.iti.jets.shoppy.service.dtos.OrderDto;
 import gov.iti.jets.shoppy.service.interfaces.AuthService;
 import gov.iti.jets.shoppy.service.interfaces.ShoppingCartService;
 import gov.iti.jets.shoppy.service.interfaces.ProductService;
+import gov.iti.jets.shoppy.service.interfaces.UserService;
+import gov.iti.jets.shoppy.service.mappers.CustomerMapper;
 import gov.iti.jets.shoppy.service.util.ServiceFactory;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -20,6 +22,7 @@ public class DomainFacade {
     private final AuthService authService = ServiceFactory.INSTANCE.getAuthService();
     private final ProductService productService = ServiceFactory.INSTANCE.getProductService();
     private final ShoppingCartService shoppingCartService = ServiceFactory.INSTANCE.getShoppingCartService();
+    private final UserService userService = ServiceFactory.INSTANCE.getUserService();
 
     private static final DomainFacade domainFacade = new DomainFacade();
     private DomainFacade(){}
@@ -89,6 +92,21 @@ public class DomainFacade {
         boolean saved = shoppingCartService.saveShoppingCart(orderDtoOptional, entityManager);
         entityManager.close();
         System.out.println("domain facade save: " + saved);
+        return saved;
+    }
+
+    public boolean saveOrder(Optional<OrderDto> orderDtoOptional) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        boolean saved = false;
+        if (orderDtoOptional.isPresent() && (orderDtoOptional.get().getCustomer().getCreditLimit() >= orderDtoOptional.get().getTotalPrice())){
+            var customer= orderDtoOptional.get().getCustomer();
+            System.out.println(customer);
+            customer.setCreditLimit(customer.getCreditLimit() - orderDtoOptional.get().getTotalPrice());
+            System.out.println(customer);
+            userService.updateCustomer((int) customer.getId(), customer.getCreditLimit(), entityManager);
+            saved = shoppingCartService.saveOrder(orderDtoOptional, entityManager);
+        }
+        entityManager.close();
         return saved;
     }
 }

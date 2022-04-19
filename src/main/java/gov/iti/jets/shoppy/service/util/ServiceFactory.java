@@ -15,6 +15,7 @@ public enum ServiceFactory {
     private AuthService authService = new AuthServiceImpl();
     private ProductService productService = new ProductServiceImpl();
     private ShoppingCartService shoppingCartService = new ShoppingCartServiceImpl();
+    private UserService userService = new UserServiceImpl();
 
     public AuthService getAuthService() {
         return authService;
