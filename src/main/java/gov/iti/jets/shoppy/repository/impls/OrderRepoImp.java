@@ -32,10 +32,9 @@ public class OrderRepoImp implements OrderRepo {
         //if it already exists delete all its current products and add the products in the session only update the order updates
         //if not add the order then add its products
         Set<OrderProductsEntity> orderProductsEntityList = orderEntity.getOrderProducts();
-
         try {
             entityManager.getTransaction().begin();
-            if (!orderEntity.getId().equals(null)){
+            if (orderEntity.getId() != null && orderEntity.getOrderProducts() != null && orderEntity.getOrderProducts().size() != 0){
                 var currentOrderProducts = entityManager.createQuery("from OrderProductsEntity where order.id = :orderId").setParameter("orderId", orderEntity.getId()).getResultList();
                 currentOrderProducts.forEach(orderProduct->{
                     entityManager.remove(orderProduct);
