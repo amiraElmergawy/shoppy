@@ -107,14 +107,14 @@
 
             <h2>Sign Up</h2>
             <form id="sign-up-form" method="post" action="register">
-                <div class="form-group">
+                <div class="form-group mb-1">
                     <label>
                         <span>Name</span>
                     </label>
                     <input type="text" id="name" name="username" required>
                     <div class="error"></div>
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-1">
                     <label>
                         <span>Email</span>
                     </label>
@@ -122,31 +122,31 @@
                     <div class="error"></div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group mb-1">
                     <label>
                         <span>Password</span>
                     </label>
                     <input type="password" name="password" id="sign-up-password" required>
                     <div class="error"></div>
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-1">
                     <label>
                         <span>Confirm Password</span>
                     </label>
                     <input type="password" id="confirm-password" required>
                     <div class="error"></div>
                 </div>
-                <div class="form-group" required>
+                <div class="form-group mb-1" required>
                     <label>
                         <span>Your Birth Date</span>
                     </label>
                     <input type="date" name="dateOfBirth" id="date" required >
                     <div class="error"></div>
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-1">
 
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-1">
                     <label>
                         <span>Favourites </span>
                     </label>
@@ -159,7 +159,7 @@
                     </select>
                     <div class="error"></div>
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-1">
                     <label>
                         <span>Gender </span>
                     </label>
