@@ -46,6 +46,11 @@ form.addEventListener('submit', e => {
     validateEmptyInputs(productDesc)
 
     if( validateEmptyInputs(productNameElement) && checkCategory() && validateEmptyInputs(productPrice) && validateEmptyInputs(productStock) && validateEmptyInputs(productDesc)){
+        if(encodedImages.length < 3)
+        {
+            showImagesError("minimum 3 images for product");
+            return;
+        }
         console.log("you can send the request now ^_^");
         //send the post request
         console.log("button is clicked");
@@ -63,7 +68,6 @@ form.addEventListener('submit', e => {
             "category": category,
             "images": JSON.stringify(encodedImages)
         };
-
         $.post("add-product", jsonData);
         // $.ajax({
         //     type: 'POST', //servlet request type
