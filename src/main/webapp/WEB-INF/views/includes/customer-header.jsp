@@ -184,12 +184,12 @@
                                     </a>
                                 </div>
                                 </c:if>
-                                <div>
-                                    <a class="check-out" href="checkout" rel="nofollow" title="Checkout">
-                                        <i class="fa fa-check" aria-hidden="true"></i>
-                                        <span>Checkout</span>
-                                    </a>
-                                </div>
+<%--                                <div>--%>
+<%--                                    <a class="check-out" href="checkout" rel="nofollow" title="Checkout">--%>
+<%--                                        <i class="fa fa-check" aria-hidden="true"></i>--%>
+<%--                                        <span>Checkout</span>--%>
+<%--                                    </a>--%>
+<%--                                </div>--%>
 <%--                                <div class="link_wishlist">--%>
 <%--                                    <a href="wishlist" title="My Wishlists">--%>
 <%--                                        <i class="fa fa-heart"></i>--%>
