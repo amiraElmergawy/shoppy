@@ -1,5 +1,6 @@
 package gov.iti.jets.shoppy.repository.interfaces;
 
+import gov.iti.jets.shoppy.repository.entity.CustomerEntity;
 import gov.iti.jets.shoppy.repository.entity.UserEntity;
 import jakarta.persistence.EntityManager;
 
@@ -11,6 +12,6 @@ public interface UserRepo {
     Optional<? extends UserEntity> findUser(String email, String password);
     boolean insertUser(UserEntity userEntity);
     boolean updateUser(UserEntity userEntity);
-
+    boolean updateCustomerCreditLimit(Integer customerId, double amount);
 
 }

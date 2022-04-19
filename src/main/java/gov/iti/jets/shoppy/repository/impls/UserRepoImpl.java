@@ -76,4 +76,21 @@ public class UserRepoImpl implements UserRepo {
         }
     }
 
+    @Override
+    public boolean updateCustomerCreditLimit(Integer customerId, double amount) {
+        try {
+            entityManager.getTransaction().begin();
+            var customer = entityManager.find(CustomerEntity.class,customerId);
+            customer.setCreditLimit(amount);
+            System.out.println(entityManager.merge(customer));
+//            System.out.println(entityManager.createQuery("update CustomerEntity c set c.creditLimit = 1000 where c.id = 4").executeUpdate());
+//                    .setParameter("creditLimit", customerEntity.getCreditLimit()).setParameter("id",customerEntity.getId()).getResultList());
+            entityManager.getTransaction().commit();
+            return true;
+        } catch (Exception exception){
+            exception.printStackTrace();
+            return false;
+        }
+    }
+
 }
