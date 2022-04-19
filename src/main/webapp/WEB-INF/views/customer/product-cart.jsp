@@ -141,7 +141,7 @@
                                                         <i class="fa fa-credit-card-alt" class="text-muted mr-1" aria-hidden="true"></i>
                                                         <span class="font-weight-bold font-italic h6">Credit Limit</span>
                                                     </div>
-                                                    <div class="summary-label font-weight-bold font-italic"><h6 class="value">${cart.getCustomer().getCreditLimit()}</h6></div>
+                                                    <div class="summary-label font-weight-bold font-italic"><h6 class="value" id="creditLimit">${cart.getCustomer().getCreditLimit()}</h6></div>
                                                 </div>
                                             </li>
                                             <li style="padding-bottom: 0px">

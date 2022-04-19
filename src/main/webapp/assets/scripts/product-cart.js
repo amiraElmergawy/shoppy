@@ -32,6 +32,7 @@ function increaseProduct(productId){
                 quantityDiv.innerText = (+quantityDiv.textContent) +1;
                 //update total product price
                 productTotal.innerText = (+productPrice.textContent)*(+quantityDiv.textContent);
+                document.getElementById("productsTotal").innerText = (+document.getElementById("productsTotal").textContent) + (+productPrice.textContent);
             }
         }
     });
@@ -60,6 +61,7 @@ function decreaseProduct(productId){
                 quantityDiv.innerText = (+quantityDiv.textContent) - 1;//===> 0 -> delete
                 //update total product price
                 productTotal.innerText = (+productPrice.textContent) * (+quantityDiv.textContent);
+                document.getElementById("productsTotal").innerText = (+document.getElementById("productsTotal").textContent) - (+productPrice.textContent);
             } else deleteProduct(productId);
         }
     });
@@ -105,6 +107,7 @@ function saveOrder(){
                 );
                 div.classList.add("d-none");
             } else {
+                document.getElementById("creditLimit").innerText = (+document.getElementById("creditLimit").textContent) - (+document.getElementById("productsTotal").textContent);
                 document.getElementById("cartContainer").removeChild(document.getElementById("productsContainer"));
             }
         }
