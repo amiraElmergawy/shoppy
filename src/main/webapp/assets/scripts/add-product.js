@@ -5,10 +5,12 @@ const productPrice = document.getElementById('price');
 const productStock = document.getElementById('stock');
 const images = document.getElementById("images");
 const productDesc = document.getElementById('desc');
-
+encodedImages = [];
 images.onchange = function (event) {
     var fileList = images.files;
     if (fileList.length != 0) {//test
+        console.log(fileList[0].size);
+        console.log(fileList)
         PreviewImage(fileList);
     }
 }
@@ -22,8 +24,9 @@ function PreviewImage(files) {
         img.src = oFREvent.target.result;
         img.width = 100;
         img.height = 100;
-        img.classList.add("m-1")
+        img.classList.add("m-1");
         document.getElementById("imagesArea").appendChild(img);
+        encodedImages.push(oFREvent.target.result);
     };
 };
 
@@ -46,22 +49,24 @@ form.addEventListener('submit', e => {
         const price = productPrice.value;
         const stock = productStock.value;
         const category = productCategory.value;
+
         const jsonData = {
             "productName": productName,
             "desc": desc,
             "price": price,
             "stock": stock,
-            "category": category
+            "category": category,
+            "images": JSON.stringify(encodedImages)
         };
 
-
-        $.ajax({
-            type: 'POST', //servlet request type
-            contentType: 'application/x-www-form-urlencoded;charset=UTF-8', //For input type
-            data: jsonData, //input data
-            dataType: 'json',
-            url: 'add-product',
-        })
+        $.post("add-product", jsonData);
+        // $.ajax({
+        //     type: 'POST', //servlet request type
+        //     contentType: 'application/x-www-form-urlencoded;charset=UTF-8', //For input type
+        //     data: jsonData, //input data
+        //     dataType: 'json',
+        //     url: 'add-product',
+        // })
 
 
     }
@@ -95,12 +100,12 @@ function checkImages() {
     var imagesArea = document.getElementById("imagesArea");
     var errorDiv = imagesArea.children[1];
     var fileInput = imagesArea.children[0];
-    if (images.files.length == 0) { //there is no selected img
+    if (images.files == 0) { //there is no selected img
         fileInput.classList.add("select-error");
         errorDiv.classList.add("custom-error");
         errorDiv.innerHTML = "This field is required";
         return false;
-    } else {
+    }else {
         if (errorDiv.classList.contains("custom-error"))
             errorDiv.classList.remove("custom-error");
         if (fileInput.classList.contains("select-error"))

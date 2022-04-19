@@ -90,15 +90,8 @@ public class DomainFacade {
     }
     public boolean addProduct(ProductDto productDto){
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        if( productService.addProduct(productDto,entityManager))
-        {  entityManager.close();
-            return true;
-
-        }
-        else {
-            return false;
-        }
-
-
+        boolean added = productService.addProduct(productDto, entityManager);
+        entityManager.close();
+        return added;
     }
 }

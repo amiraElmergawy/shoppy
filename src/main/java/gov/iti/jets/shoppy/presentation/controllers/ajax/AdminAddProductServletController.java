@@ -1,5 +1,6 @@
 package gov.iti.jets.shoppy.presentation.controllers.ajax;
 
+import com.google.gson.Gson;
 import gov.iti.jets.shoppy.repository.entity.ProductCategory;
 import gov.iti.jets.shoppy.service.DomainFacade;
 import gov.iti.jets.shoppy.service.dtos.ProductDto;
@@ -9,10 +10,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jdk.jfr.Category;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
 
 @WebServlet(name = "AdminAddProductServletController" , value = "/add-product")
 public class AdminAddProductServletController extends HttpServlet {
@@ -28,10 +28,15 @@ public class AdminAddProductServletController extends HttpServlet {
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ProductDto productDto = ProductDto.builder().productDesc(req.getParameter("desc")).
-                productName(req.getParameter("productName")).stock(Integer.valueOf(req.getParameter("stock")))
-                .price(Double.valueOf(req.getParameter("price"))).category(ProductCategory.valueOf(req.getParameter("category"))).build();
-        boolean isAdded = domainFacade.addProduct(productDto);
+            List<String> encodedImages = new Gson().fromJson(req.getParameter("images"), List.class);
+            ProductDto productDto = ProductDto.builder()
+                  .productDesc(req.getParameter("desc"))
+                  .productName(req.getParameter("productName"))
+                  .stock(Integer.valueOf(req.getParameter("stock")))
+                  .price(Double.parseDouble(req.getParameter("price")))
+                  .category(ProductCategory.valueOf(req.getParameter("category")))
+                  .imagesPaths(encodedImages).build();
+            boolean isAdded = domainFacade.addProduct(productDto);
             try {
 //                if(isAdded){
 //                    req.setAttribute("isAdded","true");
@@ -41,9 +46,5 @@ public class AdminAddProductServletController extends HttpServlet {
             } catch (ServletException e) {
                 e.printStackTrace();
             }
-
-
-
-
     }
 }

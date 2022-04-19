@@ -2,6 +2,7 @@ package gov.iti.jets.shoppy.repository.impls;
 
 import gov.iti.jets.shoppy.repository.entity.ProductEntity;
 import gov.iti.jets.shoppy.repository.interfaces.ProductRepo;
+import gov.iti.jets.shoppy.repository.util.ImageUtility;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 
@@ -10,7 +11,9 @@ import java.util.Optional;
 
 public class ProductRepoImp implements ProductRepo {
     private static int pageSize = 12;
+    private ImageUtility imageUtility = ImageUtility.getInstance();
     private final EntityManager entityManager;
+
     public ProductRepoImp(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
@@ -52,21 +55,22 @@ public class ProductRepoImp implements ProductRepo {
     }
 
     @Override
-    public boolean addProduct(ProductEntity productEntity) {
+    public boolean addProduct(ProductEntity productEntity, List<String> encodedImages) {
         System.out.println(productEntity);
-        entityManager.getTransaction().begin();
+        boolean added = false;
         try {
-          //should add image path here
-            productEntity.setImgPath("1.jpg");
+            entityManager.getTransaction().begin();
+            //should add image path here
+            productEntity.setImgPath("products");
             entityManager.persist(productEntity);
             entityManager.getTransaction().commit();
-
-            return  true;
-
+            imageUtility.saveImages(productEntity.getId(), encodedImages);
+            System.out.println("test s");
+            added = true;
         } catch (IllegalArgumentException exception){
-            System.out.println("error");
-            return  false;
+            exception.printStackTrace();
         }
+        return added;
     }
 
 }

@@ -51,9 +51,8 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public boolean addProduct(ProductDto productDto, EntityManager entityManager) {
         ProductEntity productEntity= productMapper.productDtoToEntity(productDto);
-        System.out.println(productEntity);
         ProductRepo productRepo = RepoFactory.INSTANCE.getProductRepo(entityManager);
-        return productRepo.addProduct(productEntity);
+        return productRepo.addProduct(productEntity, productDto.getImagesPaths());
 
     }
 
