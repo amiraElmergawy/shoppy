@@ -27,14 +27,14 @@ public class AuthFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         String requestUrl = ((HttpServletRequest) servletRequest).getRequestURL().substring(((HttpServletRequest) servletRequest).getRequestURL().lastIndexOf("/")+1);
-        System.out.println(requestUrl);
+//        System.out.println(requestUrl);
         if (privateUrlList.contains(requestUrl)){
             HttpSession httpSession = ((HttpServletRequest) servletRequest).getSession(false);
             if (httpSession != null) {
-                System.out.println("from auth filter, http session is not null");
+//                System.out.println("from auth filter, http session is not null");
                 Role role = (Role) httpSession.getAttribute("userRole");
                 if(role != null){
-                    System.out.println("role is: "+role);
+//                    System.out.println("role is: "+role);
                     if (adminUrlList.contains(requestUrl) && !role.equals(Role.ADMIN)){
                         ((HttpServletResponse) servletResponse).sendRedirect("not-found-page");
                     } else if (customerList.contains(requestUrl) && !(role.equals(Role.CUSTOMER) || role.equals(Role.ADMIN)) ) {
@@ -67,6 +67,7 @@ public class AuthFilter implements Filter {
 //        customerList.addAll(publicUrlList);
         customerList.add("shopping-cart");
         customerList.add("add-to-cart");
+        customerList.add("checkout");
     }
 
     private void fillAdminUrlsList(){
