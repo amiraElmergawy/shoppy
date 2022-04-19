@@ -11,4 +11,5 @@ public interface ProductService {
     boolean addProduct(ProductDto productDto,EntityManager entityManager);
     HomeViewHelper searchForProducts(EntityManager entityManager, String value);
     boolean deleteProduct(int id , EntityManager entityManager);
+    boolean updateProduct(ProductDto productDto, EntityManager entityManager, int id);
 }

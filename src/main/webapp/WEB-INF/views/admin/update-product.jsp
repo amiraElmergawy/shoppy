@@ -11,6 +11,8 @@
     <title>Shoppy Dashboard</title>
 
     <%@ include file="../includes/admin-head.jsp" %>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -44,9 +46,12 @@
 
                                     <select class="form-control" id="category" required>
                                         <option selected disabled value="">${productDto.getCategory()}</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
+                                        <option selected disabled value="">Select Category...</option>
+                                        <option value="LIVINGROOM">Living Room</option>
+                                        <option value="BATHROOM">Bathroom</option>
+                                        <option value="DININGROOM">Dining Rooom</option>
+                                        <option value="BEDROOM">Bed Room</option>
+                                        <option value="KITCHEN">Kitchen</option>
                                     </select>
                                 </div>
                                 <div class="col-2 btn btn-success">
@@ -85,9 +90,14 @@
                         <textarea class="form-control input" id="desc" rows="3" required>${productDto.getProductDesc()}</textarea>
                         <div class="error"></div>
                     </div>
-                    <button type="submit" class="btn btn-success my-2">Save Edite Product</button>
+                    <button type="submit" id="btn" class="btn btn-success my-2">Save Edite Product</button>
                 </form>
             </div>
+            <div class="alert alert-success d-none" id="successmessage" style="text-align: center !important;" role="alert">
+            </div>
+            <div class="alert alert-danger d-none" style="text-align: center !important;" id="errormessage" role="alert">
+            </div>
+
         </main>
     </div>
 </div>
@@ -95,7 +105,8 @@
 
 <%@ include file="../includes/admin-script.jsp" %>
 <script src="assets/scripts/forms-validator.js"></script>
-<script src="assets/scripts/add-product.js"></script>
+<script src="assets/scripts/product.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 </body>
 

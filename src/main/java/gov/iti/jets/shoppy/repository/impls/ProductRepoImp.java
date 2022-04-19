@@ -72,6 +72,11 @@ public class ProductRepoImp implements ProductRepo {
         try {
             entityManager.getTransaction().begin();
             productEntity.setImgPath("product_id");
+    public boolean addProduct(ProductEntity productEntity) {
+        entityManager.getTransaction().begin();
+        try {
+          //should add image path here
+            productEntity.setImgPath("1.jpg");
             entityManager.persist(productEntity);
             entityManager.getTransaction().commit();
             imageUtility.saveImages(productEntity.getId(), encodedImages);
@@ -80,6 +85,27 @@ public class ProductRepoImp implements ProductRepo {
             exception.printStackTrace();
         }
         return added;
+    }
+
+    @Override
+    public boolean updateProductById(ProductEntity productEntity, int id) {
+        entityManager.getTransaction().begin();
+        ProductEntity updatedProduct = entityManager.find(ProductEntity.class, id);
+        try {
+            updatedProduct.setProductName(productEntity.getProductName());
+            updatedProduct.setProductDesc(updatedProduct.getProductDesc());
+            updatedProduct.setPrice(productEntity.getPrice());
+            updatedProduct.setStock(productEntity.getStock());
+            updatedProduct.setCategory(productEntity.getCategory());
+            updatedProduct.setImgPath("1.jpg");
+            entityManager.merge(updatedProduct);
+            entityManager.getTransaction().commit();
+            return  true;
+
+        } catch (IllegalArgumentException exception){
+            System.out.println("error");
+            return  false;
+        }
     }
 
     @Override
