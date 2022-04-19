@@ -1092,7 +1092,7 @@
                                                                 <div class="product-description">
                                                                     <div class="product-groups">
                                                                         <div class="product-title">
-                                                                            <a href="product-detail.jsp">${product.getProductDesc()}</a>
+                                                                            <a href="product-detail.jsp">${product.getProductName()}</a>
                                                                         </div>
                                                                         <div class="rating">
                                                                             <div class="star-content">
@@ -1145,7 +1145,6 @@
                                                                 </c:when>
                                                             <c:otherwise>
                                                             <ul class="bg-transparent">
-                                                                    ${pageContext.request.servletPath}
                                                                 <c:choose>
                                                                     <c:when test="${param.pageNum <= 1 || empty param.pageNum}">
                                                                        <li>
