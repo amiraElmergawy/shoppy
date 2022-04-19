@@ -10,5 +10,5 @@ import org.mapstruct.factory.Mappers;
 public interface AddressMapper {
     AddressMapper INSTANCE = Mappers.getMapper(AddressMapper.class);
     AddressDto addressEntityToDto(AddressEntity addressEntity);
-    AddressEntity addressDtoToEntity(AdminDto adminDto);
+    AddressEntity addressDtoToEntity(AddressDto addressDto);
 }

@@ -3,13 +3,16 @@ package gov.iti.jets.shoppy.service;
 import gov.iti.jets.shoppy.presentation.helpers.*;
 import gov.iti.jets.shoppy.presentation.helpers.HomeViewHelper;
 import gov.iti.jets.shoppy.presentation.helpers.LoginViewHelper;
+import gov.iti.jets.shoppy.presentation.helpers.ProfileViewHelper;
+import gov.iti.jets.shoppy.service.dtos.AddressDto;
+import gov.iti.jets.shoppy.service.dtos.CustomerDto;
 import gov.iti.jets.shoppy.presentation.helpers.ShoppingCartViewHelper;
 import gov.iti.jets.shoppy.presentation.helpers.ViewProductHelper;
-import gov.iti.jets.shoppy.service.dtos.CustomerDto;
 import gov.iti.jets.shoppy.service.interfaces.AuthService;
 import gov.iti.jets.shoppy.service.interfaces.OrderService;
 import gov.iti.jets.shoppy.service.interfaces.ShoppingCartService;
 import gov.iti.jets.shoppy.service.interfaces.ProductService;
+import gov.iti.jets.shoppy.service.interfaces.ProfileService;
 import gov.iti.jets.shoppy.service.interfaces.UserService;
 import gov.iti.jets.shoppy.service.util.ServiceFactory;
 import jakarta.persistence.EntityManager;
@@ -20,6 +23,8 @@ public class DomainFacade {
     private static final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("shoppy");
     private final AuthService authService = ServiceFactory.INSTANCE.getAuthService();
     private final ProductService productService = ServiceFactory.INSTANCE.getProductService();
+    private  final ProfileService profileService=ServiceFactory.INSTANCE.getProfileService();
+
     private final UserService userService = ServiceFactory.INSTANCE.getUserService();
     private final OrderService orderService = ServiceFactory.INSTANCE.getOrderService();
     private final ShoppingCartService shoppingCartService = ServiceFactory.INSTANCE.getShoppingCartService();
@@ -63,6 +68,15 @@ public class DomainFacade {
         return  productService.searchForProducts(entityManager, value);
 
     }
+    public ProfileViewHelper customerProfile(int id){
+        EntityManager entityManager=entityManagerFactory.createEntityManager();
+        return profileService.getUser(id,entityManager);
+    }
+    public boolean updateProfile(int id , CustomerDto customerDto, AddressDto addressDto){
+        EntityManager entityManager=entityManagerFactory.createEntityManager();
+        return profileService.updateUser(id,customerDto,addressDto,entityManager);
+    }
+
 
     public ViewProductHelper getProductById(int id){
         EntityManager entityManager = entityManagerFactory.createEntityManager();

@@ -1,6 +1,5 @@
 
-
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <header>
     <!-- header left mobie -->
 
@@ -107,23 +106,36 @@
                 </div>
 
                 <!-- menu -->
-                <div class="col-sm-5 col-md-5 align-items-center justify-content-center navbar-expand-md main-menu">
+                <div class="main-menu col-sm-4 col-md-5 align-items-center justify-content-center navbar-expand-md">
                     <div class="menu navbar collapse navbar-collapse">
                         <ul class="menu-top navbar-nav">
-                            <li>
+                            <li class="nav-link">
                                 <a href="home" class="parent">Home</a>
 
                             </li>
                             <li>
-                                <a href="about-us" class="parent">About Us</a>
-                            </li>
-
-                            <li class="nav-link">
-                                <a href="#" class="parent">Contact US</a>
+                                <a href="about-us" class="parent">About US</a>
                             </li>
                         </ul>
                     </div>
                 </div>
+<%--                <div class="col-sm-5 col-md-5 align-items-center justify-content-center navbar-expand-md main-menu">--%>
+<%--                    <div class="menu navbar collapse navbar-collapse">--%>
+<%--                        <ul class="menu-top navbar-nav">--%>
+<%--                            <li>--%>
+<%--                                <a href="home" class="parent">Home</a>--%>
+
+<%--                            </li>--%>
+<%--                            <li>--%>
+<%--                                <a href="about-us" class="parent">About Us</a>--%>
+<%--                            </li>--%>
+
+<%--                            <li class="nav-link">--%>
+<%--                                <a href="#" class="parent">Contact US</a>--%>
+<%--                            </li>--%>
+<%--                        </ul>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
 
                 <!-- search and acount -->
                 <div class="col-sm-5 col-md-5 d-flex align-items-center justify-content-end" id="search_widget">
@@ -150,121 +162,95 @@
 
                             <div class="account-list-content">
 
-                                <div>
-                                    <a class="login" href="user-acount.html" rel="nofollow" title="Log in to your customer account">
-                                        <i class="fa fa-cog"></i>
-                                        <span>My Account</span>
-                                    </a>
-                                </div>
+                               <c:if test="${userId!=null}">
+                                   <div>
+                                       <a class="login" href="profile" rel="nofollow" title="Log in to your customer account">
+                                           <i class="fa fa-cog"></i>
+                                           <span>My Account</span>
+                                       </a>
+                                   </div>
+                               </c:if>
+                                <c:if test="${userId==null}">
                                 <div>
                                     <a class="login" href="login" rel="nofollow" title="Log in to your customer account">
                                         <i class="fa fa-sign-in"></i>
                                         <span>Sign in</span>
                                     </a>
                                 </div>
+                                </c:if>
+                                <c:if test="${userId!=null}">
                                 <div>
-                                    <a class="register" href="register" rel="nofollow" title="Register Account">
-                                        <i class="fa fa-user"></i>
-                                        <span>Register Account</span>
+                                    <a class="register" href="login" rel="nofollow" title="Register Account">
+                                        <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                        <span>Logout</span>
                                     </a>
                                 </div>
+                                </c:if>
                                 <div>
-                                    <a class="check-out" href="product-checkout.html" rel="nofollow" title="Checkout">
+                                    <a class="check-out" href="checkout" rel="nofollow" title="Checkout">
                                         <i class="fa fa-check" aria-hidden="true"></i>
                                         <span>Checkout</span>
                                     </a>
                                 </div>
                                 <div class="link_wishlist">
-                                    <a href="user-wishlist.html" title="My Wishlists">
+                                    <a href="wishlist" title="My Wishlists">
                                         <i class="fa fa-heart"></i>
                                         <span>My Wishlists</span>
                                     </a>
-                                </div>
-                                <div id="desktop_currency_selector" class="currency-selector groups-selector hidden-sm-down">
-                                    <ul class="list-inline">
-                                        <li>
-                                            <a title="Euro" rel="nofollow" href="#">EUR</a>
-                                        </li>
-                                        <li class="current list-inline-item">
-                                            <a title="British Pound Sterling" rel="nofollow" href="#">GBP</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div id="desktop_language_selector" class="language-selector groups-selector hidden-sm-down">
-                                    <ul class="list-inline">
-                                        <li class="list-inline-itemcurrent">
-                                            <a href="#">
-                                                <img class="img-fluid" src="assets/images/home/home1-flas.jpg" alt="English" width="16" height="11">
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="#">
-                                                <img class="img-fluid" src="assets/images/home/home1-flas2.jpg" alt="Italiano" width="16" height="11">
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="#">
-                                                <img class="img-fluid" src="assets/images/home/home1-flas3.jpg" alt="Français" width="16" height="11">
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="#">
-                                                <img class="img-fluid" src="assets/images/home/home1-flas4.jpg" alt="Español" width="16" height="11">
-                                            </a>
-                                        </li>
-                                    </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="desktop_cart">
                         <div class="blockcart block-cart cart-preview tiva-toggle">
+                            <a href="product-cart">
                             <div class="header-cart tiva-toggle-btn ml-0">
                                 <span class="cart-products-count">1</span>
                                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                             </div>
-                            <div class="dropdown-content">
-                                <div class="cart-content">
-                                    <table>
-                                        <tbody>
-                                        <tr>
-                                            <td class="product-image">
-                                                <a href="product-detail.html">
-                                                    <img src="assets/images/product/5.jpg" alt="Product">
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <div class="product-name">
-                                                    <a href="product-detail.html">Organic Strawberry Fruits</a>
-                                                </div>
-                                                <div>
-                                                    2 x
-                                                    <span class="product-price">£28.98</span>
-                                                </div>
-                                            </td>
-                                            <td class="action">
-                                                <a class="remove" href="#">
-                                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr class="total">
-                                            <td colspan="2">Total:</td>
-                                            <td>£92.96</td>
-                                        </tr>
+                            </a>
+<%--                            <div class="dropdown-content">--%>
+<%--                                <div class="cart-content">--%>
+<%--                                    <table>--%>
+<%--                                        <tbody>--%>
+<%--                                        <tr>--%>
+<%--                                            <td class="product-image">--%>
+<%--                                                <a href="product-detail.html">--%>
+<%--                                                    <img src="assets/images/product/5.jpg" alt="Product">--%>
+<%--                                                </a>--%>
+<%--                                            </td>--%>
+<%--                                            <td>--%>
+<%--                                                <div class="product-name">--%>
+<%--                                                    <a href="product-detail.html">Organic Strawberry Fruits</a>--%>
+<%--                                                </div>--%>
+<%--                                                <div>--%>
+<%--                                                    2 x--%>
+<%--                                                    <span class="product-price">£28.98</span>--%>
+<%--                                                </div>--%>
+<%--                                            </td>--%>
+<%--                                            <td class="action">--%>
+<%--                                                <a class="remove" href="#">--%>
+<%--                                                    <i class="fa fa-trash-o" aria-hidden="true"></i>--%>
+<%--                                                </a>--%>
+<%--                                            </td>--%>
+<%--                                        </tr>--%>
+<%--                                        <tr class="total">--%>
+<%--                                            <td colspan="2">Total:</td>--%>
+<%--                                            <td>£92.96</td>--%>
+<%--                                        </tr>--%>
 
-                                        <tr>
-                                            <td colspan="3" class="d-flex justify-content-center">
-                                                <div class="cart-button">
-                                                    <a href="shopping-cart" title="View Cart">View Cart</a>
-                                                    <a href="product-checkout.html" title="Checkout">Checkout</a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+<%--                                        <tr>--%>
+<%--                                            <td colspan="3" class="d-flex justify-content-center">--%>
+<%--                                                <div class="cart-button">--%>
+<%--                                                    <a href="shopping-cart" title="View Cart">View Cart</a>--%>
+<%--                                                    <a href="product-checkout.html" title="Checkout">Checkout</a>--%>
+<%--                                                </div>--%>
+<%--                                            </td>--%>
+<%--                                        </tr>--%>
+<%--                                        </tbody>--%>
+<%--                                    </table>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
 
                         </div>
                     </div>
