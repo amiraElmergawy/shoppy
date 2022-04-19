@@ -8,10 +8,15 @@ const productDesc = document.getElementById('desc');
 encodedImages = [];
 images.onchange = function (event) {
     var fileList = images.files;
-    if (fileList.length != 0) {//test
-        console.log(fileList[0].size);
-        console.log(fileList)
-        PreviewImage(fileList);
+    if (fileList.length !== 0) {//test
+        if(encodedImages.length === 4)
+            showImagesError("maximum 4 images for product")
+        else if(fileList[0].size > 300000)
+            showImagesError("image size should not exceed 300 kb")
+        else {
+            removeImageError();
+            PreviewImage(fileList);
+        }
     }
 }
 
@@ -115,6 +120,23 @@ function checkImages() {
     }
 }
 
+function showImagesError(msg) {
+    var imagesArea = document.getElementById("imagesArea");
+    var errorDiv = imagesArea.children[1];
+    var fileInput = imagesArea.children[0];
+    fileInput.classList.add("select-error");
+    errorDiv.classList.add("custom-error");
+    errorDiv.innerHTML = msg;
+}
+
+function removeImageError() {
+    imagesArea = document.getElementById("imagesArea");
+    errorDiv = imagesArea.children[1];
+    fileInput = imagesArea.children[0];
+    fileInput.classList.remove("select-error");
+    errorDiv.classList.remove("custom-error");
+    errorDiv.innerHTML = "";
+}
 //upload image with ajax
 // async function uploadFile() {
 //     let formData = new FormData();
