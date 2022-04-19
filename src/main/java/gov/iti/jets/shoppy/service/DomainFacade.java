@@ -103,7 +103,7 @@ public class DomainFacade {
     }
     public boolean updateProduct(ProductDto productDto, int id){
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        if( productService.updateProduct(productDto,entityManager,id))
+        if( productService.updateProduct(productDto,entityManager, id))
         {
             entityManager.close();
             return true;
