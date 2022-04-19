@@ -72,13 +72,13 @@
                                                         </div>
                                                         <div class="product-line-grid-body col-md-4 ">
                                                             <div class="product-line-info">
-                                                                <a class="label" href="product-detail.jsp" data-id_customization="0">
+                                                                <a class="label" href="product-detail.jsp" data-id_customization="0" style="font-size: 18px">
                                                                     ${orderProduct.getProduct().getProductName()}
                                                                 </a>
                                                                
                                                             </div>
                                                             <div class="product-line-info product-price">
-                                                                  <span class="font-weight-bold text-muted text-lg-center">
+                                                                  <span class="font-weight-bold text-muted text-lg-center" style="font-size: 14px">
                                                                           ${orderProduct.getProduct().getProductDesc()}
                                                                   </span>
 <%--                                                                <span class="value" id=${orderProduct.getProduct().getId()}price>${orderProduct.getProduct().getPrice()}</span> EG--%>
@@ -104,10 +104,10 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-3 price col m-auto">
-                                                                    <span class="product-price total " id=${orderProduct.getProduct().getId()}productTotal style="font-size: 18px;">
+                                                                    <span class="product-price total " id=${orderProduct.getProduct().getId()}productTotal style="font-size: 16px;">
                                                                         ${Math.round(orderProduct.getTotal())}
                                                                     </span>
-                                                                    <span class="product-price total " style="font-size: 18px; margin-left: 10px">
+                                                                    <span class="product-price total " style="font-size: 16px; margin-left: 10px">
                                                                      EG
                                                                     </span>
 
