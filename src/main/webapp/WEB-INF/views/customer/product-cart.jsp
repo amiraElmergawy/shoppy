@@ -74,14 +74,14 @@
                                                             <div class="product-line-info">
                                                                 <a class="label" href="product-detail.jsp" data-id_customization="0">
                                                                     ${orderProduct.getProduct().getProductName()}
-                                                                    <span class="font-weight-bold text-danger text-lg-center">
-                                                                            ${orderProduct.getProduct().getProductDesc()}
-                                                                    </span>
                                                                 </a>
                                                                
                                                             </div>
                                                             <div class="product-line-info product-price">
-                                                                <span class="value" id=${orderProduct.getProduct().getId()}price>${orderProduct.getProduct().getPrice()}</span> EG
+                                                                  <span class="font-weight-bold text-muted text-lg-center">
+                                                                          ${orderProduct.getProduct().getProductDesc()}
+                                                                  </span>
+<%--                                                                <span class="value" id=${orderProduct.getProduct().getId()}price>${orderProduct.getProduct().getPrice()}</span> EG--%>
                                                             </div>
                                                         </div>
                                                         <div class="product-line-grid-right text-center product-line-actions col-md-6 justify-content-between">
