@@ -160,9 +160,9 @@
 
                             <div class="account-list-content">
 
-                               <c:if test="${userId!=null}">
+                               <c:if test="${userId!=null} && ${role.equals(Role.CUSTOMER)}">
                                    <div>
-                                       <a class="login" href="profile" rel="nofollow" title="Log in to your customer account">
+                                       <a class="login" href="profile" rel="nofollow" title="view your info">
                                            <i class="fa fa-cog"></i>
                                            <span>My Account</span>
                                        </a>
@@ -170,7 +170,7 @@
                                </c:if>
                                 <c:if test="${userId==null}">
                                 <div>
-                                    <a class="login" href="login" rel="nofollow" title="Log in to your customer account">
+                                    <a class="login" href="login" rel="nofollow" title="Log in to your account">
                                         <i class="fa fa-sign-in"></i>
                                         <span>Sign in</span>
                                     </a>

@@ -42,6 +42,8 @@ public class AuthFilter implements Filter {
                     if (role != null) {
                         if (adminUrlList.contains(requestUrl) && !role.equals(Role.ADMIN)) {
                             ((HttpServletResponse) servletResponse).sendRedirect("not-found-page");
+                        } else if (((HttpServletRequest) servletRequest).getRequestURI().contains("profile") && !role.equals(Role.CUSTOMER)) {
+                            ((HttpServletResponse) servletResponse).sendRedirect("not-found-page");
                         } else if (customerUrlList.contains(requestUrl) && !(role.equals(Role.CUSTOMER) || role.equals(Role.ADMIN))) {
                             ((HttpServletResponse) servletResponse).sendRedirect("not-found-page");
                         } else {
