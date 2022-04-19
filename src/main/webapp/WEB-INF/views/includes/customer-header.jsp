@@ -106,7 +106,7 @@
                 </div>
 
                 <!-- menu -->
-                <div class="main-menu col-sm-4 col-md-5 align-items-center justify-content-center navbar-expand-md">
+                <div class="main-menu col-sm-3 col-md-3 align-items-center justify-content-center navbar-expand-md">
                     <div class="menu navbar collapse navbar-collapse">
                         <ul class="menu-top navbar-nav">
                             <li class="nav-link">
@@ -138,11 +138,10 @@
 <%--                </div>--%>
 
                 <!-- search and acount -->
-                <div class="col-sm-5 col-md-5 d-flex align-items-center justify-content-end" id="search_widget">
+                <div class="col-sm-7 col-md-7 d-flex align-items-center justify-content-end" id="search_widget">
                     <form method="get" action="search">
-
                         <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
-                        <input type="text" name="key" value="" placeholder="Search" class="ui-autocomplete-input" autocomplete="off">
+                        <input type="text" name="key" value="" placeholder="Search" class="ui-autocomplete-input w-100" autocomplete="off">
                         <button type="submit">
                             <i class="fa fa-search"></i>
                         </button>
@@ -155,7 +154,6 @@
                                 <span>Account</span>
                                 <i class="fa fa-angle-down" aria-hidden="true"></i>
                             </a>
-
                         </div>
 
                         <div id="acount" class="collapse">
@@ -203,9 +201,9 @@
                     </div>
                     <div class="desktop_cart">
                         <div class="blockcart block-cart cart-preview tiva-toggle">
-                            <a href="product-cart">
+                            <a href="shopping-cart">
                             <div class="header-cart tiva-toggle-btn ml-0">
-                                <span class="cart-products-count">1</span>
+<%--                                <span class="cart-products-count">${cart.getOrderProducts().size()}</span>--%>
                                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                             </div>
                             </a>
