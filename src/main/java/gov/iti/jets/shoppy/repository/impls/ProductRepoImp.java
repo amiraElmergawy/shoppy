@@ -2,6 +2,7 @@ package gov.iti.jets.shoppy.repository.impls;
 
 import gov.iti.jets.shoppy.repository.entity.ProductEntity;
 import gov.iti.jets.shoppy.repository.interfaces.ProductRepo;
+import gov.iti.jets.shoppy.repository.util.ImageUtility;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 
@@ -10,7 +11,9 @@ import java.util.Optional;
 
 public class ProductRepoImp implements ProductRepo {
     private static int pageSize = 12;
+    private ImageUtility imageUtility = ImageUtility.getInstance();
     private final EntityManager entityManager;
+
     public ProductRepoImp(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
@@ -61,6 +64,22 @@ public class ProductRepoImp implements ProductRepo {
         } catch (IllegalArgumentException exception){
             return false;
         }
+    }
+
+    @Override
+    public boolean addProduct(ProductEntity productEntity, List<String> encodedImages) {
+        boolean added = false;
+        try {
+            entityManager.getTransaction().begin();
+            productEntity.setImgPath("product_id");
+            entityManager.persist(productEntity);
+            entityManager.getTransaction().commit();
+            imageUtility.saveImages(productEntity.getId(), encodedImages);
+            added = true;
+        } catch (IllegalArgumentException exception){
+            exception.printStackTrace();
+        }
+        return added;
     }
 
     @Override

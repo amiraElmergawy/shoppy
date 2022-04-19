@@ -1,5 +1,5 @@
 package gov.iti.jets.shoppy.repository.entity;
 
 public enum ProductCategory {
-    TEST;
+    LIVINGROOM,BATHROOM,DININGROOM,BEDROOM,KITCHEN,TEST;
 }

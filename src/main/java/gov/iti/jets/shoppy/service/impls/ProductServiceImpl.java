@@ -67,4 +67,13 @@ public class ProductServiceImpl implements ProductService {
         }
         return viewProductHelper;
     }
+
+    @Override
+    public boolean addProduct(ProductDto productDto, EntityManager entityManager) {
+        ProductEntity productEntity= productMapper.productDtoToEntity(productDto);
+        ProductRepo productRepo = RepoFactory.INSTANCE.getProductRepo(entityManager);
+        return productRepo.addProduct(productEntity, productDto.getImagesPaths());
+
+    }
+
 }
