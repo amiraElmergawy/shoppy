@@ -317,8 +317,8 @@
                                                             <div class="product-miniature js-product-miniature item-one first-item">
                                                                 <div class="thumbnail-container border">
                                                                     <a href="product-detail.jsp">
-                                                                        <img class="img-fluid image-cover" src="assets/images/product/1.jpg" alt="img">
-                                                                        <img class="img-fluid image-secondary" src="assets/images/product/22.jpg" alt="img">
+                                                                        <img class="img-fluid image-cover" src="../../../assets/images/product/1.jpg" alt="img">
+                                                                        <img class="img-fluid image-secondary" src="../../../assets/images/product/22.jpg" alt="img">
                                                                     </a>
                                                                     <div class="highlighted-informations">
                                                                         <div class="variant-links">
@@ -368,8 +368,8 @@
                                                             <div class="product-miniature js-product-miniature item-one first-item">
                                                                 <div class="thumbnail-container border">
                                                                     <a href="product-detail.jsp">
-                                                                        <img class="img-fluid image-cover" src="assets/images/product/2.jpg" alt="img">
-                                                                        <img class="img-fluid image-secondary" src="assets/images/product/11.jpg" alt="img">
+                                                                        <img class="img-fluid image-cover" src="../../../assets/images/product/2.jpg" alt="img">
+                                                                        <img class="img-fluid image-secondary" src="../../../assets/images/product/11.jpg" alt="img">
                                                                     </a>
                                                                     <div class="highlighted-informations">
                                                                         <div class="variant-links">
@@ -419,8 +419,8 @@
                                                             <div class="product-miniature js-product-miniature item-one first-item">
                                                                 <div class="thumbnail-container border">
                                                                     <a href="product-detail.jsp">
-                                                                        <img class="img-fluid image-cover" src="assets/images/product/3.jpg" alt="img">
-                                                                        <img class="img-fluid image-secondary" src="assets/images/product/14.jpg" alt="img">
+                                                                        <img class="img-fluid image-cover" src="../../../assets/images/product/3.jpg" alt="img">
+                                                                        <img class="img-fluid image-secondary" src="../../../assets/images/product/14.jpg" alt="img">
                                                                     </a>
                                                                     <div class="highlighted-informations">
                                                                         <div class="variant-links">
@@ -471,8 +471,8 @@
                                                             <div class="product-miniature js-product-miniature item-one first-item">
                                                                 <div class="thumbnail-container border">
                                                                     <a href="product-detail.jsp">
-                                                                        <img class="img-fluid image-cover" src="assets/images/product/3.jpg" alt="img">
-                                                                        <img class="img-fluid image-secondary" src="assets/images/product/14.jpg" alt="img">
+                                                                        <img class="img-fluid image-cover" src="../../../assets/images/product/3.jpg" alt="img">
+                                                                        <img class="img-fluid image-secondary" src="../../../assets/images/product/14.jpg" alt="img">
                                                                     </a>
                                                                     <div class="highlighted-informations">
                                                                         <div class="variant-links">

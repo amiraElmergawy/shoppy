@@ -15,6 +15,29 @@
 
 
     <%@ include file="../includes/customer-head.jsp" %>
+    <style>
+        .minusAndPlusFont{
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .minusAndPlusBtnView{
+            width: 40px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        .quantity{
+            width: 40px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            /* height: 40px; */
+            /* color: white; */
+            margin-top: 8px;
+            font-size: 16px;
+        }
+    </style>
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
@@ -32,13 +55,13 @@
                         <section id="main" class="mt-2">
                             <div class="cart-grid row">
                                 <div class="col-md-9 col-xs-12 check-info" id="cartContainer">
-                                    <h1 class="title-page">Shopping Cart</h1>
+                                    <h1 class="title-page mt-4">Shopping Cart</h1>
                                     <div class="d-none alert-danger p-2 mb-4 text-center h6" id="error"></div>
                                     <div class="cart-container" id="productsContainer">
                                        <c:forEach var="orderProduct" items="${cart.getOrderProducts()}">
                                         <div class="cart-overview js-cart" id=${orderProduct.getProduct().getId()}>
                                             <ul class="cart-items">
-                                                <li class="cart-item bg-white rounded shadow-lg mb-2">
+                                                <li class="cart-item bg-white rounded shadow-lg mb-2 py-4">
                                                     <div class="product-line-grid row justify-content-between">
                                                         <div class="product-line-grid-left col-md-2">
                                                             <span class="product-image media-middle">
@@ -62,27 +85,34 @@
                                                             </div>
                                                         </div>
                                                         <div class="product-line-grid-right text-center product-line-actions col-md-6 justify-content-between">
-                                                            <div class="row">
-                                                                <div class="col-md-5 col m-auto ">
-                                                                    <div class="quantity d-flex ">
-                                                                        <button id="minus" class="btn shadow-sm btn-sm btn-primary font-weight-bold" onclick="decreaseProduct(${orderProduct.getProduct().getId()})">
-                                                                            -
-                                                                        </button>
-                                                                        <div id=${orderProduct.getProduct().getId()}quantity class="btn-sm bg-white font-weight-bold mx-2">
+                                                            <div class="row mt-2">
+                                                                <div class="col-md-3 col m-auto ">
+                                                                    <div class="quantity d-flex ml-0" style="width: 140px;">
+                                                                        <div id="minus" class="btn shadow-sm rounded minusAndPlusBtnView" onclick="decreaseProduct(${orderProduct.getProduct().getId()})">
+                                                                            <span class="minusAndPlusFont">
+                                                                                -
+                                                                            </span>
+                                                                        </div>
+                                                                        <div id=${orderProduct.getProduct().getId()}quantity class="btn-sm bg-white font-weight-bold mx-2 quantity">
                                                                                 ${orderProduct.getQuantity()}
                                                                         </div>
-                                                                        <button id="plus" class="btn shadow-sm btn-sm btn-primary font-weight-bold " onclick="increaseProduct(${orderProduct.getProduct().getId()})">
-                                                                            +
-                                                                        </button>
+                                                                        <div id="plus" class="btn shadow-sm rounded minusAndPlusBtnView" onclick="increaseProduct(${orderProduct.getProduct().getId()})">
+                                                                             <span class="minusAndPlusFont">
+                                                                                +
+                                                                            </span>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-md-5 price col m-auto">
-                                                                    <span class="product-price total " id=${orderProduct.getProduct().getId()}productTotal>
+                                                                <div class="col-md-3 price col m-auto">
+                                                                    <span class="product-price total " id=${orderProduct.getProduct().getId()}productTotal style="font-size: 18px;">
                                                                         ${Math.round(orderProduct.getTotal())}
                                                                     </span>
-                                                                    EG
+                                                                    <span class="product-price total " style="font-size: 18px; margin-left: 10px">
+                                                                     EG
+                                                                    </span>
+
                                                                 </div>
-                                                                <div class="col-md-2 text-xs-right align-self-end col">
+                                                                <div class="col-md-1 text-xs-right align-self-end col mt-4">
                                                                     <div class="cart-line-product-actions m-0">
                                                                         <button class="btn remove-from-cart m-0" rel="nofollow" data-link-action="delete-from-cart" data-id-product="1" onclick="deleteProduct(${orderProduct.getProduct().getId()})">
                                                                             <i class="fa fa-trash-o" aria-hidden="true"></i>
