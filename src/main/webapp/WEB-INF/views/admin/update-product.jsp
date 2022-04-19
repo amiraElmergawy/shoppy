@@ -93,6 +93,11 @@
                     <button type="submit" id="btn" class="btn btn-success my-2">Save Edite Product</button>
                 </form>
             </div>
+            <div class="alert alert-success d-none" id="successmessage" style="text-align: center !important;" role="alert">
+            </div>
+            <div class="alert alert-danger d-none" style="text-align: center !important;" id="errormessage" role="alert">
+            </div>
+
         </main>
     </div>
 </div>
@@ -100,7 +105,7 @@
 
 <%@ include file="../includes/admin-script.jsp" %>
 <script src="assets/scripts/forms-validator.js"></script>
-<script src="assets/scripts/add-product.js"></script>
+<script src="assets/scripts/product.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 </body>
