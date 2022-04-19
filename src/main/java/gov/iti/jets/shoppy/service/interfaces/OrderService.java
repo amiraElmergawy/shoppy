@@ -6,4 +6,5 @@ import jakarta.persistence.EntityManager;
 
 public interface OrderService {
     ViewOrderHelper getOrders(int pageNumber, EntityManager entityManager);
+    ViewOrderHelper getOrdersByCustomerId(int id , EntityManager entityManager);
 }

@@ -17,7 +17,6 @@
 
     <%@ include file="../includes/customer-head.jsp" %>
 </head>
-<c:url value="/" var="imagesUrl" context="/images"/>
 
 <body class="product-cart checkout-cart blog">
 <%@ include file="../includes/customer-header.jsp" %>
@@ -43,7 +42,7 @@
                                                         <div class="product-line-grid-left col-md-2">
                                                             <span class="product-image media-middle">
                                                                 <a href="product-detail.jsp">
-                                                                    <img class="img-fluid" src="${imagesUrl}${orderProduct.getProduct().getImagesPaths().get(0)}" alt="Organic Strawberry Fruits">
+                                                                    <img class="img-fluid" src="images${orderProduct.getProduct().getImagesPaths().get(0)}" alt="Organic Strawberry Fruits">
                                                                 </a>
                                                             </span>
                                                         </div>

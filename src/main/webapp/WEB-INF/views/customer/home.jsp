@@ -43,7 +43,6 @@
 <body id="home" >
 
 <%@ include file="../includes/customer-header.jsp" %>
-<c:url value="/" var="imagesUrl" context="/images"/>
 <div class="wrap-banner">
 
     <!-- slide show -->
@@ -562,8 +561,8 @@
                                                             <div class="product-miniature js-product-miniature item-one first-item shadow rounded p-1">
                                                                 <div class="thumbnail-container border">
                                                                     <a href="product-details?productID=${product.getId()}">
-                                                                        <img class="img-fluid image-cover" src="${imagesUrl}${product.getImagesPaths().get(0)}" alt="img">
-                                                                        <img class="img-fluid image-secondary" src="${imagesUrl}${product.getImagesPaths().get(1)}" alt="img">
+                                                                        <img class="img-fluid image-cover" src="images${product.getImagesPaths().get(0)}" alt="img">
+                                                                        <img class="img-fluid image-secondary" src="images${product.getImagesPaths().get(1)}" alt="img">
                                                                     </a>
                                                                     <div class="highlighted-informations">
                                                                         <div class="variant-links">
@@ -624,7 +623,12 @@
                                                             <span class="bg-transparent">SHOWING 1-3 OF 3 ITEM(S)</span>
                                                         </div>
                                                         <div class="page-list col col-xs-12">
+                                                            <c:choose>
+                                                                <c:when test="${pageContext.request.servletPath eq '/search'}">
+                                                                </c:when>
+                                                            <c:otherwise>
                                                             <ul class="bg-transparent">
+                                                                    ${pageContext.request.servletPath}
                                                                 <c:choose>
                                                                     <c:when test="${param.pageNum <= 1 || empty param.pageNum}">
                                                                        <li>
@@ -641,13 +645,13 @@
                                                                         </li>
                                                                     </c:otherwise>
                                                                 </c:choose>
-                                                                <c:forEach var = "pageNumber" begin = "1" end = "${Math.round(helper.getAllProductCount()/12)}">
-                                                                <li class="current ">
-                                                                    <a rel="nofollow" href="home?pageNum=${pageNumber}" class="disabled js-search-link" id="${pageNumber}">
-                                                                        ${pageNumber}
-                                                                    </a>
-                                                                </li>
-                                                                </c:forEach>
+                                                                        <c:forEach var = "pageNumber" begin = "1" end = "${Math.ceil(helper.getAllProductCount()/12)}">
+                                                                            <li class="current ">
+                                                                                <a rel="nofollow" href="home?pageNum=${pageNumber}" class="disabled js-search-link" id="${pageNumber}">
+                                                                                        ${pageNumber}
+                                                                                </a>
+                                                                            </li>
+                                                                        </c:forEach>
                                                                 <c:choose>
                                                                     <c:when test="${param.pageNum >= Math.round(helper.getAllProductCount()/12)}">
                                                                         <li>
@@ -666,6 +670,8 @@
                                                                     </c:otherwise>
                                                                 </c:choose>
                                                             </ul>
+                                                            </c:otherwise>
+                                                            </c:choose>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -698,6 +704,7 @@
      currentPage=1;
     }
     document.getElementById(currentPage).parentElement.classList.add("active");
+
 
 </script>
 </body>

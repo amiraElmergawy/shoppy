@@ -6,6 +6,7 @@ import gov.iti.jets.shoppy.presentation.helpers.LoginViewHelper;
 import gov.iti.jets.shoppy.presentation.helpers.ShoppingCartViewHelper;
 import gov.iti.jets.shoppy.presentation.helpers.ViewProductHelper;
 import gov.iti.jets.shoppy.service.dtos.ProductDto;
+import gov.iti.jets.shoppy.service.dtos.CustomerDto;
 import gov.iti.jets.shoppy.service.interfaces.AuthService;
 import gov.iti.jets.shoppy.service.interfaces.OrderService;
 import gov.iti.jets.shoppy.service.interfaces.ShoppingCartService;
@@ -33,16 +34,35 @@ public class DomainFacade {
 
     public LoginViewHelper signIn(String email, String password){
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        return authService.signIn(email, password, entityManager);
+        LoginViewHelper loginViewHelper = authService.signIn(email, password, entityManager);
+        entityManager.close();
+        return loginViewHelper;
     }
 
     public LoginViewHelper rememberMe(Long uid) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        return authService.rememberMe(uid, entityManager);
+        LoginViewHelper loginViewHelper = authService.rememberMe(uid, entityManager);
+        entityManager.close();
+        return loginViewHelper;
     }
+
+    public boolean signUp(CustomerDto customerDto){
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        boolean signUpResult = authService.signUp(customerDto, entityManager);
+        entityManager.close();
+        return signUpResult;
+    }
+
     public HomeViewHelper retrieveProducts(int pageNumber){
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        return productService.getProducts(pageNumber, entityManager);
+        HomeViewHelper homeViewHelper = productService.getProducts(pageNumber, entityManager);
+        entityManager.close();
+        return homeViewHelper;
+    }
+    public HomeViewHelper searchForProducts(String value){
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        return  productService.searchForProducts(entityManager, value);
+
     }
 
     public ViewProductHelper getProductById(int id){
@@ -93,5 +113,15 @@ public class DomainFacade {
         boolean added = productService.addProduct(productDto, entityManager);
         entityManager.close();
         return added;
+    }
+
+    public boolean deleteProduct(int id){
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        return productService.deleteProduct(id,entityManager);
+    }
+
+    public ViewOrderHelper getOrderByCustomerId(int id){
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        return orderService.getOrdersByCustomerId(id , entityManager);
     }
 }

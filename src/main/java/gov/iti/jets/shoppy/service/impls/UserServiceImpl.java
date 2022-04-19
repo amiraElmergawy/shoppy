@@ -5,6 +5,7 @@ import gov.iti.jets.shoppy.repository.interfaces.UserRepo;
 import gov.iti.jets.shoppy.repository.util.RepoFactory;
 import gov.iti.jets.shoppy.service.dtos.CustomerDto;
 import gov.iti.jets.shoppy.service.interfaces.UserService;
+import gov.iti.jets.shoppy.service.mappers.AddressMapper;
 import gov.iti.jets.shoppy.service.mappers.CustomerMapper;
 import jakarta.persistence.EntityManager;
 
@@ -15,6 +16,7 @@ public class UserServiceImpl implements UserService {
 
     private final RepoFactory repoFactory = RepoFactory.INSTANCE;
     private final CustomerMapper customerMapper = CustomerMapper.INSTANCE;
+    private final AddressMapper addressMapper = AddressMapper.INSTANCE;
     @Override
     public ViewCustomerHelper getCustomers(int pageNumber, EntityManager entityManager) {
         UserRepo userRepo = repoFactory.getUserRepo(entityManager);
@@ -22,6 +24,7 @@ public class UserServiceImpl implements UserService {
                 UserEntity -> {
                     System.out.println(UserEntity);
                     CustomerDto customerDto = customerMapper.customerEntityToDto(UserEntity);
+                    customerDto.setAddress(addressMapper.addressEntityToDto(UserEntity.getAddressEntity()));
                     System.out.println(customerDto);
                     return customerDto;
                 }
