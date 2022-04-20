@@ -13,7 +13,7 @@
     <!-- Basic Page Needs -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Product Details</title>
+    <title>Shoppy</title>
 
     <%@ include file="../includes/customer-head.jsp" %>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -150,7 +150,7 @@
 <%--                                                                                <button class="btn btn-primary add-to-cart add-item" onclick="addProduct(${productDto.getId()})">--%>
 <%--                                                                                    <a href="add-to-cart?productId=${productDto.getId()}">--%>
                                                                                         <form method="get" action="add-to-cart">
-                                                                                            <input style="display: none" type="number" name="productId" value="${productDto.getId()}"/><br>
+                                                                                            <input style="display: none" type="hidden" name="productId" value="${productDto.getId()}"/><br>
                                                                                             <c:choose>
                                                                                                 <c:when test="${productDto.getStock() > 0}">
                                                                                                     <button class="btn btn-primary add-to-cart add-item" type="submit">

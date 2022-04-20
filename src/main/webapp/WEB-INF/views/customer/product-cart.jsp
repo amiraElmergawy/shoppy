@@ -11,7 +11,7 @@
     <!-- Basic Page Needs -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Product Cart</title>
+    <title>Shoppy</title>
 
 
     <%@ include file="../includes/customer-head.jsp" %>
@@ -105,7 +105,7 @@
                                                                 </div>
                                                                 <div class="col-md-3 price col m-auto">
                                                                     <span class="product-price total " id=${orderProduct.getProduct().getId()}productTotal style="font-size: 16px;">
-                                                                        ${Math.round(orderProduct.getTotal())}
+                                                                            ${Math.round(orderProduct.getTotal())}
                                                                     </span>
                                                                     <span class="product-price total " style="font-size: 16px; margin-left: 10px">
                                                                      EG
@@ -141,7 +141,11 @@
                                             </div>
                                             <div class=" d-flex justify-content-between">
                                                 <div class="summary-label  text-white">Total : </div>
-                                                <div class="text-black  font-weight-bold font-italic text-white" id="productsTotal">${Math.round(cart.getTotalPrice())}</div>
+                                                <div class="text-black  font-weight-bold font-italic text-white" id="productsTotal">
+                                                    <c:if test="${not empty cart}">
+                                                        ${Math.round(cart.getTotalPrice())}
+                                                    </c:if>
+                                                </div>
                                             </div> 
                                             <div class=" d-flex justify-content-between">
                                                 <div class="summary-label  text-white">Shipping : </div>

@@ -8,10 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!-- Button trigger modal -->
-<p>${empty cart}</p>
 <c:choose>
     <c:when test="${empty cart}">
-        <h1>There no item </h1>
+        <h4>There are no items in your cart </h4>
     </c:when>
     <c:otherwise>
         <button type="button" id="checkout" class="continue btn btn-primary pull-xs-right" data-toggle="modal" data-target="#exampleModalLong">
