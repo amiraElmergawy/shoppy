@@ -20,7 +20,7 @@ public class PaymentController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/customer/payment.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("payment.html");
         try {
             rd.include(req,resp);
         } catch (ServletException e) {
