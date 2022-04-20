@@ -14,7 +14,7 @@
 
                 <!-- logo -->
                 <div class="mobile-logo">
-                    <a href="../customer/home">
+                    <a href="home">
                         <img class="logo-mobile img-fluid" src="assets/images/home/logo-mobie.png" alt="Prestashop_Furnitica">
                     </a>
                 </div>
@@ -100,7 +100,7 @@
                 <div class="col-sm-2 col-md-2 d-flex align-items-center">
                     <div id="logo">
                         <a href="home">
-                            <img src="assets/images/home/logo.png" alt="logo" class="img-fluid">
+                            <img src="assets/images/home/llogo.png" alt="logo" class="img-fluid">
                         </a>
                     </div>
                 </div>
@@ -184,18 +184,7 @@
                                     </a>
                                 </div>
                                 </c:if>
-                                <div>
-                                    <a class="check-out" href="checkout" rel="nofollow" title="Checkout">
-                                        <i class="fa fa-check" aria-hidden="true"></i>
-                                        <span>Checkout</span>
-                                    </a>
-                                </div>
-                                <div class="link_wishlist">
-                                    <a href="wishlist" title="My Wishlists">
-                                        <i class="fa fa-heart"></i>
-                                        <span>My Wishlists</span>
-                                    </a>
-                                </div>
+
                             </div>
                         </div>
                     </div>

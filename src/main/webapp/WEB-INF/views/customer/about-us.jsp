@@ -11,7 +11,7 @@
 		<!-- Basic Page Needs -->
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>Furnitica - Minimalist Furniture HTML Template</title>
+		<title>Shoppy</title>
 
 	<%@ include file="../includes/customer-head.jsp" %>
 	</head>
