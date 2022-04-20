@@ -33,12 +33,6 @@
                             <div class="cart-grid row">
                                 <div class="col-md-9 col-xs-12 check-info" id="cartContainer">
                                     <h1 class="title-page">Shopping Cart</h1>
-                                    <div class="d-none alert-secondary p-2 mb-4 text-center h6" id="">
-<%--                                        ${sessionScope.get(msg)}--%>
-                                        <c:if test="${cart==null}">
-                                            Your shopping cart is empty
-                                        </c:if>
-                                    </div>
                                     <div class="d-none alert-danger p-2 mb-4 text-center h6" id="error"></div>
                                     <div class="cart-container" id="productsContainer">
                                        <c:forEach var="orderProduct" items="${cart.getOrderProducts()}">
@@ -113,7 +107,7 @@
                                         <div class="cart-detailed-totals">
                                             <div class=" d-flex justify-content-between">
                                                 <div class="summary-label  text-white">Products Number: </div>
-                                                <div class="summary-label text-white"><span class="value   font-weight-bold font-italic text-white">${cart.getOrderProducts().size()}</span></div>
+                                                <div class="summary-label text-white"><span class="value   font-weight-bold font-italic text-white" id="productsNo">${cart.getOrderProducts().size()}</span></div>
                                             </div>
                                             <div class=" d-flex justify-content-between">
                                                 <div class="summary-label  text-white">Total : </div>

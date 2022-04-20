@@ -25,7 +25,7 @@ function increaseProduct(productId){
             } else {
                 div.disabled = false;
                 let quantityDiv = document.getElementById(productId+"quantity");
-                console.log(quantityDiv);
+                // console.log(quantityDiv);
                 let productPrice = document.getElementById(productId+"price");
                 let productTotal = document.getElementById(productId+"productTotal");
                 //update quantity
@@ -76,15 +76,18 @@ function deleteProduct(productId){
     $.ajax({
         url:'shopping-cart',
         type: 'post',
-        // contentType: 'application/json',
         data: {
             "productId":productId
         },
-        // dataType: 'json',
         success: function(data) {
             console.log(data)
             let productsContainer = document.getElementById("productsContainer");
+            let productTotal = document.getElementById(productId+"productTotal").textContent;
+            console.log("product total "+productTotal);
+            document.getElementById("productsTotal").innerText = (+document.getElementById("productsTotal").textContent) - (+productTotal);
+            document.getElementById("productsNo").innerText = +document.getElementById("productsNo").textContent -1
             productsContainer.removeChild(document.getElementById(productId));
+
         }
     });
 }
