@@ -1164,8 +1164,8 @@
                                             <div id="grid" class="related tab-pane fade in active show">
                                                 <div class="row mb-5">
                                                     <c:forEach var="product" items="${helper.getProductDtoList()}">
-                                                        <div class="item text-center col-md-4 mb-4 p-1">
-                                                            <div class="product-miniature js-product-miniature item-one first-item shadow rounded p-1">
+                                                        <div class="item text-center col-md-4 mb-4 p-1" >
+                                                            <div class="product-miniature js-product-miniature item-one first-item shadow rounded p-1" style="height: 260px">
                                                                 <div class="thumbnail-container border">
                                                                     <a href="product-details?productID=${product.getId()}">
                                                                         <img class="img-fluid image-cover" height="260px"
