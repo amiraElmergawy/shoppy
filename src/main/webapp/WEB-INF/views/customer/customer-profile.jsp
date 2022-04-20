@@ -21,7 +21,7 @@
 
 
     <%@ include file="../includes/customer-head.jsp" %>
-
+    <title>Shoppy</title>
     <!-- Template CSS -->
     <link rel="stylesheet" type="text/css" href="assets/styles/customer-profile.css">
     <link rel="stylesheet" type="text/css" href="assets/styles/validation-style.css">

@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="assets/libs/font-material/css/material-design-iconic-font.min.css">
 <link rel="stylesheet" href="assets/libs/slider-range/css/jslider.css">
 <link rel="stylesheet" href="assets/libs/owl-carousel/assets/owl.carousel.min.css">
+<link rel="icon" href="assets/images/home/logoo.png">
 
 <!-- Template CSS -->
 <link rel="stylesheet" type="text/css" href="assets/styles/style.css">

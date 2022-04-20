@@ -91,14 +91,13 @@
                                     <textarea class="form-control input" id="desc" rows="3" required></textarea>
                                     <div class="error"></div>
                                 </div>
-                                <button type="submit" class="btn btn-success my-2">Save Product</button>
+                                <button type="submit" id="btn" class="btn btn-success my-2">Save Product</button>
                             </form>
                         </div>
-                        ${isAdded}
-                        <%--                          <c:if test="${isAdded eq 'true'}"> <div class="alert alert-success" style="text-align: center !important;" role="alert">Product is added successfully</div></c:if>--%>
-<%--                          <c:if test="${isAdded ne 'true'}"><div class="alert alert-danger" style="text-align: center !important;" role="alert">--%>
-<%--                              We are sorry product not added, Try Again Please !--%>
-<%--                          </div></c:if>--%>
+
+                        <div class="alert alert-success d-none" style="text-align: center !important;" id="successmessage" role="alert"></div>
+                          <div class="alert alert-danger d-none" style="text-align: center !important;" id="errormessage" role="alert">
+                          </div>
 
 
 
@@ -109,7 +108,7 @@
 
     <%@ include file="../includes/admin-script.jsp" %>
     <script src="assets/scripts/forms-validator.js"></script>
-    <script src="assets/scripts/add-product.js"></script>
+    <script src="assets/scripts/product.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </body>
 

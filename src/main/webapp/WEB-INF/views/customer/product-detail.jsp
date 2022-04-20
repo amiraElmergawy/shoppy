@@ -13,7 +13,7 @@
     <!-- Basic Page Needs -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Furnitica - Minimalist Furniture HTML Template</title>
+    <title>Shoppy</title>
 
     <%@ include file="../includes/customer-head.jsp" %>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -65,7 +65,7 @@
                                                         <div class="images-container">
                                                             <div class="js-qv-mask mask tab-content ">
                                                                 <div id="item1" class="tab-pane fade active in show border-0">
-                                                                    <img src="images${productDto.getImagesPaths().get(0)}" alt="img">
+                                                                    <img src="images${productDto.getImagesPaths().get(0)}" alt="img" width="250px" height="350px">
                                                                 </div>
                                                                 <c:forEach begin="1" end="${productDto.getImagesPaths().size()-1}" var="current">
                                                                     <div id="item${current}" class="tab-pane fade">
@@ -78,9 +78,9 @@
                                                             </div>
                                                             <ul class="product-tab nav nav-tabs d-flex">
                                                                 <c:forEach begin="1" end="${productDto.getImagesPaths().size()-1}" var="current">
-                                                                    <li class="active col ">
+                                                                    <li class="active col " width="140px" height="140px">
                                                                         <a href="#item${current}" data-toggle="tab" aria-expanded="true" class="active show shadow rounded p-1 border-0">
-                                                                            <img src="images${productDto.getImagesPaths().get(current)}" alt="img">
+                                                                            <img src="images${productDto.getImagesPaths().get(current)}" alt="img" >
                                                                         </a>
                                                                     </li>
                                                                 </c:forEach>
@@ -136,36 +136,21 @@
 
 
                                                         </div>
+
                                                             <h2 font-size="25px"  class="font-color font-weight-bold ">${productDto.getPrice()} LE</h2>
-                                                            <h6 font-size="14px" class="text-muted mr-2 mb-4">${productDto.getProductDesc()}</h6>
                                                    
 
                                                         <div class="cart-area has-border ">
                                                             <div class="product-quantity">
                                                                 <div class="qty">
                                                                     <div class="input-group d-flex">
-                                                                        <div class="quantity" style="width:120px">
-                                                                            
-                                                                                <div class="quantity d-flex ">
-                                                                                    <div id="minus" class="shadow-sm btn-sm btn-primary font-weight-bold">
-                                                                                        -
-                                                                                    </div>
-                                                                                    <div class="btn-sm bg-white font-weight-bold mx-2">
-                                                                                        1
-                                                                                    </div>
-                                                                                    <div id="plus" class="shadow-sm btn-sm btn-primary font-weight-bold">
-                                                                                        +
-                                                                                    </div>
-                                                                                </div>
-                                                                                
-                                                                        
-                                                                        </div>
-                                                                        <span class="add" style="margin-top: -10px;">
+
+                                                                        <span class="add  ml-0" style="margin-top: -10px;">
 <%--                                                                                <button class="btn btn-primary add-to-cart add-item" type="submit">--%>
 <%--                                                                                <button class="btn btn-primary add-to-cart add-item" onclick="addProduct(${productDto.getId()})">--%>
 <%--                                                                                    <a href="add-to-cart?productId=${productDto.getId()}">--%>
                                                                                         <form method="get" action="add-to-cart">
-                                                                                            <input style="display: none" type="number" name="productId" value="${productDto.getId()}"/><br>
+                                                                                            <input style="display: none" type="hidden" name="productId" value="${productDto.getId()}"/><br>
                                                                                             <c:choose>
                                                                                                 <c:when test="${productDto.getStock() > 0}">
                                                                                                     <button class="btn btn-primary add-to-cart add-item" type="submit">
@@ -174,19 +159,9 @@
                                                                                                     </button>
                                                                                                 </c:when>
                                                                                                 <c:otherwise>
-                                                                                                    <button class="btn btn-primary disabled add-to-cart add-item" disabled>
-                                                                                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                                                                            <span>Add to cart</span>
-                                                                                                    </button>
                                                                                                 </c:otherwise>
                                                                                             </c:choose>
-
-
-
                                                                                        </form>
-                                                                            <a class="addToWishlist" href="#">
-                                                                                <i class="fa fa-heart" aria-hidden="true"></i>
-                                                                            </a>
                                                                         </span>
                                                                     </div>
                                                                 </div>
@@ -195,22 +170,13 @@
                                                             <p class="product-minimal-quantity">
                                                             </p>
                                                         </div>
-                                                       
-                                                        <div class="rating-comment  d-flex">
-                                                            <div class="review-description d-flex">
-                                                                <h6 font-size="14px" class="text-muted mr-2">Rated:</h6>
-                                                                <div class="rating">
-                                                                    <div class="star-content">
-                                                                        <div class="star"></div>
-                                                                        <div class="star"></div>
-                                                                        <div class="star"></div>
-                                                                        <div class="star"></div>
-                                                                        <div class="star"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                           
-                                                           
+
+                                                        <div class="rating-comment ">
+                                                            <h4 class="font-italic mb-3 text-muted">Description</h4>
+                                                            <h6 font-size="14px" class="text-muted font-italic mr-2 mb-4 mx-1">${productDto.getProductDesc()}</h6>
+
+
+
                                                         </div>
 <%--                                                        <div class="review">--%>
 <%--                                                            <ul class="nav nav-tabs">--%>
@@ -339,222 +305,222 @@
                                             </div>
 											
                                            
-                                            <div class="related">
-                                                <div class="title-tab-content ">
-                                                    <div class="title-product justify-content-start">
-                                                        <h2>Related Products</h2>
-                                                    </div>
-                                                </div>
-                                                <div class="tab-content">
-                                                    <div class="row ">
-                                                        <div class="item text-center col-md-3">
-                                                            <div class="product-miniature js-product-miniature item-one first-item">
-                                                                <div class="thumbnail-container border">
-                                                                    <a href="product-detail.jsp">
-                                                                        <img class="img-fluid image-cover" src="assets/images/product/1.jpg" alt="img">
-                                                                        <img class="img-fluid image-secondary" src="assets/images/product/22.jpg" alt="img">
-                                                                    </a>
-                                                                    <div class="highlighted-informations">
-                                                                        <div class="variant-links">
-                                                                            <a href="#" class="color beige" title="Beige"></a>
-                                                                            <a href="#" class="color orange" title="Orange"></a>
-                                                                            <a href="#" class="color green" title="Green"></a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="product-description">
-                                                                    <div class="product-groups">
-                                                                        <div class="product-title">
-                                                                            <a href="product-detail.jsp">Nulla et justo non augue</a>
-                                                                        </div>
-                                                                        <div class="rating">
-                                                                            <div class="star-content">
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="product-group-price">
-                                                                            <div class="product-price-and-shipping">
-                                                                                <span class="price">£28.08</span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="product-buttons d-flex justify-content-center">
-                                                                        <form action="#" method="post" class="formAddToCart">
-                                                                            <a class="add-to-cart" href="#" data-button-action="add-to-cart">
-                                                                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                                            </a>
-                                                                        </form>
-                                                                        <a class="addToWishlist" href="#" data-rel="1" onclick="">
-                                                                            <i class="fa fa-heart" aria-hidden="true"></i>
-                                                                        </a>
-                                                                        <a href="#" class="quick-view hidden-sm-down" data-link-action="quickview">
-                                                                            <i class="fa fa-eye" aria-hidden="true"></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="item text-center col-md-3">
-                                                            <div class="product-miniature js-product-miniature item-one first-item">
-                                                                <div class="thumbnail-container border">
-                                                                    <a href="product-detail.jsp">
-                                                                        <img class="img-fluid image-cover" src="assets/images/product/2.jpg" alt="img">
-                                                                        <img class="img-fluid image-secondary" src="assets/images/product/11.jpg" alt="img">
-                                                                    </a>
-                                                                    <div class="highlighted-informations">
-                                                                        <div class="variant-links">
-                                                                            <a href="#" class="color beige" title="Beige"></a>
-                                                                            <a href="#" class="color orange" title="Orange"></a>
-                                                                            <a href="#" class="color green" title="Green"></a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="product-description">
-                                                                    <div class="product-groups">
-                                                                        <div class="product-title">
-                                                                            <a href="product-detail.jsp">Nulla et justo non augue</a>
-                                                                        </div>
-                                                                        <div class="rating">
-                                                                            <div class="star-content">
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="product-group-price">
-                                                                            <div class="product-price-and-shipping">
-                                                                                <span class="price">£31.08</span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="product-buttons d-flex justify-content-center">
-                                                                        <form action="#" method="post" class="formAddToCart">
-                                                                            <a class="add-to-cart" href="#" data-button-action="add-to-cart">
-                                                                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                                            </a>
-                                                                        </form>
-                                                                        <a class="addToWishlist" href="#" data-rel="1" onclick="">
-                                                                            <i class="fa fa-heart" aria-hidden="true"></i>
-                                                                        </a>
-                                                                        <a href="#" class="quick-view hidden-sm-down" data-link-action="quickview">
-                                                                            <i class="fa fa-eye" aria-hidden="true"></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="item text-center col-md-3">
-                                                            <div class="product-miniature js-product-miniature item-one first-item">
-                                                                <div class="thumbnail-container border">
-                                                                    <a href="product-detail.jsp">
-                                                                        <img class="img-fluid image-cover" src="assets/images/product/3.jpg" alt="img">
-                                                                        <img class="img-fluid image-secondary" src="assets/images/product/14.jpg" alt="img">
-                                                                    </a>
-                                                                    <div class="highlighted-informations">
-                                                                        <div class="variant-links">
-                                                                            <a href="#" class="color beige" title="Beige"></a>
-                                                                            <a href="#" class="color orange" title="Orange"></a>
-                                                                            <a href="#" class="color green" title="Green"></a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="product-description">
-                                                                    <div class="product-groups">
-                                                                        <div class="product-title">
-                                                                            <a href="product-detail.jsp">Nulla et justo non augue</a>
-                                                                        </div>
-                                                                        <div class="rating">
-                                                                            <div class="star-content">
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="product-group-price">
-                                                                            <div class="product-price-and-shipping">
-                                                                                <span class="price">£20.08</span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="product-buttons d-flex justify-content-center">
-                                                                        <form action="#" method="post" class="formAddToCart">
-                                                                            <a class="add-to-cart" href="#" data-button-action="add-to-cart">
-                                                                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                                            </a>
-                                                                        </form>
-                                                                        <a class="addToWishlist" href="#" data-rel="1" onclick="">
-                                                                            <i class="fa fa-heart" aria-hidden="true"></i>
-                                                                        </a>
-                                                                        <a href="#" class="quick-view hidden-sm-down" data-link-action="quickview">
-                                                                            <i class="fa fa-eye" aria-hidden="true"></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+<%--                                            <div class="related">--%>
+<%--                                                <div class="title-tab-content ">--%>
+<%--                                                    <div class="title-product justify-content-start">--%>
+<%--                                                        <h2>Related Products</h2>--%>
+<%--                                                    </div>--%>
+<%--                                                </div>--%>
+<%--                                                <div class="tab-content">--%>
+<%--                                                    <div class="row ">--%>
+<%--                                                        <div class="item text-center col-md-3">--%>
+<%--                                                            <div class="product-miniature js-product-miniature item-one first-item">--%>
+<%--                                                                <div class="thumbnail-container border">--%>
+<%--                                                                    <a href="product-detail.jsp">--%>
+<%--                                                                        <img class="img-fluid image-cover" src="../../../assets/images/product/1.jpg" alt="img">--%>
+<%--                                                                        <img class="img-fluid image-secondary" src="../../../assets/images/product/22.jpg" alt="img">--%>
+<%--                                                                    </a>--%>
+<%--                                                                    <div class="highlighted-informations">--%>
+<%--                                                                        <div class="variant-links">--%>
+<%--                                                                            <a href="#" class="color beige" title="Beige"></a>--%>
+<%--                                                                            <a href="#" class="color orange" title="Orange"></a>--%>
+<%--                                                                            <a href="#" class="color green" title="Green"></a>--%>
+<%--                                                                        </div>--%>
+<%--                                                                    </div>--%>
+<%--                                                                </div>--%>
+<%--                                                                <div class="product-description">--%>
+<%--                                                                    <div class="product-groups">--%>
+<%--                                                                        <div class="product-title">--%>
+<%--                                                                            <a href="product-detail.jsp">Nulla et justo non augue</a>--%>
+<%--                                                                        </div>--%>
+<%--                                                                        <div class="rating">--%>
+<%--                                                                            <div class="star-content">--%>
+<%--                                                                                <div class="star"></div>--%>
+<%--                                                                                <div class="star"></div>--%>
+<%--                                                                                <div class="star"></div>--%>
+<%--                                                                                <div class="star"></div>--%>
+<%--                                                                                <div class="star"></div>--%>
+<%--                                                                            </div>--%>
+<%--                                                                        </div>--%>
+<%--                                                                        <div class="product-group-price">--%>
+<%--                                                                            <div class="product-price-and-shipping">--%>
+<%--                                                                                <span class="price">£28.08</span>--%>
+<%--                                                                            </div>--%>
+<%--                                                                        </div>--%>
+<%--                                                                    </div>--%>
+<%--                                                                    <div class="product-buttons d-flex justify-content-center">--%>
+<%--                                                                        <form action="#" method="post" class="formAddToCart">--%>
+<%--                                                                            <a class="add-to-cart" href="#" data-button-action="add-to-cart">--%>
+<%--                                                                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>--%>
+<%--                                                                            </a>--%>
+<%--                                                                        </form>--%>
+<%--                                                                        <a class="addToWishlist" href="#" data-rel="1" onclick="">--%>
+<%--                                                                            <i class="fa fa-heart" aria-hidden="true"></i>--%>
+<%--                                                                        </a>--%>
+<%--                                                                        <a href="#" class="quick-view hidden-sm-down" data-link-action="quickview">--%>
+<%--                                                                            <i class="fa fa-eye" aria-hidden="true"></i>--%>
+<%--                                                                        </a>--%>
+<%--                                                                    </div>--%>
+<%--                                                                </div>--%>
+<%--                                                            </div>--%>
+<%--                                                        </div>--%>
+<%--                                                        <div class="item text-center col-md-3">--%>
+<%--                                                            <div class="product-miniature js-product-miniature item-one first-item">--%>
+<%--                                                                <div class="thumbnail-container border">--%>
+<%--                                                                    <a href="product-detail.jsp">--%>
+<%--                                                                        <img class="img-fluid image-cover" src="../../../assets/images/product/2.jpg" alt="img">--%>
+<%--                                                                        <img class="img-fluid image-secondary" src="../../../assets/images/product/11.jpg" alt="img">--%>
+<%--                                                                    </a>--%>
+<%--                                                                    <div class="highlighted-informations">--%>
+<%--                                                                        <div class="variant-links">--%>
+<%--                                                                            <a href="#" class="color beige" title="Beige"></a>--%>
+<%--                                                                            <a href="#" class="color orange" title="Orange"></a>--%>
+<%--                                                                            <a href="#" class="color green" title="Green"></a>--%>
+<%--                                                                        </div>--%>
+<%--                                                                    </div>--%>
+<%--                                                                </div>--%>
+<%--                                                                <div class="product-description">--%>
+<%--                                                                    <div class="product-groups">--%>
+<%--                                                                        <div class="product-title">--%>
+<%--                                                                            <a href="product-detail.jsp">Nulla et justo non augue</a>--%>
+<%--                                                                        </div>--%>
+<%--                                                                        <div class="rating">--%>
+<%--                                                                            <div class="star-content">--%>
+<%--                                                                                <div class="star"></div>--%>
+<%--                                                                                <div class="star"></div>--%>
+<%--                                                                                <div class="star"></div>--%>
+<%--                                                                                <div class="star"></div>--%>
+<%--                                                                                <div class="star"></div>--%>
+<%--                                                                            </div>--%>
+<%--                                                                        </div>--%>
+<%--                                                                        <div class="product-group-price">--%>
+<%--                                                                            <div class="product-price-and-shipping">--%>
+<%--                                                                                <span class="price">£31.08</span>--%>
+<%--                                                                            </div>--%>
+<%--                                                                        </div>--%>
+<%--                                                                    </div>--%>
+<%--                                                                    <div class="product-buttons d-flex justify-content-center">--%>
+<%--                                                                        <form action="#" method="post" class="formAddToCart">--%>
+<%--                                                                            <a class="add-to-cart" href="#" data-button-action="add-to-cart">--%>
+<%--                                                                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>--%>
+<%--                                                                            </a>--%>
+<%--                                                                        </form>--%>
+<%--                                                                        <a class="addToWishlist" href="#" data-rel="1" onclick="">--%>
+<%--                                                                            <i class="fa fa-heart" aria-hidden="true"></i>--%>
+<%--                                                                        </a>--%>
+<%--                                                                        <a href="#" class="quick-view hidden-sm-down" data-link-action="quickview">--%>
+<%--                                                                            <i class="fa fa-eye" aria-hidden="true"></i>--%>
+<%--                                                                        </a>--%>
+<%--                                                                    </div>--%>
+<%--                                                                </div>--%>
+<%--                                                            </div>--%>
+<%--                                                        </div>--%>
+<%--                                                        <div class="item text-center col-md-3">--%>
+<%--                                                            <div class="product-miniature js-product-miniature item-one first-item">--%>
+<%--                                                                <div class="thumbnail-container border">--%>
+<%--                                                                    <a href="product-detail.jsp">--%>
+<%--                                                                        <img class="img-fluid image-cover" src="../../../assets/images/product/3.jpg" alt="img">--%>
+<%--                                                                        <img class="img-fluid image-secondary" src="../../../assets/images/product/14.jpg" alt="img">--%>
+<%--                                                                    </a>--%>
+<%--                                                                    <div class="highlighted-informations">--%>
+<%--                                                                        <div class="variant-links">--%>
+<%--                                                                            <a href="#" class="color beige" title="Beige"></a>--%>
+<%--                                                                            <a href="#" class="color orange" title="Orange"></a>--%>
+<%--                                                                            <a href="#" class="color green" title="Green"></a>--%>
+<%--                                                                        </div>--%>
+<%--                                                                    </div>--%>
+<%--                                                                </div>--%>
+<%--                                                                <div class="product-description">--%>
+<%--                                                                    <div class="product-groups">--%>
+<%--                                                                        <div class="product-title">--%>
+<%--                                                                            <a href="product-detail.jsp">Nulla et justo non augue</a>--%>
+<%--                                                                        </div>--%>
+<%--                                                                        <div class="rating">--%>
+<%--                                                                            <div class="star-content">--%>
+<%--                                                                                <div class="star"></div>--%>
+<%--                                                                                <div class="star"></div>--%>
+<%--                                                                                <div class="star"></div>--%>
+<%--                                                                                <div class="star"></div>--%>
+<%--                                                                                <div class="star"></div>--%>
+<%--                                                                            </div>--%>
+<%--                                                                        </div>--%>
+<%--                                                                        <div class="product-group-price">--%>
+<%--                                                                            <div class="product-price-and-shipping">--%>
+<%--                                                                                <span class="price">£20.08</span>--%>
+<%--                                                                            </div>--%>
+<%--                                                                        </div>--%>
+<%--                                                                    </div>--%>
+<%--                                                                    <div class="product-buttons d-flex justify-content-center">--%>
+<%--                                                                        <form action="#" method="post" class="formAddToCart">--%>
+<%--                                                                            <a class="add-to-cart" href="#" data-button-action="add-to-cart">--%>
+<%--                                                                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>--%>
+<%--                                                                            </a>--%>
+<%--                                                                        </form>--%>
+<%--                                                                        <a class="addToWishlist" href="#" data-rel="1" onclick="">--%>
+<%--                                                                            <i class="fa fa-heart" aria-hidden="true"></i>--%>
+<%--                                                                        </a>--%>
+<%--                                                                        <a href="#" class="quick-view hidden-sm-down" data-link-action="quickview">--%>
+<%--                                                                            <i class="fa fa-eye" aria-hidden="true"></i>--%>
+<%--                                                                        </a>--%>
+<%--                                                                    </div>--%>
+<%--                                                                </div>--%>
+<%--                                                            </div>--%>
+<%--                                                        </div>--%>
 
-                                                        <div class="item text-center col-md-3">
-                                                            <div class="product-miniature js-product-miniature item-one first-item">
-                                                                <div class="thumbnail-container border">
-                                                                    <a href="product-detail.jsp">
-                                                                        <img class="img-fluid image-cover" src="assets/images/product/3.jpg" alt="img">
-                                                                        <img class="img-fluid image-secondary" src="assets/images/product/14.jpg" alt="img">
-                                                                    </a>
-                                                                    <div class="highlighted-informations">
-                                                                        <div class="variant-links">
-                                                                            <a href="#" class="color beige" title="Beige"></a>
-                                                                            <a href="#" class="color orange" title="Orange"></a>
-                                                                            <a href="#" class="color green" title="Green"></a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="product-description">
-                                                                    <div class="product-groups">
-                                                                        <div class="product-title">
-                                                                            <a href="product-detail.jsp">Nulla et justo non augue</a>
-                                                                        </div>
-                                                                        <div class="rating">
-                                                                            <div class="star-content">
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="product-group-price">
-                                                                            <div class="product-price-and-shipping">
-                                                                                <span class="price">£20.08</span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="product-buttons d-flex justify-content-center">
-                                                                        <form action="#" method="post" class="formAddToCart">
-                                                                            <a class="add-to-cart" href="#" data-button-action="add-to-cart">
-                                                                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                                            </a>
-                                                                        </form>
-                                                                        <a class="addToWishlist" href="#" data-rel="1" onclick="">
-                                                                            <i class="fa fa-heart" aria-hidden="true"></i>
-                                                                        </a>
-                                                                        <a href="#" class="quick-view hidden-sm-down" data-link-action="quickview">
-                                                                            <i class="fa fa-eye" aria-hidden="true"></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+<%--                                                        <div class="item text-center col-md-3">--%>
+<%--                                                            <div class="product-miniature js-product-miniature item-one first-item">--%>
+<%--                                                                <div class="thumbnail-container border">--%>
+<%--                                                                    <a href="product-detail.jsp">--%>
+<%--                                                                        <img class="img-fluid image-cover" src="../../../assets/images/product/3.jpg" alt="img">--%>
+<%--                                                                        <img class="img-fluid image-secondary" src="../../../assets/images/product/14.jpg" alt="img">--%>
+<%--                                                                    </a>--%>
+<%--                                                                    <div class="highlighted-informations">--%>
+<%--                                                                        <div class="variant-links">--%>
+<%--                                                                            <a href="#" class="color beige" title="Beige"></a>--%>
+<%--                                                                            <a href="#" class="color orange" title="Orange"></a>--%>
+<%--                                                                            <a href="#" class="color green" title="Green"></a>--%>
+<%--                                                                        </div>--%>
+<%--                                                                    </div>--%>
+<%--                                                                </div>--%>
+<%--                                                                <div class="product-description">--%>
+<%--                                                                    <div class="product-groups">--%>
+<%--                                                                        <div class="product-title">--%>
+<%--                                                                            <a href="product-detail.jsp">Nulla et justo non augue</a>--%>
+<%--                                                                        </div>--%>
+<%--                                                                        <div class="rating">--%>
+<%--                                                                            <div class="star-content">--%>
+<%--                                                                                <div class="star"></div>--%>
+<%--                                                                                <div class="star"></div>--%>
+<%--                                                                                <div class="star"></div>--%>
+<%--                                                                                <div class="star"></div>--%>
+<%--                                                                                <div class="star"></div>--%>
+<%--                                                                            </div>--%>
+<%--                                                                        </div>--%>
+<%--                                                                        <div class="product-group-price">--%>
+<%--                                                                            <div class="product-price-and-shipping">--%>
+<%--                                                                                <span class="price">£20.08</span>--%>
+<%--                                                                            </div>--%>
+<%--                                                                        </div>--%>
+<%--                                                                    </div>--%>
+<%--                                                                    <div class="product-buttons d-flex justify-content-center">--%>
+<%--                                                                        <form action="#" method="post" class="formAddToCart">--%>
+<%--                                                                            <a class="add-to-cart" href="#" data-button-action="add-to-cart">--%>
+<%--                                                                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>--%>
+<%--                                                                            </a>--%>
+<%--                                                                        </form>--%>
+<%--                                                                        <a class="addToWishlist" href="#" data-rel="1" onclick="">--%>
+<%--                                                                            <i class="fa fa-heart" aria-hidden="true"></i>--%>
+<%--                                                                        </a>--%>
+<%--                                                                        <a href="#" class="quick-view hidden-sm-down" data-link-action="quickview">--%>
+<%--                                                                            <i class="fa fa-eye" aria-hidden="true"></i>--%>
+<%--                                                                        </a>--%>
+<%--                                                                    </div>--%>
+<%--                                                                </div>--%>
+<%--                                                            </div>--%>
+<%--                                                        </div>--%>
+<%--                                                    </div>--%>
+<%--                                                </div>--%>
+<%--                                            </div>--%>
                                         </div>
                                     </div>
                                 </div>
