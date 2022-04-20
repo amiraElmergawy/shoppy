@@ -26,13 +26,14 @@
             <div class="modal-body">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="">Are you want to confirm your order?</div>
+                        <div class="">Pay by?</div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" id="minus" class="btn shadow-sm btn-sm btn-primary font-weight-bold text-dark mr-1" data-dismiss="modal">Cancel</button>
-                <button type="button" id="plus" class="btn shadow-sm btn-sm btn-primary font-weight-bold" onclick="saveOrder()" data-dismiss="modal">Confirm</button>
+                <a class="btn shadow-sm btn-sm btn-primary font-weight-bold" href="payment">Visa</a>
+                <button type="button" id="plus" class="btn shadow-sm btn-sm btn-primary font-weight-bold ml-1" onclick="saveOrder()" data-dismiss="modal">Your Credit</button>
             </div>
         </div>
     </div>

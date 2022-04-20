@@ -173,7 +173,7 @@ public class DomainFacade {
         return saved;
     }
 
-    public boolean saveOrder(Optional<OrderDto> orderDtoOptional) {
+    public boolean saveOrderWithCreditLimit(Optional<OrderDto> orderDtoOptional) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         boolean saved = false;
         if (orderDtoOptional.isPresent() && (orderDtoOptional.get().getCustomer().getCreditLimit() >= orderDtoOptional.get().getTotalPrice())){
@@ -194,6 +194,21 @@ public class DomainFacade {
         updated = productService.updateProduct(productDto,entityManager);
         entityManager.close();
         return updated;
+    }
+
+
+    public boolean saveOrderWithVisa(Optional<OrderDto> orderDtoOptional){
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        boolean saved = false;
+        if (orderDtoOptional.isPresent() && (orderDtoOptional.get().getCustomer().getCreditLimit() >= orderDtoOptional.get().getTotalPrice())){
+            var customer= orderDtoOptional.get().getCustomer();
+            System.out.println(customer);
+            userService.updateCustomer((int) customer.getId(), customer.getCreditLimit(), entityManager);
+            saved = shoppingCartService.saveOrder(orderDtoOptional, entityManager);
+            System.out.println("order saving result: "+ saved);
+        }
+        entityManager.close();
+        return saved;
     }
 
 }
