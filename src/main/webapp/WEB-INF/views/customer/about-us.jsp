@@ -34,25 +34,25 @@
 									<div class="">
 										<div class="section-header">
 											<center><h1 class="title-page">Meet Shoppy Team</h1></center>
-											<p></p>
+											<p>We are ITI Students "Java Track"</p>
 										</div>
 										<div class="row justify-content-center">
 											<div class="col-lg-2 col-md-6 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
-												<div class="member"> <img src="https://i.imgur.com/rAInTHU.jpg" class="img-fluid" alt="">
+												<div class="member"> <img src="assets/images/home/amira.jpeg" class="img-fluid" alt="">
 													<div class="member-info">
 														<div class="member-info-content">
 															<h4>Amira Elmergawy</h4> <span>Java Developer</span>
-															<div class="social"> <a href=""><i class="fa fa-twitter"></i></a> <a href=""><i class="fa fa-facebook"></i></a> <a href=""><i class="fa fa-google-plus"></i></a> <a href=""><i class="fa fa-linkedin"></i></a> </div>
+															<div class="social"> <a href=""><i class="fa fa-twitter"></i></a> <a href=""><i class="fa fa-facebook"></i></a> <a href=" amiraelmergawy@gmail.com"><i class="fa fa-google-plus"></i></a> <a href="https://www.linkedin.com/in/amira-elmergawy-a3526716b/"><i class="fa fa-linkedin"></i></a> </div>
 														</div>
 													</div>
 												</div>
 											</div>
 											<div class="col-lg-2 col-md-6 wow fadeInUp" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
-												<div class="member"> <img src="https://i.imgur.com/TCoUOUM.jpg" class="img-fluid" alt="">
+												<div class="member"> <img src="assets/images/home/abdelaziz.jpeg" class="img-fluid" alt="">
 													<div class="member-info">
 														<div class="member-info-content">
 															<h4>Abdelaziz Sayed</h4> <span>Java Developer</span>
-															<div class="social"> <a href=""><i class="fa fa-twitter"></i></a> <a href=""><i class="fa fa-facebook"></i></a> <a href=""><i class="fa fa-google-plus"></i></a> <a href=""><i class="fa fa-linkedin"></i></a> </div>
+															<div class="social"> <a href=""><i class="fa fa-twitter"></i></a> <a href=""><i class="fa fa-facebook"></i></a> <a href=""><i class="fa fa-google-plus"></i></a> <a href="https://www.linkedin.com/in/abdelaziz-sayed-a746b2198/"><i class="fa fa-linkedin"></i></a> </div>
 														</div>
 													</div>
 												</div>
@@ -68,17 +68,17 @@
 												</div>
 											</div>
 											<div class="col-lg-2 col-md-6 wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
-												<div class="member"> <img src="https://i.imgur.com/rAInTHU.jpg" class="img-fluid" alt="">
+												<div class="member"> <img src="assets/images/home/hesham.jpeg" class="img-fluid" alt="">
 													<div class="member-info">
 														<div class="member-info-content">
 															<h4>Hesham Ahmed</h4> <span>Java Developer</span>
-															<div class="social"> <a href=""><i class="fa fa-twitter"></i></a> <a href=""><i class="fa fa-facebook"></i></a> <a href=""><i class="fa fa-google-plus"></i></a> <a href=""><i class="fa fa-linkedin"></i></a> </div>
+															<div class="social"> <a href=""><i class="fa fa-twitter"></i></a> <a href=""><i class="fa fa-facebook"></i></a> <a href="heshamahmed22226.ha@gmail.com"><i class="fa fa-google-plus"></i></a> <a href=""><i class="fa fa-linkedin"></i></a> </div>
 														</div>
 													</div>
 												</div>
 											</div>
 											<div class="col-lg-2 col-md-6 wow fadeInUp" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
-												<div class="member"> <img src="https://i.imgur.com/TCoUOUM.jpg" class="img-fluid" alt="">
+												<div class="member"> <img src="assets/images/home/sally.jpeg" class="img-fluid" alt="">
 													<div class="member-info">
 														<div class="member-info-content">
 															<h4>Sally Elbanawany</h4> <span>Java Developer</span>
