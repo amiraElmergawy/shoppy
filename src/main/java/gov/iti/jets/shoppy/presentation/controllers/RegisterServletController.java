@@ -1,8 +1,8 @@
 package gov.iti.jets.shoppy.presentation.controllers;
 
+import gov.iti.jets.shoppy.presentation.dtos.CustomerPostRequestDto;
 import gov.iti.jets.shoppy.service.DomainFacade;
 import gov.iti.jets.shoppy.service.dtos.CustomerDto;
-import gov.iti.jets.shoppy.presentation.dtos.CustomerPostRequestDto;
 import gov.iti.jets.shoppy.service.util.HashManager;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
