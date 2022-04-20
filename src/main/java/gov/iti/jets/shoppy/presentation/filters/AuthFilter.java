@@ -29,8 +29,8 @@ public class AuthFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         String requestUrl = ((HttpServletRequest) servletRequest).getRequestURL().substring(((HttpServletRequest) servletRequest).getRequestURL().lastIndexOf("/") + 1);
-        System.out.println("getRequestURL().substring: " + requestUrl);
-        System.out.println("uri: " + ((HttpServletRequest) servletRequest).getRequestURI());
+//        System.out.println("getRequestURL().substring: " + requestUrl);
+//        System.out.println("uri: " + ((HttpServletRequest) servletRequest).getRequestURI());
         if (requestUrl.isBlank())
             ((HttpServletResponse) servletResponse).sendRedirect("home");
         else {
