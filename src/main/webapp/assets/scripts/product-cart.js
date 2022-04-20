@@ -113,6 +113,7 @@ function saveOrder(){
                 document.getElementById("creditLimit").innerText = (+document.getElementById("creditLimit").textContent) - (+document.getElementById("productsTotal").textContent);
                 document.getElementById("cartContainer").removeChild(document.getElementById("productsContainer"));
                 document.getElementById("cart-summary").classList.add("d-none");
+                document.getElementById("cart-modal").classList.add("d-none");
             }
         }
     });
