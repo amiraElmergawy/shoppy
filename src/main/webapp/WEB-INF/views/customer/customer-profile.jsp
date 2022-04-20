@@ -69,14 +69,14 @@
 
                             <div class="form-outline mb-1 form-group">
                                 <label class="form-label" for="name">Name</label>
-                                <input type="text" id="name" name="username" value="${helper.getCustomerDto().getUsername()}" class="form-control"  disabled="disabled" required/>
+                                <input type="text" id="name" name="username" value="${helper.getCustomerDto().getUsername()}" class="form-control"  disabled="disabled" />
                                 <div class="error"></div>
 
                             </div>
                             <!-- Text input -->
                             <div class="form-outline mb-1 form-group">
                                 <label class="form-label" for="job">Job</label>
-                                <input type="text" id="job" name="job" value="${helper.getCustomerDto().getJob()}" class="form-control" disabled="disabled" required/>
+                                <input type="text" id="job" name="job" value="${helper.getCustomerDto().getJob()}" class="form-control" disabled="disabled" />
                                 <div class="error"></div>
                             </div>
 
@@ -84,26 +84,26 @@
                             <div class="form-outline mb-1 form-group">
 
                                 <label class="form-label" >City</label>
-                                <input type="text" id="city" name="city" value="${helper.getCustomerDto().getAddress().getArea()}" class="form-control" disabled="disabled" required/>
+                                <input type="text" id="city" name="city" value="${helper.getCustomerDto().getAddress().getArea()}" class="form-control" disabled="disabled" />
                                 <div class="error"></div>
                             </div>
                             <div class="form-outline mb-1 form-group">
 
                                 <label class="form-label" >Street</label>
-                                <input type="text" id="street" name="street" value="${helper.getCustomerDto().getAddress().getStreet()}" class="form-control" disabled="disabled" required/>
+                                <input type="text" id="street" name="street" value="${helper.getCustomerDto().getAddress().getStreet()}" class="form-control" disabled="disabled" />
                                 <div class="error"></div>
                             </div>
                             <div class="form-outline mb-1 form-group">
 
                                 <label class="form-label" >Building Number</label>
 
-                                <input type="text" id="building-number" name="buildingNum" value="${helper.getCustomerDto().getAddress().getBuildingNum()}" class="form-control" disabled="disabled" required/>
+                                <input type="number" id="building-number" name="buildingNum" min="0" value="${helper.getCustomerDto().getAddress().getBuildingNum()}" class="form-control" disabled="disabled" />
                                 <div class="error"></div>
                             </div>
                             <div class="form-outline mb-1 form-group">
 
                                 <label class="form-label" >Floor Number</label>
-                                <input type="text" id="floor-number" name="floorNum" value="${helper.getCustomerDto().getAddress().getFloorNum()}" class="form-control" disabled="disabled" required/>
+                                <input type="number" id="floor-number" min="0" name="floorNum" value="${helper.getCustomerDto().getAddress().getFloorNum()}" class="form-control" disabled="disabled" />
                                 <div class="error"></div>
                             </div>
 
@@ -118,23 +118,19 @@
                             <div class="form-outline mb-1 form-group">
 
                                 <label class="form-label" for="date">Birth Date</label>
-                                <input type="date" id="date" name="date" value="${helper.getCustomerDto().getDob()}" class="form-control" disabled="disabled" required/>
+                                <input type="date" id="date" name="date" value="${helper.getCustomerDto().getDob()}" class="form-control" disabled="disabled" />
                                 <div class="error"></div>
                             </div>
                             <div class="form-outline mb-1 form-group">
                                 <label class="form-label" for="credit">Credit Limit</label>
-                                <input type="text" id="credit" name="credit" value="${helper.getCustomerDto().getCreditLimit()}" class="form-control" disabled="disabled" required/>
-<%--                                <select name="gender" id="gender" name="gender" class="list form-control" disabled="disabled" required>--%>
-<%--                                    <option value="male">Male</option>--%>
-<%--                                    <option value="female">Female</option>--%>
-<%--                                </select>--%>
+                                <input type="number" id="credit" name="credit" value="${helper.getCustomerDto().getCreditLimit()}" class="form-control" disabled="disabled" />
                                 <div class="error"></div>
 
                             </div>
                             <div class="form-outline mb-1 form-group">
                                 <label class="form-label" for="genderDisplay">Gender</label>
-                                <input type="text" id="genderDisplay" value="${genderValue}" class="form-control" disabled="disabled" required/>
-                                    <select name="gender" id="gender" name="gender" class="list form-control non_visible"  required>
+                                <input type="text" id="genderDisplay" value="${genderValue}" class="form-control" disabled="disabled" />
+                                    <select name="gender" id="gender" name="gender" class="list form-control non_visible"  >
                                         <option value="male">Male</option>
                                         <option value="female">Female</option>
                                     </select>
@@ -144,8 +140,8 @@
 
                             <div class="form-outline mb-1 form-group">
                                 <label class="form-label" for="interests">Favourites</label>
-                                <input type="text" id="interestsDisplay" value="${helper.getCustomerDto().getInterests()}" class="form-control" disabled="disabled" required/>
-                                <select name="interests" id="interests" name="interests" class="list form-control non_visible"   required>
+                                <input type="text" id="interestsDisplay" value="${helper.getCustomerDto().getInterests()}" class="form-control" disabled="disabled" />
+                                <select name="interests" id="interests" name="interests" class="list form-control non_visible"   >
                                     <option value="Chairs">Chairs</option>
                                     <option value="Rooms">Rooms</option>
                                     <option value="Kitchen">Kitchen</option>

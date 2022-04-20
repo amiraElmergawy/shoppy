@@ -1,10 +1,10 @@
 const emailPattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 const passwordPattern = /^([A-Za-z]|[0-9]){8,}$/;
-const namePattern = /^[A-Za-z]\w{2,29}$/;
+const namePattern = /^[A-Za-z]{2,29}$/;
 const setError = (element, message) => {
     const inputControl = element.parentElement;
     const errorDisplay = inputControl.querySelector('.error');
-console.log(inputControl);
+    console.log(inputControl);
     errorDisplay.innerText = message;
     inputControl.classList.add('error');
     // inputControl.classList.remove('success')
@@ -14,7 +14,7 @@ console.log(inputControl);
 const setSuccess = element => {
     const inputControl = element.parentElement;
     //const errorDisplay = inputControl.querySelector('.error');
-     //errorDisplay.innerText ='';
+    //errorDisplay.innerText ='';
     inputControl.classList.remove('error');
     inputControl.classList.add('success');
 };
@@ -64,7 +64,7 @@ const validateNameInput = nameElement => {
         setError(nameElement, 'This field is required');
         return false;
     } else if (!isValidName(nameElement.value)) {
-        setError(nameElement, 'Wrong')
+        setError(nameElement, 'This field must contain only letters')
         return false;
     } else {
         setSuccess(nameElement);

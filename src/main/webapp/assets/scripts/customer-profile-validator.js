@@ -17,17 +17,7 @@ const genderDisplayElement=document.getElementById("genderDisplay");
 
 const editButton= document.getElementById("edit");
 const submitButton = document.getElementById("save");
-// form.addEventListener('submit', e => {
-//     e.preventDefault();
-//     validateNameInput(nameElement);
-//     validateEmptyInputs(jopElement);
-//     validateEmptyInputs(cityElement);
-//     validateEmptyInputs(streetElement);
-//     validateEmptyInputs(buildingElement);
-//     validateEmptyInputs(dateElement);
-//     validateEmptyInputs(interestsElement);
-//     validateGenderInput(genderElement);
-// })
+
 editButton.addEventListener('click',e=>{
     nameElement.removeAttribute("disabled");
     dateElement.removeAttribute("disabled");
@@ -44,43 +34,25 @@ editButton.addEventListener('click',e=>{
     emailEelement.classList.add('non_visible');
     jopElement.removeAttribute("disabled");
 
- })
+})
 
 form.addEventListener('submit', e => {
     console.log("%%%%%%%%%form_______");
     e.preventDefault();
-    const validName=validateEmptyInputs(nameElement);
+    const validName=validateNameInput(nameElement);
     const validBirthDate=validateEmptyInputs(dateElement);
     const validStreet=validateEmptyInputs(streetElement);
     const validBuildingNumber=validateEmptyInputs(buildingElement);
     const validFloorNumber=validateEmptyInputs(floorElement);
-    const validJob=validateEmptyInputs(jopElement);
-    const validCity=validateEmptyInputs(cityElement);
+    const validJob=validateNameInput(jopElement);
+    const validCity=validateNameInput(cityElement);
+    const validCredit=validateEmptyInputs(creditElement);
 
     let customerData ="";
 
-    if(validName && validBirthDate && validFloorNumber && validJob && validBuildingNumber && validStreet && validCity) {
+    if(validName && validBirthDate && validFloorNumber && validJob && validBuildingNumber && validStreet && validCity && validCredit) {
 
 
-        // let xmlHttp = new XMLHttpRequest();
-        // xmlHttp.open("POST", '/shoppy/profile', true);
-        // customerData = {
-        //     username: nameElement.value,
-        //     email: emailEelement.value,
-        //     dob: dateElement.value,
-        //     interests: interestsElement.value,
-        //     job:jopElement.value,
-        //     street:streetElement.value,
-        //     floorNumber:floorElement.value,
-        //     buildingNumber:buildingElement.value,
-        //     city:cityElement.value,
-        //     gender:genderElement.value
-        // };
-        // console.log(customerData);
-        // xmlHttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        // xmlHttp.send("customerData=" + JSON.stringify(customerData));
-        // console.log(customerData);
-        // submitButton.submit();
         console.log("valid");
         for (var pair of new FormData(form).entries()) {
             console.log(pair[0] + ': ' + pair[1]);
