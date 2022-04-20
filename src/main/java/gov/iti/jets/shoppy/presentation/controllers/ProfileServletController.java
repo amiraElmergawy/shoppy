@@ -72,7 +72,6 @@ public class ProfileServletController extends HttpServlet{
                 .address(addressDto)
                 .interests(req.getParameter("interests").trim())
                 .job(req.getParameter("job"))
-                .creditLimit(Float.parseFloat(req.getParameter("credit")))
                 .isMale(Boolean.parseBoolean(req.getParameter("gender")))
                 .build();
 

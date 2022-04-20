@@ -1,6 +1,6 @@
 const form = document.getElementById("edit-form");
 const nameElement = document.getElementById("name");
-const creditElement = document.getElementById("credit");
+// const creditElement = document.getElementById("credit");
 const interestsElement=document.getElementById("interests");
 const  dateElement = document.getElementById("date");
 const jopElement = document.getElementById("job");
@@ -21,7 +21,7 @@ const submitButton = document.getElementById("save");
 editButton.addEventListener('click',e=>{
     nameElement.removeAttribute("disabled");
     dateElement.removeAttribute("disabled");
-    creditElement.removeAttribute("disabled");
+    // creditElement.removeAttribute("disabled");
     cityElement.removeAttribute("disabled");
     streetElement.removeAttribute('disabled');
     buildingElement.removeAttribute('disabled');
@@ -46,11 +46,11 @@ form.addEventListener('submit', e => {
     const validFloorNumber=validateEmptyInputs(floorElement);
     const validJob=validateNameInput(jopElement);
     const validCity=validateNameInput(cityElement);
-    const validCredit=validateEmptyInputs(creditElement);
+    // const validCredit=validateEmptyInputs(creditElement);
 
     let customerData ="";
 
-    if(validName && validBirthDate && validFloorNumber && validJob && validBuildingNumber && validStreet && validCity && validCredit) {
+    if(validName && validBirthDate && validFloorNumber && validJob && validBuildingNumber && validStreet && validCity) {
 
 
         console.log("valid");

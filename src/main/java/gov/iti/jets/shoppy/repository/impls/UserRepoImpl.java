@@ -61,7 +61,10 @@ public class UserRepoImpl implements UserRepo {
         entityManager.getTransaction().begin();
 
         try {
-            AddressEntity addressEntityData=entityManager.find(AddressEntity.class,id);
+            AddressEntity addressEntityData = entityManager.find(AddressEntity.class,id);
+            if(addressEntityData == null) {
+                addressEntityData = new AddressEntity();
+            }
             addressEntityData.setArea(addressEntity.getArea());
             addressEntityData.setBuildingNum(addressEntity.getBuildingNum());
             addressEntityData.setFloorNum(addressEntity.getFloorNum());
@@ -80,7 +83,8 @@ public class UserRepoImpl implements UserRepo {
 
             entityManager.getTransaction().commit();
             return true;
-        } catch (IllegalArgumentException exception){
+        } catch (Exception exception){
+            exception.printStackTrace();
             return false;
         }
     }

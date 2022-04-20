@@ -8,17 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!-- Button trigger modal -->
-<c:choose>
-    <c:when test="${empty cart}">
-        <h4>There are no items in your cart </h4>
-    </c:when>
-    <c:otherwise>
-        <button type="button" id="checkout" class="continue btn btn-primary pull-xs-right" data-toggle="modal" data-target="#exampleModalLong">
-            CHECKOUT
-        </button>
-    </c:otherwise>
-</c:choose>
 
+<button type="button" id="checkout" class="continue btn btn-primary pull-xs-right" data-toggle="modal" data-target="#exampleModalLong">
+    CHECKOUT
+</button>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">

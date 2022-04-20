@@ -27,17 +27,22 @@
         </c:otherwise>
     </c:choose>
     <div class="form sign-in">
-        <c:choose>
-            <c:when test="${empty error}">
-                <div class="alert-danger text-center h4 py-2 d-none" id="invaled" style="height: 35px">
-                </div>
-            </c:when>
-            <c:otherwise>
-                <div class="alert-danger text-center h4 py-2 " id="invaled" style="height: 35px">
-                    <p>${error}</p>
-                </div>
-            </c:otherwise>
-        </c:choose>
+        <c:if test="${not empty error || not empty param.notValid}">
+            <div class="alert-danger text-center h4 py-2 " id="invaled" style="height: 35px">
+                <p>Invalid email or password</p>
+            </div>
+        </c:if>
+<%--        <c:choose>--%>
+<%--            <c:when test="${empty error ||empty param.notValid}">--%>
+<%--                <div class="alert-danger text-center h4 py-2 d-none" id="invaled" style="height: 35px">--%>
+<%--                </div>--%>
+<%--            </c:when>--%>
+<%--            <c:otherwise>--%>
+<%--                <div class="alert-danger text-center h4 py-2 " id="invaled" style="height: 35px">--%>
+<%--                    <p>${error}</p>--%>
+<%--                </div>--%>
+<%--            </c:otherwise>--%>
+<%--        </c:choose>--%>
 
         <h2>Sign In</h2>
         <form id="sign-in-form" action="login" method="post">
@@ -57,7 +62,7 @@
             </div>
 
             <div class="form-group remember-me">
-                <label style="display: inline ;margin-left: 54px;"><input type="checkbox" name="password" id="rememberMe" value="checked" style="display:inline; width: 10%; padding-top: 2px"><span>Remember Me</span> </label>
+                <label style="display: inline ;margin-left: 54px;"><input type="checkbox" name="remember" id="rememberMe" value="checked" style="display:inline; width: 10%; padding-top: 2px"><span>Remember Me</span> </label>
 
 
 

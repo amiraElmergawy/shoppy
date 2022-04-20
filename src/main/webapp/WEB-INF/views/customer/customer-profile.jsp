@@ -121,12 +121,11 @@
                                 <input type="date" id="date" name="date" value="${helper.getCustomerDto().getDob()}" class="form-control" disabled="disabled" />
                                 <div class="error"></div>
                             </div>
-                            <div class="form-outline mb-1 form-group">
-                                <label class="form-label" for="credit">Credit Limit</label>
-                                <input type="number" id="credit" name="credit" value="${helper.getCustomerDto().getCreditLimit()}" class="form-control" disabled="disabled" />
-                                <div class="error"></div>
-
-                            </div>
+<%--                            <div class="form-outline mb-1 form-group">--%>
+<%--                                <label class="form-label" for="credit">Credit Limit</label>--%>
+<%--                                <input type="number" id="credit" name="credit" value="${helper.getCustomerDto().getCreditLimit()}" class="form-control" disabled="disabled" />--%>
+<%--                                <div class="error"></div>--%>
+<%--                            </div>--%>
                             <div class="form-outline mb-1 form-group">
                                 <label class="form-label" for="genderDisplay">Gender</label>
                                 <input type="text" id="genderDisplay" value="${genderValue}" class="form-control" disabled="disabled" />

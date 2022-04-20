@@ -108,7 +108,7 @@ public class DomainFacade {
 
     public ShoppingCartViewHelper loadShoppingCart(Integer id) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        ShoppingCartViewHelper shoppingCartViewHelper =  shoppingCartService.getShoppingCart(id, entityManager);
+        ShoppingCartViewHelper shoppingCartViewHelper = shoppingCartService.getShoppingCart(id, entityManager);
         entityManager.close();
         return shoppingCartViewHelper;
     }
