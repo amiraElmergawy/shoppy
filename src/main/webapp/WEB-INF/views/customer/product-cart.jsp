@@ -128,7 +128,7 @@
                                         </div>
                                        </c:forEach>
                                     </div>
-                                   <div class="text-center">
+                                   <div class="text-center" id="cart-modal">
                                        <%@ include file="../includes/cart-modal.jsp" %>
                                    </div>
                                 </div>
