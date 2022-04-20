@@ -91,7 +91,7 @@
                                     <textarea class="form-control input" id="desc" rows="3" required></textarea>
                                     <div class="error"></div>
                                 </div>
-                                <button type="submit" class="btn btn-success my-2">Save Product</button>
+                                <button type="submit" id="btn" class="btn btn-success my-2">Save Product</button>
                             </form>
                         </div>
                         ${isAdded}
@@ -109,7 +109,7 @@
 
     <%@ include file="../includes/admin-script.jsp" %>
     <script src="assets/scripts/forms-validator.js"></script>
-    <script src="assets/scripts/add-product.js"></script>
+    <script src="assets/scripts/product.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </body>
 

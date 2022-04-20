@@ -6,6 +6,11 @@ const productStock = document.getElementById('stock');
 const images = document.getElementById("images");
 const productDesc = document.getElementById('desc');
 encodedImages = [];
+const btn = document.getElementById("btn");
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const productId = urlParams.get('productID');
+
 images.onchange = function (event) {
     var fileList = images.files;
     if (fileList.length !== 0) {//test
@@ -45,20 +50,18 @@ form.addEventListener('submit', e => {
     validateEmptyInputs(productStock)
     validateEmptyInputs(productDesc)
 
+    if(encodedImages.length < 3) {
+        showImagesError("images between 3 - 4 for product");
+        return;
+    }
+
     if( validateEmptyInputs(productNameElement) && checkCategory() && validateEmptyInputs(productPrice) && validateEmptyInputs(productStock) && validateEmptyInputs(productDesc)){
-        if(encodedImages.length < 3)
-        {
-            showImagesError("minimum 3 images for product");
-            return;
-        }
-        console.log("you can send the request now ^_^");
-        //send the post request
-        console.log("button is clicked");
         const productName = productNameElement.value;
         const desc = productDesc.value;
         const price = productPrice.value;
         const stock = productStock.value;
         const category = productCategory.value;
+        const id=productId;
 
         const jsonData = {
             "productName": productName,
@@ -66,18 +69,40 @@ form.addEventListener('submit', e => {
             "price": price,
             "stock": stock,
             "category": category,
-            "images": JSON.stringify(encodedImages)
+            "images": JSON.stringify(encodedImages),
+            "id":id
         };
-        $.post("add-product", jsonData);
-        // $.ajax({
-        //     type: 'POST', //servlet request type
-        //     contentType: 'application/x-www-form-urlencoded;charset=UTF-8', //For input type
-        //     data: jsonData, //input data
-        //     dataType: 'json',
-        //     url: 'add-product',
-        // })
 
+        if(document.getElementById("btn").innerText.trim() == "Save Product"){
+            $.ajax({
+                type: 'POST', //servlet request type
+                contentType: 'application/x-www-form-urlencoded;charset=UTF-8', //For input type
+                data: jsonData, //input data
+                dataType: 'json',
+                url: 'add-product',
+            })
+        }
+        else {
+            console.log("in add");
+            $.ajax({
+                type: 'POST', //servlet request type
+                contentType: 'application/x-www-form-urlencoded;charset=UTF-8', //For input type
+                data: jsonData, //input data
+                dataType: 'json',
+                url: 'update-product',
+                success: function(data) {
+                    if(data.message == "true"){
+                    console.log(data.message);
+                        document.getElementById("successmessage").classList.remove("d-none")
+                        document.getElementById("successmessage").innerText = " Product is "+ data.information +" successfully"
+                    }else{
+                        document.getElementById("errormessage").classList.remove("d-none")
+                        document.getElementById("errormessage").innerText = "We are sorry product "+ data.information +" , Try Again Please !"
 
+                    }
+                }
+            })
+        }
     }
 
 });

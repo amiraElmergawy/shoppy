@@ -39,7 +39,6 @@ public class ProductRepoImp implements ProductRepo {
 
     @Override
     public List<ProductEntity> searchProducts(String value) {
-
         String coulmnName = "productName";
         Query query = entityManager.createQuery("from ProductEntity where productName like :value", ProductEntity.class)
                 .setParameter("value","%"+value+"%");
@@ -80,6 +79,27 @@ public class ProductRepoImp implements ProductRepo {
             exception.printStackTrace();
         }
         return added;
+    }
+
+    @Override
+    public boolean updateProductById(ProductEntity productEntity, List<String> encodedImages) {
+        entityManager.getTransaction().begin();
+        ProductEntity updatedProduct = entityManager.find(ProductEntity.class, productEntity.getId());
+        try {
+            updatedProduct.setProductName(productEntity.getProductName());
+            updatedProduct.setProductDesc(updatedProduct.getProductDesc());
+            updatedProduct.setPrice(productEntity.getPrice());
+            updatedProduct.setStock(productEntity.getStock());
+            updatedProduct.setCategory(productEntity.getCategory());
+            updatedProduct.setImgPath("product_id");
+            entityManager.merge(updatedProduct);
+            entityManager.getTransaction().commit();
+            imageUtility.saveImages(productEntity.getId(), encodedImages);
+            return  true;
+        } catch (IllegalArgumentException exception){
+            exception.printStackTrace();
+            return  false;
+        }
     }
 
     @Override
