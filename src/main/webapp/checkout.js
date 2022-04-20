@@ -34,12 +34,11 @@ async function initialize() {
 async function handleSubmit(e) {
     e.preventDefault();
     setLoading(true);
-
     const { error } = await stripe.confirmPayment({
         elements,
         confirmParams: {
             // Make sure to change this to your payment completion page
-            return_url: "http://localhost:9090/shoppy/receipt",
+            return_url: window.location.origin + "/shoppy/receipt",
         },
     });
 
