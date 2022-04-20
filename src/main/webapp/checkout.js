@@ -39,7 +39,7 @@ async function handleSubmit(e) {
         elements,
         confirmParams: {
             // Make sure to change this to your payment completion page
-            return_url: "http://localhost:9090/shoppy/receipt",
+            return_url: "http://localhost:9898/shoppy/receipt",
         },
     });
 

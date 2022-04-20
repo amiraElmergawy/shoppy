@@ -160,9 +160,8 @@
                         </td>
 
                         <td>
-                            Invoice #: 123<br />
-                            Created: January 1, 2015<br />
-                            Due: February 1, 2015
+                            Invoice #: ${order.getId()}<br/>
+                            Created:  ${order.getCreatedAt()}<br/>
                         </td>
                     </tr>
                 </table>
@@ -174,15 +173,12 @@
                 <table>
                     <tr>
                         <td>
-                            Sparksuite, Inc.<br />
-                            12345 Sunny Road<br />
-                            Sunnyville, TX 12345
+                            ${order.getCustomer().getAddress().getArea()}.<br/> Building Number , ${order.getCustomer().getAddress().getBuildingNum()} , ${order.getCustomer().getAddress().getStreet()}<br/> Floor number ,${order.getCustomer().getAddress().getFloorNum()}
                         </td>
 
                         <td>
-                            Acme Corp.<br />
-                            John Doe<br />
-                            john@example.com
+                            ${order.getCustomer().getUsername()}.<br />
+                                ${order.getCustomer().getEmail()}
                         </td>
                     </tr>
                 </table>
@@ -191,44 +187,31 @@
 
         <tr class="heading">
             <td>Payment Method</td>
-
-            <td>Check #</td>
+            <td></td>
+            <td></td>
+            <td>Stripe</td>
         </tr>
 
         <tr class="details">
-            <td>Check</td>
-
-            <td>1000</td>
+            <td>Credit card</td>
         </tr>
 
         <tr class="heading">
-            <td>Item</td>
-
+            <td>Prdoducts</td>
+            <td>Quntity</td>
             <td>Price</td>
+            <td>total price</td>
         </tr>
-
+        <c:forEach var="products" items="${order.getOrderProducts()}">
         <tr class="item">
-            <td>Website design</td>
-
-            <td>$300.00</td>
+            <td>${products.getProduct().getProductName()}</td>
+            <td>${products.getQuantity()}</td>
+            <td>${products.getProduct().getPrice()}</td>
+            <td>${products.getTotal()}</td>
         </tr>
-
-        <tr class="item">
-            <td>Hosting (3 months)</td>
-
-            <td>$75.00</td>
-        </tr>
-
-        <tr class="item last">
-            <td>Domain name (1 year)</td>
-
-            <td>$10.00</td>
-        </tr>
-
+        </c:forEach>
         <tr class="total">
-            <td></td>
-
-            <td>Total: $385.00</td>
+            <td>Total amount :${order.getTotalPrice()}</td>
         </tr>
     </table>
 </div>
