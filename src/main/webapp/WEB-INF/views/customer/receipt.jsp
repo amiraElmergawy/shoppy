@@ -148,9 +148,7 @@
 <body id="home" >
 
 <%@ include file="../includes/customer-header.jsp" %>
-
-
-
+<div style="padding: 100px"></div>
 <div class="invoice-box">
     <table>
         <tr class="top">
