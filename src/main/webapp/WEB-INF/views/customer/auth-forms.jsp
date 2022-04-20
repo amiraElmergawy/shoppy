@@ -29,11 +29,11 @@
     <div class="form sign-in">
         <c:choose>
             <c:when test="${empty error}">
-                <div class="alert-danger text-center h6 py-2 d-none" id="invaled" style="height: 35px">
+                <div class="alert-danger text-center h4 py-2 d-none" id="invaled" style="height: 35px">
                 </div>
             </c:when>
             <c:otherwise>
-                <div class="alert-danger text-center h6 py-2 " id="invaled" style="height: 35px">
+                <div class="alert-danger text-center h4 py-2 " id="invaled" style="height: 35px">
                     <p>${error}</p>
                 </div>
             </c:otherwise>
@@ -106,7 +106,7 @@
             </c:choose>
 
             <h2>Sign Up</h2>
-            <form id="sign-up-form" method="post" action="register">
+            <form id="sign-up-form" action="register" method="post">
                 <div class="form-group mb-1">
                     <label>
                         <span>Name</span>
