@@ -38,7 +38,7 @@ public class PaymentController extends HttpServlet {
         Gson gson = new Gson();
             PaymentIntentCreateParams params =
                     PaymentIntentCreateParams.builder()
-                            .setAmount(50*1400L)
+                            .setAmount(1*444L)
                             .setCurrency("usd")
                             .setAutomaticPaymentMethods(
                                     PaymentIntentCreateParams.AutomaticPaymentMethods
