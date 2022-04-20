@@ -1191,31 +1191,30 @@
                                                                         <div class="product-title">
                                                                             <a href="product-detail.jsp">${product.getProductName()}</a>
                                                                         </div>
-                                                                        <div class="rating">
-                                                                            <div class="star-content">
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                            </div>
-                                                                        </div>
+<%--                                                                        <div class="rating">--%>
+<%--                                                                            <div class="star-content">--%>
+<%--                                                                                <div class="star"></div>--%>
+<%--                                                                                <div class="star"></div>--%>
+<%--                                                                                <div class="star"></div>--%>
+<%--                                                                                <div class="star"></div>--%>
+<%--                                                                                <div class="star"></div>--%>
+<%--                                                                            </div>--%>
+<%--                                                                        </div>--%>
                                                                         <div class="product-group-price">
                                                                             <div class="product-price-and-shipping">
-                                                                                <span class="price">$ ${product.getPrice()}</span>
+                                                                                <span class="price">EG ${product.getPrice()}</span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="product-buttons d-flex justify-content-center">
-                                                                        <form action="#" method="post"
+                                                                        <form action="add-to-cart" method="get"
                                                                               class="formAddToCart">
-                                                                            <input type="hidden" name="id_product"
-                                                                                   value="1">
-                                                                            <a class="add-to-cart" href="#"
-                                                                               data-button-action="add-to-cart">
+                                                                            <input type="hidden" name="productId"
+                                                                                   value="${product.getId()}">
+                                                                            <button class="add-to-cart" type="submit" style="cursor: pointer">
                                                                                 <i class="fa fa-shopping-cart"
                                                                                    aria-hidden="true"></i>
-                                                                            </a>
+                                                                            </button>
                                                                         </form>
                                                                         <a href="product-details?productID=${product.getId()}" class="quick-view hidden-sm-down"
                                                                            data-link-action="quickview">

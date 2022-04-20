@@ -9,7 +9,7 @@
 
 body {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -38,7 +38,6 @@ button {
     position: relative;
     width: 640px;
     height: 100%;
-    padding: 50px 30px;
     -webkit-transition: -webkit-transform 1.2s ease-in-out;
     transition: -webkit-transform 1.2s ease-in-out;
     transition: transform 1.2s ease-in-out;
@@ -71,7 +70,7 @@ input {
     width: 100%;
     margin-top: 5px;
     font-size: 16px;
-    padding-bottom: 5px;
+    padding-bottom: 2px;
     border-bottom: 1px solid rgba(109, 93, 93, 0.4);
     text-align: center;
     font-family: 'Nunito', sans-serif;
@@ -347,13 +346,25 @@ select {
 }
 
 .sign-up-container {
-    padding:0px 30px ;
     line-height: 0.5 !important;
-    margin-top: 30px !important;
-    margin-bottom: 30px !important;
+    margin-top: 45px !important;
 }
 
 .submit-btn {
     margin-top: 20px;
     margin-bottom: 10px;
+}
+.remember-me{
+    margin: 26px 85px;
+
+}
+.remember-me span{
+    color: #3eadcf;
+}
+.error-message{
+    height: 35px;
+    position: absolute;
+    top: -40px;
+    left: 65px;
+    width: 80%;
 }

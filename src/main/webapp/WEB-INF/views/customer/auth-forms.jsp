@@ -7,11 +7,14 @@
     <!-- Basic Page Needs -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Auth Form</title>
+    <title>Shoppy</title>
     <%@ include file="../includes/customer-head.jsp" %>
     <!-- libs CSS -->
     <link rel="stylesheet" type="text/css" href="assets/styles/user-forms.css">
     <link rel="stylesheet" type="text/css" href="assets/styles/validation-style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
 <body class="user-login blog">
@@ -53,9 +56,11 @@
                 <div class="error d-none"></div>
             </div>
 
-            <div class="form-group mb-3 row">
-                <input str type="checkbox" name="remember" id="rememberMe" value="checked">
-                <label>Remember Me</label>
+            <div class="form-group remember-me">
+                <label style="display: inline ;margin-left: 54px;"><input type="checkbox" name="password" id="rememberMe" value="checked" style="display:inline; width: 10%; padding-top: 2px"><span>Remember Me</span> </label>
+
+
+
             </div>
             <button class="submit" type="submit">Sign In</button>
         </form>
@@ -88,13 +93,13 @@
         <div class="form sign-up sign-up-container">
             <c:choose>
                 <c:when test="${not empty param.emailValidation}">
-                    <div class="alert-danger text-center h6 py-2" id="invaled" style="height: 35px">
+                    <div class="alert-danger text-center  py-2 error-message" id="invaled" >
                         user already exists!
                     </div>
                 </c:when>
 
                 <c:when test="${not empty param.dataValidation}">
-                    <div class="alert-danger text-center h6 py-2" id="invaled" style="height: 35px">
+                    <div class="alert-danger text-center  py-2 error-message" id="invaled" >
                         Please enter your info again!
                     </div>
                 </c:when>
@@ -102,14 +107,14 @@
 
             <h2>Sign Up</h2>
             <form id="sign-up-form" method="post" action="register">
-                <div class="form-group">
+                <div class="form-group mb-1">
                     <label>
                         <span>Name</span>
                     </label>
                     <input type="text" id="name" name="username" required>
                     <div class="error"></div>
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-1">
                     <label>
                         <span>Email</span>
                     </label>
@@ -117,31 +122,31 @@
                     <div class="error"></div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group mb-1">
                     <label>
                         <span>Password</span>
                     </label>
                     <input type="password" name="password" id="sign-up-password" required>
                     <div class="error"></div>
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-1">
                     <label>
                         <span>Confirm Password</span>
                     </label>
                     <input type="password" id="confirm-password" required>
                     <div class="error"></div>
                 </div>
-                <div class="form-group" required>
+                <div class="form-group mb-1" required>
                     <label>
                         <span>Your Birth Date</span>
                     </label>
                     <input type="date" name="dateOfBirth" id="date" required >
                     <div class="error"></div>
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-1">
 
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-1">
                     <label>
                         <span>Favourites </span>
                     </label>
@@ -154,7 +159,7 @@
                     </select>
                     <div class="error"></div>
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-1">
                     <label>
                         <span>Gender </span>
                     </label>
