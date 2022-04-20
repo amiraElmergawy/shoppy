@@ -1,4 +1,4 @@
-package gov.iti.jets.shoppy.presentation.controllers.payment;
+package gov.iti.jets.shoppy.presentation.controllers;
 
 import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
@@ -13,13 +13,12 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
-import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 
 @WebServlet(name = "PaymentController" , value = "/payment")
-public class PaymentController extends HttpServlet {
+public class PaymentControllerServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -36,24 +35,27 @@ public class PaymentController extends HttpServlet {
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");
         OrderDto orderDto = (OrderDto) req.getSession(false).getAttribute("cart");
+        System.out.println(orderDto);
         if(orderDto == null)
             return;
+        /**
+         * handle if total price is zero
+         * handle if order dto is null
+         */
         PrintWriter out = resp.getWriter();
         Stripe.apiKey = "sk_test_51KqLFHJsRRC8Gzw03TaqdQ7JjpXBaEJwS7QW8dD2IFPG0hcITuvGQIp5z7ZKffonM2HJqjmhG2V5b94ppzhyaNAm00iAq5XK5i";
         Gson gson = new Gson();
         PaymentIntentCreateParams params = PaymentIntentCreateParams.builder()
-                .setAmount((long) orderDto.getTotalPrice())
-                .setCurrency("le")
-                .setCustomer(orderDto.getCustomer().getEmail())
-                .setApplicationFeeAmount(50l)
-                .setPaymentMethod("visa")
+                .setAmount((long) orderDto.getTotalPrice() * 100)
+                .setCurrency("usd")
                 .setReceiptEmail(orderDto.getCustomer().getEmail())
+                .putMetadata("order_id", orderDto.getId()+"")
                 .setAutomaticPaymentMethods
                         (
                                 PaymentIntentCreateParams.AutomaticPaymentMethods
-                                .builder()
-                                .setEnabled(true)
-                                .build()
+                                        .builder()
+                                        .setEnabled(true)
+                                        .build()
                         ).build();
 
         PaymentIntent paymentIntent = null;

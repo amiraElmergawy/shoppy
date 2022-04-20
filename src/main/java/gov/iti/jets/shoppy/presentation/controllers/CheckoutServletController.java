@@ -20,7 +20,7 @@ public class CheckoutServletController extends HttpServlet {
             orderDto.setIsSubmitted(true);
             System.out.println(orderDto);
             if (orderDto.getOrderProducts().size() != 0)
-                if(!DomainFacade.getInstance().saveOrder(Optional.of(orderDto)))
+                if(!DomainFacade.getInstance().saveOrderWithCreditLimit(Optional.of(orderDto)))
                     response.getWriter().print("please update your credit limit");
                 else
                     response.getWriter().print("");

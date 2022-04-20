@@ -15,7 +15,7 @@ document
 
 // Fetches a payment intent and captures the client secret
 async function initialize() {
-    const response = await fetch("create-payment-intent", {
+    const response = await fetch("payment", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ items }),
@@ -39,8 +39,7 @@ async function handleSubmit(e) {
         elements,
         confirmParams: {
             // Make sure to change this to your payment completion page
-            return_url: "http://localhost:9898/shoppy/payment.html",
-            receipt_email: document.getElementById("email").value,
+            return_url: "http://localhost:9090/shoppy/receipt",
         },
     });
 
@@ -72,6 +71,7 @@ async function checkStatus() {
 
     switch (paymentIntent.status) {
         case "succeeded":
+            console.log(paymentIntent)
             showMessage("Payment succeeded!");
             break;
         case "processing":
