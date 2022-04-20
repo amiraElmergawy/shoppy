@@ -71,8 +71,8 @@ public class ShoppingCartServletController extends HttpServlet {
                     orderProductDto = orderProduct;
                 }
             }
-            currentCustomerSession.setAttribute("cart", orderDto);
             if(!orderProductDto.equals(null)) orderDto.getOrderProducts().remove(orderProductDto);
+            currentCustomerSession.setAttribute("cart", orderDto);
         }
         resp.getWriter().print("");
     }
