@@ -20,14 +20,18 @@ public class ShoppingCartServletController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/customer/product-cart.jsp");
         try {
+            rd.include(req,resp);
             Integer id = Integer.parseInt(req.getSession(false).getAttribute("userId")+"");
             OrderDto orderDto = (OrderDto) req.getSession().getAttribute("cart");
             if(orderDto == null)
                 req.getSession().setAttribute("cart", DomainFacade.getInstance().loadShoppingCart(id).getOrderDto());
-            rd.include(req,resp);
+
         } catch (ServletException e) {
             e.printStackTrace();
+            System.out.println("current cart info "+req.getSession().getAttribute("cart"));
+            req.getSession().setAttribute("msg","Your shopping cart is empty");
         }
+
     }
 
     @Override

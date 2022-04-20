@@ -33,6 +33,12 @@
                             <div class="cart-grid row">
                                 <div class="col-md-9 col-xs-12 check-info" id="cartContainer">
                                     <h1 class="title-page">Shopping Cart</h1>
+                                    <div class="d-none alert-secondary p-2 mb-4 text-center h6" id="">
+<%--                                        ${sessionScope.get(msg)}--%>
+                                        <c:if test="${cart==null}">
+                                            Your shopping cart is empty
+                                        </c:if>
+                                    </div>
                                     <div class="d-none alert-danger p-2 mb-4 text-center h6" id="error"></div>
                                     <div class="cart-container" id="productsContainer">
                                        <c:forEach var="orderProduct" items="${cart.getOrderProducts()}">
