@@ -103,7 +103,7 @@
                                    </div>
                                 </div>
                                 <div class="cart-grid-right col-xs-12 col-lg-3 mt-5 ">
-                                    <div class="cart-summary shadow-sm mt-4 rounded">
+                                    <div class="cart-summary shadow-sm mt-4 rounded" id="cart-summary">
                                         <div class="cart-detailed-totals">
                                             <div class=" d-flex justify-content-between">
                                                 <div class="summary-label  text-white">Products Number: </div>
