@@ -33,8 +33,8 @@
 								<section id="team">
 									<div class="">
 										<div class="section-header">
-											<center><h1 class="title-page">About Us</h1></center>
-											<p>Meet Shoppy Team</p>
+											<center><h1 class="title-page">Meet Shoppy Team</h1></center>
+											<p></p>
 										</div>
 										<div class="row justify-content-center">
 											<div class="col-lg-2 col-md-6 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
