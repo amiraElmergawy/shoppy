@@ -160,7 +160,7 @@
 
                             <div class="account-list-content">
 
-                               <c:if test="${userId!=null} && ${role.equals(Role.CUSTOMER)}">
+                               <c:if test="${userId!=null}">
                                    <div>
                                        <a class="login" href="profile" rel="nofollow" title="view your info">
                                            <i class="fa fa-cog"></i>
