@@ -178,12 +178,12 @@ public class DomainFacade {
         boolean saved = false;
         if (orderDtoOptional.isPresent() && (orderDtoOptional.get().getCustomer().getCreditLimit() >= orderDtoOptional.get().getTotalPrice())){
             var customer= orderDtoOptional.get().getCustomer();
-            System.out.println(customer);
+//            System.out.println(customer);
             customer.setCreditLimit(customer.getCreditLimit() - orderDtoOptional.get().getTotalPrice());
-            System.out.println(customer);
+//            System.out.println(customer);
             userService.updateCustomer((int) customer.getId(), customer.getCreditLimit(), entityManager);
             saved = shoppingCartService.saveOrder(orderDtoOptional, entityManager);
-            System.out.println("order saving result: "+ saved);
+//            System.out.println("order saving result: "+ saved);
         }
         entityManager.close();
         return saved;

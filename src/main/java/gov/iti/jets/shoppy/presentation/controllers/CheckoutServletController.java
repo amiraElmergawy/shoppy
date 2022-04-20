@@ -18,13 +18,15 @@ public class CheckoutServletController extends HttpServlet {
         var orderDto = (OrderDto)currentCustomerSession.getAttribute("cart");
         if(orderDto != null){ //check for this in front before click the button
             orderDto.setIsSubmitted(true);
-            System.out.println(orderDto);
+//            System.out.println(orderDto);
             if (orderDto.getOrderProducts().size() != 0)
                 if(!DomainFacade.getInstance().saveOrder(Optional.of(orderDto)))
                     response.getWriter().print("please update your credit limit");
-                else
+                else{
+                    currentCustomerSession.setAttribute("cart",null);
                     response.getWriter().print("");
-            else
+                }
+                else
                 response.getWriter().print("your order is empty");
         }
     }
