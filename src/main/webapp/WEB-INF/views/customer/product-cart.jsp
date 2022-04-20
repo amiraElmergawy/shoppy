@@ -92,8 +92,8 @@
                                                                                 class="product-line-info product-price">
                                                                                 <span
                                                                                     class="font-weight-bold text-muted text-lg-center"
-                                                                                    style="font-size: 14px">
-                                                                                    ${orderProduct.getProduct().getProductDesc()}
+                                                                                    style="font-size: 14px" id=${orderProduct.getProduct().getId()}price>
+                                                                                    ${orderProduct.getProduct().getPrice()}
                                                                                 </span>
                                                                                 <%-- <span class="value"
                                                                                     id=${orderProduct.getProduct().getId()}price>
@@ -132,9 +132,7 @@
                                                                                 <div class="col-md-3 price col m-auto">
                                                                                     <span class="product-price total "
                                                                                         id=${orderProduct.getProduct().getId()}productTotal
-                                                                                        style="font-size: 16px;">
-                                                                                        ${Math.round(orderProduct.getTotal())}
-                                                                                    </span>
+                                                                                        style="font-size: 16px;">${Math.round(orderProduct.getTotal())}</span>
                                                                                     <span class="product-price total "
                                                                                         style="font-size: 16px; margin-left: 10px">
                                                                                         EG
@@ -196,7 +194,7 @@
                                                                 Free</div>
                                                         </div>
                                                         <div class=" d-flex justify-content-between">
-                                                            <div class="summary-label ]text-white"></div>
+                                                            <div class="summary-label text-white"></div>
                                                             <div
                                                                 class="text-black font-weight-bold font-italic text-white">
                                                             </div>

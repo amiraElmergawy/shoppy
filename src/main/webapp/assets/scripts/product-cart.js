@@ -25,14 +25,16 @@ function increaseProduct(productId){
             } else {
                 div.disabled = false;
                 let quantityDiv = document.getElementById(productId+"quantity");
-                // console.log(quantityDiv);
+                // console.log("quantity: ",+quantityDiv.textContent);
                 let productPrice = document.getElementById(productId+"price");
                 let productTotal = document.getElementById(productId+"productTotal");
+                // console.log("price ",+productPrice.textContent)
+                // console.log("prodcutTotal ", +productTotal.textContent)
                 //update quantity
-                quantityDiv.innerText = (+quantityDiv.textContent) +1;
+                quantityDiv.innerText = (+quantityDiv.textContent.trim()) +1;
                 //update total product price
-                productTotal.innerText = (+productPrice.textContent)*(+quantityDiv.textContent);
-                document.getElementById("productsTotal").innerText = (+document.getElementById("productsTotal").textContent) + (+productPrice.textContent);
+                productTotal.innerText = (+productPrice.textContent.trim())*(+quantityDiv.textContent.trim());
+                document.getElementById("productsTotal").innerText = (+document.getElementById("productsTotal").textContent.trim()) + (+productPrice.textContent.trim());
             }
         }
     });
@@ -58,10 +60,10 @@ function decreaseProduct(productId){
             let productTotal = document.getElementById(productId+"productTotal");
             if ((+quantityDiv.textContent) -1 > 0) {
                 //update quantity
-                quantityDiv.innerText = (+quantityDiv.textContent) - 1;//===> 0 -> delete
+                quantityDiv.innerText = (+quantityDiv.textContent.trim()) - 1;//===> 0 -> delete
                 //update total product price
-                productTotal.innerText = (+productPrice.textContent) * (+quantityDiv.textContent);
-                document.getElementById("productsTotal").innerText = (+document.getElementById("productsTotal").textContent) - (+productPrice.textContent);
+                productTotal.innerText = (+productPrice.textContent.trim()) * (+quantityDiv.textContent.trim());
+                document.getElementById("productsTotal").innerText = (+document.getElementById("productsTotal").textContent.trim()) - (+productPrice.textContent.trim());
             } else deleteProduct(productId);
         }
     });
@@ -84,8 +86,8 @@ function deleteProduct(productId){
             let productsContainer = document.getElementById("productsContainer");
             let productTotal = document.getElementById(productId+"productTotal").textContent;
             console.log("product total "+productTotal);
-            document.getElementById("productsTotal").innerText = (+document.getElementById("productsTotal").textContent) - (+productTotal);
-            document.getElementById("productsNo").innerText = +document.getElementById("productsNo").textContent -1
+            document.getElementById("productsTotal").innerText = (+document.getElementById("productsTotal").textContent.trim()) - (+productTotal.trim());
+            document.getElementById("productsNo").innerText = +document.getElementById("productsNo").textContent.trim() -1
             productsContainer.removeChild(document.getElementById(productId));
 
         }
@@ -110,7 +112,7 @@ function saveOrder(){
                 );
                 div.classList.add("d-none");
             } else {
-                document.getElementById("creditLimit").innerText = (+document.getElementById("creditLimit").textContent) - (+document.getElementById("productsTotal").textContent);
+                document.getElementById("creditLimit").innerText = (+document.getElementById("creditLimit").textContent.trim()) - (+document.getElementById("productsTotal").textContent.trim());
                 document.getElementById("cartContainer").removeChild(document.getElementById("productsContainer"));
                 document.getElementById("cart-summary").classList.add("d-none");
                 document.getElementById("cart-modal").classList.add("d-none");
