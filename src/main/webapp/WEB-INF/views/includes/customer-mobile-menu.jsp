@@ -18,19 +18,33 @@
                                 <!-- Brand and toggle get grouped for better mobile display -->
                                 <div id="megamenu" class="clearfix">
                                     <ul class="menu level1">
-                                        <li class="item home-page has-sub">
-                                            <a href="../customer/home.jsp" title="Home">
+                                        <li class="item home-page ">
+                                            <a href="home" title="Home">
                                                 <i class="fa fa-home" aria-hidden="true"></i>Home</a>
                                         </li>
 
-                                        <li class="item group has-sub">
-                                            <a href="../customer/about-us.jsp" title="Page">
+                                        <li class="item group ">
+                                            <a href="about-us" title="Page">
                                                 <i class="fa fa-file-text-o" aria-hidden="true"></i>About Us</a>
                                         </li>
-                                        <li class="item has-sub">
-                                            <a href="../customer/contact.jsp" title="Contact us">
-                                                <i class="fa fa-map-marker" aria-hidden="true"></i>Contact us</a>
-                                        </li>
+                                        <c:if test="${userId!=null}">
+                                            <li class="item">
+                                                <a href="profile" title="Log in to your customer account">
+                                                    <i class="fa fa-cog" aria-hidden="true"></i>My Account</a>
+                                            </li>
+                                        </c:if>
+                                        <c:if test="${userId==null}">
+                                            <li class="item ">
+                                                <a href="login" title="Log in to your customer account">
+                                                    <i class="fa fa-sign-in" aria-hidden="true"></i>Sign in</a>
+                                            </li>
+                                        </c:if>
+                                        <c:if test="${userId!=null}">
+                                            <li class="item ">
+                                                <a href="login" title="Log out">
+                                                    <i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
+                                            </li>
+                                        </c:if>
 
 
                                     </ul>

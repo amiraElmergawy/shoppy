@@ -1,5 +1,5 @@
 <!-- footer -->
-<footer class="footer-one mt-5">
+<footer class="footer-one pt-3">
     <div id="tiva-copyright">
         <div class="container">
             <div class="row">

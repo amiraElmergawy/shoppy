@@ -33,7 +33,7 @@
         @media screen and (max-width: 991px) {
             .nivoSlider {
                 z-index: 2;
-                height: 300px !important;
+                height: 200px !important;
             }
         }
 
@@ -1165,7 +1165,7 @@
                                                 <div class="row mb-5">
                                                     <c:forEach var="product" items="${helper.getProductDtoList()}">
                                                         <div class="item text-center col-md-4 mb-4 p-1">
-                                                            <div class="product-miniature js-product-miniature item-one first-item shadow rounded p-1" style="height:400px">
+                                                            <div class="product-miniature js-product-miniature item-one first-item shadow rounded p-1">
                                                                 <div class="thumbnail-container border">
                                                                     <a href="product-details?productID=${product.getId()}">
                                                                         <img class="img-fluid image-cover" height="260px"

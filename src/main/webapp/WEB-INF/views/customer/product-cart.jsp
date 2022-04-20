@@ -46,7 +46,7 @@
 <%@ include file="../includes/customer-header.jsp" %>
 
     <!-- main content -->
-    <div class="main-content bg-light" id="cart">
+    <div class="main-content bg-light pb-5" id="cart">
         <!-- main -->
         <div id="wrapper-site">
             <div class="container ">
