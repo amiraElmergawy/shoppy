@@ -1101,7 +1101,7 @@
 
                         </div>
                     </div>
-                    ${empty}
+
                     <%-- <div class="js-product-list-top firt nav-top">
                         --%>
                         <%-- <div class="d-flex justify-content-around row">
@@ -1210,6 +1210,7 @@
                                                                                                                                                     class="related tab-pane fade in active show">
                                                                                                                                                     <div
                                                                                                                                                         class="row mb-5">
+                                                                                                                                                        ${product.getCategory().equals(category)}
                                                                                                                                                         <c:forEach
                                                                                                                                                             var="product"
                                                                                                                                                             items="${helper.getProductDtoList()}">
@@ -1570,6 +1571,7 @@
                                         $.post("home", {"category": 3});
                                     else if(category == "KITCHEN".toLowerCase())
                                         $.post("home", {"category": 4});
+                                    location.reload();
                                 }
                             </script>
         </body>
