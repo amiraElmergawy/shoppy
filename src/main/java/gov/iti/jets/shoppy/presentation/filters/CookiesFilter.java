@@ -25,6 +25,11 @@ public class CookiesFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res =(HttpServletResponse) response;
 
+        Cookie check = new Cookie("Check" , "yes");
+        if(req.getCookies() == null){
+            res.addCookie(check);
+        }
+
         if (req.getRequestURI().equals("/shoppy/")){
             filterChain.doFilter(request , response);
         }else{
