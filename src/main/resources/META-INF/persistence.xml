@@ -16,8 +16,8 @@
 <!--            <property name="hibernate.hbm2ddl.auto" value="update"/>-->
 <!--            <property name="format_sql" value="true"/>-->
 <!--            <property name="hibernate.show_sql" value="true"/>-->
-            <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
-            <property name="javax.persistence.jdbc.url" value="shoppy-server.mysql.database.azure.com:3306/shoppy"/>
+            <property name="javax.persistence.jdbc.driver" value="DriverManager.getConnection(jdbc:mysql://shoppy-server.mysql.database.azure.com:3306/shoppy?useSSL=true, lioruacqrn, admin1234" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://shoppy-server.mysql.database.azure.com:3306/shoppy"/>
             <property name="javax.persistence.jdbc.user" value="lioruacqrn" />
             <property name="javax.persistence.jdbc.password" value="admin1234" />
             <property name="hibernate.show_sql" value="true" />
