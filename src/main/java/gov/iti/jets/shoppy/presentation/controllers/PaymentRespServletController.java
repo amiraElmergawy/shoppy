@@ -25,7 +25,6 @@ public class PaymentRespServletController extends HttpServlet {
                 orderDto.setIsSubmitted(true);
                 DomainFacade.getInstance().saveOrderWithVisa(Optional.of(orderDto));
             }
-            System.out.println(orderDto.toString());
             currentCustomerSession.setAttribute("cart", null);
             req.setAttribute("order", orderDto);
             rd.include(req,resp);

@@ -70,7 +70,9 @@ public class AuthFilter implements Filter {
                     } else filterChain.doFilter(servletRequest, servletResponse);
                 } else filterChain.doFilter(servletRequest, servletResponse);
             } else if (((HttpServletRequest) servletRequest).getRequestURI().contains("assets") || ((HttpServletRequest) servletRequest).getRequestURI().contains("create-payment-intent") ||
-                    ((HttpServletRequest) servletRequest).getRequestURI().contains("images/C:/upload/products")) {
+                    ((HttpServletRequest) servletRequest).getRequestURI().contains("images/C:/upload/products") ||
+            ((HttpServletRequest) servletRequest).getRequestURI().contains("checkout.js") ||
+            ((HttpServletRequest) servletRequest).getRequestURI().contains("checkout.css")){
                 //resources
                 filterChain.doFilter(servletRequest, servletResponse);
             } else {
