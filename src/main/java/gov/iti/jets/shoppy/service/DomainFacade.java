@@ -118,12 +118,17 @@ public class DomainFacade {
         ShoppingCartViewHelper shoppingCartViewHelper = shoppingCartService.getShoppingCart(customerId, entityManager);
         if(shoppingCartViewHelper.getOrderDto() == null)
             shoppingCartViewHelper.setOrderDto(shoppingCartService.getNewShoppingCart(customerId, entityManager));
-        return shoppingCartService.addProductToShoppingCart(shoppingCartViewHelper.getOrderDto(), productId, entityManager);
+            ShoppingCartViewHelper shoppingCartViewHelper1 = shoppingCartService.addProductToShoppingCart(shoppingCartViewHelper.getOrderDto(), productId, entityManager);
+            entityManager.close();
+            return shoppingCartViewHelper1;
+
     }
 
     public ShoppingCartViewHelper addProductToCart(OrderDto orderDto, Integer productId) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        return shoppingCartService.addProductToShoppingCart(orderDto, productId, entityManager);
+        ShoppingCartViewHelper shoppingCartViewHelper = shoppingCartService.addProductToShoppingCart(orderDto, productId, entityManager);
+        entityManager.close();
+        return shoppingCartViewHelper;
     }
 
     public boolean increaseProductInShoppingCart(int productId){

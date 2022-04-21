@@ -1,12 +1,10 @@
 package gov.iti.jets.shoppy.repository.impls;
 
-import gov.iti.jets.shoppy.repository.entity.OrderEntity;
-import gov.iti.jets.shoppy.repository.entity.OrderProductsEntity;
+import gov.iti.jets.shoppy.repository.entity.*;
 import gov.iti.jets.shoppy.repository.interfaces.OrderRepo;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.Query;
-import jakarta.persistence.NoResultException;
-import jakarta.persistence.TypedQuery;
+import jakarta.persistence.*;
+
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
