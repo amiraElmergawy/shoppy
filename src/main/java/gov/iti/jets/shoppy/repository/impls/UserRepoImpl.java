@@ -74,7 +74,7 @@ public class UserRepoImpl implements UserRepo {
             customerEntity.setUsername(customer.getUsername());
             customerEntity.setDob(customer.getDob());
             customerEntity.setInterests(customer.getInterests());
-            customerEntity.setCreditLimit(customer.getCreditLimit());
+//            customerEntity.setCreditLimit(customer.getCreditLimit());
             customerEntity.setAddressEntity(addressEntityData);
             customerEntity.setJob(customer.getJob());
             customerEntity.setIsMale(customer.getIsMale());
