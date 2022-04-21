@@ -17,7 +17,7 @@ import java.util.Optional;
 public class PaymentRespServletController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/customer/receipt.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/customer/receipt-container.jsp");
         try {
             HttpSession currentCustomerSession = req.getSession(false);
             OrderDto orderDto = (OrderDto)currentCustomerSession.getAttribute("cart");
