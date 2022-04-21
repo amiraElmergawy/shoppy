@@ -42,6 +42,7 @@ public class RegisterServletController extends HttpServlet {
                 .email(customerReqDto.getEmail().trim())
                 .password(HashManager.INSTANCE.generateSecurePassword(customerReqDto.getPassword().trim()))
                 .dob(formattedDOB)
+                .creditLimit(1000)
                 .isMale(customerReqDto.isMale())
                 .interests(customerReqDto.getInterests().trim()).build();
         System.out.println(customerDto);

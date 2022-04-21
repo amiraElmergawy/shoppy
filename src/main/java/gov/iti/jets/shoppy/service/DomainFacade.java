@@ -200,7 +200,7 @@ public class DomainFacade {
     public boolean saveOrderWithVisa(Optional<OrderDto> orderDtoOptional){
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         boolean saved = false;
-        if (orderDtoOptional.isPresent() && (orderDtoOptional.get().getCustomer().getCreditLimit() >= orderDtoOptional.get().getTotalPrice())){
+        if (orderDtoOptional.isPresent()){
             var customer= orderDtoOptional.get().getCustomer();
             System.out.println(customer);
             userService.updateCustomer((int) customer.getId(), customer.getCreditLimit(), entityManager);
