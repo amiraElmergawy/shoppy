@@ -38,7 +38,7 @@
 										</div>
 										<div class="row justify-content-center">
 											<div class="col-lg-2 col-md-6 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
-												<div class="member"> <img src="assets/images/home/amira.jpeg" class="img-fluid" alt="">
+												<div class="member"> <img src="assets/images/home/amira.jpg" class="img-fluid" alt="">
 													<div class="member-info">
 														<div class="member-info-content">
 															<h4>Amira Elmergawy</h4> <span>Java Developer</span>
@@ -58,11 +58,11 @@
 												</div>
 											</div>
 											<div class="col-lg-2 col-md-6 wow fadeInUp" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
-												<div class="member"> <img src="https://i.imgur.com/TCoUOUM.jpg" class="img-fluid" alt="">
+												<div class="member"> <img src="assets/images/home/hala.jpg" class="img-fluid" alt="">
 													<div class="member-info">
 														<div class="member-info-content">
 															<h4>Hala Tarek</h4> <span>Java Developer</span>
-															<div class="social"> <a href=""><i class="fa fa-twitter"></i></a> <a href=""><i class="fa fa-facebook"></i></a> <a href=""><i class="fa fa-google-plus"></i></a> <a href=""><i class="fa fa-linkedin"></i></a> </div>
+															<div class="social"> <a href=""><i class="fa fa-twitter"></i></a> <a href=""><i class="fa fa-facebook"></i></a> <a href=""><i class="fa fa-google-plus"></i></a> <a href="https://www.linkedin.com/in/hala-tarek"><i class="fa fa-linkedin"></i></a> </div>
 														</div>
 													</div>
 												</div>
