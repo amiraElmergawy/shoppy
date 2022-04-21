@@ -29,4 +29,12 @@ public class HomePageServletController extends HttpServlet {
             e.printStackTrace();
         }
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println(req.getParameter("category"));
+        req.setAttribute("category", req.getParameter("category"));
+        resp.getWriter().print("");
+    }
+
 }
