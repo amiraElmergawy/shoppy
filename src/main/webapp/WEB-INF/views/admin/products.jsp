@@ -48,7 +48,7 @@
         </thead>
         <tbody>
         <c:forEach var="product" items="${helper.getProductDtoList()}">
-        <tr onclick="window.location='show-product?productID=${product.getId()}';">
+        <tr>
           <th scope="row">${product.getId()}</th>
           <td>${product.getProductName()}</td>
           <td>${product.getPrice()} LE</td>
