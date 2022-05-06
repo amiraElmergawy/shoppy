@@ -3,8 +3,7 @@
 
 An e-commerce website that sells furnitures, built using Jakarta EE 9 technologies and layered architecture as our second project at the Information Technology Institute. 
 
-## Features
-
+# 📦 Features
 - Registration and login
 - Add product admin
 - Edit product admin
@@ -22,7 +21,8 @@ An e-commerce website that sells furnitures, built using Jakarta EE 9 technologi
 - Search for product by name customer
 - Checkout using Stripe payment customer
 - Logout customer and admin
-## Technologies used
+
+# ⚙ Technologies used
 - Maven
 - Apache Tomcat 10.0.20
 - Jakarta Persistence (Hibernate)
@@ -40,8 +40,7 @@ An e-commerce website that sells furnitures, built using Jakarta EE 9 technologi
 - mapstruct
 - Stripe payment integration
 
-## Run with maven
-
+# 🛠 Run with Maven
 Clone the project
 
 ```bash
@@ -62,7 +61,7 @@ Go to the project directory
 ```
 
 
-## Authors
+# 👷‍♀️ Contributors
 
 - [Hesham Ahmed](https://github.com/heshmAhmed)
 - [Amira Elmergawy](https://github.com/amiraElmergawy)
