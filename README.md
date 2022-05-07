@@ -1,59 +1,56 @@
 
-# Shoppy
+# E-commerce SOAP and REST API
 
-An e-commerce website that sells furnitures, built using Jakarta EE 9 technologies and layered architecture as our second project at the Information Technology Institute. 
+An E-Commerce RESTful and SOAP web service built using JAX-RS and JAX-WS.
 
-# 📦 Features
-- Registration and login
-- Add product admin
-- Edit product admin
-- Delete product admin
-- View all customers admin
-- View order history admin
-- View homepage customer
-- View product details customer
-- View shopping cart customer
-- Add product to cart customer
-- Increase & decrease product quantity from cart customer
-- Save cart even if customer logged out
-- View profile customer
-- Edit profile customer
-- Search for product by name customer
-- Checkout using Stripe payment customer
-- Logout customer and admin
 
-# ⚙ Technologies used
+## 📃 Documentation
+
+[Postman RESTful API](https://documenter.getpostman.com/view/7099221/UyxdKUR6)
+
+[SOAP-UI project](https://github.com/heshmAhmed/e-commerce-rest-soap-api/blob/main/e-commerce-api-soapui-project.xml)
+
+
+
+## 📦 Features
+- Pagination
+- Partial response
+- Filtering
+
+
+
+## ⚙ Technologies used
+- JAX-RS (Jersey)
+- JAX-WS (Metro)
+- JSON-B
+- JAX-B
+- JAX-P
 - Maven
-- Apache Tomcat 10.0.20
-- Jakarta Persistence (Hibernate)
-- MySQL
-- Jakarta Server Pages
-- Jakarta Servlet
-- Jakarta Standard Tag Library
-- HTML
-- CSS
-- JavaScript
-- Bootstrap
-- Ajax
-- Lombok
-- Gson
-- mapstruct
-- Stripe payment integration
+- Map struct
+- Lomboke
+- Tomcat
+- Jakarta persistance (Hibernate)
+- MySql
+- Intellij IDEA Ultimate
+- Postman
+- SOAP-UI
 
-# 🛠 Run with Maven
+
+
+## 🛠 Run with Maven
 Clone the project
 
 ```bash
-  git clone https://github.com/heshmAhmed/shoppy
+  git clone https://github.com/heshmAhmed/e-commerce-rest-soap-api
 ```
 
 Go to the project directory
 
 ```bash
-  cd shoppy
+  cd e-commerce-rest-soap-api
 ```
 - Create db user and set the username and password values in the persistence.xml
-- Create db named shoppy in your MySql Server 
+- Create db named e-commerce in your MySql Server 
 - Run your tomcat apache server and then change the configuration of tomcat in pom.xml
 - Deploy the application using the following maven command
 ```
@@ -61,10 +58,5 @@ Go to the project directory
 ```
 
 
-# 👷‍♀️ Contributors
-
+## 👷‍ Contributors
 - [Hesham Ahmed](https://github.com/heshmAhmed)
-- [Amira Elmergawy](https://github.com/amiraElmergawy)
-- [Abdelaziz Eldahshan](https://github.com/abdelazizeldahshan)
-- [Hala Tarek](https://github.com/Hala-45)
-- [Sally Elbanawany](https://github.com/sallyElbanawany)
