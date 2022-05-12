@@ -2,6 +2,12 @@
 
 An e-commerce website that sells furnitures, built using Jakarta EE 9 technologies and layered architecture as our second project at the Information Technology Institute. 
 
+# Database Schema
+
+<p align="center">
+  <img src="src/main/resources/images/dbSchema.png" title="erd">
+</p>
+
 # 📦 Features
 - Registration and login
 - Add product admin
